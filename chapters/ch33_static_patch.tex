@@ -1,0 +1,52 @@
+% STATUS: DRAFT
+\chapter{QFT in the static patch}\label{ch:static_patch}
+
+\begin{physmotiv}
+Before adding gravity's constraint, study a quantum field on the fixed de Sitter background. The static patch $R$ and its antipodal patch $L$ are complementary regions, like the Rindler wedges; the de Sitter-invariant (Bunch--Davies) vacuum plays the role of the Minkowski vacuum; and static-time translation plays the role of the boost. We get the de Sitter version of Bisognano--Wichmann: the vacuum restricted to the patch is thermal with respect to $H$ at $\beta_{\rm dS}=2\pi\ell$, the algebra is type III$_1$, and the modular Hamiltonian is $\beta_{\rm dS}H$ (the difference of the two patches' Hamiltonians). This is where the construction of \cref{ch:crossed} is about to be put to work.
+\end{physmotiv}
+
+\section{The Bunch--Davies state is a thermal state of the static patch}
+
+Quantize a free field $\phi$ (mass $m$) on $\mathrm{dS}_{d+1}$. The \emph{Bunch--Davies} (Euclidean) state $\Psi_{\rm dS}$ is the unique de Sitter invariant state with Hadamard (physically sensible short-distance) behaviour; it is the state defined by the Euclidean path integral on the hemisphere. Let $\A_R=\A(R)$ be the von Neumann algebra of the static patch (its causal diamond) and $\A_L=\A_R'$ that of the antipodal patch (Haag duality). Then:
+\begin{enumerate}
+\item $\Psi_{\rm dS}$ is cyclic and separating for $\A_R$ (an analogue of Reeh--Schlieder, from analyticity of correlators in the complexified geometry).
+\item The static-time translation $\ee^{-\ii tH}$ is a one-parameter group of isometries preserving $R$ and acting on $L$ with reversed orientation; it is a symmetry of $\Psi_{\rm dS}$ ($H\Psi_{\rm dS}=0$ for $H=H_R-H_L$).
+\item $\Psi_{\rm dS}$ is a KMS state of $\A_R$ for $\alpha_t=\Ad\ee^{\ii tH}$ at inverse temperature $\beta_{\rm dS}=2\pi\ell$. Equivalently, the modular operator is
+\begin{equation}
+\Delta_{\Psi_{\rm dS}}=\ee^{-\beta_{\rm dS}H},\qquad K=-\log\Delta=\beta_{\rm dS}H,
+\end{equation}
+the de Sitter version of \cref{thm:BW}.
+\end{enumerate}
+Item 3 is the statement that the Euclidean sphere makes the static time periodic with period $\beta_{\rm dS}$ (\cref{ch:ds_special}); in the algebraic form it follows from the geometric action of the isometry group (the static time is a boost in embedding space), as for the Rindler wedge (rigorous results on global properties of de Sitter vacuum states are due, in particular, to Borchers and Buchholz and to Bros--Moschella and collaborators). The Gibbons--Hawking temperature is thus a theorem about the modular flow of the Bunch--Davies state.
+
+\section{The algebra is type III$_1$, with no entropy}
+
+By the arguments of \cref{ch:typeIII_local} (the same ones as for the Rindler wedge: no minimal projections, boost-like flow with spectrum $\R$), $\A_R$ is the hyperfinite type III$_1$ factor. Hence:
+\begin{itemize}
+\item There is no density matrix $\rho_R$ and no von Neumann entropy. The fixed-cutoff entanglement entropy across the horizon is $S\simeq c\,A/\epsilon^{d-1}+\cdots$, with a non-universal $c$.
+\item There is no trace and no maximum-entropy state.
+\item $H$ is not in $\A_R$: $\sigma_t=\Ad\ee^{-\ii\beta tH}$ is an outer automorphism. The generator $\beta H$ exists as an operator on $\HH$ (two-sided) but not as an element of $\A_R$.
+\end{itemize}
+
+\begin{whatwrong}
+Do not confuse the entropy of the cosmological horizon, $A/4G_N$, with the entanglement entropy of the QFT across it. The latter is divergent and cutoff dependent, the former is finite and depends on Newton's constant. Their relation is that the QFT divergences renormalize $1/G_N$: $\frac{1}{4G_{\rm bare}}+\frac{c}{\epsilon^{d-1}}=\frac{1}{4G_{\rm ren}}$. The algebraic framework of the next chapters explains the finiteness of the sum in an intrinsic way.
+\end{whatwrong}
+
+\section{The crossed product is available, but what is it?}
+
+Mathematically, $\A_R\rtimes_\sigma\R$ exists and is type II$_\infty$ (\cref{ch:takesaki}). Physically, there is no reason yet to cross by $\R$: the QFT on a fixed background has $H$ as a symmetry generator but no clock. Gravity changes this: since $H$ is a constraint, observables must be invariant under it, which forces us to include a physical clock, and the invariants form the crossed product (\cref{ch:add_observer,ch:clpw}). Equivalently, one is asking the answer to a physical question: \emph{what does the static patch observer measure, given that the static-time coordinate has no operational meaning?}
+
+\begin{keyidea}
+In the static patch, $K=\beta_{\rm dS}H$, the algebra is type III$_1$ with no entropy, and $H\notin\A_R$. The missing ingredient is a clock, to be supplied by an observer.
+\end{keyidea}
+
+\section*{Exercises}
+\begin{exercise}
+Show that the KMS condition at $\beta_{\rm dS}$ is equivalent to the statement that the thermal two-point function of $\phi$ along a static trajectory is periodic in imaginary time with period $2\pi\ell$, using the explicit two-point function of the conformally coupled scalar in $\mathrm{dS}_2$ or $\mathrm{dS}_4$.
+\end{exercise}
+\begin{exercise}
+Using $K=\beta_{\rm dS}H$ and $H=H_R-H_L$, show that for the Bunch--Davies state $\langle\Psi_{\rm dS}|H_R|\Psi_{\rm dS}\rangle$ and $\langle\Psi_{\rm dS}|H_L|\Psi_{\rm dS}\rangle$ are separately divergent (UV) while $\langle H\rangle=0$.
+\end{exercise}
+\begin{exercise}
+Compare with the Rindler case: identify the dS analogues of $B$, $2\pi$, the acceleration and the Unruh temperature. What replaces the vacuum Poincar\'e group?
+\end{exercise}

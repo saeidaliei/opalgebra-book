@@ -1,0 +1,41 @@
+% STATUS: DRAFT
+\chapter{Spectral triples}\label{ch:spectral_triples}
+\skippable
+
+\begin{physmotiv}
+Topology is the algebra of continuous functions; \emph{metric geometry} needs one more ingredient. Connes' observation is that the Dirac operator supplies it: distances are encoded in how fast functions can vary, measured by commutators $[D,f]$. A spectral triple $(\A,\HH,D)$ is a noncommutative Riemannian (spin) manifold.
+\end{physmotiv}
+
+\section{Definition}
+
+\begin{definition}
+A (unital, even/odd) \emph{spectral triple} $(\A,\HH,D)$ consists of a $^*$-algebra $\A$ represented on a Hilbert space $\HH$ and a self-adjoint operator $D$ on $\HH$ with compact resolvent such that $[D,a]$ is bounded for all $a\in\A$. (Further axioms: $\Z_2$-grading, real structure $J$ (with sign conventions depending on a KO-dimension), orientability, first order condition, regularity, Poincar\'e duality.)
+\end{definition}
+
+\textbf{Canonical example.} $\A=C^\infty(M)$, $\HH=L^2(M,S)$ spinors on a compact Riemannian spin manifold $M$, $D=\ii\gamma^\mu\nabla_\mu$ the Dirac operator. Then $[D,f]=\ii\gamma^\mu\partial_\mu f$ and $\norm{[D,f]}=\norm{\nabla f}_\infty$ (Lipschitz seminorm).
+
+\section{Distance formula and reconstruction}
+
+The geodesic distance on $M$ is recovered from the triple:
+\begin{equation}
+d(p,q)=\sup\big\{|f(p)-f(q)|:f\in\A,\ \norm{[D,f]}\le1\big\}.
+\end{equation}
+This makes sense for any triple, and defines a distance on the \emph{state space} of $\A$ (Connes' metric), the noncommutative substitute for points.
+
+\begin{theorem}[Connes' reconstruction theorem]
+A commutative spectral triple satisfying Connes' axioms comes from a compact Riemannian spin$^c$ manifold. (Connes 2008, 2013.)
+\end{theorem}
+
+\emph{Physics hint.} The distance formula is the statement that distance is the maximum change of a ``potential'' with bounded gradient; $D$ is the algebraic gradient, as the Dirac operator is the ``square root'' of the Laplacian.
+
+\begin{whatwrong}
+Spectral triples are \emph{Euclidean}: $D$ is self-adjoint with a spectrum, and the distance formula needs positivity. Lorentzian generalizations are an open area (\cref{ch:lorentzian_nc}).
+\end{whatwrong}
+
+\section*{Exercises}
+\begin{exercise}
+For $M=S^1$ of length $L$ and $D=-\ii\,\dd/\dd x$, compute $d(p,q)$ from the formula and recover the geodesic distance. (Take $f(x)$ with $|f'|\le1$.)
+\end{exercise}
+\begin{exercise}
+Two-point space: $\A=\C^2$, $\HH=\C^2$, $D=\begin{pmatrix}0&m\\m&0\end{pmatrix}$ (with $\gamma$-grading). Compute $[D,f]$ for $f=(f_1,f_2)$ and show $d(1,2)=1/m$.
+\end{exercise}

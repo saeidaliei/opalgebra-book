@@ -1,0 +1,54 @@
+1	why_algebras	Why algebras?	core
+2	punchline	The punchline and how to read this book	core
+3	hilbert	Hilbert spaces and bounded operators	core
+4	topologies	Topologies on operators	core
+5	spectral	Spectral theorem and unbounded operators	core
+6	weyl	Weyl relations and Stone--von Neumann	skip
+7	groups	Groups, unitary representations, and positive energy	core
+8	cstar	\cstar-algebras	core
+9	states	States	core
+10	gns	The GNS construction	core
+11	inequiv	Inequivalent representations	core
+12	quasilocal	Quasi-local algebras and the thermodynamic limit	core
+13	doublecomm	Weak closure and the double commutant theorem	core
+14	factors	Projections, factors, and the centre	core
+15	traces	Normal states, weights, and traces	core
+16	classification	Classification: types I, II, III	core
+17	subsystems	Subsystems and entanglement	core
+18	kms	KMS equilibrium	core
+19	tomita	Tomita--Takesaki theory	core
+20	modham	Modular Hamiltonian, relative entropy, and the Connes cocycle	core
+21	connes_class	Connes classification and where type III comes from	core
+22	crossed	The crossed product construction	core
+23	takesaki	Takesaki duality	core
+24	entropy_II	Entropy in type II	core
+25	toy_clock	Toy models: a system plus a clock	core
+26	haagkastler	Haag--Kastler axioms	core
+27	rs_bw	Reeh--Schlieder, Bisognano--Wichmann, and the Unruh effect	core
+28	typeIII_local	Local algebras are type III$_1$	core
+29	dhr	Superselection and DHR	skip
+30	gravity_constraints	Gravity as constraints	core
+31	gauge_warmup	Gauge theory warm-up: edge modes and centres	core
+32	ds_special	Why de Sitter is special	core
+33	static_patch	QFT in the static patch	core
+34	add_observer	Adding an observer	core
+35	clpw	The CLPW algebra	core
+36	anatomy	Anatomy of the result	core
+37	clocks_qrf	Observers, clocks, and reference frames	core
+38	what_observer	What counts as an observer?	core
+39	gen_entropy	Generalized entropy and the second law	core
+40	open_ds	Open questions in de Sitter	core
+41	large_N	Large $N$ and emergent type III$_1$	skip
+42	bh_crossed	Crossed product for black holes	skip
+43	ew_qec	Entanglement wedges and error correction	skip
+44	curved_hawking	Curved spacetime and Hawking radiation	skip
+45	gelfand	Geometry from algebra	skip
+46	spectral_triples	Spectral triples	skip
+47	dixmier	Infinitesimals and the Dixmier trace	skip
+48	spectral_action	The spectral action principle	skip
+49	almost_comm	Almost-commutative geometries and the Standard Model	skip
+50	lorentzian_nc	Lorentzian signature and open problems	skip
+51	thermal_time	Thermal time (Connes--Rovelli)	skip
+52	bridge	Speculative bridge	skip
+53	open_all	Open problems across all parts	core
+54	literature	Guide to the recent literature	core

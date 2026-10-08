@@ -1,0 +1,76 @@
+% STATUS: DRAFT
+\chapter{States}\label{ch:states}
+
+\begin{physmotiv}
+An experiment produces a list of expectation values: for each observable $a$ a number $\omega(a)$. The map $a\mapsto\omega(a)$ is linear, real on self-adjoint elements, non-negative on positive ones (probabilities are non-negative), and sends the identity to $1$. These are the \emph{only} properties used. A state is such a map: no vector, no density matrix, no Hilbert space. In finite dimensions the map is $\omega(a)=\Tr\rho a$; in general it need not be.
+\end{physmotiv}
+
+\section{Definition}
+
+\begin{definition}
+A \emph{state} on a unital \cstar-algebra $\A$ is a linear functional $\omega:\A\to\C$ which is \emph{positive}, $\omega(a\ad a)\ge0$ for all $a$, and \emph{normalized}, $\omega(\id)=1$.
+\end{definition}
+
+Basic consequences (all easy):
+\begin{itemize}
+\item $\omega(a\ad)=\overline{\omega(a)}$, and positivity implies automatic norm-continuity: $|\omega(a)|\le\norm a$.
+\item \textbf{Cauchy--Schwarz:} $|\omega(b\ad a)|^2\le\omega(b\ad b)\,\omega(a\ad a)$. This is the algebraic origin of the inner product in the GNS construction.
+\item The set $\mathcal S(\A)$ of states is convex and compact in the weak-$^*$ topology (convergence of $\omega_\alpha(a)\to\omega(a)$ for each $a$). The latter follows from Banach--Alaoglu.
+\end{itemize}
+
+\section{Pure vs.\ mixed}
+
+A state is \emph{mixed} if it is a non-trivial convex combination, $\omega=\lambda\omega_1+(1-\lambda)\omega_2$ with $0<\lambda<1$ and $\omega_1\ne\omega_2$, and \emph{pure} otherwise (an extreme point of $\mathcal S(\A)$).
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Algebra & States & Pure states\\
+\midrule
+$M_n(\C)$ & density matrices $\rho$, $\omega(a)=\Tr\rho a$ & $\rho=\ketbra\psi\psi$\\
+$C(X)$ (classical) & probability measures on $X$ (Riesz) & Dirac measures $\delta_x$ (points of $X$)\\
+$\BH$, $\dim\HH=\infty$ & normal (density matrix) \emph{and} singular states & vector states; also singular ones\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The commutative case shows how classical probability fits: a classical state is a probability measure, and its pure states are deterministic points. In the non-commutative case pure states are far more constrained: for $M_2(\C)$ the state space is the Bloch ball, pure states are the sphere, and a mixed state has \emph{many} different decompositions into pure states, whereas in $C(X)$ each state has an essentially unique decomposition into points.
+
+\begin{whatwrong}
+For $\BH$ with $\dim\HH=\infty$ a state is \emph{not} always a density matrix. By the Hahn--Banach theorem there are states that vanish on all compact operators: they assign probability $0$ to every finite-rank projection, so they look like particles ``at infinity''. They are \emph{singular} (not normal). Their GNS representations are inequivalent to the identity representation. In the von Neumann algebra framework (\cref{ch:traces}) we will restrict attention to \emph{normal} states, which are the continuous ones, i.e.\ those given by density matrices if the algebra is $\BH$.
+\end{whatwrong}
+
+\section{Examples}
+
+\begin{enumerate}
+\item \textbf{Product states on the spin chain.} For $\A=M_{2^\infty}$ and $\theta\in[0,\pi/2]$, $\omega_\theta=\bigotimes_j\omega^{(j)}_\theta$ with $\omega^{(j)}_\theta(a)=\bra{\psi_\theta}a\ket{\psi_\theta}$. Then $\omega_\theta(\sigma^z_j)=\cos2\theta$. Pure states, all inequivalent for different $\theta$ (\cref{ch:inequiv}).
+\item \textbf{Infinite-temperature state.} $\tau=\bigotimes_j\tfrac12\Tr$, the unique tracial state: $\tau(ab)=\tau(ba)$.
+\item \textbf{Gibbs states and thermodynamic limits.} For a finite lattice $\Lambda$, $\omega_\Lambda(a)=\Tr(\ee^{-\beta H_\Lambda}a)/Z_\Lambda$. The weak-$^*$ limits of $\omega_\Lambda$ as $\Lambda\uparrow\Z^d$, if they exist, define a state on the quasi-local algebra even though $\ee^{-\beta H}$ makes no sense in infinite volume (\cref{ch:kms,ch:quasilocal}). Compactness of $\mathcal S(\A)$ ensures that limit points exist; non-uniqueness of the limit signals a phase transition.
+\item \textbf{Vacuum of a free field.} On the Weyl algebra the Fock state is $\omega(W(f))=\ee^{-\frac12\norm{Kf}^2}$ where $K$ maps the test data to the one-particle Hilbert space; it is a \emph{quasi-free} state, completely determined by its two-point function.
+\end{enumerate}
+
+\section{Vector states, normal states, and what a state ``knows''}
+
+Given any representation $\pi:\A\to\BH$ and unit vector $\xi\in\HH$, $\omega_\xi(a)=\inner\xi{\pi(a)\xi}$ is a state (a \emph{vector state}). The word ``pure'' refers to the algebra on which the state is considered, not to the vector: in the algebra of the right Rindler wedge the vacuum state is a \emph{mixed} (indeed thermal) state although $\Omega$ is a unit vector in $\HH$. A pure state restricted to a subalgebra is typically mixed, which is the algebraic form of entanglement: in $M_2\otimes M_2$ a pure entangled state restricts to a mixed state on $M_2\otimes\id$.
+
+\begin{keyidea}
+A state is a positive normalized linear functional. It is the only operational information about a quantum system. The notion of a vector in a Hilbert space arises from it by GNS (next chapter).
+\end{keyidea}
+
+\section*{Exercises}
+\begin{exercise}
+Derive the Cauchy--Schwarz inequality for a state from positivity of $\omega\big((a+\lambda b)\ad(a+\lambda b)\big)$ for all $\lambda\in\C$.
+\end{exercise}
+\begin{exercise}
+Characterize all states on $M_2(\C)$ as a Bloch ball. Show that a mixed state has infinitely many decompositions into pure states. Contrast with the commutative algebra $\C^2=C(\{0,1\})$ (a classical bit), where every state has a unique decomposition into pure states.
+\end{exercise}
+\begin{exercise}
+Let $\ket\psi=\cos\alpha\ket{\uparrow\uparrow}+\sin\alpha\ket{\downarrow\downarrow}$ and $\A=M_2\otimes M_2$. Show that the state $\omega_\psi$ is pure on $\A$ but its restriction to $M_2\otimes\id$ is mixed unless $\alpha\in\{0,\pi/2\}$, and compute the entropy.
+\end{exercise}
+\begin{exercise}
+Show that the infinite-temperature state $\tau$ on the spin chain is tracial and that it is the unique tracial state. (Hint: any tracial state restricted to $M_{2^N}$ must be $\Tr/2^N$.)
+\end{exercise}
+\begin{exercise}
+For $\A=\BH$ with $\HH$ infinite dimensional, show the set of normal states is a convex proper subset of $\mathcal S(\A)$. Prove existence of a singular state by considering the quotient $\BH/\mathcal K(\HH)$ and a Hahn--Banach extension.
+\end{exercise}

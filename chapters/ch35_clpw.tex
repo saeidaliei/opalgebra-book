@@ -1,0 +1,77 @@
+% STATUS: DRAFT
+\chapter{The CLPW algebra}\label{ch:clpw}
+
+\begin{physmotiv}
+This is the chapter the book has been building towards. With the observer in place (\cref{ch:add_observer}), the algebra of gauge-invariant observables of the static patch is the crossed product $\A_R\rtimes_\sigma\R$; its trace exists by Takesaki duality (\cref{ch:takesaki}); and imposing the physical condition $q\ge0$ cuts it down to a type II$_1$ algebra with a maximum-entropy state. Chandrasekaran, Longo, Penington and Witten (CLPW) \cite{CLPW2023} showed this: the maximum-entropy state is empty de Sitter space, and the entropy of semiclassical states agrees, up to a state-independent constant, with the generalized entropy $A/4G_N+S_{\rm out}$.
+\end{physmotiv}
+
+\section{The algebra of invariants}
+
+From \cref{ch:add_observer}, the gauge-invariant operators of the static patch with an observer form (in the $G_N\to0$ limit)
+\begin{equation}
+\A_{\rm obs}\;=\;\big\{\ \ee^{-\ii pK}a\,\ee^{\ii pK}\ (a\in\A_R),\ \ x\ \big\}''\;\cong\;\A_R\rtimes_\sigma\R,\qquad x=-\beta_{\rm dS}\,q\in\R.
+\end{equation}
+Without restricting the sign of $q$, this is the algebra built in \cref{ch:crossed} and, since $\A_R$ is type III$_1$ (\cref{ch:static_patch}), it is a type II$_\infty$ factor with trace (\cref{ch:takesaki}). The trace is, in terms of the frame-2 data, $\tau(\hat a)=\int\dd x\,\ee^{x}\,(\ldots)$, with the weight $\ee^{x}=\ee^{-\beta_{\rm dS}q}$ a Boltzmann factor: \emph{the trace is a thermal trace for the observer's energy at the horizon temperature}. It is infinite on $\id$ because $\int_{-\infty}^\infty\ee^{-\beta q}\dd q=\infty$ (\cref{ch:toy_clock}).
+
+\section{Imposing $q\ge0$: the type II$_1$ algebra}
+
+The observer's energy is bounded below, $q\ge0$ (\cref{ch:add_observer}). In terms of the algebra this is the projection
+\begin{equation}
+P=\chi(x\le0)=\chi(q\ge0)\in\A_{\rm obs}
+\end{equation}
+(note $x\in\A_{\rm obs}$ in frame 2 so $P$ is an element of the algebra), and the physical algebra is the corner
+\begin{equation}
+\A_{\rm dS}=P\,\A_{\rm obs}\,P.
+\end{equation}
+Its trace has $\tau(P)=\int_{-\infty}^0\ee^{x}\dd x=1$ (\cref{ch:takesaki}). So:
+
+\begin{theorem}[CLPW]
+$\A_{\rm dS}$ is a von Neumann algebra of type II$_1$ (a factor, because $\A_R$ is III$_1$). Normalizing $\tau(P)=1$, it has a unique tracial state, and entropy $S(\Phi)=-\tau(\rho_\Phi\log\rho_\Phi)\le0$ with equality only for the maximum-entropy state.
+\end{theorem}
+(The type II$_1$ statement is the main result of \cite{CLPW2023}; the type III$_1$ property of the static patch algebra is assumed or argued there for QFT on de Sitter, and the full statement relies on the semiclassical limit.)
+
+\subsection*{The maximum-entropy state}
+In our conventions (\cref{ch:entropy_II}): the state
+\begin{equation}
+\Psi_{\max}=\Psi_{\rm dS}\otimes g_{\max}^{1/2}(x),\qquad g_{\max}(x)=\ee^{x}\theta(-x)\quad(\text{i.e.}\ \beta_{\rm dS}\ee^{-\beta_{\rm dS}q}\ \text{for}\ q\ge0)
+\end{equation}
+has density matrix $\hat\rho=P$, the identity of $\A_{\rm dS}$, and entropy $0$: it is the \emph{tracial state}. In words:
+
+\begin{keyidea}
+\textbf{Empty de Sitter space, with the observer in a thermal (Boltzmann) distribution at the horizon temperature, is the maximally mixed state of the type II$_1$ algebra of the static patch.} Every other state has strictly smaller entropy.
+\end{keyidea}
+
+This realizes the proposal that empty de Sitter maximizes entropy and that its entropy counts states: if $\A_{\rm dS}$ were type I$_N$, the maximally mixed state would have $S=\log N$ and $N=\ee^{S_{\rm dS}}$; in type II$_1$ the same role is played by a continuous dimension, and \emph{the value $S_{\rm dS}=A/4G_N$ appears only after fixing an additive constant, the renormalization of the entropy} (\cref{ch:entropy_II}). The statement that the entropy of any semiclassical state agrees with $\Sgen=A/4G_N+S_{\rm out}$ up to a state-independent constant is established in \cite{CLPW2023}; we derive its structure in \cref{ch:anatomy}.
+
+\section{Summary of the construction}
+
+\begin{center}
+\begin{tikzpicture}[node distance=1.6cm, every node/.style={draw,rounded corners,font=\small,align=center,fill=physcol!7}]
+\node (a) {$\A_R$\\ type III$_1$};
+\node[right=1.2cm of a] (b) {$+$ observer\\ ($q\ge0$, clock)};
+\node[right=1.2cm of b] (c) {impose\\ $H+q=0$};
+\node[right=1.2cm of c] (d) {$\A_R\rtimes\R$\\ II$_\infty$};
+\node[right=1.2cm of d] (e) {$P\cdot P$, $q\ge0$\\ II$_1$};
+\draw[-{Stealth}] (a)--(b);\draw[-{Stealth}] (b)--(c);\draw[-{Stealth}] (c)--(d);\draw[-{Stealth}] (d)--(e);
+\end{tikzpicture}
+\end{center}
+
+\begin{whatwrong}
+\begin{itemize}
+\item The algebra is built in the semiclassical limit $G_N\to0$ around a fixed background; it does not claim to be the full non-perturbative algebra. In particular the type II$_1$ property is a statement about this effective description.
+\item Dressing is to \emph{one} observer; a different observer (a different clock, a different location) gives a different algebra, possibly a different entropy (\cref{ch:clocks_qrf}).
+\item The additive constant in the entropy is \emph{not} determined by the algebra; matching to $A/4G_N$ requires the dS horizon area input.
+\item An observer with $q\ge0$ unbounded above and a continuous conjugate time is an idealization (\cref{ch:what_observer}).
+\end{itemize}
+\end{whatwrong}
+
+\section*{Exercises}
+\begin{exercise}
+Verify $\tau(P)=1$ for $P=\chi(x\le0)$ with weight $\ee^{x}$, and that $\tau(\chi(x\le c))=\ee^{c}$. Interpret $\ee^{c}$ as the ``dimension'' of the corner of observer energies $q\ge-c/\beta$.
+\end{exercise}
+\begin{exercise}
+Show that every normal state of $P\A_{\rm obs}P$ has $S\le0$ (Jensen with $\tau(P)=1$), with equality only for the state whose density matrix is $P$.
+\end{exercise}
+\begin{exercise}
+In a type I$_N$ factor with normalized trace $\tau=\Tr/N$ show $S_\tau(\omega)=S_{\rm vN}(\omega)-\log N\le0$. By analogy, with $N=\ee^{S_{\rm dS}}$, interpret the CLPW entropy $S$ as $S_{\rm vN}-S_{\rm dS}$.
+\end{exercise}

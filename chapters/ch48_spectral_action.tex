@@ -1,0 +1,36 @@
+% STATUS: DRAFT
+\chapter{The spectral action principle}\label{ch:spectral_action}
+\skippable
+
+\begin{physmotiv}
+What action should one use in a world where the only data are the spectral triple $(\A,\HH,D)$? Chamseddine and Connes proposed the simplest invariant: $S=\Tr f(D/\Lambda)$, a function of the spectrum of $D$ alone, with $\Lambda$ a cutoff scale. Its asymptotic expansion in $\Lambda$ reproduces the cosmological constant, the Einstein--Hilbert term and higher-curvature terms. ``One can hear the shape of the universe'': the action depends only on the spectrum.
+\end{physmotiv}
+
+\section{The principle and the heat kernel expansion}
+
+\begin{equation}
+S[D]=\Tr f\!\Big(\frac{D}{\Lambda}\Big)+\text{(fermionic action }\inner{\psi}{D\psi}),
+\end{equation}
+with $f$ a positive even cutoff function. It is diffeomorphism invariant (depends only on the unitary class of $D$). For a four-dimensional compact Riemannian spin manifold, the large-$\Lambda$ asymptotics follows from the Seeley--DeWitt heat kernel expansion of $\Tr\ee^{-tD^2}\sim\sum t^{(k-4)/2}a_k(D^2)$:
+\begin{equation}
+\Tr f\!\Big(\frac D\Lambda\Big)\sim f_4\Lambda^4a_0+f_2\Lambda^2a_2+f_0a_4+\cdots,
+\end{equation}
+where $f_k$ are moments of $f$ and, for $D$ the Dirac operator,
+\begin{align}
+a_0&\propto\int\dd^4x\sqrt g\quad\text{(cosmological constant)},\\
+a_2&\propto\int\dd^4x\sqrt g\,R\quad\text{(Einstein--Hilbert, with $G_N\sim1/f_2\Lambda^2$)},\\
+a_4&\propto\int\dd^4x\sqrt g\big(c_1C^2_{\mu\nu\rho\sigma}+c_2\,\chi\big)\quad\text{(Weyl}^2\text{ and Euler/Gauss--Bonnet)}.
+\end{align}
+(Coefficients depend on conventions; the structure is robust.) So the spectral action contains gravity, with the three parameters $f_4\Lambda^4,f_2\Lambda^2,f_0$ determined by the moments of one function.
+
+\begin{whatwrong}
+This is a Euclidean action on a compact manifold; its relation to the Lorentzian physical action requires Wick rotation, problematic in a general background (\cref{ch:lorentzian_nc}). The values of the couplings are those at the cutoff scale $\Lambda$, and need RG running to the physical scales; this is the source of the Standard Model predictions and their problems (\cref{ch:almost_comm}).
+\end{whatwrong}
+
+\section*{Exercises}
+\begin{exercise}
+For the flat torus $T^4$ compute $\Tr\ee^{-tD^2}$ for the Dirac operator and show $a_0\propto\mathrm{vol}$ and all higher $a_k$ vanish.
+\end{exercise}
+\begin{exercise}
+Show that for $f(x)=\ee^{-x^2}$, $f_4,f_2,f_0$ are proportional to $\int x^3f$, $\int xf$ and $f(0)$; compute them.
+\end{exercise}

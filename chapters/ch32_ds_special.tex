@@ -1,0 +1,58 @@
+% STATUS: DRAFT
+\chapter{Why de Sitter is special}\label{ch:ds_special}
+
+\begin{physmotiv}
+De Sitter space is the simplest positively curved universe with a horizon. Every inertial observer has a static patch bounded by a cosmological horizon, with a temperature and an entropy, and the spatial sections are compact. That last fact is crucial for us: there is no asymptotic boundary at which to define a Hamiltonian, so the isometries are \emph{gauge} (\cref{ch:gravity_constraints}). The static patch is the place where the type III$\to$II mechanism is cleanest, and where it produces a type II$_1$ algebra with a maximum-entropy state, the first algebraic realization of the idea that de Sitter entropy counts states.
+\end{physmotiv}
+
+\section{Geometry}
+
+De Sitter space $\mathrm{dS}_{d+1}$ with radius $\ell$ is the hyperboloid $-X_0^2+\sum_{i=1}^{d+1}X_i^2=\ell^2$ in $\R^{1,d+1}$, with isometry group $SO(1,d+1)$. Cauchy slices are spheres $S^d$. In static coordinates around the worldline $r=0$,
+\begin{equation}
+\dd s^2=-\Big(1-\frac{r^2}{\ell^2}\Big)\dd t^2+\frac{\dd r^2}{1-r^2/\ell^2}+r^2\dd\Omega_{d-1}^2,
+\end{equation}
+covering the \emph{static patch} $r<\ell$ of the observer, bounded by the horizon $r=\ell$. The static-time translation $\partial_t$ is a boost in the embedding space and is the generator $H$ of the patch; it acts on the antipodal patch (the complementary region) with the opposite orientation.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+\draw[thick] (0,0) rectangle (4,4);
+\draw[dashed] (0,0)--(4,4); \draw[dashed] (0,4)--(4,0);
+\node at (2,0.9) {\small past};\node at (2,3.1) {\small future};
+\node[fill=physcol!15,rounded corners,inner sep=3pt] at (3.1,2) {\small static patch $R$};
+\node[fill=physcol!15,rounded corners,inner sep=3pt] at (0.9,2) {\small antipodal patch $L$};
+\draw[-{Stealth}] (3.4,2.9) -- (3.4,3.4) node[right] {\small $t$};
+\node at (2,-0.4) {\small Penrose diagram of dS (left/right edges identified as poles)};
+\end{tikzpicture}
+\end{center}
+
+\section{Temperature and entropy}
+
+The Euclidean continuation $t=-\ii\tau$ makes the static patch metric smooth at $r=\ell$ iff $\tau\sim\tau+\beta$ with $\beta_{\rm dS}=2\pi\ell$. The Gibbons--Hawking temperature is $T_{\rm dS}=1/(2\pi\ell)$ and the entropy of the horizon, of area $A$, is
+\begin{equation}
+S_{\rm dS}=\frac{A}{4G_N}.
+\end{equation}
+The Euclidean section is the sphere $S^{d+1}$ and the Euclidean path integral gives $Z=\ee^{S_{\rm dS}}$ to leading order. Notice $\beta_{\rm dS}$ is the same for every observer: de Sitter symmetry makes all horizons identical.
+
+\section{Constraints and the missing Hamiltonian}
+
+Because the spatial sections are compact, every generator of the isometry group $SO(1,d+1)$, including $H$, is a constraint of the quantum gravity: gauge-invariant states and observables are invariant under it (\cref{ch:gravity_constraints}). There is no asymptotic region where a non-trivial charge could live. Consequences:
+\begin{itemize}
+\item The static-patch time translation $H$ cannot be a physical Hamiltonian; the algebra of the static patch built from bare local fields (type III$_1$, \cref{ch:static_patch}) is not the algebra of physical observables.
+\item To have observables at all we must add a degree of freedom that \emph{breaks} the symmetry: an observer, whose worldline picks out a static patch, and whose clock supplies a physical time (\cref{ch:add_observer}).
+\item The maximum entropy is bounded: all semiclassical states in a given static patch should have $\Sgen\le S_{\rm dS}$, because adding matter inside the patch reduces the horizon area (the first law below), so empty de Sitter maximizes the entropy (a conjecture of Bousso and others, recovered here as a theorem about the algebra).
+\end{itemize}
+
+\begin{keyidea}
+In de Sitter there is no boundary Hamiltonian: the isometries, including static-patch time translation, are gauge. Physical observables must be dressed to an observer; the entropy of empty de Sitter, $A/4G$, is the maximum.
+\end{keyidea}
+
+\section*{Exercises}
+\begin{exercise}
+Verify that periodicity $\tau\sim\tau+2\pi\ell$ removes the conical singularity at $r=\ell$ in the Euclidean static metric, and compute $T_{\rm dS}$ and $S_{\rm dS}$ for $d+1=4$ (A $=4\pi\ell^2$).
+\end{exercise}
+\begin{exercise}
+First law of the cosmological horizon: if a small mass $m$ is placed at the origin, derive from the Schwarzschild--de Sitter metric, to first order in $m$, that the cosmological horizon area decreases according to $\delta(A/4G_N)=-\beta_{\rm dS}\,\delta E$, with $E=m$ the energy conjugate to the static time $t$.
+\end{exercise}
+\begin{exercise}
+Explain why in a closed universe $\int_{S^d}N\mathcal H$ is a constraint with no boundary term, and why this is false in asymptotically flat space.
+\end{exercise}

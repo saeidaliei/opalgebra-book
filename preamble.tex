@@ -1,0 +1,84 @@
+% ============================================================
+%  preamble.tex  --  packages, environments, boxes
+% ============================================================
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathreplacing}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=green!40!black,urlcolor=blue!50!black]{hyperref}
+\usepackage[nameinlink,capitalise]{cleveref}
+
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{0pt}
+\linespread{1.08}
+
+% ---------- colours ----------
+\definecolor{physcol}{RGB}{30,90,160}
+\definecolor{warncol}{RGB}{170,40,40}
+\definecolor{dictcol}{RGB}{40,120,70}
+\definecolor{statuscol}{RGB}{140,90,0}
+
+% ---------- theorem environments ----------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{exercise}{Exercise}{Exercises}
+
+% proof sketch (the book mostly sketches)
+\newenvironment{proofsketch}{\begin{proof}[Idea of proof]}{\end{proof}}
+
+% ---------- boxes ----------
+% Physics motivation: opens every chapter
+\newtcolorbox{physmotiv}[1][Physics motivation]{
+  enhanced, breakable, colback=physcol!5, colframe=physcol, fonttitle=\bfseries,
+  title={#1}, left=6pt,right=6pt,top=4pt,bottom=4pt}
+% What could go wrong
+\newtcolorbox{whatwrong}[1][What could go wrong]{
+  enhanced, breakable, colback=warncol!5, colframe=warncol, fonttitle=\bfseries,
+  title={#1}, left=6pt,right=6pt,top=4pt,bottom=4pt}
+% Dictionary box at the end of each Part
+\newtcolorbox{dictbox}[1][Physics $\leftrightarrow$ Math dictionary]{
+  enhanced, breakable, colback=dictcol!5, colframe=dictcol, fonttitle=\bfseries,
+  title={#1}, left=6pt,right=6pt,top=4pt,bottom=4pt}
+% Status flag (for unsettled / fast-moving literature)
+\newtcolorbox{unsettled}[1][Status of the literature]{
+  enhanced, breakable, colback=statuscol!6, colframe=statuscol, fonttitle=\bfseries,
+  title={#1}, left=6pt,right=6pt,top=4pt,bottom=4pt}
+% Key idea / summary
+\newtcolorbox{keyidea}[1][Key idea]{
+  enhanced, breakable, colback=black!4, colframe=black!60, fonttitle=\bfseries,
+  title={#1}, left=6pt,right=6pt,top=4pt,bottom=4pt}
+
+% Section marker for skippable material
+\newcommand{\skippable}{\par\noindent{\small\itshape (This chapter can be skipped on a first reading; see the reading paths in Chapter~\ref{ch:punchline}.)}\par}
+
+% ---------- headers ----------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\nouppercase{\leftmark}}
+\fancyhead[RO]{\small\nouppercase{\rightmark}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+
+\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{12pt}{\Huge}

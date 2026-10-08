@@ -1,0 +1,107 @@
+% STATUS: DRAFT
+\chapter{Hilbert spaces and bounded operators}\label{ch:hilbert}
+
+\begin{physmotiv}
+In finite dimensions every linear operator is bounded, every trace converges, and $AB=\id+BA$ has solutions. None of this survives in infinite dimensions, and the failures are exactly the ones that matter for field theory. This chapter collects the infinite-dimensional facts we will need, and gives the one-line reason the Heisenberg relation cannot be realized by bounded operators.
+\end{physmotiv}
+
+\section{Hilbert spaces}
+
+A \emph{Hilbert space} $\HH$ is a complex vector space with an inner product $\inner{\xi}{\eta}$ (linear in the second slot, as in physics) which is \emph{complete} for the norm $\norm\xi=\sqrt{\inner\xi\xi}$. Completeness means that every Cauchy sequence converges: if $\norm{\xi_n-\xi_m}\to0$ as $n,m\to\infty$ then there is a $\xi\in\HH$ with $\xi_n\to\xi$.
+
+\begin{example}
+$\ell^2=\{(c_n)_{n\ge0}:\sum|c_n|^2<\infty\}$, and $L^2(\R^d)$, the square-integrable wavefunctions modulo functions vanishing almost everywhere. Both are separable: they have a countable orthonormal basis $\{e_n\}$, with $\xi=\sum_n\inner{e_n}{\xi}e_n$ for every $\xi$. All Hilbert spaces in this book are separable unless stated otherwise.
+\end{example}
+
+Completeness is not a technicality: it is what makes ``$\psi=\sum c_ne_n$'' meaningful. Without it, the Fourier series of a nice function can converge to something outside the space.
+
+\begin{whatwrong}
+In infinite dimensions the closed unit ball is \emph{not compact} in the norm topology, and a linear map defined on a dense subspace need not be bounded. A statement like ``$\ket{\psi_n}$ has a convergent subsequence'' is false in general; e.g.\ an orthonormal basis has $\norm{e_n-e_m}=\sqrt2$ for all $n\ne m$.
+\end{whatwrong}
+
+\section{Bounded operators}
+
+A linear operator $A:\HH\to\HH$ is \emph{bounded} if $\norm A:=\sup_{\norm\xi=1}\norm{A\xi}<\infty$. The set $\BH$ of bounded operators is an algebra, and:
+\begin{align}
+\norm{AB}&\le\norm A\norm B,\\
+\norm{A\ad A}&=\norm A^2\qquad(\text{the \cstar-identity}).
+\end{align}
+The adjoint $A\ad$ is defined by $\inner{A\ad\xi}{\eta}=\inner{\xi}{A\eta}$. This is the prototype of a \cstar-algebra (\cref{ch:cstar}).
+
+Some distinguished classes of bounded operators (all with obvious finite-dimensional analogues):
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Name & Condition & Physics\\
+\midrule
+self-adjoint & $A=A\ad$ & observable\\
+positive, $A\ge0$ & $\inner\xi{A\xi}\ge0\;\forall\xi$ ($\iff A=B\ad B$) & density matrix (if also trace 1)\\
+projection & $P=P\ad=P^2$ & yes/no question\\
+unitary & $U\ad U=UU\ad=\id$ & symmetry, time evolution\\
+isometry & $V\ad V=\id$ & \\
+partial isometry & $V\ad V$ and $VV\ad$ projections & \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{example}[the Hilbert hotel]
+On $\ell^2$ let $S$ be the unilateral shift $S(c_0,c_1,\dots)=(0,c_0,c_1,\dots)$. Then $S\ad S=\id$ but $SS\ad=\id-\ketbra{e_0}{e_0}\neq\id$. So $S$ is an isometry that is not unitary. In finite dimensions, $A\ad A=\id$ forces $AA\ad=\id$; here it does not. This single example is the reason that \emph{Murray--von Neumann equivalence of projections} (\cref{ch:classification}) is non-trivial: $\id$ and $\id-\ketbra{e_0}{e_0}$ are ``equivalent'' via $S$ in $\BH$ although the latter is strictly smaller.
+\end{example}
+
+A partial isometry $V$ maps the \emph{initial space} $V\ad V\HH$ isometrically onto the \emph{final space} $VV\ad\HH$. Partial isometries are the building blocks of the classification of vN algebras.
+
+\begin{theorem}[polar decomposition]
+Every bounded $A$ can be written $A=V|A|$ with $|A|=\sqrt{A\ad A}\ge0$ and $V$ a partial isometry with initial space $\overline{\mathrm{ran}\,|A|}$. For invertible $A$, $V$ is unitary.
+\end{theorem}
+This is the operator version of $z=e^{i\arg z}|z|$ and will appear in Tomita--Takesaki theory ($S=J\Delta^{1/2}$).
+
+\section{Compact, Hilbert--Schmidt and trace-class operators}
+
+\begin{definition}
+Let $\{e_n\}$ be an orthonormal basis. For a positive operator $A$ define $\Tr A=\sum_n\inner{e_n}{Ae_n}\in[0,\infty]$; this is independent of the basis. $A\in\BH$ is \emph{trace class} if $\Tr|A|<\infty$, and \emph{Hilbert--Schmidt} if $\Tr A\ad A<\infty$. Write $\mathcal T(\HH)$ for trace-class operators and $\mathcal K(\HH)$ for the \emph{compact operators}, the norm closure of the finite-rank operators.
+\end{definition}
+
+Then $\mathcal T\subset\mathrm{HS}\subset\mathcal K\subset\BH$, each an \emph{ideal} (closed under multiplication by bounded operators, on either side). Key facts:
+\begin{itemize}
+\item For trace-class $A$ and bounded $B$: $\Tr(AB)=\Tr(BA)$, $|\Tr(AB)|\le\norm B\,\Tr|A|$.
+\item A \emph{density matrix} is a positive trace-class operator with $\Tr\rho=1$. Then $\omega_\rho(B)=\Tr(\rho B)$ defines an expectation value on all of $\BH$.
+\item $\Tr\id=\infty$ when $\dim\HH=\infty$. So $\Tr$ is not defined on all of $\BH$; $\BH$ itself is \emph{not} trace class. A trace exists as a (semi-finite) weight (\cref{ch:traces}), which is essential for type I$_\infty$ and II$_\infty$.
+\item \textbf{Duality:} $\mathcal T(\HH)\cong\mathcal K(\HH)^*$ and $\BH\cong\mathcal T(\HH)^*$ via $(A,B)\mapsto\Tr(AB)$.
+\end{itemize}
+
+\begin{whatwrong}
+The duality $\BH\cong\mathcal T(\HH)^*$ says that the functionals on $\BH$ that come from density matrices (the so-called \emph{normal} states) are a proper subset of all states on $\BH$. There are states of $\BH$, for $\dim\HH=\infty$, that are not given by any density matrix (e.g.\ states supported ``at infinity'' which assign zero to all compact operators). These singular states are the algebraic seed of inequivalent representations (\cref{ch:states,ch:inequiv}).
+\end{whatwrong}
+
+\section{The Heisenberg relation cannot be bounded}
+
+\begin{theorem}[Wintner--Wielandt]
+There are no bounded operators $A,B$ on a (non-zero) Hilbert space with $[A,B]=\ii\,\id$.
+\end{theorem}
+\begin{proof}
+Assume $AB-BA=\ii\id$. By induction, $[A,B^n]=\ii nB^{n-1}$. Taking norms, $n\norm{B^{n-1}}\le2\norm A\norm{B^{n-1}}\norm B$. If $B^{n-1}\neq0$ for all $n$, dividing gives $n\le2\norm A\norm B$ for all $n$, a contradiction. If $B^{m}=0$ for some minimal $m\ge1$ then $\ii m B^{m-1}=[A,B^m]=0$, contradicting minimality (or, for $m=1$, $B=0$ and $\ii\id=0$).
+\end{proof}
+
+Position and momentum must therefore be unbounded operators. This is why we pass to the exponentiated Weyl form (\cref{ch:weyl}) and why $x,p$ will be treated as operators \emph{affiliated} to algebras (\cref{ch:spectral}), rather than elements of them.
+
+\begin{keyidea}
+Bounded operators form a Banach (indeed \cstar) algebra; $\Tr$ is defined only on the trace-class ideal; and the canonical commutation relations require leaving the bounded operators.
+\end{keyidea}
+
+\section*{Exercises}
+\begin{exercise}
+Show that $\norm A^2=\norm{A\ad A}$ in finite dimensions (largest singular value). Why does this single identity force the norm on $\BH$ to be uniquely determined by the algebraic structure?
+\end{exercise}
+\begin{exercise}
+For the shift $S$ above, compute $S^n$ and $(S\ad)^n$ acting on $e_0$ and on a general vector. Which of them tends to $0$ in the strong sense? In the norm sense? (See \cref{ch:topologies}.)
+\end{exercise}
+\begin{exercise}
+Show that if $A$ is trace class then $\Tr(AB)=\Tr(BA)$ for all bounded $B$. For the shift $S$, compute $S\,\id\,S\ad$ and compare $\Tr(\id)$ with $\Tr(S\ad S)$ and $\Tr(SS\ad)$. Explain why there is no contradiction with unitary invariance of the trace (note $S$ is not unitary, and $\infty-1=\infty$).
+\end{exercise}
+\begin{exercise}
+Find a projection $P$ on $\ell^2$ such that both $P$ and $\id-P$ are infinite dimensional but equivalent to $\id$ via partial isometries. (Hint: even and odd sites.) What does this say about the possible ``dimension functions'' on $\BH$?
+\end{exercise}
+\begin{exercise}
+Give a bounded operator on $L^2(\R)$ that is not compact, and one that is. Show that the identity operator can never be compact when $\dim\HH=\infty$.
+\end{exercise}

@@ -1,0 +1,78 @@
+% STATUS: DRAFT
+\chapter{The GNS construction}\label{ch:gns}
+
+\begin{physmotiv}
+If observables and states are the primary objects, where do Hilbert spaces and state vectors come from? The answer is a beautiful and completely explicit construction, due to Gelfand, Naimark and Segal. Given an algebra $\A$ and a state $\omega$, one builds a Hilbert space $\HH_\omega$, a representation $\pi_\omega$ of $\A$ on it, and a vector $\Omega_\omega$ such that $\omega(a)=\inner{\Omega_\omega}{\pi_\omega(a)\Omega_\omega}$. It is the rigorous version of ``act on the vacuum with operators to produce all states'', and it shows \emph{how} different states give different Hilbert spaces. The cyclic vector $\Omega$ is exactly the object that will give us the modular operator (\cref{ch:tomita}).
+\end{physmotiv}
+
+\section{The finite-dimensional example first}
+
+Let $\A=M_n(\C)$ and $\omega(a)=\Tr(\rho a)$ with $\rho>0$ (faithful). Try to use $\A$ itself as the Hilbert space, with the inner product
+\begin{equation}
+\inner ab_\omega:=\omega(a\ad b)=\Tr(\rho\,a\ad b).
+\end{equation}
+This is positive definite since $\omega(a\ad a)=\Tr(\rho^{1/2}a\ad a\rho^{1/2})\ge0$, with equality iff $a\rho^{1/2}=0$, i.e.\ $a=0$ since $\rho$ is invertible. Define $\pi(a)b=ab$ (left multiplication) and $\Omega=\id\in\A$. Then $\inner\Omega{\pi(a)\Omega}=\omega(a)$. Now use the map $b\mapsto b\rho^{1/2}$ to identify $\A$ with the Hilbert--Schmidt operators $\mathrm{HS}\cong\C^n\otimes\overline{\C^n}$: $\inner ab_\omega=\Tr\big((a\rho^{1/2})\ad(b\rho^{1/2})\big)$. In this picture
+\begin{equation}
+\Omega=\rho^{1/2}=\sum_i\sqrt{p_i}\,\ket i\otimes\ket{\bar i},
+\end{equation}
+which is the \emph{purification} of $\rho$ (Schmidt decomposition with weights $p_i$), $\pi(a)=a\otimes\id$, and the commutant is $\pi(\A)'=\id\otimes\overline{M_n}$ (right multiplication). Therefore:
+
+\begin{keyidea}
+The GNS representation of a mixed state of $M_n$ is the purification: $\HH_\omega=\HH\otimes\overline\HH$, $\Omega=\sum\sqrt{p_i}\ket{i}\ket{\bar i}$. The ``doubled'' system is not an artifact: it is the commutant $\pi(\A)'$, and it will become the algebra of the complementary region in QFT (Rindler left wedge; thermofield double).
+\end{keyidea}
+
+\section{The general construction}
+
+Let $\A$ be a unital \cstar-algebra and $\omega$ a state.
+\begin{enumerate}
+\item By Cauchy--Schwarz, $N_\omega=\{a\in\A:\omega(a\ad a)=0\}$ is a \emph{left ideal}; it is the set of ``unobservably small'' vectors. (Indeed $\omega(b\ad a)=0$ for all $b$ and $a\in N_\omega$.)
+\item On the quotient $\A/N_\omega$ define $\inner{[a]}{[b]}=\omega(a\ad b)$. This is a positive definite inner product. Let $\HH_\omega$ be the completion.
+\item Define $\pi_\omega(a)[b]=[ab]$. This is well defined because $N_\omega$ is a left ideal, and extends to bounded operators with $\norm{\pi_\omega(a)}\le\norm a$.
+\item Set $\Omega_\omega=[\id]$.
+\end{enumerate}
+
+\begin{theorem}[GNS]\label{thm:GNS}
+$(\HH_\omega,\pi_\omega,\Omega_\omega)$ is a representation of $\A$ with a \emph{cyclic} unit vector $\Omega_\omega$ (i.e.\ $\pi_\omega(\A)\Omega_\omega$ is dense in $\HH_\omega$) satisfying $\omega(a)=\inner{\Omega_\omega}{\pi_\omega(a)\Omega_\omega}$. It is unique up to unitary equivalence: any cyclic representation $(\HH,\pi,\Omega)$ with $\omega=\inner\Omega{\pi(\cdot)\Omega}$ is unitarily equivalent to it by a unitary mapping $\Omega\mapsto\Omega_\omega$.
+\end{theorem}
+
+\begin{proofsketch}
+Positivity of $\omega$ gives positivity of the inner product, and the \cstar-algebra properties (and boundedness of left multiplication, which follows from $a\ad b\ad ba\le\norm b^2a\ad a$ in the operator order) give boundedness of $\pi_\omega(b)$. Uniqueness: define $U\pi_\omega(a)\Omega_\omega=\pi(a)\Omega$. It preserves inner products since both equal $\omega(a\ad b)$; so it extends to a unitary on the closures, which are everything by cyclicity.
+\end{proofsketch}
+
+\begin{whatwrong}
+$\Omega_\omega$ is \emph{cyclic} by construction but need not be \emph{separating} for $\pi_\omega(\A)''$ (i.e.\ it may be annihilated by non-zero operators). For a pure state on $M_n$, $n\ge2$, $\Omega=\psi$, $\pi(\A)=M_n$ and any $a$ with $a\psi=0$ is nonzero: $\psi$ is cyclic but not separating. The state is not faithful. For the Rindler wedge and the vacuum $\Omega$, both properties hold (\cref{ch:rs_bw}); this is what makes modular theory possible. Cyclic and separating vectors are therefore precisely those of ``full-rank'' states.
+\end{whatwrong}
+
+\section{Pure states and irreducibility}
+
+\begin{theorem}
+$\omega$ is pure if and only if $\pi_\omega$ is irreducible (no non-trivial closed invariant subspace; equivalently $\pi_\omega(\A)'=\C\id$).
+\end{theorem}
+\emph{Idea.} Any positive $T\in\pi_\omega(\A)'$ with $0\le T\le\id$ defines a positive functional $\omega_T(a)=\inner{\Omega}{T\pi_\omega(a)\Omega}$ dominated by $\omega$; conversely every functional $\le\omega$ arises this way. If $\omega=\lambda\omega_1+(1-\lambda)\omega_2$ then $\lambda\omega_1\le\omega$ gives a $T$ not proportional to $\id$, and conversely. Thus mixed states have non-trivial commutant (they carry ``classical'' information, the $T$), and pure states do not.
+
+Classic consequence (Schur-type): if $\pi_\omega$ is irreducible then the von Neumann algebra $\pi_\omega(\A)''=\BH_\omega$, all bounded operators. Every pure state on a \cstar-algebra is a vector state of a full $\Bnd{\HH_\omega}$, matching textbook QM, but \emph{different pure states give different, perhaps inequivalent, $\HH_\omega$}.
+
+\section{Worked examples}
+
+\subsection{Fock representation from the Weyl algebra}
+On $\A=\mathcal W(\mathcal S,\sigma)$ take a one-particle structure, i.e.\ a real-linear map $K:\mathcal S\to\mathfrak h$ into a complex Hilbert space with $\sigma(f,g)=2\,\mathrm{Im}\inner{Kf}{Kg}$ (up to a sign convention) and $K\mathcal S+\ii K\mathcal S$ dense. The quasi-free state $\omega(W(f))=\ee^{-\frac12\norm{Kf}^2}$ is positive, and its GNS representation is the \emph{Fock representation} on the symmetric Fock space $\mathcal F(\mathfrak h)$, with $\Omega$ the Fock vacuum and $W(f)=\exp\ii\big(a(Kf)+a(Kf)\ad\big)$. The vector $\Omega$ is cyclic because the $W(f)\Omega$ are coherent states, which span a dense set. The choice of $K$ is a choice of vacuum (positive-frequency structure). Different choices give different states; if they are not related by a unitarily implementable Bogoliubov transformation, they give inequivalent representations (\cref{ch:weyl,ch:inequiv}).
+
+\subsection{The vacuum of a free field}
+For the free scalar field in Minkowski space, taking $K$ to be the positive-frequency part of the solution restricts the Fock construction to the Poincar\'e-invariant vacuum state $\omega_0$ of the quasi-local algebra, and the GNS representation realizes the Wightman fields as operators on $\HH_0=\mathcal F(L^2(\R^d,\dd^dk/2\omega_k))$: the vacuum representation used in textbook QFT. All the standard QFT objects, the two-point function $\inner\Omega{\phi(x)\phi(y)\Omega}$, one-particle states, and so on, can be reconstructed from the state alone.
+
+\subsection{Thermal states}
+The state $\omega_\beta$ on the Weyl algebra with $\omega_\beta(W(f))=\exp\big[-\tfrac12\inner{Kf}{\coth(\beta\omega/2)Kf}\big]$ (the Gibbs state of the free field in the thermodynamic limit, with $\omega$ now denoting the one-particle energy operator) has GNS space $\mathcal F(\mathfrak h)\otimes\mathcal F(\overline{\mathfrak h})$, the \emph{thermofield double} Hilbert space, with $\Omega_\beta$ the thermofield-double state. We will see this again in \cref{ch:kms,ch:tomita}; compare with $\HH\otimes\overline\HH$ in the finite-dimensional example.
+
+\section*{Exercises}
+\begin{exercise}
+Carry out the GNS construction for $\A=M_2(\C)$ and (a) a pure state $\omega=\bra\psi\cdot\ket\psi$, (b) $\rho=\mathrm{diag}(p,1-p)$, $0<p<1$. Find $N_\omega$, $\HH_\omega$ (dimension), $\pi_\omega(\A)'$, and decide whether $\Omega$ is separating.
+\end{exercise}
+\begin{exercise}
+For $\A=C(X)$ and the state $\omega(f)=\int f\,\dd\mu$, show that $\HH_\omega=L^2(X,\mu)$, $\pi_\omega$ is multiplication, and $\Omega=1$. Show $\pi_\omega(\A)'=\Linf(X,\mu)$ (maximal abelian), and that $\pi_\omega$ is irreducible iff $\mu$ is a point mass.
+\end{exercise}
+\begin{exercise}
+For the spin chain $M_{2^\infty}$ and the tracial state $\tau$, show that $\HH_\tau$ is the closure of $\A$ in the norm $\tau(a\ad a)^{1/2}$. Show that right multiplication gives $\pi_\tau(\A)'$, which is isomorphic to $\pi_\tau(\A)''$ (to be explained in \cref{ch:classification}); the weak closure $\pi_\tau(\A)''$ is the hyperfinite II$_1$ factor.
+\end{exercise}
+\begin{exercise}
+In the finite-dimensional example, show that $\Omega=\rho^{1/2}$ is cyclic and, for $\rho$ invertible, separating for $\pi(\A)=M_n\otimes\id$. Define the antilinear map $S\,\pi(a)\Omega=\pi(a\ad)\Omega$; in the picture $\HH\otimes\overline\HH$ show that $S=J\rho^{1/2}\otimes\rho^{-1/2}$ where $J$ is the antiunitary swapping the two factors, and compute $S\ad S=\rho\otimes\rho^{-1}$. (This is the modular operator of \cref{ch:tomita} in the simplest case.)
+\end{exercise}

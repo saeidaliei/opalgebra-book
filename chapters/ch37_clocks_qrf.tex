@@ -1,0 +1,58 @@
+% STATUS: DRAFT
+\chapter{Observers, clocks, and reference frames}\label{ch:clocks_qrf}
+
+\begin{physmotiv}
+The observer of \cref{ch:add_observer} was a clock. The crossed product can be read as the statement that physical (gauge-invariant) observables are \emph{relative} to a reference frame: the algebra describes the world \emph{as seen from the observer}. This is the language of quantum reference frames (QRFs). A direct consequence, developed in recent work, is that different observers (different clocks) give different algebras and \emph{different entropies}, so gravitational entropy is observer-dependent. This is a fast-moving subject; the chapter describes the structure and flags what is established and what is not.
+\end{physmotiv}
+
+\begin{unsettled}
+This chapter is based on 2022--2025 papers: CLPW \cite{CLPW2023}, Chen--Penington \cite{ChenPenington2024}, De Vuyst--Eccles--H\"ohn--Kirklin \cite{DEHK2024a,DEHK2024b}, and Witten's background-independent algebra \cite{Witten2023bg} (the last not re-checked). Statements below follow the abstracts and structure of those papers; readers should consult the originals before relying on technical details.
+\end{unsettled}
+
+\section{The crossed product as a change of frame}
+
+In the constraint formulation (\cref{ch:gravity_constraints}), the kinematical algebra $\A_R\otimes\Bnd{L^2(\R)}$ contains non-invariant operators. A \emph{gauge-fixing} to the clock frame (``set the clock to read $p$'') converts each kinematical operator $a$ into the dressed operator $\hat a=\sigma_p(a)$, which is invariant. In the language of perspective-neutral QRF constructions, the invariant algebra is the same object seen from \emph{any} frame, and the passage between the ``external'' description (fields in static time, kinematical) and the ``observer's'' description (fields relative to the clock) is a QRF change. The crossed product is thus \emph{the algebra of the world as described relative to the observer's clock}.
+
+\section{Different clocks, different algebras, different entropies}
+
+The central finding of De Vuyst, Eccles, H\"ohn and Kirklin \cite{DEHK2024a,DEHK2024b}, as reflected in their abstracts, is that using different quantum reference frames gives different crossed-product algebras and hence different entropies: gravitational entropy is observer-dependent. They identify regimes (semiclassical, and an ``anti-semiclassical'' regime with suppressed fluctuations of the clock energy in which the clock may simply be partially traced out when computing the entropy), and give examples including a gravitational interferometer, degenerate clock superselection, a clock that is semiclassical for some purposes but not others, and monotonic versus periodic clocks. A careful reading of their framing is that the \emph{total} entropy of all degrees of freedom in a subregion, including the reference frames, is not observer dependent; the observer dependence arises from which frames are used to dress the field observables.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}p{3.4cm}p{9cm}@{}}
+\toprule
+Clock type & Effect on the algebra and entropy\\
+\midrule
+Ideal, $q\in\R$ & crossed product by $\R$; II$_\infty$\\
+Ideal with $q\ge0$ & II$_1$ corner; maximum-entropy state exists (\cref{ch:clpw})\\
+Periodic clock & crossed product by a compact group, different type/entropy\\
+Degenerate/superselected clock & centre appears; entropy picks up Shannon terms\\
+Large fluctuations (semiclassical) & $S\simeq\Sgen$ as in \cref{ch:anatomy}\\
+Suppressed fluctuations & clock can be partially traced out\\
+\bottomrule
+\end{tabular}
+\end{center}
+(The table organizes the cases mentioned in the literature; it is a schematic summary and not a classification theorem.)
+
+\section{Clocks in cosmological spacetimes}
+
+Chen and Penington \cite{ChenPenington2024} study gravitational algebras in cosmological backgrounds with explicit clocks (slow-roll inflation and evaporating Schwarzschild--de Sitter black holes). They establish a connection between the type II entropy of these algebras and generalized entropies for appropriate states, and emphasize the role of \emph{out-of-equilibrium} dynamics in defining gauge-invariant observables in semiclassical canonically quantized gravity: in a time-dependent background there is a physical clock supplied by the background itself, and the algebra depends on it. They also discuss compact wedges bounded by extremal surfaces in general spacetimes. The upshot for our purposes is that the de Sitter construction is robust: it extends from the exactly time-translation-invariant case to backgrounds where the clock is supplied by the dynamics.
+
+\begin{keyidea}
+Observables in a gauge theory of gravity are relative to a reference frame; the crossed product is the algebra \emph{in the observer's frame}. Different clocks give different algebras, with entropies agreeing with $\Sgen$ only in the appropriate semiclassical regime, so ``the'' gravitational entropy of a region is not frame independent.
+\end{keyidea}
+
+\begin{whatwrong}
+Do not conclude that horizon entropy is ``subjective'' in any strong sense: the observer-dependence concerns which degrees of freedom are included as reference frames when defining an algebra, and the total entropy of the subregion including frames is frame-independent. Also, in time-dependent backgrounds there may be no exact analogue of $H$ and the construction may require extra input (Chen--Penington).
+\end{whatwrong}
+
+\section*{Exercises}
+\begin{exercise}
+For a periodic clock (a particle on a circle with $q\in\Z$) and a type I system with flow $\sigma_t=\Ad\ee^{\ii t\omega_0\cdot}$ with integer-spaced energies, compute the invariant algebra (the crossed product by $U(1)$) and compare with the $\R$ case.
+\end{exercise}
+\begin{exercise}
+Show that if the clock has Hamiltonian $q$ with discrete spectrum $\{0,\delta,2\delta,\dots\}$, the operators $\hat a$ shift $q$ by multiples of the system's transition energies; identify the condition for the dressed algebra to be a factor.
+\end{exercise}
+\begin{exercise}
+Discuss why a clock with bounded energy fluctuations $\Delta q\ll T_{\rm dS}$ is in the ``anti-semiclassical'' regime, in which, schematically, $S\simeq S_{\rm vN}(\text{fields+clock})$ with the clock traced out.
+\end{exercise}

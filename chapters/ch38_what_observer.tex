@@ -1,0 +1,46 @@
+% STATUS: DRAFT
+\chapter{What counts as an observer?}\label{ch:what_observer}
+
+\begin{physmotiv}
+We have used an observer with a Hamiltonian bounded below, an ideal conjugate clock variable, a point-like worldline, and no back-reaction. All four are idealizations, and the results (type II$_1$, a maximum-entropy state) are sensitive to some of them. This chapter lists the tensions honestly. Parts of it are open problems.
+\end{physmotiv}
+
+\begin{unsettled}
+The status of the issues below is unsettled in the literature; this is a statement of questions, not results.
+\end{unsettled}
+
+\section{Ideal vs.\ realistic clocks}
+
+\textbf{Pauli's obstruction.} A Hamiltonian bounded below, $q\ge0$, has no self-adjoint operator canonically conjugate to it ($[T,q]=\ii$ forces spec $q=\R$). So an \emph{ideal} clock with a time operator is incompatible with $q\ge0$. In \cref{ch:clpw} this is handled by first constructing the algebra with $q\in\R$ and then projecting onto $q\ge0$; the dressed operators $\sigma_p(a)$ involve $p$, which is conjugate to $q$ and does not exist as an operator after the projection except through $P\,\sigma_p(a)\,P$. Physical clocks have bounded spectrum and measure time only approximately (via POVMs); the algebra we use is the semiclassical envelope of such constructions.
+
+\textbf{Finite size and internal structure.} A realistic observer has size and internal degrees of freedom; its energy is a sum over many constituents; and it may be entangled with the fields. Whether the algebra remains type II$_1$ with the same maximum-entropy state is not established in generality; the proposals of \cref{ch:clocks_qrf} suggest the answer depends on which clock is used.
+
+\textbf{Back-reaction.} The observer's mass changes the geometry (a Schwarzschild--de Sitter-like patch); to leading order in $G_N$ this is accounted for by the area change, but the exact statement of how the algebra depends on the observer's mass is subtle.
+
+\section{Multiple observers and consistency}
+
+With several observers, there is no canonical single algebra: each observer sees a crossed product dressed to its own clock. Constructing a \emph{joint} description (the perspective-neutral QRF picture) leads to relations between the observers' algebras, and to the question of whether observers can agree about entropy (they need not, \cref{ch:clocks_qrf}). The complementary question, whether one can define an algebra and an entropy associated to the \emph{universe} as a whole without an observer, remains open; in a closed universe the invariant algebra without an observer is trivial (\cref{ch:gravity_constraints}).
+
+\section{The role of observers in the interpretation}
+
+There are two readings of the construction:
+\begin{enumerate}
+\item \textbf{Operational.} The algebra describes what any physical observer can measure; the observer is a necessary participant, not a theoretical convenience.
+\item \textbf{Minimal.} The observer is a technical device to define gauge-invariant operators; the physical content is the entropy formula.
+\end{enumerate}
+The construction does not by itself decide between them. Remarks of Maldacena (on the role of ``real'' observers in de Sitter) and of the authors of the papers cited in \cref{ch:clocks_qrf} bear on this; we do not attempt to summarize them, and the reader is referred to the original sources.
+
+\begin{keyidea}
+The results hold for an idealized observer. Which features of the observer are essential (positivity of energy, a clock, large fluctuations) and which are artifacts of the model is partly understood: positivity of $q$ is what makes the algebra II$_1$, large energy fluctuations make the entropy match $\Sgen$, and the clock type changes the answer.
+\end{keyidea}
+
+\section*{Exercises}
+\begin{exercise}
+Prove Pauli's obstruction: if $[T,q]=\ii$ with $T$ self-adjoint, then $\ee^{\ii aT}$ shifts $q\mapsto q+a$, so spec $q$ is translation invariant. Conclude spec $q=\R$.
+\end{exercise}
+\begin{exercise}
+Model a bounded clock by a spin $j$ with $q=J_z+j\ge0$ and a time variable that is a phase operator of $J_z$; examine the limit $j\to\infty$ in which it approximates an ideal clock and the algebra tends to the II$_1$ construction.
+\end{exercise}
+\begin{exercise}
+Argue that for two observers with energies $q_1,q_2\ge0$ in the same patch, there is a natural candidate for the joint algebra (invariants under $H+q_1+q_2$) but that it differs from the tensor product of the single-observer algebras.
+\end{exercise}

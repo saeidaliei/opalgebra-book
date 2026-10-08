@@ -1,0 +1,86 @@
+% STATUS: DRAFT
+\chapter{Toy models: a system plus a clock}\label{ch:toy_clock}
+
+\begin{physmotiv}
+Before touching fields and gravity, here is the entire construction in a model small enough to hold in your head: a qubit with a thermal state, plus a clock. The model is type I, so nothing is truly type III, but \emph{all} the structural features of the de Sitter construction appear: the constraint, the dressed operators, the trace with weight $\ee^{x}$, the half-line $x\le0$ that makes the trace finite, and the Boltzmann-distributed clock in the maximum-entropy state. If this chapter makes sense, \cref{ch:clpw} is the same story with $\HH$ replaced by Fock space.
+\end{physmotiv}
+
+\section{The model}
+
+A system (``static patch'') is a qubit: $\M=M_2$ with Hamiltonian $H=\mathrm{diag}(E_0,E_1)$, level splitting $\omega_0=E_1-E_0>0$, and a thermal state $\rho=\ee^{-\beta H}/Z=\mathrm{diag}(p_0,p_1)$. Purify it by the thermofield double
+\begin{equation}
+\Omega=\sqrt{p_0}\ket{0}\ket{\bar0}+\sqrt{p_1}\ket1\ket{\bar1}\in\C^2\otimes\overline{\C^2},
+\end{equation}
+so that $\M=M_2\otimes\id$ is the algebra of the ``right patch'' and $\M'$ the algebra of the ``left''. The modular Hamiltonian is $K=\beta(H_R-H_L)$ (\cref{ch:tomita}) and the modular flow acts on matrix units by
+\begin{equation}
+\sigma_t\big(\ket i\!\bra j\big)=\Big(\frac{p_i}{p_j}\Big)^{\ii t}\ket i\!\bra j=\ee^{-\ii t\beta(E_i-E_j)}\ket i\!\bra j.
+\end{equation}
+
+\section{The constraint and the dressed operators}
+
+Add a clock: a particle on a line with position $x$ and momentum $p$, so the total Hilbert space is $\HH\otimes L^2(\R)$. Impose a gauge constraint that ties the clock to the system's modular time: physical (gauge-invariant) operators are those invariant under
+\begin{equation}
+\alpha_t=\sigma_t\otimes\Ad\,\ee^{\ii tx}=\Ad\,\ee^{-\ii t(K-x)},
+\end{equation}
+that is, they commute with the constraint generator $\hat G=K-x$ (\cref{ch:crossed}, frame 2; we identify $K=\beta H$ and $x=-\beta q$ so that $\hat G=\beta(H+q)$, the total energy of the system plus the clock-observer, see \cref{ch:add_observer}). Using $\ee^{\ii tx}p\,\ee^{-\ii tx}=p-t$ one checks that the \emph{dressed operators}
+\begin{equation}
+\hat a=\sigma_p(a)=\ee^{-\ii pK}a\,\ee^{\ii pK},\qquad x
+\end{equation}
+are invariant, and they generate $N=\{\sigma_p(a),x\}''\cong\M\rtimes_\sigma\R$.
+
+On matrix units: $\widehat{\ket i\!\bra j}=\ket i\!\bra j\,\ee^{-\ii\beta(E_i-E_j)p}$. Since $\ee^{-\ii cp}$ maps $\ket x\mapsto\ket{x+c}$, the dressed operator $\widehat{\ket1\!\bra0}$ raises the system energy by $\omega_0$ and simultaneously shifts $x$ by $c=\beta\omega_0$, i.e.\ shifts the clock energy $q=-x/\beta$ by $-\omega_0$. \emph{Energy conservation, $H+q=$ const, is enforced operator by operator:} a system transition is physical only if accompanied by a compensating change in the clock.
+
+\begin{keyidea}
+Gauge-invariant operators of the system are the system operators dressed by $\ee^{-\ii p\beta(E_i-E_j)}$: each transition is compensated by a shift of the clock. The algebra of invariants is the crossed product.
+\end{keyidea}
+
+\section{The algebra, trace and entropy}
+
+By \cref{ch:crossed}, $N\cong M_2\otimes\Linf(\R_y)$, type I over its centre $y=X-K_\M$. The trace is $\tau(F)=\int\dd y\,\ee^{y}\Tr F(y)$ (\cref{ch:takesaki}). \emph{Every} state of the form $\hat\Phi=u\Omega\otimes g^{1/2}(x)$ has entropy
+\begin{equation}
+S(\hat\Phi)=\langle x\rangle_g+h(g)\qquad(\text{\cref{ch:entropy_II}}),
+\end{equation}
+independent of $\beta$, $E_i$ and $u$. With $x=-\beta q$ and $g(x)\dd x=f(q)\dd q$ this reads
+\begin{equation}
+S(\hat\Phi)=-\beta\langle q\rangle_f+h(f)+\log\beta.
+\end{equation}
+(Here $g(x)\dd x=f(q)\dd q$ gives $h(g)=h(f)+\log\beta$; the $\log\beta$ is the kind of additive constant fixed by the trace normalization.) Up to this constant, this is the thermodynamic functional $-\beta\langle q\rangle+h(f)$, maximized subject to $q\ge0$ by $f(q)=\beta\ee^{-\beta q}$, the Boltzmann distribution (indeed $\langle q\rangle=1/\beta$, $h(f)=1-\log\beta$, so $S=-1+1-\log\beta+\log\beta=0$). At the maximum $S=0$ with $\tau(P)=1$ (\cref{ch:entropy_II}).
+
+\subsection*{Why the half-line $x\le0$ matters}
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Clock spectrum & $\tau(\id)$ & Algebra\\
+\midrule
+$q\in\R$ (all $x\in\R$) & $\int_{-\infty}^\infty\ee^{x}\dd x=\infty$ & II$_\infty$; no maximum entropy state\\
+$q\ge0$ ($x\le0$) & $\int_{-\infty}^0\ee^{x}\dd x=1$ & II$_1$; maximum entropy state $P$\\
+\bottomrule
+\end{tabular}
+\end{center}
+This is the same elementary fact as in \cref{ch:groups}: $\int_0^\infty\ee^{-\beta q}\dd q$ converges, $\int_{-\infty}^\infty\ee^{-\beta q}\dd q$ does not. A clock with Hamiltonian bounded below is what turns II$_\infty$ into II$_1$.
+
+\section{What the toy teaches and what it does not}
+
+\textbf{Teaches.}
+(i) The constraint $H+q$ produces the crossed product as its algebra of invariants. (ii) The trace has weight $\ee^{x}$ and its finiteness depends on the clock spectrum. (iii) The maximum-entropy state is the original state (here: thermofield double) with the clock in a Boltzmann distribution. (iv) Entropies of dressed states are $-S_{\rm rel}$ plus clock terms.
+
+\textbf{Does not.}
+(a) Nothing here is type III: the divergences are absent because the system has finitely many levels, and the entropy $\langle x\rangle+h(g)$ is independent of the system state, because for a type I algebra the dependence on $\rho$ cancels. In the genuine QFT/gravity case the \emph{regularized} bulk entropy plus the area term combine into $\Sgen$, and the relative entropy dependence is visible (\cref{ch:anatomy}). (b) In the toy the observer is a decoupled degree of freedom, with no back-reaction; in gravity the observer's mass sets the horizon size and the constraint involves the full dS isometry group (\cref{ch:ds_special,ch:what_observer}). (c) The toy has no notion of a semiclassical limit; the real construction needs $\beta q\gg1$ states.
+
+\section*{Exercises}
+\begin{exercise}
+Compute $\widehat{\ket1\!\bra0}$ explicitly and verify that it commutes with $\hat G=K-x$ (on $\HH\otimes L^2$). Check that $\ket1\!\bra0\otimes\id$ alone does not.
+\end{exercise}
+\begin{exercise}
+For the qubit, list the generators of $N$ and exhibit $N\cong M_2\otimes\Linf(\R_y)$ concretely: find the central element $y$ in terms of $x$ and $K_{\M'}$, and the matrix units $e_{ij}\in\M$.
+\end{exercise}
+\begin{exercise}
+Using \cref{ch:entropy_II}, maximize $S=-\beta\langle q\rangle+h(f)$ over densities $f$ on $q\ge0$ and show $f=\beta\ee^{-\beta q}$. Compute $\langle q\rangle$ and interpret it as the mean energy of a classical thermal oscillator mode at the temperature $1/\beta$.
+\end{exercise}
+\begin{exercise}
+Extend to a three-level system with energies $E_0,E_1,E_2$. List all gauge-invariant dressed operators and the energy shifts of the clock they induce. Show the entropy of $\Omega\otimes g^{1/2}$ is unchanged.
+\end{exercise}
+\begin{exercise}
+(Simulation.) Discretize $x$ on a grid and verify numerically $\tau(\hat\rho)=1$ and $S=0$ for the maximum entropy state, modifying \texttt{scripts/check\_toy.py}. Show $S<0$ for any other density supported on $x\le0$.
+\end{exercise}

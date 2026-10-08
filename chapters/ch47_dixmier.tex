@@ -1,0 +1,37 @@
+% STATUS: DRAFT
+\chapter{Infinitesimals and the Dixmier trace}\label{ch:dixmier}
+\skippable
+
+\begin{physmotiv}
+Integration in noncommutative geometry has to be defined algebraically. Connes' idea: compact operators are \emph{infinitesimals}, the order of an infinitesimal is the decay rate of its eigenvalues, and the \emph{Dixmier trace} extracts the coefficient of the logarithmic divergence of the partial traces, which in the manifold case is the Riemannian volume integral. It is a trace on a \emph{ideal} of compact operators; it is a singular trace on $\Bnd{\HH}$ and so related to the traces on type II factors of \cref{ch:traces}.
+\end{physmotiv}
+
+\section{Infinitesimals}
+
+A compact operator $T$ has singular values $\mu_n(T)\downarrow0$. We say $T$ is an infinitesimal of order $\alpha$ if $\mu_n(T)=O(n^{-\alpha})$. For a $d$-dimensional manifold, the Weyl law implies that $|D|^{-1}$ has $\mu_n\sim n^{-1/d}$, so $|D|^{-1}$ is an infinitesimal of order $1/d$: the ``line element $\dd s$'', and $\dd s^d=|D|^{-d}$ is of order $1$, the borderline of trace class.
+
+\section{The Dixmier trace}
+
+For $T\ge0$ in the ideal $\mathcal L^{1,\infty}$ (partial sums $\sum_{n\le N}\mu_n=O(\log N)$) set
+\begin{equation}
+\Tr_\omega(T)=\mathrm{Lim}_\omega\frac1{\log N}\sum_{n=1}^N\mu_n(T),
+\end{equation}
+where $\mathrm{Lim}_\omega$ is a generalized limit (Hahn--Banach). $\Tr_\omega$ is linear, positive, vanishes on trace-class operators and is a \emph{trace}: $\Tr_\omega(ST)=\Tr_\omega(TS)$, and it is independent of $\omega$ on measurable operators.
+
+\begin{theorem}[Connes' trace theorem]
+On a compact $d$-manifold, for a pseudodifferential operator $P$ of order $-d$, $\Tr_\omega(P)=\frac1d\,\mathrm{Res}_W(P)$ (the Wodzicki residue). For $P=f|D|^{-d}$: $\Tr_\omega\big(f|D|^{-d}\big)=c_d\int_Mf\,\dd\mathrm{vol}$ with $c_d$ a universal constant.
+\end{theorem}
+
+Thus \emph{the Riemannian volume integral is a Dixmier trace}: $\int f=\Tr_\omega(f|D|^{-d})$ up to a constant. This is the noncommutative integral.
+
+\section{Relation to traces on type II factors}
+
+A trace on a type II$_1$ factor with values in $[0,1]$ on projections measures ``dimension'' continuously (\cref{ch:classification}). The Dixmier trace is a different thing (singular trace on compact operators), but they are related in spirit: both are positive traces extracting a regularized ``size''. In noncommutative geometry applied to foliations, the transverse measure is a type II trace on the von Neumann algebra of the foliation, whose Dixmier-type integration gives transverse volume; the interplay with the Tomita--Takesaki modular flow appears for type III (non-invariant measures).
+
+\section*{Exercises}
+\begin{exercise}
+For $T=\mathrm{diag}(1,\tfrac12,\tfrac13,\dots)$ show $\sum_{n\le N}\mu_n\sim\log N$, so $T\in\mathcal L^{1,\infty}$ with $\Tr_\omega T=1$.
+\end{exercise}
+\begin{exercise}
+For $S^1$ with $D=-\ii\,\dd/\dd x$ (eigenvalues $n\in\Z$ for length $2\pi$), compute $\Tr_\omega(|D|^{-1})$ on the non-zero modes and compare with $\int_{S^1}\dd x/2\pi\times$ const.
+\end{exercise}

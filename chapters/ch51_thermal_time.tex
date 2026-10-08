@@ -1,0 +1,40 @@
+% STATUS: DRAFT
+\chapter{Thermal time (Connes--Rovelli)}\label{ch:thermal_time}
+\skippable
+
+\begin{physmotiv}
+In a generally covariant theory there is no preferred time. Connes and Rovelli proposed that time is \emph{emergent from the state}: for a state $\omega$ of the observable algebra, the \emph{thermal time} is the modular flow $\sigma^\omega_t$. The Connes cocycle theorem makes this canonical up to inner automorphisms, so the \emph{outer} class of the flow is a state-independent notion of ``time'', a hidden time inherent to the algebra. Here we contrast it with the observer's clock of \cref{ch:clocks_qrf}.
+\end{physmotiv}
+
+\section{The hypothesis}
+
+\textbf{Thermal time hypothesis} (Connes--Rovelli 1994 \cite{ConnesRovelli1994}): the physical time flow is the modular flow $\sigma^\omega_t$ of the state $\omega$ in which the system is found. By \cref{ch:modham} different faithful states give flows differing by inner automorphisms, so a canonical outer flow $\delta:\R\to\mathrm{Out}(\M)$ exists. For a Gibbs state with Hamiltonian $H$: $\sigma_t=\Ad\ee^{-\ii\beta Ht}$: thermal time is $-\beta\times$ ordinary time (temperature as the ratio of time units). For the Rindler vacuum: the boost with the Unruh temperature: Unruh temperature as the ratio of proper time to modular time.
+
+\section{Comparison with the observer's clock}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}p{3.2cm}p{4.8cm}p{4.8cm}@{}}
+\toprule
+ & Thermal time & Observer's clock\\
+\midrule
+Source & the state $\omega$ & a physical subsystem with Hamiltonian $q$\\
+Flow & modular, $\sigma_t^\omega$ & dressing by $\ee^{-\ii pK}$ w.r.t.\ clock reading\\
+Canonical? & outer class only & depends on the clock chosen\\
+Role in this book & generates the crossed product & provides the extra variable $x$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The crossed product combines the two: the modular flow of the state provides the automorphism, the observer's clock provides the variable that makes it inner (\cref{ch:add_observer}). The thermal time hypothesis is thus ``half'' of the CLPW construction: it says what the flow \emph{is}; the observer says whom it is time \emph{for}.
+
+\begin{whatwrong}
+The hypothesis is conceptual and has been criticized (a modular flow is determined by a state, which seems to presuppose the dynamics it explains; and different states give genuinely different flows up to inner automorphisms). Its precise status is not settled.
+\end{whatwrong}
+
+\section*{Exercises}
+\begin{exercise}
+For the thermofield double, identify thermal time with $-\beta t$ and compute the relation between Unruh and Hawking temperatures as modular-to-proper time ratios.
+\end{exercise}
+\begin{exercise}
+Show that for a trace, the modular flow is trivial, so thermal time is frozen; interpret as the statement that infinite temperature has no time.
+\end{exercise}

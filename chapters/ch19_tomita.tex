@@ -1,0 +1,97 @@
+% STATUS: DRAFT
+\chapter{Tomita--Takesaki theory}\label{ch:tomita}
+
+\begin{physmotiv}
+Suppose you have a quantum system divided into a part $\M$ and its complement $\M'$, in a state $\Omega$ that is entangled between them. Tracing out $\M'$ gives a density matrix $\rho$ for $\M$ and a hidden ``dynamics'' $\rho^{it}\,\cdot\,\rho^{-it}$ that preserves the state. Tomita and Takesaki discovered that this dynamics exists for \emph{every} von Neumann algebra and \emph{every} cyclic separating state, even when no density matrix exists. For a QFT wedge it is the boost; for a black hole it is Schwarzschild time. The flow is canonical (no choices), it is thermal (\cref{ch:kms}), and its generator $\log\Delta$ is the substitute for $\log\rho$ that will be needed in all that follows.
+\end{physmotiv}
+
+\section{Setup}
+
+Let $\M\subset\BH$ be a von Neumann algebra and $\Omega\in\HH$ a unit vector that is \emph{cyclic and separating} for $\M$ (\cref{ch:factors}): $\M\Omega$ is dense in $\HH$ and $a\Omega=0\Rightarrow a=0$ for $a\in\M$. Equivalently $\Omega$ is cyclic for both $\M$ and $\M'$. The state is $\omega(a)=\inner\Omega{a\Omega}$, faithful and normal on $\M$. (Inner products are linear in the second slot; the operators $S$ and $J$ below are antilinear.)
+
+Define the \emph{antilinear} operator
+\begin{equation}
+S_0\,a\Omega=a\ad\Omega,\qquad a\in\M.
+\end{equation}
+It is well defined because $\Omega$ is separating ($a\Omega=b\Omega\Rightarrow a=b$) and densely defined because $\Omega$ is cyclic. It is \emph{closable} (its adjoint contains $F_0:b'\Omega\mapsto b'^*\Omega$ for $b'\in\M'$, which is also densely defined). Let $S$ be its closure.
+
+\begin{definition}
+The polar decomposition $S=J\Delta^{1/2}$ defines the \emph{modular operator} $\Delta=S\ad S$ (a positive, self-adjoint, in general unbounded, operator, linear) and the \emph{modular conjugation} $J$ (an antiunitary involution).
+\end{definition}
+
+\begin{theorem}[Tomita--Takesaki]\label{thm:TT}
+\begin{enumerate}[label=(\alph*)]
+\item $\Delta^{it}\M\Delta^{-it}=\M$ for all $t\in\R$. The \emph{modular flow} $\sigma_t(a)=\Delta^{it}a\Delta^{-it}$ is a one-parameter automorphism group of $\M$ ($\sigma$-weakly continuous).
+\item $J\M J=\M'$.
+\item $\Delta^{it}\Omega=\Omega$, $J\Omega=\Omega$, $J\Delta J=\Delta^{-1}$, and $J\Delta^{it}J=\Delta^{it}$.
+\item $\omega$ is a $(\sigma,-1)$-KMS state: $\omega\big(a\,\sigma_{-\ii}(b)\big)=\omega(ba)$ (\cref{ch:kms}); $\sigma$ is the unique one-parameter group with this property. In particular $\sigma$ is trivial iff $\omega$ is a trace.
+\end{enumerate}
+\end{theorem}
+
+The proof is long and uses analytic continuation arguments of KMS type (Takesaki; Rieffel and van Daele give a short route); the result (a) is deep because, for a general unbounded $\Delta$, it is not even clear why $\Delta^{it}$ should preserve $\M$. We do not prove it here, but we note which parts are easy.
+
+\begin{proofsketch}
+The easy parts. (c): $S\Omega=\Omega$ gives $J\Omega=\Omega$ and $\Delta^{1/2}\Omega=\Omega$, so $\Delta^{it}\Omega=\Omega$. Since $S_0^2=\id$ on its domain, $S=S^{-1}$, which gives $J\Delta^{1/2}J\Delta^{1/2}=\id$, i.e.\ $J\Delta J=\Delta^{-1}$. (d), first step: $\norm{\Delta^{1/2}a\Omega}=\norm{Sa\Omega}=\norm{a\ad\Omega}$, so
+\[
+\omega(aa\ad)=\norm{a\ad\Omega}^2=\inner{a\Omega}{\Delta\,a\Omega}=\omega\big(a\ad\,\sigma_{-\ii}(a)\big),
+\]
+using $\Delta a\Omega=\sigma_{-\ii}(a)\Omega$ (formally $\Delta a\Delta^{-1}=\sigma_{-\ii}(a)$ and $\Delta\Omega=\Omega$). This is the KMS condition $\omega(x\sigma_{-\ii}(y))=\omega(yx)$ in the special case $x=a\ad$, $y=a$. The statements (a) and (b), that $\Delta^{it}$ preserves $\M$ and $J$ maps $\M$ to $\M'$, are the hard core of the theorem.
+\end{proofsketch}
+
+\section{The finite-dimensional case}
+
+For $\M=M_n$ acting on $\HH=\C^n\otimes\overline{\C^n}\cong\mathrm{HS}$ with $\Omega=\rho^{1/2}$ (\cref{ch:gns}) one finds (this is the content of an exercise in \cref{ch:gns}):
+\begin{align}
+\Delta X&=\rho\,X\,\rho^{-1}\quad(\Delta=\rho\otimes\rho^{-1}),&JX&=X\ad,\\
+\sigma_t(a)&=\rho^{it}a\rho^{-it},&J\,a\,J&=\big(X\mapsto Xa\ad\big)\in\M'.
+\end{align}
+Define the \emph{modular Hamiltonian} $K$ by $\Delta=\ee^{-K}$. Then
+\begin{equation}
+K=-\log\Delta=K_{\M}-K_{\M'},\qquad K_\M=-\log\rho\otimes\id,\quad K_{\M'}=\id\otimes(-\log\rho)^{\rm T},
+\end{equation}
+the difference of the two \emph{one-sided} modular Hamiltonians (entanglement Hamiltonians of the two sides). The sign makes sense: $\Delta\ge0$ is the ratio of the Boltzmann weight of $\M$ to that of $\M'$, and $K$ annihilates $\Omega$ ($K\Omega=0$, the thermofield double is invariant under the \emph{difference} of left and right Hamiltonians). For $\rho=\ee^{-\beta H}/Z$: $K=\beta(H_R-H_L)$.
+
+In QFT, neither $K_\M$ nor $K_{\M'}$ separately exists: each has a divergent additive constant (corresponding to the divergent entropy), but their difference $K$, which is the generator of $\Delta^{it}$, is a perfectly good self-adjoint operator on $\HH$. This is the content of the sentence ``the modular Hamiltonian exists even though the density matrix does not.''
+
+\begin{whatwrong}
+\begin{itemize}
+\item $\Delta^{it}$ is implemented by a \emph{two-sided} generator; it acts non-trivially on $\M$ and on $\M'$ (in opposite directions). There is no ``one-sided'' modular Hamiltonian in type III.
+\item The modular flow $\sigma_t$ is generally \emph{not inner} on $\M$ (for type III there is no $\rho\in\M$ with $\sigma_t=\Ad\rho^{it}$). In type I the flow is inner, generated by $\rho\in\M$.
+\item $\Delta$ depends on the pair $(\M,\Omega)$ and not on $\M'$ alone; a different $\Omega$ gives a different $\Delta$, though the flows differ only by inner automorphisms (\cref{ch:modham}).
+\end{itemize}
+\end{whatwrong}
+
+\section{More examples}
+
+\begin{enumerate}
+\item \textbf{Commutative case.} $\M=\Linf(X,\mu)$ on $L^2(X,\mu)$ with $\Omega=1$ (for a probability measure): $S$ is complex conjugation, $\Delta=\id$, $J=$ complex conjugation. The modular flow is trivial: classical probability has no hidden dynamics.
+\item \textbf{Tracial state.} $\omega(ab)=\omega(ba)$ iff $\Delta=\id$. For the hyperfinite II$_1$ factor with $\tau$ and its GNS space $\HH_\tau$: $S\,a\Omega=a\ad\Omega$ is isometric, so $\Delta=\id$.
+\item \textbf{Pure state on $B(H)$, $\dim\HH=\infty$.} $\Omega$ is cyclic but not separating, so the theory does not apply, consistent with the absence of a density matrix.
+\item \textbf{Product states on the spin chain.} For $\omega_p$ and the Powers factor $R_\lambda$, $\HH=\bigotimes_j(\C^2\otimes\overline{\C^2})$ and $\Delta=\bigotimes_j\big(\rho\otimes\rho^{-1}\big)$ with $\rho=\mathrm{diag}(p,1-p)$. Each factor has eigenvalues $\{1,\lambda,\lambda^{-1}\}$ with $\lambda=p/(1-p)$ (or its inverse). So the spectrum of $\Delta$ is $\{0\}\cup\{\lambda^n:n\in\Z\}$, with $\{\lambda^n\}$ the point spectrum; the modular flow $\sigma_t$ is periodic with period $2\pi/|\log\lambda|$. This is the signature of type III$_\lambda$ (\cref{ch:connes_class}).
+\item \textbf{Rindler wedge.} For the vacuum $\Omega$ and the algebra of the right wedge, $\Delta^{it}$ is the Lorentz boost with rapidity $-2\pi t$ (\cref{ch:rs_bw}), $J$ is the CPT-type reflection through the wedge edge. Here $\Delta$ has spectrum $[0,\infty)$ and no non-zero period: type III$_1$.
+\end{enumerate}
+
+\section{Weights and the general case}
+
+If $\M$ acts on a separable $\HH$ without a cyclic separating vector one passes to the \emph{standard form} $(\M,\HH,J,\HH_+)$: a faithful representation containing a self-dual cone $\HH_+$ in which every normal state has a unique vector representative. Every von Neumann algebra has a standard form, unique up to isomorphism; and for a faithful normal semifinite weight $\varphi$ there is a modular operator $\Delta_\varphi$ and flow $\sigma^\varphi_t$ defined by the same procedure (Tomita--Takesaki theory for weights, Haagerup). The weight is KMS at $\beta=-1$ and $\sigma^\varphi$ is trivial iff $\varphi$ is a trace (\cref{ch:traces}). This is the version needed for the crossed products with II$_\infty$ results (\cref{ch:crossed}).
+
+\begin{keyidea}
+Modular theory: from a cyclic separating $\Omega$ for $\M$, build the antilinear $S\,a\Omega=a\ad\Omega$, write $S=J\Delta^{1/2}$. Then $\sigma_t=\Ad\Delta^{it}$ is a one-parameter automorphism group of $\M$ (so $\M$ has an intrinsic dynamics in the state), $J$ swaps $\M$ and $\M'$, and $\omega$ is KMS for $\sigma$ at $\beta=-1$. In type I, $\Delta=\rho\otimes\rho^{-1}$ and $K=-\log\Delta=K_\M-K_{\M'}$.
+\end{keyidea}
+
+\section*{Exercises}
+\begin{exercise}
+For $\M=M_2\otimes\id$ on $\C^2\otimes\C^2$ and $\Omega=\sqrt p\ket{\uparrow\uparrow}+\sqrt{1-p}\ket{\downarrow\downarrow}$, find $S$, $\Delta$, $J$ explicitly. Verify $\Delta^{it}\Omega=\Omega$, $J\Omega=\Omega$ and $J\M J=\M'$. Compute $\sigma_t(\sigma^+\otimes\id)$ and find the period of $\sigma_t$.
+\end{exercise}
+\begin{exercise}
+Verify the KMS condition $\omega(a\sigma_{-\ii}(b))=\omega(ba)$ for the finite-dimensional case directly: $\sigma_{-\ii}(b)=\rho\,b\,\rho^{-1}$. Why does $\beta=-1$ appear rather than $+1$? (Track the sign convention $\sigma_t=\Ad\Delta^{it}$.)
+\end{exercise}
+\begin{exercise}
+Show that if $\omega$ is a trace, $\Delta=\id$, using only $\inner{a\Omega}{b\Omega}=\omega(a\ad b)$ and $S$ being isometric.
+\end{exercise}
+\begin{exercise}
+For the thermofield double $\Omega_\beta=Z^{-1/2}\sum\ee^{-\beta E_n/2}\ket n\ket{\bar n}$, show $\Delta=\ee^{-\beta(H_R-H_L)}$ and hence $\Delta^{it}=\ee^{-\ii\beta t(H_R-H_L)}$ and $\sigma_t(a)=\ee^{-\ii\beta tH}a\,\ee^{\ii\beta tH}$ for $a\in\M_R$. Relate the modular time $t$ to the physical time $s$ of the right system, and note the factor $\beta$ and the sign.
+\end{exercise}
+\begin{exercise}
+Verify $\norm{\Delta^{1/2}a\Omega}^2=\omega(aa\ad)$ in the finite-dimensional case. Deduce $\omega\big(a\ad\sigma_{-\ii}(a)\big)=\omega(aa\ad)$ and explain why this is the KMS condition (at $\beta=-1$) in its simplest instance.
+\end{exercise}
