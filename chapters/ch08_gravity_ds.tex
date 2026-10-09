@@ -1,0 +1,331 @@
+\chapter{Gravity, constraints, and de Sitter space}\label{ch:gravity_ds}
+
+Why gravity is a constraint theory, a gauge-theory warm-up with edge modes, what is special about de Sitter space, quantum field theory in the static patch, and the observer that makes the algebra of observables non-trivial.
+
+\section{Gravity as constraints}\label{ch:gravity_constraints}
+
+\begin{physmotiv}
+In a gauge theory, physical states satisfy Gauss's law. In general relativity, the analogous statement is that physical states are annihilated by the \emph{Hamiltonian and momentum constraints}, the generators of diffeomorphisms. Two consequences drive the rest of the book. First, local fields at a coordinate point are not observables: observables are \emph{relational} (dressed to physical landmarks, such as an observer's clock). Second, in a spatially compact universe there is no Hamiltonian ``at infinity'': the total Hamiltonian is a constraint, so the generator of time translation is itself pure gauge, and the only way to get dynamics is to measure time against a physical clock. The algebra of invariants then turns out to be a crossed product.
+\end{physmotiv}
+
+\subsection{Constraints and gauge invariance}
+
+In canonical gravity the phase space has coordinates $(h_{ij},\pi^{ij})$ on a spatial slice, together with matter fields, and the lapse and shift are Lagrange multipliers enforcing constraints
+\begin{equation}
+\mathcal H(x)\approx0,\qquad\mathcal H_i(x)\approx0,
+\end{equation}
+which generate normal deformations and spatial diffeomorphisms of the slice. In the quantum theory one requires $\hat{\mathcal H}\Psi=0$ (Wheeler--DeWitt) and $\hat{\mathcal H}_i\Psi=0$. A gauge-invariant observable is an operator commuting with all constraints. For a closed universe the integrated constraints $\int N\mathcal H$ are the \emph{only} generators of time evolution, so the dynamics is pure gauge.
+
+\begin{keyidea}
+Gauge-invariant (Dirac) observables are those commuting with the constraints. A local field $\phi(x)$ at a coordinate point is not one, because moving the point is a gauge transformation.
+\end{keyidea}
+
+\subsection{Relational observables and dressing}
+
+A gauge-invariant version of $\phi$ can be built by \emph{dressing} it to a physical reference: instead of ``the value of $\phi$ at $x$'' one measures ``the value of $\phi$ at the point whose geometric relation to a physical object (observer, clock, field gradient) has given values''. Examples:
+\begin{itemize}
+\item $\phi$ evaluated along the worldline of an observer, at \emph{proper time $\tau$ read off by the observer's clock}: this is gauge invariant.
+\item $\phi$ at the point where a scalar field $\chi$ has value $c$ (if $\chi$ is monotonic): a ``clock field'' in cosmology.
+\item In asymptotically AdS or flat spacetimes, operators dressed to the boundary (Gauss-law-like), whose generator is the boundary Hamiltonian.
+\end{itemize}
+Each choice of reference is a choice of \emph{quantum reference frame} (\cref{ch:clocks_qrf}); different references give different algebras of invariants, and none is canonical.
+
+\subsection{Group averaging and the physical algebra}
+
+Suppose the constraint generates a group action $G$ on a kinematical Hilbert space $\HH_{\rm kin}$ with unitary rep $U(g)$ and consider an operator algebra $\A_{\rm kin}$ on which $G$ acts by automorphisms $\alpha_g$. Physical states are the $G$-invariant vectors (in the generalized sense of group averaging: $\Psi_{\rm phys}=\int\dd g\,U(g)\Psi$, \cref{ch:groups}) and physical observables are the invariants
+\begin{equation}
+\A_{\rm phys}=\A_{\rm kin}^{G}=\{a:\alpha_g(a)=a\ \forall g\}.
+\end{equation}
+When $G=\R$, $\alpha_t=\Ad\ee^{-\ii t\hat G}$ and the kinematical algebra is $\A_{\rm kin}=\M\otimes\Bnd{L^2(\R)}$, with $\M$ a type III algebra and $L^2(\R)$ the Hilbert space of a clock, the invariants are exactly the crossed product of \cref{ch:crossed,ch:toy_clock}. This is how a trace appears: the group average over $\R$ with measure $\dd t$ combines with the weight $\ee^{x}$ to produce $\tau$.
+
+\begin{whatwrong}
+\begin{itemize}
+\item In a theory with an asymptotic boundary (AdS, asymptotically flat) the Hamiltonian is a boundary term, a non-trivial physical operator and not a constraint, and the algebra of the exterior is a different, generally type III$_1$ or II$_\infty$ object (\cref{ch:bh_crossed}).
+\item The constraints of full quantum gravity are not under control beyond perturbation theory. The statements below hold in the limit $G_N\to0$ with the gauge group of \emph{isometries of a fixed background}; this is the sense of ``semiclassical'' throughout.
+\item ``Algebra of a region'' is subtle: a region's algebra of dressed operators depends on how the dressing is anchored (to the boundary, to an observer, to the horizon).
+\end{itemize}
+\end{whatwrong}
+
+\subsection{Time and the clock: a minimal quantum-mechanical illustration}
+
+A system with Hamiltonian $H_S$ and a clock with Hamiltonian $H_C$ (spectrum $\R$) subject to the constraint $H_S+H_C\approx0$. Physical states: $(H_S+H_C)\Psi=0$. The clock reading $T$ (conjugate to $H_C$) defines ``time $t$ for the system'' via the \emph{relational} observable $a(T=t)=\ee^{\ii H_S t}a\,\ee^{-\ii H_St}$ (Page--Wootters-type construction, for an ideal clock). The invariant algebra is generated by $\{a(T),\,H_C\}$: the crossed product of $\Bnd{\HH_S}$ by the inner flow $\Ad\ee^{\ii H_St}$, which is just $\Bnd{\HH_S}\otimes\Linf(\R)$ in this type I case. For a type III system the flow is outer and the crossed product is genuinely different from a tensor product.
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:gravity_constraints:1}
+Verify that $a(T)=\ee^{\ii H_ST}a\,\ee^{-\ii H_ST}$, with $T$ the clock-reading operator, normalized so that $[T,H_C]=-\ii$ (equivalently $\ee^{\ii\lambda T}H_C\ee^{-\ii\lambda T}=H_C+\lambda$), commutes with $H_S+H_C$. What changes if $[T,H_C]=+\ii$?
+\end{exercise}
+\begin{exercise}\label{ex:gravity_constraints:2}
+For a free particle with constraint $H=p^2/2m+H_C\approx0$ show that invariant operators form $\Bnd{\HH_S}\otimes\Linf(\R_{H_C})$ and identify the physical Hilbert space by group averaging (equivalently, as coinvariants, cf.\ \cref{ch:clpw}) $\int\dd t\,\ee^{-\ii tH}$.
+\end{exercise}
+\begin{exercise}\label{ex:gravity_constraints:3}
+Explain why in a spatially compact universe with no boundary a gauge-invariant operator cannot be a local field at a fixed coordinate location, and why dressing to a physical reference gives a way out.
+\end{exercise}
+
+\section{Gauge theory warm-up: edge modes and centres}\label{ch:gauge_warmup}
+
+\begin{physmotiv}
+Before gravity, consider the simplest place where ``constraints change the algebra of a region'': ordinary gauge theory. Gauss's law forces gauge-invariant operators in a region to commute with the electric flux through its boundary. This flux is then a \emph{central} element: a classical variable attached to the boundary. The Hilbert space does not factorize, the entanglement entropy picks up a classical Shannon term, and one is led to \emph{edge modes}. The lesson, that constraints decide which operators are observable in a region and can produce a centre, is the one that gravity will teach again, with the observer playing the role of the boundary.
+\end{physmotiv}
+
+\subsection{A lattice $U(1)$ example}
+
+Take $U(1)$ gauge theory on a lattice. On each link $\ell$ there is a quantum rotor with electric field $E_\ell\in\Z$ and a unitary $U_\ell=\ee^{\ii A_\ell}$ raising it. Gauss's law at each vertex $v$ reads $\sum_{\ell\ni v}\pm E_\ell=\rho_v$ (charge). Gauge-invariant operators are generated by $E_\ell$, by Wilson loops $\prod U_\ell$ around closed paths, and by open Wilson lines ending on charges.
+
+Cut the lattice into regions $A$ and $B$ along a set of links $\Sigma$. Gauge-invariant operators supported in $A$ include everything built from links in $A$; those on $\Sigma$ are shared. A Wilson line from $A$ to $B$ crossing the cut is \emph{not} in either algebra, yet cannot be dropped. On the other hand, the electric field $E_\ell$ on a cut link commutes with all gauge-invariant operators in $A$ \emph{and} with those in $B$: it belongs to the centre of both. The algebras are
+\begin{equation}
+\A_A=\bigoplus_{\{e_\ell\}}\A_A^{(e)},\qquad\text{centre}=\Linf(\{e_\ell\})\ \text{(boundary electric fluxes)}.
+\end{equation}
+A state decomposes over flux sectors with probabilities $p_e$. Then the reduced density matrix is block diagonal and
+\begin{equation}
+S_A=-\sum_ep_e\log p_e+\sum_ep_eS_A^{(e)}.
+\end{equation}
+The first term is a \emph{classical Shannon entropy} of the boundary flux (the centre), and the second is the average of the entropy within each sector. In the continuum the first term is an additional contribution from the edge modes, the second is the entropy of the dynamical gauge field.
+
+\begin{keyidea}
+Gauss's law makes boundary electric fluxes central in the algebra of a region. The entropy then has a ``classical'' piece (Shannon entropy of the centre) in addition to the quantum one, and the Hilbert space is not a tensor product, but a direct sum over fluxes.
+\end{keyidea}
+
+\subsection{Extended Hilbert space and edge modes}
+
+Two ways to cope with the failure of factorization (the literature on this includes work by Buividovic and Polikarpov, Casini--Huerta--Rosabal, Donnelly, and others):
+\begin{enumerate}
+\item \textbf{Algebraic:} define the entropy using the algebra $\A_A$ with its centre, as above. This is the canonical definition: the entropy is the von Neumann entropy of the state on $\A_A$ with the trace on each block and the Shannon term for the centre.
+\item \textbf{Extended Hilbert space:} enlarge the physical Hilbert space by letting the boundary links carry independent edge degrees of freedom so that $\HH_{\rm ext}=\HH_A\otimes\HH_B$ is a true tensor product, and define the physical subspace by gluing. The entropy then agrees with the algebraic one when the gluing is the one forced by Gauss's law.
+\end{enumerate}
+In the continuum these edge modes have a gravitational counterpart: boundary degrees of freedom associated with the diffeomorphisms that move a cut surface. The quantity $A/4G$ in generalized entropy can be partially understood as such an edge contribution, but this identification is subtle and is not needed for the crossed-product treatment, where the ``edge'' is replaced by the observer's clock.
+
+\subsection{What this teaches for gravity}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{%
+\begin{tabular}{@{}p{4cm}p{4cm}p{4.2cm}@{}}
+\toprule
+ & Gauge theory & Gravity (with observer)\\
+\midrule
+Constraint & Gauss law & Hamiltonian/diffeo constraint\\
+What commutes with the constraint & electric flux on $\partial A$ & observer dressing (clock energy)\\
+Algebra of region & $\A_A$ with non-trivial centre & crossed product $\M\rtimes\R$\\
+Entropy & Shannon of centre $+$ average & $\Sgen=A/4G+S_{\rm bulk}$\\
+Trace appears because & sum over sectors with weights & group average with $\ee^{x}$\\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+\begin{whatwrong}
+The analogy is structural, not literal: in gauge theory the algebra of the region is type I (on the lattice) or type III in the continuum with an additional centre. In gravity the new feature is that the constraint generator is the \emph{modular Hamiltonian itself} (or its geometric avatar), which is what turns type III into type II, a stronger effect than adding a centre.
+\end{whatwrong}
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:gauge_warmup:1}
+For a $\Z_2$ lattice gauge theory (Ising gauge theory) with a single plaquette split across a cut, enumerate the gauge-invariant operators in $A$ and $B$, identify the central element(s) and compute the entropy of a state of your choice using $S=-\sum p_e\log p_e+\sum p_eS^{(e)}$.
+\end{exercise}
+\begin{exercise}\label{ex:gauge_warmup:2}
+Show that the algebra generated by $E_\ell$ ($\ell\in\Sigma$) is central in $\A_A$ but not in the full gauge-invariant algebra of the whole lattice.
+\end{exercise}
+\begin{exercise}\label{ex:gauge_warmup:3}
+In what sense is $\Linf(\{e_\ell\})$, the centre, the algebraic counterpart of a superselection sector label (\cref{ch:factors})?
+\end{exercise}
+
+\section{Why de Sitter is special}\label{ch:ds_special}
+
+\begin{physmotiv}
+De Sitter space is the simplest positively curved universe with a horizon. Every inertial observer has a static patch bounded by a cosmological horizon, with a temperature and an entropy, and the spatial sections are compact. That last fact is crucial for us: there is no asymptotic boundary at which to define a Hamiltonian, so the isometries are \emph{gauge} (\cref{ch:gravity_constraints}). The static patch is the place where the type III$\to$II mechanism is cleanest, and where it produces a type II$_1$ algebra with a maximum-entropy state, the first algebraic realization of the idea that de Sitter entropy counts states.
+\end{physmotiv}
+
+\subsection{Geometry}
+
+De Sitter space $\mathrm{dS}_{d+1}$ with radius $\ell$ is the hyperboloid $-X_0^2+\sum_{i=1}^{d+1}X_i^2=\ell^2$ in $\R^{1,d+1}$, with isometry group $SO(1,d+1)$. Cauchy slices are spheres $S^d$. In static coordinates around the worldline $r=0$,
+\begin{equation}
+\dd s^2=-\Big(1-\frac{r^2}{\ell^2}\Big)\dd t^2+\frac{\dd r^2}{1-r^2/\ell^2}+r^2\dd\Omega_{d-1}^2,
+\end{equation}
+covering the \emph{static patch}\index{static patch} $r<\ell$ of the observer, bounded by the horizon $r=\ell$. The static-time translation $\partial_t$ is a boost in the embedding space and is the generator $H$ of the patch; it acts on the antipodal patch (the complementary region) with the opposite orientation.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.0]
+\fill[physcol!18] (4,0)--(2,2)--(4,4)--cycle;
+\fill[physcol!8] (0,0)--(2,2)--(0,4)--cycle;
+\draw[thick] (0,0) rectangle (4,4);
+\draw[dashed] (0,0)--(4,4); \draw[dashed] (0,4)--(4,0);
+\draw[very thick] (4,0)--(4,4);
+\fill (2,2) circle (1.6pt) node[above=2pt,font=\small] {$B$};
+\node[font=\small] at (3.25,2) {$P$};
+\node[font=\small] at (0.75,2) {$P'$};
+\node[font=\small] at (2,3.15) {future};
+\node[font=\small] at (2,0.85) {past};
+\node[above,font=\small] at (2,4) {$\mathcal I^+$};
+\node[below,font=\small] at (2,0) {$\mathcal I^-$};
+\node[right,font=\small] at (4.05,2) {observer $\gamma$};
+\node[below right,font=\small] at (4,0) {$p$};
+\node[above right,font=\small] at (4,4) {$q$};
+\draw[-{Stealth}] (3.55,2.7) -- (3.55,3.35) node[right,font=\small] {$t$};
+\node[font=\footnotesize,align=center] at (2,-0.95) {left and right edges are the poles of $S^d$;\\ dashed lines: future and past horizons of $\gamma$};
+\end{tikzpicture}
+\sidecaption{Penrose diagram of de Sitter space. The observer enters at $p\in\mathcal I^-$ and leaves at $q\in\mathcal I^+$; $P$ is its static patch, $P'$ the complementary patch (spacelike separated from $P$), and $B$ the bifurcation surface of the horizons. Static time $t$ runs upward in $P$ and downward in $P'$.}
+\end{figure}
+
+\subsection{Temperature and entropy}
+
+The Euclidean continuation $t=-\ii\tau$ makes the static patch metric smooth at $r=\ell$ iff $\tau\sim\tau+\beta$ with $\beta_{\rm dS}=2\pi\ell$. The Gibbons--Hawking temperature is $T_{\rm dS}=1/(2\pi\ell)$ and the entropy of the horizon, of area $A$, is
+\begin{equation}
+S_{\rm dS}=\frac{A}{4G_N}.
+\end{equation}
+The Euclidean section is the sphere $S^{d+1}$ and the Euclidean path integral gives $Z=\ee^{S_{\rm dS}}$ to leading order. Notice $\beta_{\rm dS}$ is the same for every observer: de Sitter symmetry makes all horizons identical.
+
+\subsection{Constraints and the missing Hamiltonian}
+
+Because the spatial sections are compact, every generator of the isometry group $SO(1,d+1)$, including $H$, is a constraint of the quantum gravity: gauge-invariant states and observables are invariant under it (\cref{ch:gravity_constraints}). There is no asymptotic region where a non-trivial charge could live. Consequences:
+\begin{itemize}
+\item The static-patch time translation $H$ cannot be a physical Hamiltonian; the algebra of the static patch built from bare local fields (type III$_1$, \cref{ch:static_patch}) is not the algebra of physical observables.
+\item To have observables at all we must add a degree of freedom that \emph{breaks} the symmetry: an observer, whose worldline picks out a static patch, and whose clock supplies a physical time (\cref{ch:add_observer}).
+\item The maximum entropy is bounded: all semiclassical states in a given static patch should have $\Sgen\le S_{\rm dS}$, because adding matter inside the patch reduces the horizon area (the first law below), so empty de Sitter maximizes the entropy (a proposal in the literature that CLPW realize as the statement that empty de Sitter is the maximum-entropy state of a type II$_1$ algebra, in the semiclassical model of \cref{ch:clpw}).
+\end{itemize}
+
+\begin{keyidea}
+In de Sitter there is no boundary Hamiltonian: the isometries, including static-patch time translation, are gauge. Physical observables must be dressed to an observer; the entropy of empty de Sitter, $A/4G$, is the maximum.
+\end{keyidea}
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:ds_special:1}
+Verify that periodicity $\tau\sim\tau+2\pi\ell$ removes the conical singularity at $r=\ell$ in the Euclidean static metric, and compute $T_{\rm dS}$ and $S_{\rm dS}$ for $d+1=4$ (A $=4\pi\ell^2$).
+\end{exercise}
+\begin{exercise}\label{ex:ds_special:2}
+First law of the cosmological horizon: if a small mass $m$ is placed at the origin, derive from the Schwarzschild--de Sitter metric, to first order in $m$, that the cosmological horizon area decreases according to $\delta(A/4G_N)=-\beta_{\rm dS}\,\delta E$, with $E=m$ the energy conjugate to the static time $t$.
+\end{exercise}
+\begin{exercise}\label{ex:ds_special:3}
+Explain why in a closed universe $\int_{S^d}N\mathcal H$ is a constraint with no boundary term, and why this is false in asymptotically flat space.
+\end{exercise}
+
+\section{QFT in the static patch}\label{ch:static_patch}
+
+\begin{physmotiv}
+Before adding gravity's constraint, study a quantum field on the fixed de Sitter background. The static patch $R$ and its antipodal patch $L$ are complementary regions, like the Rindler wedges; the de Sitter-invariant (Bunch--Davies) vacuum plays the role of the Minkowski vacuum; and static-time translation plays the role of the boost. We get the de Sitter version of Bisognano--Wichmann: the vacuum restricted to the patch is thermal with respect to $H$ at $\beta_{\rm dS}=2\pi\ell$, the algebra is type III$_1$, and the modular Hamiltonian is $\beta_{\rm dS}H$ (the difference of the two patches' Hamiltonians). This is where the construction of \cref{ch:crossed} is about to be put to work.
+\end{physmotiv}
+
+\subsection{The Bunch--Davies state is a thermal state of the static patch}
+
+Quantize a free field $\phi$ (mass $m$) on $\mathrm{dS}_{d+1}$. The \emph{Bunch--Davies} (Euclidean) state $\Psi_{\rm dS}$ is the unique de Sitter invariant state with Hadamard (physically sensible short-distance) behaviour; it is the state defined by the Euclidean path integral on the hemisphere. Let $\A_R=\A(R)$ be the von Neumann algebra of the static patch (its causal diamond) and $\A_L=\A_R'$ that of the antipodal patch (Haag duality). Then:
+\begin{enumerate}
+\item $\Psi_{\rm dS}$ is cyclic and separating for $\A_R$ (an analogue of Reeh--Schlieder, from analyticity of correlators in the complexified geometry).
+\item The static-time translation $\ee^{-\ii tH}$ is a one-parameter group of isometries preserving $R$ and acting on $L$ with reversed orientation; it is a symmetry of $\Psi_{\rm dS}$ ($H\Psi_{\rm dS}=0$ for $H=H_R-H_L$).
+\item $\Psi_{\rm dS}$ is a KMS state of $\A_R$ for $\alpha_t=\Ad\ee^{\ii tH}$ at inverse temperature $\beta_{\rm dS}=2\pi\ell$. Equivalently, the modular operator is
+\begin{equation}
+\Delta_{\Psi_{\rm dS}}=\ee^{-\beta_{\rm dS}H},\qquad K=-\log\Delta=\beta_{\rm dS}H,
+\end{equation}
+the de Sitter version of \cref{thm:BW}.
+\end{enumerate}
+Item 3 is the statement that the Euclidean sphere makes the static time periodic with period $\beta_{\rm dS}$ (\cref{ch:ds_special}); in the algebraic form it follows from the geometric action of the isometry group (the static time is a boost in embedding space), as for the Rindler wedge (rigorous results on global properties of de Sitter vacuum states are due, in particular, to Borchers and Buchholz \cite{BorchersBuchholz1999} and to Bros--Moschella and collaborators). The Gibbons--Hawking temperature is thus a theorem about the modular flow of the Bunch--Davies state.
+
+\subsection{The algebra is type III$_1$, with no entropy}
+
+By the arguments of \cref{ch:typeIII_local} (the same ones as for the Rindler wedge: no minimal projections, boost-like flow with spectrum $\R$), $\A_R$ is the hyperfinite type III$_1$ factor. Hence:
+\begin{itemize}
+\item There is no density matrix $\rho_R$ and no von Neumann entropy. The fixed-cutoff entanglement entropy across the horizon is $S\simeq c\,A/\epsilon^{d-1}+\cdots$, with a non-universal $c$.
+\item There is no trace and no maximum-entropy state.
+\item $H$ is not in $\A_R$: $\sigma_t=\Ad\ee^{-\ii\beta tH}$ is an outer automorphism. The generator $\beta H$ exists as an operator on $\HH$ (two-sided) but not as an element of $\A_R$.
+\end{itemize}
+
+\begin{whatwrong}
+Do not confuse the entropy of the cosmological horizon, $A/4G_N$, with the entanglement entropy of the QFT across it. The latter is divergent and cutoff dependent, the former is finite and depends on Newton's constant. Their relation is that the QFT divergences renormalize $1/G_N$: $\frac{1}{4G_{\rm bare}}+\frac{c}{\epsilon^{d-1}}=\frac{1}{4G_{\rm ren}}$. The algebraic framework of the next sections explains the finiteness of the sum in an intrinsic way.
+\end{whatwrong}
+
+\subsection{The crossed product is available, but what is it?}
+
+Mathematically, $\A_R\rtimes_\sigma\R$ exists and is type II$_\infty$ (\cref{ch:takesaki}). Physically, there is no reason yet to cross by $\R$: the QFT on a fixed background has $H$ as a symmetry generator but no clock. Gravity changes this: since $H$ is a constraint, observables must be invariant under it, which forces us to include a physical clock, and the invariants form the crossed product (\cref{ch:add_observer,ch:clpw}). Equivalently, one is asking the answer to a physical question: \emph{what does the static patch observer measure, given that the static-time coordinate has no operational meaning?}
+
+\begin{keyidea}
+In the static patch, $K=\beta_{\rm dS}H$, the algebra is type III$_1$ with no entropy, and $H\notin\A_R$. The missing ingredient is a clock, to be supplied by an observer.
+\end{keyidea}
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:static_patch:1}
+Show that the KMS condition at $\beta_{\rm dS}$ is equivalent to the statement that the thermal two-point function of $\phi$ along a static trajectory is periodic in imaginary time with period $2\pi\ell$, using the explicit two-point function of the conformally coupled scalar in $\mathrm{dS}_2$ or $\mathrm{dS}_4$.
+\end{exercise}
+\begin{exercise}\label{ex:static_patch:2}
+Using $K=\beta_{\rm dS}H$ and $H=H_R-H_L$, show that for the Bunch--Davies state $\langle\Psi_{\rm dS}|H_R|\Psi_{\rm dS}\rangle$ and $\langle\Psi_{\rm dS}|H_L|\Psi_{\rm dS}\rangle$ are separately divergent (UV) while $\langle H\rangle=0$.
+\end{exercise}
+\begin{exercise}\label{ex:static_patch:3}
+Compare with the Rindler case: identify the dS analogues of $B$, $2\pi$, the acceleration and the Unruh temperature. What replaces the vacuum Poincar\'e group?
+\end{exercise}
+
+\section{Adding an observer}\label{ch:add_observer}
+
+\begin{physmotiv}
+In \cref{ch:static_patch} the static patch algebra is type III$_1$ and $H$ is outside it. In \cref{ch:ds_special} we saw $H$ is a constraint. These two facts are reconciled by including an \emph{observer}\index{observer}: a physical system on the worldline $r=0$ with its own Hamiltonian $q$, whose energy provides a clock. The constraint becomes $H+q=0$; solving it ties the clock reading to the field's modular time and produces, as the algebra of invariants, exactly the crossed product of \cref{ch:crossed}. The sign of $q$, bounded below, is what will later make the trace finite.
+\end{physmotiv}
+
+\subsection{The observer}
+
+Model the observer as a point-like system on the worldline $r=0$ with Hilbert space $\HH_{\rm obs}$ and Hamiltonian $q$ (its energy measured with respect to static time $t$). Physical requirements:
+\begin{itemize}
+\item \textbf{Energy bounded below:} $q\ge0$ (in the minimal model of CLPW; a massive observer has $q\ge m$ with $m\gg T_{\rm dS}$, which changes the normalization of the trace but not the type, \cref{ch:clpw}). This is not decoration; it determines the type of the final algebra (\cref{ch:clpw}).
+\item \textbf{A clock:} $q$ has a conjugate variable (the observer's proper time, $p$) so that dressed operators ``at time $p$'' can be defined. For an ideal clock, $\HH_{\rm obs}=L^2(\R_{>0})$ or, in the simplest model, $L^2(\R)$ with the projection to $q\ge0$ imposed afterwards.
+\end{itemize}
+The kinematical Hilbert space is $\HH_{\rm kin}=\HH\otimes\HH_{\rm obs}$ with $\HH$ the QFT Hilbert space in the Bunch--Davies representation.
+
+\subsection{The constraint}
+
+The static-patch time translation, acting on fields by $H$ and on the observer by $q$, is a gauge symmetry. The gauge-invariant observables commute with the total
+\begin{equation}
+\hat H=H+q
+\end{equation}
+(with $H=H_R-H_L$ the two-sided generator for operators in both patches; for operators in $R$ only, $H$ acts as the boost on $\A_R$). On \emph{operators} the constraint is simply invariance under $\Ad\ee^{-\ii t\hat H}$. On \emph{states} it is subtler: there are no normalizable solutions of $\hat H\Psi=0$, and CLPW instead take coinvariants $\Psi\sim\Psi+\hat H\chi$ (BRST cohomology at ghost number one), see \cref{ch:clpw}. The remaining isometries (those that do not preserve the observer's worldline) are broken by its presence; the unbroken ones, rotations about the worldline, form the compact group $SO(d)$ for $\mathrm{dS}_{d+1}$; one either keeps only invariant operators or gives the observer an orthonormal frame so that all operators can be dressed (\cref{ch:clpw}).
+
+\begin{keyidea}
+Physical observables of the static patch with an observer are the operators on $\HH\otimes\HH_{\rm obs}$ commuting with $\hat H=H+q$. Without the observer there are no non-trivial ones localized in the patch.
+\end{keyidea}
+
+\subsection{Dictionary with Part V}
+
+Set $K=\beta_{\rm dS}H$ (the modular Hamiltonian of $\A_R$ in $\Psi_{\rm dS}$) and $x=-\beta_{\rm dS}q$. Then
+\begin{equation}
+\beta_{\rm dS}\hat H=K-x,
+\end{equation}
+the constraint generator of \cref{ch:toy_clock} (frame 2). The invariants of $\A_R\otimes\Bnd{L^2(\R_q)}$ under $\Ad\ee^{-\ii t\hat H}$ are generated by the dressed operators
+\begin{equation}
+\hat a=\ee^{-\ii pK}a\,\ee^{\ii pK}=\sigma_p(a),\quad a\in\A_R;\qquad x=-\beta_{\rm dS}\,q,
+\end{equation}
+that is, the crossed product $\A_R\rtimes_\sigma\R$ in frame 2. The operator $\hat a$ is the QFT operator $a$ ``evaluated at the observer's clock time'' ($p$ is conjugate to $q$, so shifting by $p$ means translating in the observer's proper time). Physically, $\hat a$ is gauge invariant because the combination (field time $-$ clock time) is what has meaning, not either alone.
+
+\begin{table}[h]
+\centering
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{%
+\begin{tabular}{@{}ll@{}}
+\toprule
+Crossed product (Part V) & de Sitter with observer\\
+\midrule
+$\M$ & $\A_R$, type III$_1$ static-patch algebra\\
+$\Omega$ & $\Psi_{\rm dS}$ (Bunch--Davies)\\
+$K=-\log\Delta$ & $\beta_{\rm dS}H$\\
+$x$ & $-\beta_{\rm dS}\,q$ ($q$ = observer energy)\\
+constraint $K-x$ & $\beta_{\rm dS}(H+q)$\\
+$X=K+x$ (frame 1) & $\beta_{\rm dS}(H-q)$ in the unitarily equivalent frame\\
+$x\le0$ & $q\ge0$\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\subsection{Why an observer is needed, and what it means algebraically}
+
+Without an observer the static patch algebra is type III$_1$ (\cref{ch:static_patch}) but its elements are not gauge-invariant; with it we get a gauge-invariant algebra of type II. Algebraically, the observer enlarges $\A_R$ by a copy of $\Bnd{L^2}$ (a ``reference frame'') and the constraint cuts it down to the invariants. The result is not a tensor product $\A_R\otimes\A_{\rm obs}$ but a twisted version, because the constraint couples the two. Operationally: the observer \emph{is} the clock relative to which the QFT state is read.
+
+\begin{whatwrong}
+\begin{itemize}
+\item The assumption that the observer is a point worldline with a decoupled Hamiltonian $q$ is a model. Its mass back-reacts on the geometry (\cref{ch:anatomy}), and its internal structure and finite size matter (\cref{ch:what_observer}).
+\item We have not shown that the dressed algebra is \emph{all} of the observables available to the observer; it is the algebra of invariants in the semiclassical ($G_N\to0$) limit.
+\item The choice $q\ge0$ and the model of a clock with an unbounded conjugate variable are in tension (a Hamiltonian bounded below has no self-adjoint conjugate time operator, Pauli); we address this in \cref{ch:what_observer}.
+\end{itemize}
+\end{whatwrong}
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:add_observer:1}
+Show that $\sigma_p(a)=\ee^{-\ii pK}a\,\ee^{\ii pK}$ commutes with $K-x$ (use $\ee^{-\ii t(K-x)}\sigma_p(a)\ee^{\ii t(K-x)}$ and $\ee^{\ii tx}p\,\ee^{-\ii tx}=p-t$).
+\end{exercise}
+\begin{exercise}\label{ex:add_observer:2}
+For a free scalar and the observer's proper time $p$, write $\hat\phi(f)=\int\dd s\,f(s)\,\ee^{-\ii pK}\phi(s)\ee^{\ii pK}$ for a smeared field along the worldline, and interpret $\hat\phi$ as ``the field measured at clock time $p$''.
+\end{exercise}
+\begin{exercise}\label{ex:add_observer:3}
+Explain why the equation $(H+q)\Psi=0$ has no normalizable solutions in $\HH\otimes L^2(\R)$ and how group averaging produces a physical inner product. Compare with \cref{ch:groups}.
+\end{exercise}
+

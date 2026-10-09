@@ -1,0 +1,446 @@
+\chapter{von Neumann algebras}\label{ch:vn}
+
+Weak closure and the double commutant theorem, projections and factors, normal states and traces, the classification into types I, II and III, and what the type says about subsystems and entanglement.
+
+\section{Weak closure and the double commutant theorem}\label{ch:doublecomm}
+
+\begin{physmotiv}
+A \cstar-algebra contains only \emph{continuous} functions of its observables, so it lacks the yes/no observables (spectral projections) and the macroscopic ``classical'' observables of \cref{ch:topologies}. Closing the algebra in the weak topology fixes this. The remarkable theorem of von Neumann says that this \emph{analytic} closure is the same as a purely \emph{algebraic} operation: take the commutant twice. Two things then follow: von Neumann algebras come in dual pairs $\M,\M'$, and a region of spacetime and its causal complement will give such a pair.
+\end{physmotiv}
+
+\subsection{The commutant}
+
+For a set $\mathcal S\subset\BH$, its \emph{commutant}\index{commutant} is $\mathcal S'=\{b\in\BH:ab=ba\ \forall a\in\mathcal S\}$. Properties: $\mathcal S'$ is a unital algebra, weakly closed, and $^*$-closed if $\mathcal S=\mathcal S\ad$; $\mathcal S\subset\mathcal S''$; $\mathcal S_1\subset\mathcal S_2\Rightarrow\mathcal S_2'\subset\mathcal S_1'$; and $\mathcal S'''=\mathcal S'$.
+
+Physically $\mathcal S'$ is ``everything that can be measured simultaneously with all of $\mathcal S$ without disturbing it''. It is the algebra of the \emph{complement} of the system.
+
+\begin{example}
+(i) $\M=M_n\otimes\id\subset\Bnd{\C^n\otimes\C^k}$: $\M'=\id\otimes M_k$. Subsystem and environment are mutual commutants. (ii) $\M=\BH$: $\M'=\C\id$. (iii) $\M=\Linf(X,\mu)$ acting by multiplication on $L^2(X,\mu)$ (with $\mu$ $\sigma$-finite): $\M'=\M$ (a maximal abelian algebra, a complete set of commuting observables, like the position operators). (iv) GNS representation of a mixed state of $M_n$ (\cref{ch:gns}): $\pi(\A)'$ is right multiplication, the purifying system.
+\end{example}
+
+\subsection{The double commutant theorem}
+
+\begin{theorem}[von Neumann]\label{thm:bicomm}
+Let $\M\subset\BH$ be a unital $^*$-algebra. Then the following are equal:
+\[
+\M''\;=\;\overline{\M}^{\rm weak}\;=\;\overline{\M}^{\rm strong}\;=\;\overline{\M}^{\sigma\text{-weak}}\;=\;\overline{\M}^{\sigma\text{-strong}}.
+\]
+\end{theorem}
+
+\begin{definition}
+A \emph{von Neumann algebra}\index{von Neumann algebra} is a unital $^*$-algebra $\M\subset\BH$ with $\M=\M''$, equivalently one that is closed in the weak topology.
+\end{definition}
+
+\begin{proofsketch}
+The inclusion $\overline\M^{w}\subset\M''$ is easy: $\M''$ is weakly closed and contains $\M$. The converse is the content. For a vector $\xi$ let $P$ be the projection onto $\overline{\M\xi}$; since $\M\xi$ is $\M$-invariant, $P\in\M'$. If $T\in\M''$ then $T$ commutes with $P$, so $T$ preserves $\overline{\M\xi}$; and since $\xi=\id\xi\in\M\xi$, we get $T\xi\in\overline{\M\xi}$: it can be approximated by $a\xi$ with $a\in\M$. Doing this for finitely many vectors at once (use the amplification $\HH\otimes\C^k$ with the algebra $\M\otimes\id_k$) gives strong density, hence weak closure.
+\end{proofsketch}
+
+\begin{whatwrong}
+The theorem needs $\M$ to be a $^*$-algebra containing the identity (or, in general, acting non-degenerately). The \emph{choice of Hilbert space} matters: the weak closure of the \emph{same} abstract \cstar-algebra depends on the representation. For the product states $\psi_\theta$ of the spin chain, $\pi_\theta(\A)''=\BH_\theta$; for $\omega=\tau$ it is the hyperfinite II$_1$ factor; for $p\ne1/2$ it is a type III factor.
+\end{whatwrong}
+
+\subsubsection*{Consequences}
+\begin{enumerate}
+\item \emph{Spectral projections are in the algebra.} If $a\in\M$ is self-adjoint, all spectral projections $\chi_\Omega(a)$ belong to $\M$ (they are strong limits of continuous functions of $a$). Likewise $|a|$, the partial isometry in the polar decomposition, and any Borel function of $a$.
+\item \emph{Kaplansky density.} The unit ball of the \cstar-algebra $\A$ is strongly dense in the unit ball of $\A''$. So no ``hidden'' large operators appear in the closure.
+\item \emph{Macroscopic observables.} Limits like $\lim M_N$ (\cref{ch:topologies}) belong to $\pi(\A)''$ and are central.
+\item \emph{Normal states.}\index{state!normal} A state of $\M$ is \emph{normal} (continuous in the $\sigma$-weak topology) iff it is a countable-additive probability: $\omega(\sum_ie_i)=\sum_i\omega(e_i)$ for any family of orthogonal projections. Thus normality is exactly Born's rule with countable additivity, and the right notion of ``physical state'' (\cref{ch:traces}).
+\item \emph{Abstract characterization (Sakai).} A \cstar-algebra is (isomorphic to) a von Neumann algebra iff it is the dual of a Banach space; this is why von Neumann algebras are also called W$^*$-algebras and are ``measure-theoretic'' (non-commutative $L^\infty$), whereas \cstar-algebras are ``topological'' (non-commutative $C(X)$).
+\end{enumerate}
+
+\begin{keyidea}
+Von Neumann algebra $=$ $\M''=\M$ $=$ weakly closed unital $^*$-algebra. Always come in pairs $(\M,\M')$. The commutant is the algebra of the ``complement'', and passage to $\M''$ adds exactly the projections and macroscopic observables that a \cstar-algebra lacks.
+\end{keyidea}
+
+\subsection{Dual pairs and locality}
+
+In relativistic QFT, with $\A(R)$ the algebra of a region $R$ and $R'$ its causal complement (points spacelike to all of $R$), locality says $\A(R')\subset\A(R)'$. \emph{Haag duality}\index{Haag's theorem} is the stronger statement $\A(R')=\A(R)'$ (\cref{ch:haagkastler}), which holds for wedge regions in free field theories. When it holds, the commutant is literally the algebra of the complementary region, the algebraic version of ``system and environment''. Everything in Part IV (modular theory) treats $\M$ and $\M'$ symmetrically; in the Rindler case $\M=\A(R_{\rm right})$ and $\M'=\A(R_{\rm left})$.
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:doublecomm:1}
+Compute the commutant of $\M=\{a\otimes\id_k:a\in M_n\}\subset M_n\otimes M_k$ and of $\M=\{\mathrm{diag}(a,a,b):a,b\in M_2\}\subset M_6$. Verify $\M''=\M$ in each case. What is $\M\cap\M'$?
+\end{exercise}
+\begin{exercise}\label{ex:doublecomm:2}
+Show that every von Neumann algebra on a finite-dimensional space is of the form $\bigoplus_kM_{n_k}\otimes\id_{m_k}$, with commutant $\bigoplus_k\id_{n_k}\otimes M_{m_k}$. (Use that every finite-dimensional $^*$-algebra is a sum of matrix blocks.)
+\end{exercise}
+\begin{exercise}\label{ex:doublecomm:3}
+Let $\A=C[0,1]$ acting on $L^2[0,1]$ by multiplication. Show that $\A''=\Linf[0,1]$ by showing that $\chi_{[0,1/2]}$ is a strong limit of continuous functions $f_n$ with $0\le f_n\le1$. Is the convergence in norm?
+\end{exercise}
+\begin{exercise}\label{ex:doublecomm:4}
+Show $\M\mapsto\M'$ reverses inclusions, and that $\M'''=\M'$. If $\M=\M_1\bar\otimes\M_2$ acts on $\HH_1\otimes\HH_2$, argue that $\M'=\M_1'\bar\otimes\M_2'$ (Tomita's commutation theorem; you may assume it).
+\end{exercise}
+
+\section{Projections, factors, and the centre}\label{ch:factors}
+
+\begin{physmotiv}
+A physical system with superselection rules, or one whose state is a mixture of macroscopically distinct phases, carries \emph{classical} information: operators that commute with everything and take definite values in each sector. A von Neumann algebra with no such operators is called a factor; it is a single, ``purely quantum'' sector. Every von Neumann algebra decomposes into factors, so the classification reduces to the classification of factors. This section sets up that reduction and previews why factors need not be $\BH$.
+\end{physmotiv}
+
+\subsection{The centre}
+
+\begin{definition}
+The \emph{centre}\index{centre} of a von Neumann algebra $\M$ is $\cZ(\M)=\M\cap\M'$. $\M$ is a \emph{factor}\index{factor} if $\cZ(\M)=\C\id$.
+\end{definition}
+
+Note that $\cZ(\M)=\cZ(\M')$: the centre is shared between $\M$ and its commutant, so $\M$ is a factor iff $\M'$ is. Examples:
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{%
+\begin{tabular}{@{}lll@{}}
+\toprule
+$\M$ & Centre & Interpretation\\
+\midrule
+$\BH$ & $\C\id$ & factor\\
+$M_n\otimes\id_k$ & $\C\id$ & factor\\
+$\bigoplus_{i=1}^rM_{n_i}\otimes\id_{m_i}$ & $\C^r$ & $r$ superselection sectors\\
+$\Linf(X,\mu)$ & $\Linf(X,\mu)$ (all of it) & purely classical\\
+$\pi_\theta(\A)''$ (pure product state) & $\C\id$ & factor (type I$_\infty$)\\
+$\pi_{\omega_+\oplus\omega_-}(\A)''$, $\omega_\pm$ different magnetizations & $\C^2$ & two phases\\
+\bottomrule
+\end{tabular}}
+\end{center}
+Central projections $z\in\cZ(\M)$ are the sector projections: $z\M$ and $(\id-z)\M$ are independent algebras, with no operator of $\M$ connecting the two sectors.
+
+\begin{theorem}[central decomposition]
+Every von Neumann algebra on a separable Hilbert space is a direct integral of factors:
+\begin{equation}
+\HH=\int^\oplus_Z\HH_z\,\dd\mu(z),\qquad\M=\int^\oplus_Z\M_z\,\dd\mu(z),
+\end{equation}
+where each $\M_z$ is a factor and $Z$ is the spectrum of the centre.
+\end{theorem}
+This is the algebraic version of the decomposition of a mixed phase into pure phases (\cref{ch:inequiv}), and of the decomposition of a Hilbert space into superselection sectors. For discrete centre it is just a direct sum. In consequence, \emph{it suffices to classify factors}.
+
+\begin{whatwrong}
+A \emph{factor} is not ``simple'' in the sense of $\BH$: factors need not be of the form $\Bnd{K}$, even though their centre is trivial. The existence of factors that are not $\Bnd K$ for any Hilbert space $K$ (types II and III) is the heart of the next section. A trivial centre means no classical observables, not that the algebra is a full matrix algebra.
+\end{whatwrong}
+
+\subsection{Projections}
+
+The set $P(\M)$ of projections of $\M$ is a \emph{complete orthomodular lattice}: for any family $\{e_i\}$ the supremum $\bigvee e_i$ (projection onto the closed span of ranges) and infimum $\bigwedge e_i$ exist in $\M$. This is the lattice of yes/no questions (``quantum logic'' of Birkhoff--von Neumann) and it is distributive iff $\M$ is abelian.
+
+Because $\M$ contains all spectral projections of its self-adjoint elements, $\M$ is the norm-closed span of $P(\M)$. For this reason the ``geometry'' of $P(\M)$ determines $\M$, and classification proceeds via projections (\cref{ch:classification}).
+
+For a vector $\xi\in\HH$, define
+\begin{align}
+[\M\xi]&=\text{projection onto }\overline{\M\xi}\in\M',\\
+[\M'\xi]&=\text{projection onto }\overline{\M'\xi}\in\M.
+\end{align}
+The \emph{support} of the vector state $\omega_\xi$ on $\M$ is $[\M'\xi]\in\M$. A vector $\xi$ is \emph{cyclic} for $\M$ if $[\M\xi]=\id$ and \emph{separating} for $\M$ if $[\M'\xi]=\id$, equivalently cyclic for $\M'$; and this is the same as ``$a\xi=0\Rightarrow a=0$ for $a\in\M$''. We recall:
+\begin{center}
+\emph{$\xi$ separating for $\M$ $\Longleftrightarrow$ $\xi$ cyclic for $\M'$.}
+\end{center}
+This duality is the reason why modular theory (\cref{ch:tomita}) requires $\xi$ to be cyclic and separating; the two conditions are one condition on the pair $(\M,\M')$. The finite-dimensional example $\Omega=\rho^{1/2}$ of \cref{ch:gns} is cyclic and separating iff $\rho>0$ is full-rank.
+
+\subsection{Where the centre comes from physically}
+
+\begin{enumerate}
+\item \textbf{Superselection.} A conserved charge that all physical observables commute with (electric charge, fermion parity) is a central element. In a theory with a $U(1)$ charge $Q$, observables commute with $Q$ and $Q$ is central in the algebra of all observables on the full Hilbert space.
+\item \textbf{Gauge constraints.} In gauge theory the electric flux through the boundary of a region commutes with all gauge-invariant observables inside (\cref{ch:gauge_warmup}): this flux generates the centre of the region's algebra, and is the origin of edge modes and the Shannon term in the entropy.
+\item \textbf{Mixed phases and clustering.} A state with the cluster property (correlations $\omega(ab)-\omega(a)\omega(b)\to0$ as $a$ and $b$ are translated far apart) has a GNS representation which is a factor; non-clustering signals a non-trivial centre (macroscopic observables).
+\end{enumerate}
+
+\begin{keyidea}
+The centre of a von Neumann algebra is its classical part. Factors are quantum sectors, the building blocks of the classification. Cyclic-and-separating vectors are those that see $\M$ and $\M'$ symmetrically.
+\end{keyidea}
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:factors:1}
+Show that $\cZ(\M)=\cZ(\M')$. Show that for $\M=\bigoplus_iM_{n_i}\otimes\id_{m_i}$ the central projections are sums of block identities.
+\end{exercise}
+\begin{exercise}\label{ex:factors:2}
+Let $Q$ be a charge with spectrum $\Z$, and $\M$ the algebra of operators commuting with $Q$ acting on $\HH=\bigoplus_q\HH_q$. Show $\M=\bigoplus_q\Bnd{\HH_q}$ is not a factor and identify its centre. Where do charged operators (those that change $Q$) live? What is $\M'$?
+\end{exercise}
+\begin{exercise}\label{ex:factors:3}
+Show that $\xi$ is separating for $\M$ iff it is cyclic for $\M'$ (using $P=[\M'\xi]$ and the observation that $a\xi=0$ for $a\in\M$ implies $a$ annihilates $\M'\xi$).
+\end{exercise}
+\begin{exercise}\label{ex:factors:4}
+In the product state $\psi_\theta$ chain (\cref{ch:why_algebras}), argue that $\pi_\theta(\A)''=\Bnd{\HH_\theta}$ is a factor by showing $\pi_\theta$ is irreducible. In the mixture $\tfrac12(\omega_\theta+\omega_{\theta'})$, find the centre of the weak closure.
+\end{exercise}
+
+\section{Normal states, weights, and traces}\label{ch:traces}
+
+\begin{physmotiv}
+The entropy $-\Tr\rho\log\rho$ requires two things: a density matrix $\rho$ and a trace $\Tr$ to take its expectation. In $\BH$ both exist. In a general von Neumann algebra we must ask which of them survive. The answer is a hierarchy: \emph{normal states}\index{state!normal} always exist and are the physical states; a \emph{trace}\index{trace} may or may not exist; and when it does not, one still has \emph{weights}\index{weight}, which are traces' unbounded, non-tracial cousins, and which will be the main characters in modular theory and in crossed products.
+\end{physmotiv}
+
+\subsection{Normal states}
+
+A state $\omega$ on a von Neumann algebra $\M$ is \emph{normal} if it is $\sigma$-weakly continuous; equivalently (\cref{ch:doublecomm}) it is completely additive on orthogonal projections. A state is \emph{faithful}\index{faithful state} if $\omega(a\ad a)=0\Rightarrow a=0$, and its \emph{support} is the smallest projection $s$ with $\omega(s)=1$. In a representation, a vector $\xi$ defines the normal \emph{vector state} $\omega_\xi(a)=\inner\xi{a\xi}$. For $\M=\BH$:
+\begin{center}
+normal state $\Longleftrightarrow$ $\omega=\Tr(\rho\,\cdot)$ with $\rho\ge0$ trace class, $\Tr\rho=1$.
+\end{center}
+For general $\M$ normal states play the role of density matrices without the density: there may be no operator $\rho$ in $\M$ at all. Key results:
+\begin{itemize}
+\item $\omega$ is faithful and normal on $\M$ iff $\omega=\omega_\xi$ for a vector $\xi$ that is \emph{separating} for $\M$ (then $\xi$ is cyclic for $\M'$), and every normal state is a vector state in a suitable representation (the \emph{standard form}, \cref{ch:tomita}).
+\item Every normal state on $\M$ is a vector state in the amplification $\M\otimes\id_{\ell^2}$ (purification): a statement of the existence of purifications.
+\end{itemize}
+
+\subsection{Traces}
+
+\begin{definition}
+A \emph{trace} on $\M$ is a map $\tau:\M_+\to[0,\infty]$ that is additive, positively homogeneous and satisfies $\tau(x\ad x)=\tau(xx\ad)$ for all $x\in\M$ (so $\tau(uau\ad)=\tau(a)$ for unitaries). It is \emph{faithful} if $\tau(a)=0\Rightarrow a=0$, \emph{semifinite} if every non-zero projection dominates a non-zero projection of finite trace, and \emph{normal} if $\tau(\sup a_i)=\sup\tau(a_i)$ for bounded increasing nets. We write ``f.n.s.\ trace'' for faithful normal semifinite.
+\end{definition}
+
+On $\BH$ the usual $\Tr$ is the unique f.n.s.\ trace up to scale. Several things are worth noting:
+\begin{itemize}
+\item If $\tau(\id)<\infty$, $\tau$ extends to a linear tracial functional, which we can normalize into a \emph{tracial state}; for $M_n$ it is $\Tr/n$, for the spin chain $\tau=\bigotimes\frac12\Tr$.
+\item For a \emph{factor}\index{factor}, f.n.s.\ traces are unique up to scale if they exist. For non-factors there is one scale per sector.
+\item \emph{Not every von Neumann algebra has a (semifinite) trace}\index{von Neumann algebra}: the algebras of QFT do not (type III, \cref{ch:classification}).
+\end{itemize}
+
+\subsubsection{Density matrices relative to a trace}
+Suppose $\M$ has a f.n.s.\ trace $\tau$. Then for every normal state $\omega$ there is a unique positive operator $\rho_\omega$ \emph{affiliated} with $\M$ (\cref{ch:spectral}) with $\tau(\rho_\omega)=1$ and
+\begin{equation}
+\omega(a)=\tau(\rho_\omega a)\qquad(a\in\M).
+\end{equation}
+This is a Radon--Nikodym theorem; $\tau$ plays the role of the reference measure. The \emph{von Neumann entropy} is then
+\begin{equation}
+S(\omega)=-\tau(\rho_\omega\log\rho_\omega).
+\end{equation}
+The entropy depends on the normalization of $\tau$: rescaling $\tau\to c\tau$ shifts $S$ by $\log c$ (a state-independent constant), exactly as one expects. If $\M$ is a factor of type II$_1$, with the trace normalized to $\tau(\id)=1$, then $S(\omega)\le0$ with the maximum $0$ attained for $\rho=\id$, the tracial state. In general:
+\begin{center}
+\emph{entropy is defined on $\M$ iff $\M$ has a f.n.s.\ trace, i.e.\ iff $\M$ is of type I or II.}
+\end{center}
+
+\subsection{Weights}
+
+When no trace exists, one needs a weaker structure.
+
+\begin{definition}
+A \emph{weight} on $\M$ is an additive, positively homogeneous map $\varphi:\M_+\to[0,\infty]$. Weights are normal, faithful, semifinite under the same conditions as above; a trace is a weight with $\varphi(x\ad x)=\varphi(xx\ad)$.
+\end{definition}
+Normal states are the bounded (finite) weights ($\varphi(\id)=1$). The theorem of Haagerup states that every normal weight is a supremum of normal positive functionals, and every von Neumann algebra (on a separable space) has a faithful normal semifinite weight. For example:
+\begin{itemize}
+\item On $\BH$: $\varphi(a)=\Tr(\rho a)$ for any positive unbounded $\rho$ (e.g.\ $\rho=\ee^{-\beta H}$ with $\Tr\ee^{-\beta H}=\infty$, as in a system with continuous spectrum). Faithful normal semifinite iff $\rho$ is non-singular.
+\item On a type III algebra: faithful normal states $\omega_\xi$ for $\xi$ cyclic and separating (the vacuum for a wedge). These are weights, not traces, and they are \emph{not} ``$\Tr\rho\,\cdot$'' for any $\rho$ in $\M$ because there is no trace.
+\end{itemize}
+Crucially, each f.n.s.\ weight $\varphi$ defines a modular automorphism group $\sigma_t^\varphi$ (\cref{ch:tomita}), and the weight is a trace iff $\sigma^\varphi$ is trivial. This is the sense in which modular theory measures the failure of the trace.
+
+\begin{whatwrong}
+Do not confuse the following: ``$\omega$ is faithful'' (a statement about a state), ``$\M$ has a faithful normal state'' (true for all $\sigma$-finite algebras), and ``$\M$ has a faithful normal \emph{trace}'' (a property of the algebra, true only for types I and II, in other words a restriction on its type). The first two hold in QFT; the third does not.
+\end{whatwrong}
+
+\begin{keyidea}
+Normal state: physical state, always available. Trace: needed for density matrices and entropy, available only in types I, II. Weights: unbounded traces' generalization, always available and the entry point to modular theory.
+\end{keyidea}
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:traces:1}
+Show that if $\tau$ is a tracial state on a factor $\M$ and $\omega$ is a faithful normal state, then $\rho_\omega$ has trivial kernel (it need not be boundedly invertible in general, but it is in $M_n$). Compute $S(\omega)$ for $\M=M_n$, and for $\M=M_n\otimes M_k$ with a product state.
+\end{exercise}
+\begin{exercise}\label{ex:traces:2}
+Let $\M$ be II$_1$ with $\tau(\id)=1$. Using Jensen's inequality for the convex function $x\log x$ prove $S(\omega)\le0=S(\tau)$ for every normal state $\omega=\tau(\rho\,\cdot)$.
+\end{exercise}
+\begin{exercise}\label{ex:traces:3}
+Let $\varphi=\Tr(\ee^{-\beta H}\,\cdot)$ on $\BH$ with $H$ having spectrum all of $\R$ with Lebesgue density of states (so that $\Tr f(H)=\int_{\R}f(\lambda)\dd\lambda$). Show $\varphi$ is a faithful normal semifinite weight, is not a state, and that $\sigma^\varphi_t(a)=\ee^{-\ii\beta Ht}a\,\ee^{\ii\beta Ht}$ is not trivial (hence $\varphi$ is not a trace). (We will confirm this in \cref{ch:tomita}.)
+\end{exercise}
+\begin{exercise}\label{ex:traces:4}
+Show that if $\tau_1,\tau_2$ are two f.n.s.\ traces on a factor then $\tau_2=c\tau_1$ (hint: consider the Radon--Nikodym derivative $h$, which must be central).
+\end{exercise}
+
+\section{Classification: types I, II, III}\label{ch:classification}
+
+\begin{physmotiv}
+The question is: \emph{how many fundamentally different kinds of quantum systems are there?} Answer (Murray and von Neumann, 1936--43): factors fall into three types, distinguished by which \emph{dimensions} projections can have. Type I is textbook QM. Type II has a continuous dimension and a trace but no minimal observables. Type III has neither trace nor dimension: every non-trivial question has ``infinite dimension'', and entropy is meaningless. Local algebras in QFT are type III, and the program of this book is to understand how gravity turns III into II.
+\end{physmotiv}
+
+\subsection{Comparing projections}
+
+Two projections $e,f\in\M$ are \emph{Murray--von Neumann equivalent}\index{Murray--von Neumann equivalence}, $e\sim f$, if there is a partial isometry $v\in\M$ with $v\ad v=e$ and $vv\ad=f$. That is, $\M$ itself contains an operator that maps the range of $e$ isometrically onto the range of $f$. Write $e\preceq f$ if $e\sim f_0\le f$. This is \emph{dimension-comparison inside $\M$}: in $\BH$ it says $\mathrm{rank}\,e=\mathrm{rank}\,f$, but in a smaller algebra it need not, because the required partial isometry might not belong to $\M$.
+
+\begin{theorem}[comparison]
+In a factor, any two projections are comparable: $e\preceq f$ or $f\preceq e$.
+\end{theorem}
+So the projections of a factor are totally ordered by size; this ordering is captured by a \emph{dimension function} $d:P(\M)\to[0,\infty]$, unique up to scale, with $d(e)=d(f)$ iff $e\sim f$, and additive on orthogonal projections. A projection is \emph{finite} if it is not equivalent to a proper subprojection of itself, i.e.\ not a ``Hilbert-hotel'' projection (\cref{ch:hilbert}). It is \emph{minimal} if it dominates no non-zero smaller projection.
+
+\subsection{The three types}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.35}
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{%
+\begin{tabular}{@{}l p{3.8cm} l l@{}}
+\toprule
+Type & Definition & Range of $d$ & Example\\
+\midrule
+I$_n$ & has minimal projections; $\id$ finite & $\{0,1,\dots,n\}$ & $M_n(\C)$\\
+I$_\infty$ & has minimal projections; $\id$ infinite & $\{0,1,2,\dots,\infty\}$ & $\BH$, $\dim\HH=\infty$\\
+II$_1$ & no minimal projections; $\id$ finite & $[0,1]$ & hyperfinite II$_1$ factor $R$\\
+II$_\infty$ & no minimal projections; $\id$ infinite, but finite projections exist & $[0,\infty]$ & $R\bar\otimes\BH$\\
+III & every non-zero projection is infinite (and all are equivalent to $\id$) & $\{0,\infty\}$ & QFT, Powers, Araki--Woods\\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+\begin{itemize}
+\item \textbf{Type I:} $\M\cong\Bnd{K}$ for a Hilbert space $K$; i.e.\ $\M=\BH_A\otimes\id_B$ on $\HH=\HH_A\otimes\HH_B$. This is the world of tensor factorization, density matrices, and $\Tr$.
+\item \textbf{Type II:} a continuous dimension. In II$_1$ there are projections of ``dimension $1/\pi$''; there is a unique tracial state $\tau$ with $\tau(e)=d(e)$. There is no pure state. The trace is finite on $\id$ and tracial states are maximally mixed states.
+\item \textbf{Type III:} no trace (not even on non-zero projections), $d$ takes only the values $0,\infty$. Every non-zero projection $e$ is equivalent to $\id$: any non-trivial yes/no question is as big as the entire system.
+\end{itemize}
+
+\begin{whatwrong}
+In type III, the statement ``$e\sim\id$ for all non-zero $e$'' means we can \emph{locally} (inside the algebra) map the entire space into the range of an arbitrarily small projection. A tiny region of QFT contains operators that can prepare, up to unitary equivalence, anything. This is the algebraic source of the Reeh--Schlieder property and of the divergence of entanglement entropy.
+\end{whatwrong}
+
+\subsection{Where the types come from: the hyperfinite examples}
+
+\textbf{II$_1$.} Take the infinite spin chain $M_{2^\infty}$ with the tracial state $\tau$ (\cref{ch:gns}). The weak closure $R=\pi_\tau(\A)''$ of its GNS representation is the \emph{hyperfinite II$_1$ factor}: ``hyperfinite'' means it is the weak closure of an increasing union of finite-dimensional algebras; it is unique (Murray--von Neumann, Connes). It has a unique tracial state, and dimension values $d(e)\in[0,1]$: a projection of dimension $k/2^n$ exists inside $M_{2^n}$ (rank $k$), and these are dense in $[0,1]$. Physically $R$ is the algebra of observables of the infinite chain at \emph{infinite temperature}.
+
+\textbf{II$_\infty$.} $R\bar\otimes\BH$ with trace $\tau\otimes\Tr$: infinite temperature plus an infinite ordinary system. In \cref{ch:takesaki} the crossed product of a type III$_1$ factor by its modular flow is of this form.
+
+\textbf{III.} For $p\ne1/2$ the state $\omega_p=\bigotimes_j\Tr(\mathrm{diag}(p,1-p)\,\cdot)$ has GNS von Neumann algebra the \emph{Powers factor}\index{Powers factor} $R_\lambda$ with $\lambda=\min(p,1-p)/\max(p,1-p)\in(0,1)$, of type III$_\lambda$ (\cref{ch:connes_class}). Intuitively: one tries to renormalize the finite-volume trace $\Tr(\rho_N\,\cdot)\to\Tr(\cdot)$ but the ratios $\rho_N/\Tr\rho_N$ spread over exponentially many scales, so that no consistent trace survives. For example, the non-interacting chain $H=\frac h2\sum\sigma^z_j$ at any finite temperature gives such a product state with $\lambda=\ee^{-\beta h}$, hence type III$_\lambda$ in infinite volume.
+
+\begin{keyidea}
+Type is decided by what dimensions projections can have: I: integers; II$_1$: $[0,1]$; II$_\infty$: $[0,\infty]$; III: $\{0,\infty\}$. Type is intrinsic to the algebra, unchanged by choosing different faithful representations. Local QFT algebras are type III, so no trace and no entropy.
+\end{keyidea}
+
+\subsection{What ``entropy exists'' means for each type}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{%
+\begin{tabular}{@{}llp{6.5cm}@{}}
+\toprule
+Type & Trace & Entropy $S(\omega)=-\tau(\rho_\omega\log\rho_\omega)$\\
+\midrule
+I$_n$ & finite & yes; $0\le S\le\log n$; maximum at $\rho=\id/n$\\
+I$_\infty$ & semifinite & yes for $\rho$ trace-class with finite entropy; unbounded above\\
+II$_1$ & finite, $\tau(\id)=1$ & yes; $S\le0$; maximum $0$ at the tracial state\\
+II$_\infty$ & semifinite & yes for $\rho$ in the domain; unbounded in both directions, state-independent shift ambiguity from the scale of $\tau$\\
+III & none & \emph{no density matrix exists}; relative entropy still exists (\cref{ch:modham})\\
+\bottomrule
+\end{tabular}}
+\end{center}
+The sign: in II$_1$ with normalized trace $S\le0$ is a \emph{relative} entropy with respect to the maximally mixed state, shifted. The gravitational examples will have $S=\Sgen+\text{const}$ with a maximum at the de Sitter vacuum (\cref{ch:clpw}).
+
+\subsection{Non-factors and the general case}
+
+A general von Neumann algebra decomposes as a direct integral of factors (\cref{ch:factors}), and a factor has exactly one type. A general algebra thus has a decomposition $\M=\M_I\oplus\M_{II}\oplus\M_{III}$ into homogeneous pieces of the respective types, with possibly types I$_n$ for different $n$ in the type I part. For physical systems with superselection sectors, the sectors can have different types.
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:classification:1}
+Show that in $\BH$ ($\HH$ separable infinite-dimensional) two projections are equivalent iff they have the same rank (possibly $\infty$). Show the projection onto the even sites of $\ell^2$ is equivalent to $\id$ but not equal to it. Is it finite?
+\end{exercise}
+\begin{exercise}\label{ex:classification:2}
+In $R=\pi_\tau(M_{2^\infty})''$ show that $\tau(e)=k/2^n$ for a rank-$k$ projection in $M_{2^n}$, and use density to argue that $d$ takes all values in $[0,1]$ (every real $r\in[0,1]$ is the dimension of some projection). Why does this prove that there is no minimal projection?
+\end{exercise}
+\begin{exercise}\label{ex:classification:3}
+Show that a type I$_n$ factor has a unique tracial state, and compute the entropy of $\omega=\tau(\rho\,\cdot)$ when $\rho=\mathrm{diag}(p_1,\dots,p_n)\cdot n$. (Note the normalization $\tau=\Tr/n$ shifts $S$ by $\log n$ compared to Shannon.)
+\end{exercise}
+\begin{exercise}\label{ex:classification:4}
+Argue that if $\M$ is type III then no pure normal state exists and no trace exists. (Pure normal state $\Rightarrow$ minimal projection; trace $\Rightarrow$ finite projections.)
+\end{exercise}
+\begin{exercise}\label{ex:classification:5}
+Why can the algebra of a bounded region of QFT not be type I? (Argue using the existence of minimal projections ($\Rightarrow$ a pure normal state) versus the fact that the vacuum is cyclic and separating and entangled; see \cref{ch:typeIII_local}.)
+\end{exercise}
+
+\section{Subsystems and entanglement}\label{ch:subsystems}
+
+\begin{physmotiv}
+In ordinary quantum mechanics a subsystem is a tensor factor, entanglement is a property of a pure state on $\HH_A\otimes\HH_B$, and the entropy of $\rho_A=\Tr_B\ket\psi\!\bra\psi$ measures it. In QFT none of this survives literally: the algebras of adjacent regions are not tensor factors. The algebraic replacement of ``subsystem'' is \emph{subalgebra}, and the replacements of ``trace over $B$'' are \emph{restriction of states} and \emph{conditional expectations}\index{conditional expectation}. This section develops those and states what remains true: the vacuum is entangled, in a precise and maximal sense, even though no entropy is defined.
+\end{physmotiv}
+
+\subsection{Subsystems as subalgebras}
+
+For $\HH=\HH_A\otimes\HH_B$ the algebra of subsystem $A$ is $\M_A=\Bnd{\HH_A}\otimes\id$, with commutant $\M_A'=\id\otimes\Bnd{\HH_B}$. These are type I factors, and the pair $(\M_A,\M_A')$ has two special properties: (i) $\M_A\vee\M_A'=\BH$ (together they generate everything) and (ii) $\M_A\cap\M_A'=\C\id$. The algebraic definition:
+
+\begin{definition}
+A \emph{subsystem} of a quantum system with algebra $\M$ is a von Neumann subalgebra $\N\subset\M$. The ``complementary'' system is $\N'\cap\M$ (the part of $\M$ that commutes with $\N$).
+\end{definition}
+
+A state $\omega$ on $\M$ restricts to a state $\omega|_\N$ on $\N$: this is the algebraic partial trace. Even if $\omega$ is pure on $\M$, $\omega|_\N$ may be mixed: that is entanglement. In QFT the relevant data are the nets of algebras $\A(O)$ (\cref{ch:haagkastler}) and the restrictions of the vacuum.
+
+\begin{whatwrong}
+For two regions $O_1,O_2$ with disjoint closures, the algebra generated by $\A(O_1)$ and $\A(O_2)$ is isomorphic to $\A(O_1)\bar\otimes\A(O_2)$ only under the \emph{split property}\index{split property} (below). For \emph{adjacent} regions (sharing a boundary), such as the two Rindler wedges, no such isomorphism exists: $\A(R)\vee\A(L)$ is generated by two commuting type III$_1$ factors, but in a Hilbert space with a vacuum $\Omega$ the vector $\Omega$ is not a product vector in any tensor decomposition $\HH=\HH_R\otimes\HH_L$ compatible with the algebras.
+\end{whatwrong}
+
+\subsection{The split property}
+
+In QFT, algebras of strictly nested regions are better behaved than adjacent ones.
+
+\begin{definition}
+A net of algebras has the \emph{split property} if for every pair of regions $O_1\Subset O_2$ ($\overline{O_1}\subset$ interior of $O_2$) there is a type I factor $\mathcal N$ with $\A(O_1)\subset\mathcal N\subset\A(O_2)$.
+\end{definition}
+
+Then $\HH\cong\HH_{\mathcal N}\otimes\HH_{\mathcal N'}$ and one may define a density matrix $\rho_{\mathcal N}$ and its entropy. The split property holds for free massive fields and, more generally, under a nuclearity condition on the energy dependence of local states (Buchholz--D'Antoni--Fredenhagen). It is the algebraic form of ``the vacuum has finite-energy-density correlations'': entanglement between regions separated by a gap decays fast enough to be captured by a trace-class map. The entropy of $\rho_{\mathcal N}$ blows up as the gap between $O_1$ and $O_2$ shrinks (the area-law divergence $\sim\mathrm{Area}/\epsilon^{d-2}$): the gap is the algebraic cutoff $\epsilon$. This makes ``entanglement entropy of a region'' a statement about the \emph{choice} of intermediate factor $\mathcal N$, not about $\A(O_1)$ alone.
+
+\subsection{Conditional expectations: the algebraic partial trace}
+
+For $\N\subset\M$, a \emph{conditional expectation} is a linear map $E:\M\to\N$ with $E(\id)=\id$, $E(n)=n$ for $n\in\N$, positivity, and the bimodule property $E(n_1mn_2)=n_1E(m)n_2$. It is the natural ``averaging over the complement''. For example, for $\M=\Bnd{\HH_A}\otimes\Bnd{\HH_B}$ and $\N=\Bnd{\HH_A}\otimes\id$, $E(a\otimes b)=a\,\omega_B(b)$ for a fixed state $\omega_B$ on $B$: ``take the expectation value in a state of $B$''. Expectations $E$ are not unique: they depend on a choice of reference state.
+
+\begin{theorem}[Takesaki]
+Let $\omega$ be a faithful normal state of $\M$ and $\N\subset\M$ a von Neumann subalgebra. There exists a normal conditional expectation $E:\M\to\N$ with $\omega\circ E=\omega$ iff $\N$ is invariant under the modular flow of $\omega$: $\sigma^\omega_t(\N)=\N$ for all $t$. The expectation is then unique.
+\end{theorem}
+This theorem (proved with the machinery of \cref{ch:tomita}) already says something physical: a subsystem can be ``traced out'' while preserving the state precisely when it is stable under the state's hidden dynamics. For a Rindler wedge in the vacuum, the modular flow is a boost (\cref{ch:rs_bw}), and subalgebras invariant under it are those generated by boost-invariant regions: this is why dilation-invariant subregions are the good ones (and the ones for which entropies are computed in 2D CFT via the replica trick). The \emph{Petz recovery map}, which undoes a quantum channel on a state when relative entropy is not decreased (\cref{ch:modham}), is built from the same data.
+
+\subsection{Entanglement without entropy}
+
+Even when no entropy exists we can still say: \emph{the vacuum is maximally entangled between $\A(O)$ and $\A(O)'$.}
+
+\begin{theorem}[Summers--Werner and generalizations; hypotheses vary by version, see \cite{SummersWerner1985} and the literature]
+For the vacuum of a QFT and the algebras $\M=\A(R)$, $\M'=\A(L)$ of complementary wedges (or of regions $O_1,O_2$ that touch or are only slightly separated), there are observables in $\M$ and $\M'$ for which the CHSH inequality is violated maximally, attaining the Tsirelson bound $2\sqrt2$. Under further hypotheses (see \cite{SummersWerner1987}) the maximal violation holds in \emph{every} normal state, for suitable pairs of commuting observables: it is a generic property of the local algebras, not of the vacuum.
+\end{theorem}
+This is the sharpest algebraic version of the statement that the vacuum is entangled across any boundary: the maximal violation is a property of the type III algebras, under the hypotheses of the cited theorems, and not of any special state. (It is also consistent with Reeh--Schlieder, \cref{ch:rs_bw}, which says that local operators acting on the vacuum can approximate any state.)
+
+What \emph{is} well defined and finite in QFT: the relative entropy $S(\omega\|\varphi)$ of two states (Araki, \cref{ch:modham}), the mutual information $I(A:B)=S(\omega_{AB}\|\omega_A\otimes\omega_B)$ for regions with a gap, the \emph{differences} of entropies between states (``entanglement first law'' $\delta S=\delta\langle K\rangle$), and, with gravity, the generalized entropy (\cref{ch:clpw}).
+
+\begin{keyidea}
+Subsystems are subalgebras; entanglement means the restricted state is mixed or correlated in a non-product way; conditional expectations preserving a state exist iff the subalgebra is modular-flow-invariant; and in QFT the vacuum is as entangled as quantum mechanics permits without having a well-defined entropy.
+\end{keyidea}
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:subsystems:1}
+For $\M=M_2\otimes M_2$ and $\N=M_2\otimes\id$, show that $E(a\otimes b)=a\,\omega_B(b)$ is a conditional expectation for any state $\omega_B$. Show $\omega_{AB}\circ E=\omega_{AB}$ iff $\omega_{AB}$ is a product $\omega_A\otimes\omega_B$ (with this $\omega_B$).
+\end{exercise}
+\begin{exercise}\label{ex:subsystems:2}
+Use Takesaki's theorem in finite dimensions: $\omega=\Tr(\rho\,\cdot)$ on $M_n$ and $\N$ a subalgebra. Show $\sigma^\omega_t(a)=\rho^{it}a\rho^{-it}$ and that $\sigma_t(\N)=\N$ iff $\N$ is invariant under conjugation by $\rho^{it}$. Find the $\omega$-preserving expectation for $\N=M_k\otimes\id_m$ and $\rho=\rho_A\otimes\rho_B$ and compare with partial trace.
+\end{exercise}
+\begin{exercise}\label{ex:subsystems:3}
+Compute the CHSH value $\langle A_0B_0+A_0B_1+A_1B_0-A_1B_1\rangle$ for the Bell state $(\ket{\uparrow\uparrow}+\ket{\downarrow\downarrow})/\sqrt2$ with spin observables in the $xz$-plane at the best angles, and show it equals $2\sqrt2$. Explain how the type III$_1$ theorem upgrades this from a single carefully prepared state to \emph{every} state.
+\end{exercise}
+\begin{exercise}\label{ex:subsystems:4}
+Heuristically estimate the entanglement entropy between $A(O_1)$, a ball of radius $r$, and the complement of a slightly larger ball of radius $r+\delta$ in a $(3+1)$-dimensional CFT-like theory using $S\sim c\,r^2/\delta^2$. Interpret $\delta$ as the algebraic cutoff in the split property and explain why the limit $\delta\to0$ does not exist.
+\end{exercise}
+
+
+\section{Dimension and the hyperfinite II$_1$ factor}\label{ch:dimension}
+\begin{physmotiv}
+The algebra of the de Sitter static patch is a type II$_1$ factor, and the statement that its Hilbert space has ``continuous dimension $d<1$'' is what turns into an entropy deficit. This section collects the facts about II$_1$ factors that the later chapters use: the trace as a dimension, the existence of projections of every size, and what a deficit of dimension does to entropy.
+\end{physmotiv}
+
+\subsection{The trace as a dimension function}
+Let $\M$ be a II$_1$ factor with normalized trace $\tau$ ($\tau(\id)=1$). Two projections $e,f\in\M$ are \emph{equivalent}, $e\sim f$, if $e=v^*v$ and $f=vv^*$ for some partial isometry $v\in\M$. In $M_n(\C)$ this means equal rank. The comparison theorem for factors says that for any two projections one is equivalent to a subprojection of the other, and in a II$_1$ factor
+\begin{equation}
+e\sim f\iff\tau(e)=\tau(f).
+\end{equation}
+So $\tau(e)$ is a complete invariant: it plays the role of $\mathrm{rank}/n$, but it takes a continuum of values.
+
+\begin{proposition}
+In the hyperfinite II$_1$ factor $R=\overline{\bigcup_nM_{2^n}(\C)}$ (with $M_{2^n}\hookrightarrow M_{2^{n+1}}$ by $a\mapsto a\otimes\id_2$) the trace of a projection takes every value in $[0,1]$.
+\end{proposition}
+\emph{Proof.} In $M_{2^n}$ the normalized trace of a projection is $j/2^n$, so every dyadic rational in $[0,1]$ occurs. For $t\in[0,1]$ choose dyadic $t_n\uparrow t$ and projections $e_1\le e_2\le\dots$ with $\tau(e_n)=t_n$ (at each stage add a rank-$(2^{n+1}(t_{n+1}-t_n))$ projection orthogonal to $e_n$). The strong limit $e$ is a projection in $R$ and $\tau(e)=t$ by normality of $\tau$. \hfill$\square$
+
+In particular a II$_1$ factor has \emph{no minimal projections}, hence no pure normal states: the support projection of a pure normal state would be minimal.
+
+\subsection{Dimension of a representation and the entropy deficit}
+A Hilbert space on which a II$_1$ factor $\M$ acts normally has a \emph{coupling constant}, a number $d\in(0,\infty]$, the Murray--von Neumann dimension of $\HH$ as an $\M$-module, normalized so that $d=1$ for $L^2(\M)$; it is additive under direct sums and $\dim_\M(p\,L^2(\M))=\tau'(p)$ for a projection $p$ in the commutant $\M'$ (with $\tau'$ its normalized trace). The finite-dimensional analogue is $\M=M_n(\C)$ acting on $\C^n\otimes\C^m$, whose dimension is $m/n$. For $m<n$ no state can be maximally mixed on $\M$: the reduced density matrix has rank at most $m$, so with the normalized trace $\tau=\Tr/n$,
+\begin{equation}
+S_\tau(\rho)=S_{\rm vN}(\rho)-\log n\le\log m-\log n=\log d<0.
+\end{equation}
+This is the mechanism of \cref{ch:clpw_ch} when the observer in the second patch is constrained to an energy window: the maximum entropy available to the patch is $\log d$.
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:dimension:1}
+In $M_n(\C)$ show that $e\sim f$ iff $\mathrm{rank}\,e=\mathrm{rank}\,f$, so that $\tau(e)=\tau(f)$ is the equivalence criterion there as well.
+\end{exercise}
+\begin{exercise}\label{ex:dimension:2}
+Construct explicitly in $R$ a projection with $\tau(e)=1/3$ (give the dyadic sequence $t_n$ and the first three stages).
+\end{exercise}
+\begin{exercise}\label{ex:dimension:3}
+Let $\M=M_n(\C)$ act on $\C^n\otimes\C^m$ with $m<n$. Show that every vector state has $S_\tau\le\log(m/n)$, with equality attained, and identify the maximizing states.
+\end{exercise}
+\begin{exercise}\label{ex:dimension:4}
+Show that a II$_1$ factor has no pure normal state. (Hint: a normal state $\omega$ has a support projection $s(\omega)$ and $\omega$ is faithful on $s\M s$.)
+\end{exercise}
+\begin{exercise}\label{ex:dimension:5}
+Using only $\tau(e)=\tau(f)\Rightarrow e\sim f$, show that $\tau(e)=\tau(f)$ implies $\id-e\sim\id-f$ in a II$_1$ factor. Why is this false in a II$_\infty$ factor?
+\end{exercise}

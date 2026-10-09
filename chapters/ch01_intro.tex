@@ -1,0 +1,218 @@
+\chapter{Why algebras, and how to read this book}\label{ch:intro}
+
+Why a physicist should care about operator algebras, the whole story of the book on a single page, and how to read the rest of it.
+
+\section{Why algebras?}\label{ch:why_algebras}
+
+\begin{physmotiv}
+Textbook quantum mechanics says: a system is a Hilbert space $\HH$, observables are self-adjoint operators on $\HH$, states are unit vectors (or density matrices). For a finite number of degrees of freedom this is airtight. But three of the most interesting situations in theoretical physics---\emph{infinite systems}, \emph{quantum field theory in a region}, and \emph{quantum gravity}---quietly break one or more of these assumptions. This section shows how, using examples simple enough to compute on the back of an envelope. The cure in all three cases is the same: promote the \emph{algebra of observables} to the primary object, and let Hilbert spaces and states be derived from it.
+\end{physmotiv}
+
+\subsection{The textbook framework and what it hides}
+
+Let us recall the framework with its hidden assumptions made explicit.
+
+\begin{enumerate}[label=(\roman*)]
+\item There is a \emph{single} Hilbert space $\HH$ for the system.
+\item \emph{Every} reasonable state is a vector (or density matrix) in $\HH$.
+\item \emph{Every} bounded function of the observables is again an observable, and $\Tr$ makes sense: $\langle A\rangle=\Tr(\rho A)$.
+\item The positions and momenta $x_i,p_i$ are represented \emph{uniquely} (up to unitary equivalence) by the Heisenberg relations.
+\item Observables associated with a subsystem $S$ live on a tensor factor: $\HH=\HH_S\otimes\HH_{\bar S}$, and the reduced density matrix $\rho_S=\Tr_{\bar S}\rho$ has an entropy $-\Tr\rho_S\log\rho_S$.
+\item Physical observables can be associated with local regions of space.
+\end{enumerate}
+
+Statement (iv) is the Stone--von Neumann theorem (\cref{ch:weyl}) and is true for finitely many degrees of freedom. Statements (i)--(vi) \emph{all} fail in at least one of the three situations below.
+
+\subsection{Crack 1: infinite systems and inequivalent representations}
+
+Take an infinite chain of spin-$\tfrac12$ particles, one at each site $j\in\Z$. The \emph{local observables} are those that act non-trivially on finitely many sites, e.g.\ $\sigma^z_j$, $\sigma^x_j\sigma^x_{j+1}$. These obviously form an algebra (sums and products of local observables are local). What is the Hilbert space?
+
+A natural guess is $\HH=\bigotimes_{j}\C^2$. But an infinite tensor product of Hilbert spaces is not well defined until one specifies a reference vector. Consider the following product states, with $\theta\in[0,\pi/2]$:
+\begin{equation}
+\ket{\Psi_\theta}=\bigotimes_{j\in\Z}\bigl(\cos\theta\ket{\uparrow}+\sin\theta\ket{\downarrow}\bigr).
+\end{equation}
+Truncate to $N$ sites. The overlap of two such states is
+\begin{equation}
+\braket{\Psi_\theta}{\Psi_{\theta'}}_N=\bigl(\cos\theta\cos\theta'+\sin\theta\sin\theta'\bigr)^N=\cos(\theta-\theta')^N\xrightarrow{N\to\infty}0\qquad(\theta\ne\theta').
+\end{equation}
+So these states are exactly orthogonal in the limit, and no vector in a ``universal'' Hilbert space can interpolate between them using local operations: any \emph{local} operator changes only finitely many factors and so cannot map $\ket{\Psi_\theta}$ to $\ket{\Psi_{\theta'}}$. Each $\Psi_\theta$ generates its own Hilbert space $\HH_\theta$ by acting with local operators, and these spaces carry different, \emph{unitarily inequivalent}, representations of the same algebra of local observables. Physically, $\Psi_\theta$ has magnetization $\langle\sigma^z_j\rangle=\cos 2\theta$, a macroscopic quantity that cannot be changed by any finite number of local operations. These are different phases, or superselection sectors.
+
+\begin{keyidea}
+In infinite systems, the algebra of local observables is unambiguous, but the Hilbert space is not: there are many inequivalent representations, corresponding to different macroscopic phases. A formalism that starts from a Hilbert space has already made a choice that cannot be made in advance.
+\end{keyidea}
+
+The same phenomenon appears for free bosons in infinite volume: the Fock representations at different temperatures and densities are inequivalent (\cref{ch:inequiv,ch:kms}), and the Stone--von Neumann theorem fails for infinitely many degrees of freedom (\cref{ch:weyl}).
+
+\subsection{Crack 2: quantum field theory}
+
+\subsubsection{Haag's theorem}\label{sec:haagthm}
+
+In the textbook treatment of an interacting QFT one writes the interacting field as a unitary rotation of the free field, $\phi_{\rm int}(x)=U^{-1}\phi_{\rm free}(x)U$, and uses the interaction picture. \emph{Haag's theorem}\index{Haag's theorem} (1955) \cite{Haag1955} states, roughly, that if the free and interacting fields, both Poincar\'e covariant with a unique translation-invariant vacuum, are related by such a unitary, then the interacting field is itself free (its vacuum correlation functions coincide with the free ones). In other words, the interacting vacuum lives in a Hilbert space that is \emph{unitarily inequivalent} to the Fock space of the free theory. This is the same phenomenon as in the spin chain, now in a relativistic setting: the Fock space of Weyl operators is not the unique representation of the canonical commutation relations once there are infinitely many degrees of freedom. Perturbative QFT works in spite of this because it only ever computes finite-order matrix elements, never the unitary $U$ itself.
+
+\subsubsection{Entanglement in a region has no density matrix}
+
+Take a QFT in Minkowski space in its vacuum $\Omega$. Let $R$ be a region (say, the right Rindler wedge) and $\A(R)$ the algebra of observables localized in $R$. In a lattice regularization one would write $\rho_R=\Tr_{\bar R}\ket\Omega\!\bra\Omega$ and $S_R=-\Tr\rho_R\log\rho_R$. This entropy is divergent in the continuum limit: for a field theory in $d$ spacetime dimensions it is
+\begin{equation}
+S_R\;\sim\;c_1\frac{\mathrm{Area}(\partial R)}{\epsilon^{d-2}}+\dots
+\end{equation}
+where $\epsilon$ is a short-distance cutoff (and, for a two-dimensional CFT, $S=\tfrac{c}{3}\log(L/\epsilon)$ for an interval of length $L$). The coefficient of the leading divergence is non-universal, it depends on how one cuts off the theory. The divergence is a symptom of something deeper than a UV nuisance:
+
+\begin{itemize}
+\item By the \emph{Reeh--Schlieder theorem}\index{Reeh--Schlieder theorem} (\cref{ch:rs_bw}) the vacuum $\Omega$ is \emph{cyclic and separating} for $\A(R)$: acting on $\Omega$ with local operators in $R$ one can approximate any state in $\HH$, and no non-zero operator in $\A(R)$ annihilates $\Omega$. This means the vacuum is very entangled between $R$ and its complement, to the extent that no ``reduced density matrix'' exists.
+\item The algebra $\A(R)$ is not of the form $\BH_R\otimes\id$ for any factor $\HH_R$. It is a \emph{type III$_1$} von Neumann algebra (\cref{ch:typeIII_local}), which has no trace, no pure states, and no density matrices.
+\end{itemize}
+
+So the question ``what is the entropy of a region in QFT?'' has no canonical answer in the continuum, and the reason is algebraic: the algebra of a region is of a type that does not admit entropy. One of the aims of this book is to see exactly how gravity changes this (\cref{ch:crossed,ch:entropy_II,ch:clpw}).
+
+\subsection{Crack 3: gravity}
+
+In a diffeomorphism-invariant theory, gauge invariance is the statement that physical observables commute with the constraints that generate diffeomorphisms. A local field $\phi(x)$ at a coordinate point $x$ is not gauge invariant: moving the point is a gauge transformation. Only \emph{relational} observables (``the value of $\phi$ where the curvature scalar $=1$'', ``the value of $\phi$ one proper time $\tau$ along the worldline of the observer'') are meaningful.
+
+Two consequences matter for us.
+
+\begin{enumerate}
+\item The algebra of observables of a spatial region is no longer simply the algebra generated by the local fields in that region. One must ask: relative to \emph{what} is the region defined? In a closed universe, such as de Sitter space with its compact spatial sections, there is no asymptotic boundary relative to which to define operators.
+\item Imposing the constraints changes the \emph{type} of algebra. We will see that the algebra of observables of a static patch in de Sitter space, once an observer is included, is a type II$_1$ factor. Unlike type III$_1$, this algebra has a trace and hence a well-defined entropy, and it has a maximal-entropy state: the de Sitter vacuum.
+\end{enumerate}
+
+A precursor of this phenomenon is already present in ordinary gauge theory, where the constraint (Gauss law) forces certain edge degrees of freedom to be associated to a region's boundary and changes the factorization of the Hilbert space (\cref{ch:gauge_warmup}).
+
+\subsection{The algebraic viewpoint}
+
+The common remedy is to take the following dictionary seriously.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{%
+\begin{tabular}{@{}ll@{}}
+\toprule
+Textbook QM & Algebraic formulation\\
+\midrule
+Observables = self-adjoint operators on $\HH$ & Observables = self-adjoint elements of a $^*$-algebra $\A$\\
+State = unit vector / density matrix & State = positive normalized linear functional $\omega:\A\to\C$\\
+Hilbert space $\HH$ (given) & Hilbert space $\HH_\omega$ (constructed from $\omega$ by GNS, \cref{ch:gns})\\
+Unique $x,p$ representation & Many inequivalent representations\\
+Subsystem = tensor factor & Subsystem = subalgebra\\
+Locality = tensor factorization & Locality = commutation of algebras of spacelike regions\\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+The expectation value $\omega(A)$ of an observable $A\in\A$ in a state $\omega$ is the only input from experiment. For a finite system $\A=\BH$ and $\omega(A)=\Tr(\rho A)$, so nothing is lost. For an infinite system the dictionary is the correct generalization, as the next sections show.
+
+The algebraic viewpoint also has a practical benefit that physicists will recognize: it separates the \emph{kinematics} (the algebra, determined by locality, symmetry and commutation relations) from the \emph{dynamics} and \emph{state}. Many properties of QFT, such as the type of the local algebras, do not depend on the details of the interaction at all.
+
+\begin{whatwrong}
+``Algebraic'' does not mean ``Hilbert-space free''. In practice we always represent $\A$ on a Hilbert space, and a vN algebra is by definition an algebra of operators on one. The point is that no particular Hilbert space is privileged, and that the properties of the algebra that matter (e.g.\ its type) are independent of which faithful representation is chosen.
+\end{whatwrong}
+
+\subsection{What this book assumes and does not assume}
+
+We assume graduate-level quantum mechanics, QFT (canonical quantization, Wick rotation, Rindler space), some statistical mechanics (Gibbs states, partition functions), and general relativity at the level of Schwarzschild black holes and horizons. We assume \emph{no} functional analysis or topology. Every mathematical concept is introduced after a physical motivation; we prove what is illuminating, sketch what is not, and cite what is heavy.
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:why_algebras:1}
+Verify the overlap formula $\braket{\Psi_\theta}{\Psi_{\theta'}}_N=\cos(\theta-\theta')^N$. Show that the expectation value of any local operator in $\Psi_\theta$ is well defined (depends on a finite number of sites). Compute the magnetization $\langle\sigma^z_j\rangle$.
+\end{exercise}
+\begin{exercise}\label{ex:why_algebras:2}
+Let $\ket{\psi}\in\C^2\otimes\C^2$ be $\cos\alpha\ket{\uparrow\uparrow}+\sin\alpha\ket{\downarrow\downarrow}$. Compute $\rho_A$ and its entropy. How does the entropy behave as $\alpha\to0$? Now consider $N$ copies of this state. In what sense does a limit $N\to\infty$ of the entanglement entropy fail to exist (for fixed $\alpha\ne0$)?
+\end{exercise}
+\begin{exercise}\label{ex:why_algebras:3}
+For a free massless scalar on a lattice in $1+1$ dimensions with spacing $\epsilon$, the vacuum entanglement entropy of an interval of $L/\epsilon$ sites scales as $\tfrac13\log(L/\epsilon)$. Explain why the continuum limit $\epsilon\to0$ at fixed $L$ cannot exist, and why this does not contradict the existence of well-defined correlation functions in the continuum.
+\end{exercise}
+\begin{exercise}\label{ex:why_algebras:4}
+Argue (without computation) that gauge-invariant observables in a theory with a Gauss law cannot be written as a tensor product over the two sides of a surface. (We return to this in \cref{ch:gauge_warmup}.)
+\end{exercise}
+
+\section{The punchline and how to read this book}\label{ch:punchline}
+
+\begin{physmotiv}
+Before any mathematics, here is the whole story in one page. Chapters~\ref{ch:toolkit}--\ref{ch:crossed_products} are the machinery needed to make each sentence below precise; Chapters~\ref{ch:gravity_ds}--\ref{ch:observers} are the physics it is aimed at. If you are impatient, read this section first, then use the reading paths in \cref{sec:paths}.
+\end{physmotiv}
+
+\subsection{The story in four acts}
+
+\textbf{Act I: Quantum field theory has no entropy.} The algebra $\A(R)$ of observables in a spacetime region $R$ of a QFT is a von Neumann algebra of \emph{type III$_1$}. Such an algebra has no trace and no density matrices, and consequently no von Neumann entropy $-\Tr\rho\log\rho$. The ``entropy'' one computes on a lattice is a cutoff-dependent artifact (\cref{ch:why_algebras,ch:typeIII_local}).
+
+\textbf{Act II: Modular theory is hidden dynamics.} Any state $\Omega$ that is cyclic and separating for an algebra $\M$ determines a one-parameter group $\sigma_t$ of automorphisms of $\M$, the \emph{modular flow}\index{modular flow}. If $\M$ were $\BH$ with density matrix $\rho$, then $\sigma_t(a)=\rho^{it}a\rho^{-it}$, so the generator is $-\log\rho$, the \emph{modular Hamiltonian}\index{modular Hamiltonian}. For a type III algebra there is no $\rho$, but the modular flow still exists (Tomita--Takesaki, \cref{ch:tomita}) and is not inner. For a Rindler wedge in the Minkowski vacuum, it is the boost (\cref{ch:rs_bw}).
+
+\textbf{Act III: Crossed products make time inner.} Given $\M$ and its modular flow, the \emph{crossed product}\index{crossed product} $\M\rtimes_\sigma\R$ is the algebra generated by $\M$ together with a new operator that implements the flow. The theorem of Connes and Takesaki is that if $\M$ is type III$_1$, then the crossed product is type II$_\infty$: it \emph{has} a trace, and so entropy is defined up to a state-independent additive ambiguity (\cref{ch:crossed,ch:takesaki,ch:entropy_II}).
+
+\textbf{Act IV: Gravity does it automatically.} In gravity, the Hamiltonian is a constraint, and its generator is a gauge redundancy. When one includes an observer with energy $q$ in de Sitter space and imposes the constraint, the algebra of gauge-invariant observables of the static patch is exactly such a crossed product (\cref{ch:clpw}). If the observer's energy is bounded below, the trace is finite and the algebra is of type II$_1$: there is a maximum entropy state, the de Sitter vacuum, and the entropy of semiclassical states is the \emph{generalized entropy}\index{generalized entropy} $\Sgen=A/4G+S_{\rm bulk}$ (\cref{ch:anatomy,ch:gen_entropy}).
+
+\begin{center}
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{%
+\begin{tikzpicture}[node distance=2.2cm, every node/.style={font=\small}]
+\node[draw,rounded corners,align=center,fill=physcol!8] (a) {QFT region\\ type III$_1$};
+\node[draw,rounded corners,align=center,right=of a,fill=physcol!8] (b) {+ modular flow\\ $\sigma_t$ (outer)};
+\node[draw,rounded corners,align=center,right=of b,fill=physcol!8] (c) {crossed product\\ $\M\rtimes\R$};
+\node[draw,rounded corners,align=center,right=of c,fill=physcol!8] (d) {type II\\ trace, entropy};
+\draw[-{Stealth}] (a)--(b); \draw[-{Stealth}] (b)--(c); \draw[-{Stealth}] (c)--(d);
+\node[below=0.8cm of c,align=center,font=\small\itshape] (g) {gravitational constraint $\;\Rightarrow\;$ this is automatic};
+\draw[dashed,-{Stealth}] (g.north) -- (c.south);
+\end{tikzpicture}}
+\end{center}
+
+\subsubsection*{A table of types and entropy}
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{%
+\begin{tabular}{@{}llll@{}}
+\toprule
+Type & Example & Trace? & Entropy\\
+\midrule
+I$_n$ & $n\times n$ matrices & finite & yes\\
+I$_\infty$ & $\BH$, $\dim\HH=\infty$ & infinite (not on identity) & yes, for trace-class $\rho$\\
+II$_1$ & hyperfinite II$_1$ factor & finite, $\Tr\id=1$ & yes, bounded above\\
+II$_\infty$ & II$_1\,\bar\otimes\,$I$_\infty$ & infinite & yes, up to shift\\
+III$_\lambda$ & local QFT algebras (III$_1$) & none & none\\
+\bottomrule
+\end{tabular}}
+\end{center}
+This table is the mnemonic for the first half of the book: Part III builds the vocabulary, Part IV explains why III exists, and Part V explains how to leave it.
+
+\subsection{Dependency map}
+
+\begin{center}
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{%
+\begin{tikzpicture}[node distance=0.9cm and 1.1cm, every node/.style={draw,rounded corners,font=\small,minimum width=2.6cm,align=center}]
+\node (I) {I Toolkit\\ Ch.\ 2};
+\node[right=of I] (II) {II \cstar, states, GNS\\ Ch.\ 3};
+\node[right=of II] (III) {III vN algebras\\ Ch.\ 4};
+\node[below=of III] (IV) {IV KMS, modular\\ Ch.\ 5};
+\node[left=of IV] (V) {V Crossed prod.\\ Ch.\ 6};
+\node[below=of V] (VII) {VII Gravity, dS\\ Ch.\ 8--10};
+\node[right=of VII] (VI) {VI AQFT\\ Ch.\ 7};
+\node[below=of VI,xshift=-1.8cm] (VIII) {VIII BH/holography\\ Ch.\ 11};
+\node[right=of VI] (IX) {IX NCG\\ Ch.\ 12};
+\draw[-{Stealth}] (I)--(II); \draw[-{Stealth}] (II)--(III); \draw[-{Stealth}] (III)--(IV);
+\draw[-{Stealth}] (IV)--(V); \draw[-{Stealth}] (V)--(VII); \draw[-{Stealth}] (IV)--(VI);
+\draw[-{Stealth}] (VI)--(VII); \draw[-{Stealth}] (VII)--(VIII); \draw[-{Stealth}] (IV)--(IX);
+\end{tikzpicture}}
+\end{center}
+
+\subsection{Reading paths}\label{sec:paths}
+
+\begin{description}[leftmargin=1em]
+\item[Path A (de Sitter fast track).] All material labelled ``core'': Chapters~\ref{ch:intro}--\ref{ch:observers}, skipping the Weyl relations (\cref{ch:weyl}) and superselection (\cref{ch:dhr}). You will have all the mathematics needed for \cref{ch:clpw_ch}.
+\item[Path B (physicist in a hurry).] Chapter~\ref{ch:intro}; \cref{ch:hilbert,ch:topologies} (skim); \cref{ch:cstar,ch:states,ch:gns}; \cref{ch:doublecomm,ch:factors,ch:traces,ch:classification}; \cref{ch:kms,ch:tomita,ch:modham}; all of Chapter~\ref{ch:crossed_products}; then \cref{ch:ds_special,ch:static_patch,ch:add_observer} and Chapter~\ref{ch:clpw_ch}. This leaves out inequivalent representations and AQFT; accept the statement that local algebras are type III$_1$.
+\item[Path C (mathematically curious).] Everything, including the boxes marked ``skippable'' and Part IX.
+\item[Path D (noncommutative geometry).] Chapter~\ref{ch:intro}; \cref{ch:hilbert,ch:topologies,ch:spectral}; \cref{ch:cstar}; \cref{ch:doublecomm,ch:factors,ch:traces,ch:classification}; then Chapter~\ref{ch:ncg} (which has its own appendices).
+\end{description}
+
+\subsection{Conventions}
+
+Sections follow a fixed template: a physics-motivation note, definitions and examples, a ``what could go wrong'' box, a key-idea summary, and exercises. Each Part ends with a dictionary translating the mathematical vocabulary back into physics. We use $\hbar=c=k_B=1$. Our conventions for modular theory are fixed once and for all in \cref{ch:tomita} and summarized in the Notation appendix.
+
+\begin{unsettled}
+\Cref{ch:clocks_qrf,ch:what_observer,ch:gen_entropy,ch:open_ds} and \cref{ch:bridge} describe results from 2022 onward that are still evolving; the status of these sections is flagged in the text, and citations to the recent literature should be checked against current versions of the papers.
+\end{unsettled}
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:punchline:1}
+For which of the types in the table above does the identity operator have a finite trace? What does that imply about the existence of a maximum entropy state?
+\end{exercise}
+\begin{exercise}\label{ex:punchline:2}
+Let $\rho$ be a density matrix on $\C^n$ and $\M=M_n(\C)$. Show that $\sigma_t(a)=\rho^{it}a\rho^{-it}$ is an inner automorphism, i.e.\ implemented by a unitary in $\M$. Why does inner-ness make the crossed product trivial in this case? (Hint: it will be isomorphic to $\M\otimes\Linf(\R)$.)
+\end{exercise}
+

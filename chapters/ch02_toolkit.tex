@@ -1,0 +1,479 @@
+\chapter{The mathematical toolkit}\label{ch:toolkit}
+
+Hilbert space, the several topologies on operators, the spectral theorem for unbounded operators, the Weyl relations, and unitary representations of groups with positive energy: everything we need from functional analysis, with the physics point of each tool.
+
+\section{Hilbert spaces and bounded operators}\label{ch:hilbert}
+
+\begin{physmotiv}
+In finite dimensions every linear operator is bounded, every trace converges, and $AB=\id+BA$ has solutions. None of this survives in infinite dimensions, and the failures are exactly the ones that matter for field theory. This section collects the infinite-dimensional facts we will need, and gives the one-line reason the Heisenberg relation cannot be realized by bounded operators.
+\end{physmotiv}
+
+\subsection{Hilbert spaces}
+
+A \emph{Hilbert space} $\HH$ is a complex vector space with an inner product $\inner{\xi}{\eta}$ (linear in the second slot, as in physics) which is \emph{complete} for the norm $\norm\xi=\sqrt{\inner\xi\xi}$. Completeness means that every Cauchy sequence converges: if $\norm{\xi_n-\xi_m}\to0$ as $n,m\to\infty$ then there is a $\xi\in\HH$ with $\xi_n\to\xi$.
+
+\begin{example}
+$\ell^2=\{(c_n)_{n\ge0}:\sum|c_n|^2<\infty\}$, and $L^2(\R^d)$, the square-integrable wavefunctions modulo functions vanishing almost everywhere. Both are separable: they have a countable orthonormal basis $\{e_n\}$, with $\xi=\sum_n\inner{e_n}{\xi}e_n$ for every $\xi$. All Hilbert spaces in this book are separable unless stated otherwise.
+\end{example}
+
+Completeness is not a technicality: it is what makes ``$\psi=\sum c_ne_n$'' meaningful. Without it, the Fourier series of a nice function can converge to something outside the space.
+
+\begin{whatwrong}
+In infinite dimensions the closed unit ball is \emph{not compact} in the norm topology, and a linear map defined on a dense subspace need not be bounded. A statement like ``$\ket{\psi_n}$ has a convergent subsequence'' is false in general; e.g.\ an orthonormal basis has $\norm{e_n-e_m}=\sqrt2$ for all $n\ne m$.
+\end{whatwrong}
+
+\subsection{Bounded operators}
+
+A linear operator $A:\HH\to\HH$ is \emph{bounded} if $\norm A:=\sup_{\norm\xi=1}\norm{A\xi}<\infty$. The set $\BH$ of bounded operators is an algebra, and:
+\begin{align}
+\norm{AB}&\le\norm A\norm B,\\
+\norm{A\ad A}&=\norm A^2\qquad(\text{the \cstar-identity}).
+\end{align}
+The adjoint $A\ad$ is defined by $\inner{A\ad\xi}{\eta}=\inner{\xi}{A\eta}$. This is the prototype of a \cstar-algebra (\cref{ch:cstar}).
+
+Some distinguished classes of bounded operators (all with obvious finite-dimensional analogues):
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{%
+\begin{tabular}{@{}lll@{}}
+\toprule
+Name & Condition & Physics\\
+\midrule
+self-adjoint & $A=A\ad$ & observable\\
+positive, $A\ge0$ & $\inner\xi{A\xi}\ge0\;\forall\xi$ ($\iff A=B\ad B$) & density matrix (if also trace 1)\\
+projection & $P=P\ad=P^2$ & yes/no question\\
+unitary & $U\ad U=UU\ad=\id$ & symmetry, time evolution\\
+isometry & $V\ad V=\id$ & \\
+partial isometry & $V\ad V$ and $VV\ad$ projections & \\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+\begin{example}[the Hilbert hotel]
+On $\ell^2$ let $S$ be the unilateral shift $S(c_0,c_1,\dots)=(0,c_0,c_1,\dots)$. Then $S\ad S=\id$ but $SS\ad=\id-\ketbra{e_0}{e_0}\neq\id$. So $S$ is an isometry that is not unitary. In finite dimensions, $A\ad A=\id$ forces $AA\ad=\id$; here it does not. This single example is the reason that \emph{Murray--von Neumann equivalence of projections}\index{Murray--von Neumann equivalence} (\cref{ch:classification}) is non-trivial: $\id$ and $\id-\ketbra{e_0}{e_0}$ are ``equivalent'' via $S$ in $\BH$ although the latter is strictly smaller.
+\end{example}
+
+A partial isometry $V$ maps the \emph{initial space} $V\ad V\HH$ isometrically onto the \emph{final space} $VV\ad\HH$. Partial isometries are the building blocks of the classification of vN algebras.
+
+\begin{theorem}[polar decomposition]
+Every bounded $A$ can be written $A=V|A|$ with $|A|=\sqrt{A\ad A}\ge0$ and $V$ a partial isometry with initial space $\overline{\mathrm{ran}\,|A|}$. For invertible $A$, $V$ is unitary.
+\end{theorem}
+This is the operator version of $z=e^{i\arg z}|z|$ and will appear in Tomita--Takesaki theory ($S=J\Delta^{1/2}$).
+
+\subsection{Compact, Hilbert--Schmidt and trace-class operators}
+
+\begin{definition}
+Let $\{e_n\}$ be an orthonormal basis. For a positive operator $A$ define $\Tr A=\sum_n\inner{e_n}{Ae_n}\in[0,\infty]$; this is independent of the basis. $A\in\BH$ is \emph{trace class}\index{trace} if $\Tr|A|<\infty$, and \emph{Hilbert--Schmidt} if $\Tr A\ad A<\infty$. Write $\mathcal T(\HH)$ for trace-class operators and $\mathcal K(\HH)$ for the \emph{compact operators}, the norm closure of the finite-rank operators.
+\end{definition}
+
+Then $\mathcal T\subset\mathrm{HS}\subset\mathcal K\subset\BH$, each an \emph{ideal} (closed under multiplication by bounded operators, on either side). Key facts:
+\begin{itemize}
+\item For trace-class $A$ and bounded $B$: $\Tr(AB)=\Tr(BA)$, $|\Tr(AB)|\le\norm B\,\Tr|A|$.
+\item A \emph{density matrix} is a positive trace-class operator with $\Tr\rho=1$. Then $\omega_\rho(B)=\Tr(\rho B)$ defines an expectation value on all of $\BH$.
+\item $\Tr\id=\infty$ when $\dim\HH=\infty$. So $\Tr$ is not defined on all of $\BH$; $\BH$ itself is \emph{not} trace class. A trace exists as a (semi-finite) weight (\cref{ch:traces}), which is essential for type I$_\infty$ and II$_\infty$.
+\item \textbf{Duality:} $\mathcal T(\HH)\cong\mathcal K(\HH)^*$ and $\BH\cong\mathcal T(\HH)^*$ via $(A,B)\mapsto\Tr(AB)$.
+\end{itemize}
+
+\begin{whatwrong}
+The duality $\BH\cong\mathcal T(\HH)^*$ says that the functionals on $\BH$ that come from density matrices (the so-called \emph{normal} states) are a proper subset of all states on $\BH$. There are states of $\BH$, for $\dim\HH=\infty$, that are not given by any density matrix (e.g.\ states supported ``at infinity'' which assign zero to all compact operators). These singular states are the algebraic seed of inequivalent representations (\cref{ch:states,ch:inequiv}).
+\end{whatwrong}
+
+\subsection{The Heisenberg relation cannot be bounded}
+
+\begin{theorem}[Wintner--Wielandt]
+There are no bounded operators $A,B$ on a (non-zero) Hilbert space with $[A,B]=\ii\,\id$.
+\end{theorem}
+\begin{proof}
+Assume $AB-BA=\ii\id$. By induction, $[A,B^n]=\ii nB^{n-1}$. Taking norms, $n\norm{B^{n-1}}\le2\norm A\norm{B^{n-1}}\norm B$. If $B^{n-1}\neq0$ for all $n$, dividing gives $n\le2\norm A\norm B$ for all $n$, a contradiction. If $B^{m}=0$ for some minimal $m\ge1$ then $\ii m B^{m-1}=[A,B^m]=0$, contradicting minimality (or, for $m=1$, $B=0$ and $\ii\id=0$).
+\end{proof}
+
+Position and momentum must therefore be unbounded operators. This is why we pass to the exponentiated Weyl form (\cref{ch:weyl}) and why $x,p$ will be treated as operators \emph{affiliated} to algebras (\cref{ch:spectral}), rather than elements of them.
+
+\begin{keyidea}
+Bounded operators form a Banach (indeed \cstar) algebra; $\Tr$ is defined only on the trace-class ideal; and the canonical commutation relations require leaving the bounded operators.
+\end{keyidea}
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:hilbert:1}
+Show that $\norm A^2=\norm{A\ad A}$ in finite dimensions (largest singular value). Why does this single identity force the norm on $\BH$ to be uniquely determined by the algebraic structure?
+\end{exercise}
+\begin{exercise}\label{ex:hilbert:2}
+For the shift $S$ above, compute $S^n$ and $(S\ad)^n$ acting on $e_0$ and on a general vector. Which of them tends to $0$ in the strong sense? In the norm sense? (See \cref{ch:topologies}.)
+\end{exercise}
+\begin{exercise}\label{ex:hilbert:3}
+Show that if $A$ is trace class then $\Tr(AB)=\Tr(BA)$ for all bounded $B$. For the shift $S$, compute $S\,\id\,S\ad$ and compare $\Tr(\id)$ with $\Tr(S\ad S)$ and $\Tr(SS\ad)$. Explain why there is no contradiction with unitary invariance of the trace (note $S$ is not unitary, and $\infty-1=\infty$).
+\end{exercise}
+\begin{exercise}\label{ex:hilbert:4}
+Find a projection $P$ on $\ell^2$ such that both $P$ and $\id-P$ are infinite dimensional but equivalent to $\id$ via partial isometries. (Hint: even and odd sites.) What does this say about the possible ``dimension functions'' on $\BH$?
+\end{exercise}
+\begin{exercise}\label{ex:hilbert:5}
+Give a bounded operator on $L^2(\R)$ that is not compact, and one that is. Show that the identity operator can never be compact when $\dim\HH=\infty$.
+\end{exercise}
+
+\section{Topologies on operators}\label{ch:topologies}
+
+\begin{physmotiv}
+When we say ``the observable $A$ is the limit of local observables $A_N$'' we must say in \emph{what sense}. The average magnetization $M_N=\frac1N\sum_{j=1}^N\sigma^z_j$ is a perfectly good local observable for each $N$; in a state with magnetization $m$ it converges to the number $m$ in an appropriate sense, but not in operator norm. This difference between the modes of convergence is exactly the difference between a \cstar-algebra (closed in norm) and a von Neumann algebra (closed in weak/strong topologies). Much of the structure of the book depends on this section.
+\end{physmotiv}
+
+\subsection{Three ways an operator sequence can converge}
+
+Let $A_n,A\in\BH$.
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{%
+\begin{tabular}{@{}lll@{}}
+\toprule
+Mode & Definition & Physical meaning\\
+\midrule
+\textbf{norm} & $\norm{A_n-A}\to0$ & uniform precision on all states\\
+\textbf{strong} & $\norm{(A_n-A)\xi}\to0\;\forall\xi\in\HH$ & each state is mapped to a convergent state\\
+\textbf{weak} & $\inner\eta{A_n\xi}\to\inner\eta{A\xi}\;\forall\xi,\eta$ & all matrix elements/expectation values converge\\
+\bottomrule
+\end{tabular}}
+\end{center}
+Norm convergence implies strong convergence implies weak convergence, and the converses fail.
+
+\begin{example}[the three modes are different]\label{ex:shift}
+Let $P_n$ be the projection onto $\mathrm{span}(e_0,\dots,e_{n-1})$ in $\ell^2$. Then $P_n\to\id$ strongly (since $\norm{(\id-P_n)\xi}^2=\sum_{k\ge n}|\xi_k|^2\to0$), but $\norm{\id-P_n}=1$ for all $n$, so $P_n\not\to\id$ in norm. Next, the shift powers $(S\ad)^n\to0$ strongly (the tail of a vector goes to zero) but not in norm. And $S^n\to0$ \emph{weakly} ($\inner\eta{S^n\xi}\to0$ since the shifted vector escapes to infinity) but \emph{not} strongly, since $\norm{S^n\xi}=\norm\xi$.
+\end{example}
+
+\begin{whatwrong}
+Multiplication $(A,B)\mapsto AB$ is norm-continuous, but only \emph{separately} strongly continuous (and only jointly so on bounded sets); for the weak topology it is only separately continuous. In \cref{ex:shift}, $S^n\to0$ weakly and $(S\ad)^n\to0$ weakly yet $(S\ad)^nS^n=\id$ for all $n$. Never take a product of weak limits without checking.
+\end{whatwrong}
+
+For general (non-separable or non-sequential) settings one needs \emph{nets} instead of sequences; for bounded sets in separable $\HH$ sequences suffice. A basis of neighbourhoods of $A$ in the strong topology is given by sets $\{B:\norm{(B-A)\xi_i}<\epsilon,\ i=1,\dots,k\}$ for finitely many vectors, and in the weak topology by $\{B:|\inner{\eta_i}{(B-A)\xi_i}|<\epsilon\}$.
+
+\subsection{A physics example: macroscopic observables become classical}
+
+Consider the infinite spin chain in the product state $\Psi_\theta$ from \cref{ch:why_algebras} (with magnetization $m=\cos2\theta$). Let $M_N=\frac1N\sum_{j=1}^N\sigma^z_j$.
+
+\begin{itemize}
+\item $\norm{M_N}=1$ for all $N$ in the $N$-site algebra. It does \emph{not} converge in norm: $\norm{M_N-M_{N'}}$ is of order 1 for $N'\gg N$ (choose a state aligned with the first $N$ sites and orthogonal on the remainder).
+\item In the representation built on $\Psi_\theta$ (the GNS representation, \cref{ch:gns}), the variance is $\norm{(M_N-m)\Psi_\theta}^2=\frac{1-m^2}{N}\to0$. Since the local vectors $A\Psi_\theta$ are dense and $M_N$ commutes with all but finitely many sites, $M_N\to m\,\id$ \emph{strongly}.
+\end{itemize}
+So in the representation $\pi_\theta$, the limit of $M_N$ exists and is a \emph{scalar} $m\id$, which commutes with every operator. Different values of $m$ give different representations, so $M=\lim M_N$ is a ``classical'' variable that labels the sector. In algebraic language: \emph{macroscopic observables become central elements in the von Neumann algebra obtained by weak closure}. The set of such central elements (the centre of the algebra) is the algebraic encoding of ``which phase are we in?'' (\cref{ch:factors}).
+
+\begin{keyidea}
+Norm closure (\cstar-algebra) keeps the quantum structure of local observables; weak/strong closure (von Neumann algebra) adds macroscopic/classical observables as limits, and these live in the centre.
+\end{keyidea}
+
+\subsection{The weak topologies and states}
+
+\begin{definition}
+The \emph{$\sigma$-weak} (ultraweak) topology on $\BH$ is the weak-$^*$ topology it inherits as the dual of $\mathcal T(\HH)$: $A_\alpha\to A$ iff $\Tr(\rho A_\alpha)\to\Tr(\rho A)$ for every density matrix $\rho$. The \emph{$\sigma$-strong} topology is defined similarly using sequences of vectors with $\sum\norm{\xi_k}^2<\infty$.
+\end{definition}
+On bounded sets the weak and $\sigma$-weak topologies coincide, and the same for strong and $\sigma$-strong. A linear functional on $\BH$ is $\sigma$-weakly continuous iff it is of the form $A\mapsto\Tr(\rho A)$ for a trace-class $\rho$. In particular:
+
+\begin{center}
+\emph{normal states $=$ $\sigma$-weakly continuous states $=$ states given by density matrices.}
+\end{center}
+This is what ``normal'' will mean from now on (\cref{ch:traces}); the singular states of \cref{ch:hilbert} are the ones that fail it.
+
+\begin{theorem}[Banach--Alaoglu in this setting]
+The unit ball of $\BH$ is compact in the weak (and $\sigma$-weak) topology.
+\end{theorem}
+Compactness of the unit ball is the reason limits of bounded sequences of observables have weak limit points. Because weak limits of normalized states can be non-normal, one needs to be careful about which topology one uses for states vs observables.
+
+\subsection{Why this matters}
+
+\begin{itemize}
+\item The \emph{double commutant theorem}\index{commutant} (\cref{ch:doublecomm}) states that for a unital $^*$-algebra $\M\subset\BH$ the weak, strong and $\sigma$-weak closures coincide with $\M''$. Von Neumann algebras are defined by this property, equivalently by being closed in any of these topologies.
+\item Normality (continuity of a state in the $\sigma$-weak topology) is the correct notion of ``physical'' state for a vN algebra.
+\item The Hilbert space chosen matters for \emph{closure}: the weak closure of the same \cstar-algebra in different representations gives different vN algebras (e.g.\ product states with different $m$).
+\end{itemize}
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:topologies:1}
+Verify the claims of \cref{ex:shift}: $P_n\to\id$ strongly but not in norm; $S^n\to0$ weakly but not strongly; $(S\ad)^n\to0$ strongly but not in norm.
+\end{exercise}
+\begin{exercise}\label{ex:topologies:2}
+Show that for the product state $\Psi_\theta$ one has $\norm{(M_N-m)\Psi_\theta}^2=(1-m^2)/N$. Deduce that $M_N\to m\id$ strongly in the representation on the space generated from $\Psi_\theta$.
+\end{exercise}
+\begin{exercise}\label{ex:topologies:3}
+In the same setting, show that $M_N$ is not Cauchy in norm. (Hint: compare $M_N$ and $M_{2N}$ on a state with the first $N$ spins up and the next $N$ down.)
+\end{exercise}
+\begin{exercise}\label{ex:topologies:4}
+Let $f_n(x)=\ee^{\ii nx}$ acting by multiplication on $L^2([0,2\pi])$. Does $f_n\to0$ weakly? Strongly? In norm? (Riemann--Lebesgue.)
+\end{exercise}
+\begin{exercise}\label{ex:topologies:5}
+Explain why the product of weakly convergent sequences need not converge to the product of the limits, using $S^n$ and $(S\ad)^n$.
+\end{exercise}
+
+\section{Spectral theorem and unbounded operators}\label{ch:spectral}
+
+\begin{physmotiv}
+Every physicist writes $H=\sum_nE_n\ket n\!\bra n$ or $x=\int x\,\ket x\!\bra x\,\dd x$ and moves on. The spectral theorem is the statement that this is legitimate in general, with the sum and the integral unified into a single object, a \emph{projection-valued measure}. It also tells us what ``$f(H)$'' means for any function $f$, which we will use constantly (modular operators are $\Delta^{it}=\ee^{-\ii tK}$ and $\rho^{it}$). The second half of this section explains why $x$, $p$, $H$ are only defined on a \emph{domain}, and why ``Hermitian'' is not the same as ``self-adjoint''.
+\end{physmotiv}
+
+\subsection{The spectral theorem for bounded operators}
+
+For a self-adjoint matrix $A$ with eigenprojections $P_\lambda$ we have $A=\sum_\lambda\lambda P_\lambda$. The general version replaces the sum with an integral over a projection-valued measure.
+
+\begin{definition}
+A \emph{projection-valued measure} (PVM) on $\R$ assigns to each Borel set $\Omega\subset\R$ a projection $E(\Omega)$ with $E(\R)=\id$, $E(\Omega_1\cap\Omega_2)=E(\Omega_1)E(\Omega_2)$, and $E(\bigcup_k\Omega_k)=\sum_kE(\Omega_k)$ (strongly) for disjoint $\Omega_k$.
+\end{definition}
+
+Physically, $E(\Omega)$ is the yes/no question ``is the value of the observable in $\Omega$?'', and $\inner\psi{E(\Omega)\psi}$ is the Born probability.
+
+\begin{theorem}[spectral theorem]\label{thm:spectral}
+Every self-adjoint operator $A$ (bounded or not) has a unique PVM $E_A$ supported on $\spec(A)$ with
+\begin{equation}
+A=\int_{\spec A}\lambda\,\dd E_A(\lambda).
+\end{equation}
+\end{theorem}
+
+Examples: for $x$ on $L^2(\R)$, $E_x(\Omega)$ is multiplication by the indicator function $\chi_\Omega(x)$; for a matrix, $E(\Omega)=\sum_{\lambda\in\Omega}P_\lambda$. For the free-particle Hamiltonian the spectrum is $[0,\infty)$ and is purely continuous: there are no eigenvectors in $L^2$. ``Generalized eigenvectors'' $\ket p$ are not normalizable; the PVM is the rigorous replacement.
+
+\subsubsection*{Functional calculus}
+For any Borel function $f$ one defines
+\begin{equation}
+f(A)=\int f(\lambda)\,\dd E_A(\lambda).
+\end{equation}
+This is bounded iff $f$ is bounded on the spectrum, and $f\mapsto f(A)$ is a $^*$-homomorphism from bounded Borel functions to $\BH$. Important cases for us:
+\begin{itemize}
+\item $\ee^{-\ii tH}$, the time evolution (Stone, below);
+\item $\rho^{it}$ and $\log\rho$ for a positive operator $\rho$ (the modular flow, modular Hamiltonian);
+\item $|A|=\sqrt{A\ad A}$, and the spectral projection $\chi_{[0,\infty)}(A)$ (used in \cref{ch:clpw} to restrict the observer's energy $q\ge0$);
+\item $\mathrm{sign}(A)$, $\theta(A)$, etc.
+\end{itemize}
+
+\begin{keyidea}
+A self-adjoint operator is the same thing as a PVM on $\R$. Functions of an operator are defined through the PVM, and the \emph{projections} $\chi_\Omega(A)$ are bounded operators that live in any von Neumann algebra containing $A$ (``affiliated'' to it, see below).
+\end{keyidea}
+
+\subsection{Unbounded operators and domains}
+
+An unbounded operator $A$ is a linear map defined on a \emph{dense} subspace $D(A)\subset\HH$, its \emph{domain}. Two operators with the same formula but different domains are different operators.
+
+\begin{definition}
+The adjoint $A\ad$ has domain $D(A\ad)=\{\eta:\xi\mapsto\inner\eta{A\xi}\text{ is bounded on }D(A)\}$ and is defined by $\inner{A\ad\eta}{\xi}=\inner\eta{A\xi}$. $A$ is \emph{symmetric} if $A\subset A\ad$ (i.e.\ $\inner\eta{A\xi}=\inner{A\eta}{\xi}$ on $D(A)$, the physicist's ``Hermitian''), and \emph{self-adjoint}\index{self-adjoint operator} if $A=A\ad$, including equality of domains. $A$ is \emph{essentially self-adjoint} if its closure is self-adjoint.
+\end{definition}
+
+Only self-adjoint operators have a spectral theorem, a one-parameter unitary group (Stone, below), and a unique time evolution. Symmetric but not self-adjoint operators can have none, or many.
+
+\begin{example}[momentum on an interval]\label{ex:interval}
+On $L^2[0,1]$ let $p=-\ii\,\dd/\dd x$.
+\begin{itemize}
+\item On $D_{\min}=\{\psi\text{ abs.\ cont.},\ \psi(0)=\psi(1)=0\}$ it is symmetric (boundary terms vanish) but has \emph{deficiency indices} $(1,1)$ and a $U(1)$ family of self-adjoint extensions: $\psi(1)=\ee^{\ii\alpha}\psi(0)$ (twisted periodic boundary conditions, with spectrum $2\pi n+\alpha$). Different $\alpha$ are physically different operators, different physics, with the same formula.
+\item On the half line $[0,\infty)$ the operator $-\ii\dd/\dd x$ with $\psi(0)=0$ is symmetric but has deficiency indices $(0,1)$ or $(1,0)$ depending on sign: it has \emph{no} self-adjoint extension. There is no observable ``momentum on the half line''.
+\end{itemize}
+\end{example}
+
+\begin{whatwrong}
+The product of two symmetric operators is not symmetric, the sum of two self-adjoint operators may be defined only on the intersection of domains (which could be $\{0\}$), and the relation $[x,p]=\ii$ holds only on a common dense invariant domain. Formal manipulations such as $\ee^{A+B}=\ee^A\ee^B\ee^{-[A,B]/2}$ require care. The Weyl form (\cref{ch:weyl}) avoids these problems by using unitaries only.
+\end{whatwrong}
+
+A useful sufficient criterion (Nelson, Kato--Rellich): if $H_0$ is self-adjoint and $V$ is $H_0$-bounded with relative bound $<1$ then $H_0+V$ is self-adjoint on $D(H_0)$. Atomic Hamiltonians $-\nabla^2+V$ with Coulomb potential are essentially self-adjoint on $C_c^\infty$ (Kato). We will not need these in detail; the point is that the physical Hamiltonian is a \emph{choice} of self-adjoint operator.
+
+\subsection{Stone's theorem}
+
+\begin{theorem}[Stone]
+There is a one-to-one correspondence between strongly continuous one-parameter unitary groups $U(t)$ and self-adjoint operators $H$, via $U(t)=\ee^{-\ii tH}=\int\ee^{-\ii t\lambda}\dd E_H(\lambda)$. $H$ is bounded iff $U$ is norm-continuous. $D(H)$ is the set of $\xi$ for which $t\mapsto U(t)\xi$ is differentiable.
+\end{theorem}
+Thus time evolution, translations, rotations, \dots\ determine self-adjoint generators, and a one-parameter group of unitaries is the same data as a self-adjoint generator. The modular flow $\Delta^{it}$ of \cref{ch:tomita} is the one-parameter group generated by $-\log\Delta$.
+
+\subsection{Affiliated operators}
+
+An unbounded operator cannot belong to a von Neumann algebra $\M\subset\BH$ (whose elements are bounded), but it can be \emph{affiliated} with it: $A$ is affiliated with $\M$ if $UAU\ad=A$ for every unitary $U\in\M'$. Equivalently, all spectral projections $\chi_\Omega(A)$ lie in $\M$. This is the right way to speak of ``the unbounded observable $x$'' inside a von Neumann algebra. Two examples to keep in mind: the observer's energy $q\ge0$ of \cref{ch:add_observer} will be an unbounded operator affiliated with the algebra of the observer; and the modular operator $\Delta$ of \cref{ch:tomita} is in general affiliated with neither $\M$ nor $\M'$, although conjugation by $\Delta^{it}$ maps $\M$ to itself.
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:spectral:1}
+Show that the multiplication operator $x$ on $L^2(\R)$ with domain $\{\psi:\int x^2|\psi|^2<\infty\}$ is self-adjoint, and find $E_x(\Omega)$. What is the domain of $x^2$? Show $\psi(x)=(1+x^2)^{-1/2}$ lies in $L^2$ but not in $D(x)$.
+\end{exercise}
+\begin{exercise}\label{ex:spectral:2}
+In \cref{ex:interval}, compute the deficiency spaces $\ker(p\ad\mp\ii)$ for the interval and the half line, and verify the claims about self-adjoint extensions. For the interval, find the spectrum of each extension.
+\end{exercise}
+\begin{exercise}\label{ex:spectral:3}
+Let $\rho$ be a positive invertible matrix. Using the functional calculus show that $\rho^{it}=\ee^{\ii t\log\rho}$ is unitary, that $t\mapsto\rho^{it}$ is a one-parameter group and identify its generator.
+\end{exercise}
+\begin{exercise}\label{ex:spectral:4}
+Show that if $A$ is self-adjoint and $A\ge0$ then $\ee^{-sA}$, $s>0$, is a bounded positive operator with norm $\le1$, although $A$ is unbounded. (This is the Euclidean heat kernel.) What happens for $\ee^{+sA}$?
+\end{exercise}
+
+\section{Weyl relations and Stone--von Neumann}\label{ch:weyl}
+\skippable
+
+\begin{physmotiv}
+The canonical commutation relations $[x,p]=\ii$ cannot hold for bounded operators (\cref{ch:hilbert}) and are only formally meaningful for unbounded ones. The cure is to exponentiate. The resulting \emph{Weyl relations}\index{Weyl algebra} are a statement about unitaries only. Then comes the dramatic result: for finitely many degrees of freedom, there is essentially only one way to represent them (Stone--von Neumann), which is why textbook QM works; for infinitely many, there are uncountably many, which is why QFT needs algebras.
+\end{physmotiv}
+
+\subsection{The Weyl form of the CCR}
+
+Define $U(a)=\ee^{\ii ap}$ and $V(b)=\ee^{\ii bx}$ for $a,b\in\R$. Using $\ee^{\ii ap}x\ee^{-\ii ap}=x+a$ one finds
+\begin{equation}
+U(a)V(b)=\ee^{\ii ab}\,V(b)U(a),\qquad U(a)U(a')=U(a+a'),\quad V(b)V(b')=V(b+b').\label{eq:weyl}
+\end{equation}
+Combining, $W(a,b)=\ee^{-\ii ab/2}U(a)V(b)$ satisfies $W(z)W(z')=\ee^{\ii\sigma(z,z')/2}W(z+z')$ with symplectic form $\sigma(z,z')=ab'-ba'$ for $z=(a,b)$, $z'=(a',b')$. More generally for $n$ degrees of freedom, or a field, $W(f)$ labelled by a vector $f$ in a real symplectic space $(\mathcal S,\sigma)$:
+\begin{equation}
+W(f)W(g)=\ee^{\frac\ii2\sigma(f,g)}W(f+g),\qquad W(f)\ad=W(-f).
+\end{equation}
+For the free scalar field, $\mathcal S$ is a space of test-function data, $W(f)=\ee^{\ii\phi(f)}$ with $\phi(f)$ the smeared field, and $\sigma(f,g)$ is the commutator function (the symplectic form of the classical phase space). These $W(f)$ generate the \emph{Weyl algebra} (a \cstar-algebra, \cref{ch:cstar}), which is the prototypical algebra for bosonic QFT. Everything is bounded: $W(f)$ is unitary.
+
+\subsection{Stone--von Neumann}
+
+A representation of \eqref{eq:weyl} on $\HH$ is \emph{regular} if $U(a)$, $V(b)$ are strongly continuous in $a,b$ (so that $x,p$ exist as self-adjoint generators by Stone's theorem).
+
+\begin{theorem}[Stone--von Neumann]
+For $n<\infty$ degrees of freedom, every regular irreducible representation of the Weyl relations is unitarily equivalent to the Schr\"odinger representation on $L^2(\R^n)$. Every regular representation is a direct sum of copies of it.
+\end{theorem}
+
+This is why finite-dimensional QM has no representation ambiguity: ``the'' Hilbert space is $L^2(\R^n)$, Fock-space and Schr\"odinger descriptions of the harmonic oscillator are unitarily equivalent, and so are different choices of $\omega$ in the Fock vacuum.
+
+\begin{whatwrong}
+Regularity is essential. The Weyl relations also have non-regular representations (e.g.\ on $\ell^2(\R_{\rm discrete})$ where $U(a)$ translates a discrete basis and $V(b)$ is multiplication, with no strongly continuous $V$) in which there is no $x$ operator. Such representations appear in polymer quantization (loop quantum gravity); they are inequivalent to Schr\"odinger. Physics selects regular ones because we want $x,p$ to exist.
+\end{whatwrong}
+
+\subsection{The failure for infinitely many degrees of freedom}
+
+For a free field on a Cauchy surface, the Fock vacuum $\Omega_m$ of mass $m$ defines a representation of the Weyl algebra on the Fock space $\mathcal F_m$. The two vacua $\Omega_m,\Omega_{m'}$ are related by a Bogoliubov transformation with coefficients $\beta_k\simeq\frac{m'^2-m^2}{4\omega_k^{2}}$ at large momentum, one for each mode $k$. A Bogoliubov transformation is implementable by a unitary operator iff $\sum_k|\beta_k|^2<\infty$ (Shale's criterion). In a finite box the sum over modes converges (in $3+1$ dimensions $\int\dd^3k\,k^{-4}<\infty$), so the two representations are equivalent. In \emph{infinite volume}, the sum becomes $V\int\frac{\dd^3k}{(2\pi)^3}|\beta_k|^2$ with $V\to\infty$, and diverges: the two representations are unitarily \emph{inequivalent}. This is the same phenomenon as the spin chain of \cref{ch:why_algebras}: in infinite volume two different states differ by infinitely many excitations, so no vector of one Hilbert space represents a state of the other (equivalently, the overlap of the two vacua vanishes: see the last exercise).
+
+\emph{(The ultraviolet is a separate issue: the interacting vacuum is not equivalent to a free one even in finite volume, which is Haag's theorem.)}
+
+\begin{keyidea}
+For finitely many degrees of freedom, the algebra determines the representation (S--vN). For infinitely many, it does not; different physical situations (masses, temperatures, densities) live in inequivalent representations of one and the same Weyl algebra. This is the reason the algebra, not $\HH$, is fundamental.
+\end{keyidea}
+
+We return to this in \cref{ch:inequiv}, where the thermal representation of the Weyl algebra at temperature $T>0$ is shown to be inequivalent to the vacuum representation.
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:weyl:1}
+Verify $\ee^{\ii ap}x\ee^{-\ii ap}=x+a$ (use $\frac{\dd}{\dd a}$) and derive \eqref{eq:weyl}.
+\end{exercise}
+\begin{exercise}\label{ex:weyl:2}
+Show that if $[x,p]=\ii$ holds on a finite-dimensional space it would imply $\Tr\ii\id=0$, so $\dim\HH=\infty$. Compare with the Wintner--Wielandt argument.
+\end{exercise}
+\begin{exercise}\label{ex:weyl:3}
+Quantum mechanics on a circle: on $L^2(S^1)$ the operator $x$ is not well defined, but $V(n)=\ee^{\ii nx}$ is for integer $n$. Show that $U(a)$ (translations) and $V(n)$ satisfy the Weyl relation only for integer $n$. Show that replacing $p\to p+\theta$ gives a family of inequivalent representations of this smaller algebra, labelled by $\theta\in[0,1)$. How does this differ from the line, where Stone--von Neumann forbids such a family?
+\end{exercise}
+\begin{exercise}\label{ex:weyl:4}
+Two oscillator vacua with frequencies $\omega,\omega'$ are related by a Bogoliubov transformation with $\alpha=\frac{\omega+\omega'}{2\sqrt{\omega\omega'}}$, $\beta=\frac{\omega-\omega'}{2\sqrt{\omega\omega'}}$ (check $\alpha^2-\beta^2=1$). Compute (e.g.\ with Gaussians) the overlap $|\braket{0_\omega}{0_{\omega'}}|=\alpha^{-1/2}=(1+\beta^2)^{-1/4}$. For $N$ independent oscillators show the total overlap is $\prod_j(1+\beta_j^2)^{-1/4}$ and that it has a non-zero limit as $N\to\infty$ iff $\sum_j\beta_j^2<\infty$.
+\end{exercise}
+
+\section{Groups, unitary representations, and positive energy}\label{ch:groups}
+
+\begin{physmotiv}
+Symmetry and dynamics enter operator algebras as \emph{groups acting by automorphisms}. Time translation, boosts, gauge transformations and (crucially, later) the modular flow are all one-parameter groups. Two ideas from this section drive the rest of the book. First, a symmetry can be \emph{implemented} by unitaries on a given Hilbert space or it can fail to be (spontaneous symmetry breaking, \cref{ch:inequiv}). Second, a Hamiltonian that is \emph{bounded below} is a very strong constraint, and is the reason the de Sitter algebra will be of type II$_1$ rather than II$_\infty$ (\cref{ch:clpw}).
+\end{physmotiv}
+
+\subsection{Unitary representations}
+
+A \emph{unitary representation} of a group $G$ on $\HH$ is a homomorphism $g\mapsto U(g)$ into the unitary group. For Lie groups and continuous symmetries we require \emph{strong continuity}: $g\mapsto U(g)\xi$ is norm-continuous for every $\xi$ (no stronger continuity can be demanded in infinite dimensions: the translation group on $L^2(\R)$ is not norm-continuous). By Stone's theorem (\cref{ch:spectral}) every one-parameter subgroup is generated by a self-adjoint operator: $U(t)=\ee^{-\ii tH}$.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{%
+\begin{tabular}{@{}lll@{}}
+\toprule
+Group & Generator & Physics\\
+\midrule
+$\R$ (time) & $H$ & Hamiltonian\\
+$\R^d$ (space) & $P_i$ & momentum\\
+$SO(3)$ & $J_i$ & angular momentum\\
+Poincar\'e & $P_\mu,M_{\mu\nu}$ & relativistic symmetry\\
+$U(1)$ & $Q$ & charge ($\mathrm{spec}\,Q\subset\Z$)\\
+modular flow & $K=-\log\Delta$ & ``hidden'' dynamics (\cref{ch:tomita})\\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+\subsubsection*{Haar measure}
+To average over a group one needs an invariant measure. On $\R$, Lebesgue measure $\dd t$; on a compact group such as $U(1)$ or $SO(3)$, the normalized invariant measure; on a general locally compact group, the \emph{Haar measure}, unique up to a constant, which is left-invariant: $\int f(hg)\dd g=\int f(g)\dd g$ for all $h$. Groups for which left and right Haar measures agree are \emph{unimodular}; all groups in this book (abelian, compact, Poincar\'e) are unimodular except possibly the affine group $ax+b$, which appears in conformal/Möbius settings and as the group generated by modular flow and dilations. Group averaging is the physicist's ``sum over images'' and ``projection onto gauge-invariant states'': for a compact group,
+\begin{equation}
+P=\int_G\dd g\,U(g)
+\end{equation}
+is the projector onto the $G$-invariant vectors. For a non-compact group $P$ is not a bounded operator on $\HH$: see the exercise and \cref{ch:gravity_constraints}.
+
+\subsection{Groups acting on algebras}
+
+\begin{definition}
+An \emph{action} of $G$ on a (\cstar\ or von Neumann) algebra $\M$ is a homomorphism $\alpha:G\to\Aut(\M)$, $g\mapsto\alpha_g$, where each $\alpha_g$ is a $^*$-automorphism (invertible, $^*$- and product-preserving). For a von Neumann algebra we also require $g\mapsto\alpha_g(a)$ to be continuous in the $\sigma$-weak topology.
+\end{definition}
+
+If $U(g)$ is a unitary representation on $\HH$ with $U(g)\M U(g)\ad=\M$, then $\alpha_g(a)=U(g)aU(g)\ad$ is an action; we say it is \emph{unitarily implemented} on $\HH$. An automorphism is \emph{inner} if it is implemented by a unitary \emph{in} $\M$ itself. The distinction between inner and outer is central:
+
+\begin{center}
+\emph{Inner:} the symmetry operator is an observable of the algebra (like $H$ for $\BH$).\\
+\emph{Outer:} it acts on the algebra but its generator lies outside it.
+\end{center}
+In the algebra $\BH$ every automorphism is inner. The Rindler boost acts on the algebra of the right wedge $\A(R)$ as an outer automorphism: it is a symmetry of the algebra, but there is no operator in $\A(R)$ that generates it. This is the content of ``there is no density matrix in QFT'': for a density matrix $\rho$, the flow $\rho^{it}\,\cdot\,\rho^{-it}$ would be implemented by $\rho^{it}\in\M$.
+
+\begin{whatwrong}
+A symmetry of the algebra need not be implemented on a given representation. The automorphism group of the algebra may act in a representation $\pi_\omega$ by unitaries only when the state is invariant (more generally quasi-invariant) under it. If the ground state breaks the symmetry, no unitary $U(g)$ exists on $\HH_\omega$ and the symmetry is \emph{spontaneously broken}. This is the algebraic definition of SSB (\cref{ch:inequiv}), where it appears with infinite-volume ferromagnets as the main example.
+\end{whatwrong}
+
+\subsection{Positive energy}
+
+In QM and QFT the Hamiltonian is required to be bounded below, $H\ge0$ (after subtracting the ground energy). In a Poincar\'e-covariant theory the stronger \emph{spectrum condition} says the joint spectrum of $P^\mu$ lies in the forward light cone. Important consequences:
+\begin{itemize}
+\item A bounded-below $H$ has a spectral projection $\chi_{[0,\infty)}(H)=\id$, so ``$\Tr\ee^{-\beta H}$'' makes sense for $\beta>0$ in good cases, and $\ee^{-sH}$ is a bounded operator for $s\ge0$ only. Analytic continuation of correlation functions into the lower half $t$-plane (the Euclidean regime) is available. (\emph{Contrast with the modular Hamiltonian $K=-\log\Delta$, which is \emph{unbounded in both directions}.})
+\item A ground state exists as a lowest-energy vector (when $0$ is an eigenvalue of $H$), and thermal equilibrium states are characterized by stability properties that rely on energy being bounded below (\emph{passivity}\index{passivity}, \cref{ch:kms}).
+\end{itemize}
+
+\subsubsection*{A preview of why the sign of $q$ matters}
+We will study systems with a constraint of the form $H+q=0$ (or $H+q=\text{const}$), where $H$ is the Hamiltonian of a static patch (unbounded in both directions: it is the boost generator, equal to $K/\beta_{dS}$ up to normalization) and $q$ is the energy of an \emph{observer}\index{observer}, a clock with a physical Hamiltonian bounded below, $q\ge0$. Solving the constraint ties the value of $q$ to the spectrum of $H$, so that requiring $q\ge0$ restricts attention to a half-line of the spectrum of $H$ (signs and normalizations are fixed in \cref{ch:add_observer}). In algebraic language, the algebra of constraint-satisfying observables is a crossed product by the group $\R$ (\cref{ch:crossed}); without the condition $q\ge0$ the trace on the crossed product is infinite on the identity (type II$_\infty$); with $q\ge0$ it is finite (type II$_1$) (\cref{ch:clpw}). It is the same mathematics as the following elementary fact: $\int_{\R}\ee^{-x}\dd x=\infty$, whereas $\int_0^\infty\ee^{-x}\dd x=1$.
+
+\begin{keyidea}
+Symmetries act on algebras by automorphisms; they may be inner (generator in the algebra) or outer (not). Positive energy makes semigroups $\ee^{-sH}$ bounded, and will turn an infinite trace into a finite one.
+\end{keyidea}
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:groups:1}
+Let $U(t)=\ee^{-\ii tH}$ with $H$ having purely continuous spectrum $\R$ (e.g.\ $H=p$ on $L^2(\R)$). Show that $\int_{-\infty}^\infty\dd t\,U(t)=2\pi\delta(H)$ as a distribution, i.e.\ it is not a bounded operator. For compact $G=U(1)$ and $H=Q$ with integer spectrum show instead that $\int_0^{2\pi}\frac{\dd\theta}{2\pi}\ee^{-\ii\theta Q}$ is the projector onto $Q=0$.
+\end{exercise}
+\begin{exercise}\label{ex:groups:2}
+Show that on $\BH=M_n(\C)$ every automorphism is inner (Skolem--Noether). Give an example of an automorphism of the algebra of an infinite spin chain (a \cstar-algebra) that is not inner, e.g.\ a lattice translation. Why can no unitary in the algebra implement it?
+\end{exercise}
+\begin{exercise}\label{ex:groups:3}
+Let $\M$ act on $\HH$ and $U(g)$ implement $\alpha_g$. Show that a different choice $U'(g)=U(g)z(g)$ with $z(g)\in\M'$ unitary also implements $\alpha_g$. When is this ambiguity absent? (Relevant to the freedom to redefine charges by gauge-algebra elements.)
+\end{exercise}
+\begin{exercise}\label{ex:groups:4}
+Compute $\int_0^\infty\ee^{-\beta\lambda}\dd\lambda$ and $\int_{-\infty}^{\infty}\ee^{-\beta\lambda}\dd\lambda$. Interpret the first as $\Tr\ee^{-\beta H}$ for a system with density of states 1 and spectrum $[0,\infty)$; explain why the second diverges and why this is the same issue as the type II$_\infty$/II$_1$ distinction above.
+\end{exercise}
+
+
+\section{Self-adjoint extensions and the half-line clock}\label{ch:halfline}
+\begin{physmotiv}
+The observer in the de Sitter construction carries a clock with energy $q\ge0$, and one would like a time operator conjugate to it. Whether such an operator exists is a question about self-adjoint extensions, and the answer is a theorem rather than a technicality (Pauli). The cases worked out here are the smallest ones in which the mechanism is visible, and they explain why the clock in \cref{ch:clpw_ch} is only ever approximate.
+\end{physmotiv}
+
+\subsection{The momentum operator on an interval}
+On $L^2(0,L)$ let $p_{\min}=-\ii\,\dd/\dd x$ with domain $\{\psi\in H^1:\psi(0)=\psi(L)=0\}$. Integrating by parts, for $\varphi\in H^1$ and $\psi\in D(p_{\min})$,
+\begin{equation}
+\langle\varphi,p\psi\rangle-\langle p\varphi,\psi\rangle=-\ii\big[\bar\varphi\psi\big]_0^L=0,
+\end{equation}
+so $p_{\min}$ is symmetric, and its adjoint $p_{\min}^*$ is the same differential expression on $D(p_{\min}^*)=H^1(0,L)$ with \emph{no} boundary condition. The deficiency subspaces are $\ker(p_{\min}^*\mp\ii)$: the solutions of $-\ii\psi'=\pm\ii\psi$ are $\ee^{\mp x}$, both in $L^2(0,L)$. The deficiency indices are $(n_+,n_-)=(1,1)$. By von Neumann's theorem the self-adjoint extensions are labelled by unitary maps between the deficiency spaces, here a phase $\ee^{\ii\theta}$, and they are the operators $p_\theta$ with domain $\{\psi\in H^1:\psi(L)=\ee^{\ii\theta}\psi(0)\}$. Each has pure point spectrum $\{(\theta+2\pi n)/L:n\in\Z\}$, with eigenfunctions $\ee^{\ii\lambda x}$. Different values of $\theta$ are physically different operators with different spectra, even though they are given by the same differential expression.
+
+\subsection{The half-line: no extension at all}
+On $L^2(0,\infty)$ take the same $p_{\min}$ with domain $\{\psi\in H^1:\psi(0)=0\}$. Now $p_{\min}^*\psi=\ii\psi$ has the square-integrable solution $\ee^{-x}$, but $p_{\min}^*\psi=-\ii\psi$ has only $\ee^{x}$, which is not. So $(n_+,n_-)=(1,0)$: there is \emph{no} self-adjoint extension of $p$ on the half-line. The reason is physical: $p$ would generate translations, and translating a wave function on $(0,\infty)$ moves part of it off the end.
+
+\begin{theorem}[Pauli]
+Let $H$ be a self-adjoint operator with $\mathrm{spec}(H)\ne\R$ (for instance $H\ge0$). There is no strongly continuous unitary group $U(s)$ with $U(s)^*HU(s)=H+s$ for all $s\in\R$; equivalently, $H$ has no self-adjoint conjugate time operator $T$ with $[H,T]=\ii$ in the Weyl sense.
+\end{theorem}
+\emph{Proof.} The relation gives $\mathrm{spec}(H)=\mathrm{spec}(H)+s$ for all $s$, so $\mathrm{spec}(H)=\R$. \hfill$\square$
+
+What survives is a \emph{covariant POVM}: a family of positive operators $\mathsf T(t)\,\dd t$ summing to $\id$ and shifting covariantly under $\ee^{-\ii sH}$. It gives time measurements of finite accuracy, and the accuracy is good for states with $\langle q\rangle$ far above the lower edge of the spectrum. This is the origin of the condition $\epsilon\ll1$, i.e.\ $q\gg T_{\rm dS}$, in \cref{ch:anatomy}.
+
+\subsection{The Laplacian on the half-line}
+For $-\dd^2/\dd x^2$ on $L^2(0,\infty)$ the boundary form is
+\begin{equation}
+\langle\varphi,-\psi''\rangle-\langle-\varphi'',\psi\rangle=\bar\varphi(0)\psi'(0)-\bar\varphi'(0)\psi(0).
+\end{equation}
+The conditions $\psi'(0)=\alpha\psi(0)$ with $\alpha\in\R$ make it vanish and give a one-parameter family of self-adjoint operators interpolating between Neumann ($\alpha=0$) and Dirichlet ($\alpha\to\infty$). For $\alpha<0$ there is a bound state $\ee^{\alpha x}$ with energy $-\alpha^2$; for $\alpha\ge0$ the spectrum is $[0,\infty)$. A physical boundary is a choice of $\alpha$, not an afterthought.
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:halfline:1}
+On $L^2(0,\infty)$ show that $p_{\min}$ is symmetric, that $D(p_{\min}^*)=H^1(0,\infty)$, and that the deficiency indices are $(1,0)$.
+\end{exercise}
+\begin{exercise}\label{ex:halfline:2}
+On $L^2(0,L)$ show that $p_\theta$ is self-adjoint and find its spectrum. Which $\theta$ gives a zero eigenvalue?
+\end{exercise}
+\begin{exercise}\label{ex:halfline:3}
+Show that the Robin Laplacian $-\dd^2/\dd x^2$ with $\psi'(0)=\alpha\psi(0)$ is symmetric. Find its bound state for $\alpha<0$ and show there is none for $\alpha\ge0$.
+\end{exercise}
+\begin{exercise}\label{ex:halfline:4}
+Prove Pauli's theorem as stated: show that $U(s)^*HU(s)=H+s$ implies $\mathrm{spec}(H)=\R$.
+\end{exercise}
+\begin{exercise}\label{ex:halfline:5}
+Let $\psi(q)$ be a Gaussian of mean $q_0$ and width $\sigma$ in $L^2(\R)$, and $\psi_+$ its restriction to $q\ge0$, renormalized. Estimate how large $q_0/\sigma$ must be for $\psi_+$ to differ from $\psi$ by less than $10^{-3}$ in norm, and say why this controls how well $p=-\ii\partial_q$ can be used on $\psi_+$.
+\end{exercise}

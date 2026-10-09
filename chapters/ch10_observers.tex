@@ -1,0 +1,187 @@
+\chapter{Observers, entropy, and open questions}\label{ch:observers}
+
+Clocks and quantum reference frames, what counts as an observer, generalized entropy and the second law, and the open questions in de Sitter space.
+
+\section{Observers, clocks, and reference frames}\label{ch:clocks_qrf}
+
+\begin{physmotiv}
+The observer of \cref{ch:add_observer} was a clock. The crossed product can be read as the statement that physical (gauge-invariant) observables are \emph{relative} to a reference frame: the algebra describes the world \emph{as seen from the observer}. This is the language of quantum reference frames (QRFs). A direct consequence, developed in recent work, is that different observers (different clocks) give different algebras and \emph{different entropies}, so gravitational entropy is observer-dependent. This is a fast-moving subject; the section describes the structure and flags what is established and what is not.
+\end{physmotiv}
+
+\begin{unsettled}
+This section is based on 2022--2025 papers: CLPW \cite{CLPW2023}, Chen--Penington \cite{ChenPenington2024}, De Vuyst--Eccles--H\"ohn--Kirklin \cite{DEHK2024a,DEHK2024b}, and Witten's background-independent algebra \cite{Witten2023bg} (the last not re-checked). Statements below follow the abstracts and structure of those papers; readers should consult the originals before relying on technical details.
+\end{unsettled}
+
+\subsection{The crossed product as a change of frame}
+
+In the constraint formulation (\cref{ch:gravity_constraints}), the kinematical algebra $\A_R\otimes\Bnd{L^2(\R)}$ contains non-invariant operators. A \emph{gauge-fixing} to the clock frame (``set the clock to read $p$'') converts each kinematical operator $a$ into the dressed operator $\hat a=\sigma_p(a)$, which is invariant. In the language of perspective-neutral QRF constructions, the invariant algebra is the same object seen from \emph{any} frame, and the passage between the ``external'' description (fields in static time, kinematical) and the ``observer's'' description (fields relative to the clock) is a QRF change. The crossed product is thus \emph{the algebra of the world as described relative to the observer's clock}.
+
+\subsection{Different clocks, different algebras, different entropies}
+
+The central finding of De Vuyst, Eccles, H\"ohn and Kirklin \cite{DEHK2024a,DEHK2024b}, as reflected in their abstracts, is that using different quantum reference frames gives different crossed-product algebras and hence different entropies: gravitational entropy is observer-dependent. They identify regimes (semiclassical, and an ``anti-semiclassical'' regime with suppressed fluctuations of the clock energy in which the clock may simply be partially traced out when computing the entropy), and give examples including a gravitational interferometer, degenerate clock superselection, a clock that is semiclassical for some purposes but not others, and monotonic versus periodic clocks. A careful reading of their framing is that the \emph{total} entropy of all degrees of freedom in a subregion, including the reference frames, is not observer dependent; the observer dependence arises from which frames are used to dress the field observables.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{%
+\begin{tabular}{@{}p{3.4cm}p{9cm}@{}}
+\toprule
+Clock type & Effect on the algebra and entropy\\
+\midrule
+Ideal, $q\in\R$ & crossed product by $\R$; II$_\infty$\\
+Ideal with $q\ge0$ & II$_1$ corner; maximum-entropy state exists (\cref{ch:clpw})\\
+Periodic clock & crossed product by a compact group, different type/entropy\\
+Degenerate/superselected clock & centre appears; entropy picks up Shannon terms\\
+Large fluctuations (semiclassical) & $S\simeq\Sgen$ as in \cref{ch:anatomy}\\
+Suppressed fluctuations & clock can be partially traced out\\
+\bottomrule
+\end{tabular}}
+\end{center}
+(The table organizes the cases mentioned in the literature; it is a schematic summary and not a classification theorem.)
+
+\subsection{Clocks in cosmological spacetimes}
+
+Chen and Penington \cite{ChenPenington2024} study gravitational algebras in cosmological backgrounds with explicit clocks (slow-roll inflation and evaporating Schwarzschild--de Sitter black holes). They establish a connection between the type II entropy of these algebras and generalized entropies for appropriate states, and emphasize the role of \emph{out-of-equilibrium} dynamics in defining gauge-invariant observables in semiclassical canonically quantized gravity: in a time-dependent background there is a physical clock supplied by the background itself, and the algebra depends on it. They also discuss compact wedges bounded by extremal surfaces in general spacetimes. The upshot for our purposes is that the de Sitter construction is robust: it extends from the exactly time-translation-invariant case to backgrounds where the clock is supplied by the dynamics.
+
+\begin{keyidea}
+Observables in a gauge theory of gravity are relative to a reference frame; the crossed product is the algebra \emph{in the observer's frame}. Different clocks give different algebras, with entropies agreeing with $\Sgen$ only in the appropriate semiclassical regime, so ``the'' gravitational entropy of a region is not frame independent.
+\end{keyidea}
+
+\begin{whatwrong}
+Do not conclude that horizon entropy is ``subjective'' in any strong sense: the observer-dependence concerns which degrees of freedom are included as reference frames when defining an algebra, and the total entropy of the subregion including frames is frame-independent. Also, in time-dependent backgrounds there may be no exact analogue of $H$ and the construction may require extra input (Chen--Penington).
+\end{whatwrong}
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:clocks_qrf:1}
+For a periodic clock (a particle on a circle, so $q\in\Z$) and a type I system whose flow is $\sigma_t=\Ad\ee^{\ii t H_S}$ with $H_S$ having integer-spaced energies, compute the invariant algebra (the crossed product by $U(1)$ rather than $\R$) and compare with the $\R$ case.
+\end{exercise}
+\begin{exercise}\label{ex:clocks_qrf:2}
+Show that if the clock has Hamiltonian $q$ with discrete spectrum $\{0,\delta,2\delta,\dots\}$, the operators $\hat a$ shift $q$ by multiples of the system's transition energies; identify the condition for the dressed algebra to be a factor.
+\end{exercise}
+\begin{exercise}\label{ex:clocks_qrf:3}
+Discuss why a clock with bounded energy fluctuations $\Delta q\ll T_{\rm dS}$ is in the ``anti-semiclassical'' regime, in which, schematically, $S\simeq S_{\rm vN}(\text{fields+clock})$ with the clock traced out.
+\end{exercise}
+
+\section{What counts as an observer?}\label{ch:what_observer}
+
+\begin{physmotiv}
+We have used an observer with a Hamiltonian bounded below, an ideal conjugate clock variable, a point-like worldline, and no back-reaction. All four are idealizations, and the results (type II$_1$, a maximum-entropy state) are sensitive to some of them. This section lists the tensions honestly. Parts of it are open problems.
+\end{physmotiv}
+
+\begin{unsettled}
+The status of the issues below is unsettled in the literature; this is a statement of questions, not results.
+\end{unsettled}
+
+\subsection{Ideal vs.\ realistic clocks}
+
+\textbf{Pauli's obstruction.} A Hamiltonian bounded below, $q\ge0$, has no self-adjoint operator canonically conjugate to it ($[T,q]=\ii$ forces spec $q=\R$). So an \emph{ideal} clock with a time operator is incompatible with $q\ge0$. In \cref{ch:clpw} this is handled by first constructing the algebra with $q\in\R$ and then projecting onto $q\ge0$; the dressed operators $\sigma_p(a)$ involve $p$, which is conjugate to $q$ and does not exist as an operator after the projection except through $P\,\sigma_p(a)\,P$. Physical clocks have bounded spectrum and measure time only approximately (via POVMs); the algebra we use is the semiclassical envelope of such constructions.
+
+\textbf{Finite size and internal structure.} A realistic observer has size and internal degrees of freedom; its energy is a sum over many constituents; and it may be entangled with the fields. Whether the algebra remains type II$_1$ with the same maximum-entropy state is not established in generality; the proposals of \cref{ch:clocks_qrf} suggest the answer depends on which clock is used.
+
+\textbf{Back-reaction.} The observer's mass changes the geometry (a Schwarzschild--de Sitter-like patch); to leading order in $G_N$ this is accounted for by the area change, but the exact statement of how the algebra depends on the observer's mass is subtle.
+
+\subsection{Multiple observers and consistency}
+
+With several observers, there is no canonical single algebra: each observer sees a crossed product dressed to its own clock. Constructing a \emph{joint} description (the perspective-neutral QRF picture) leads to relations between the observers' algebras, and to the question of whether observers can agree about entropy (they need not, \cref{ch:clocks_qrf}). The complementary question, whether one can define an algebra and an entropy associated to the \emph{universe} as a whole without an observer, remains open; in a closed universe the invariant algebra without an observer is trivial (\cref{ch:gravity_constraints}).
+
+\subsection{The role of observers in the interpretation}
+
+There are two readings of the construction:
+\begin{enumerate}
+\item \textbf{Operational.} The algebra describes what any physical observer can measure; the observer is a necessary participant, not a theoretical convenience.
+\item \textbf{Minimal.} The observer is a technical device to define gauge-invariant operators; the physical content is the entropy formula.
+\end{enumerate}
+The construction does not by itself decide between them. Remarks of Maldacena (on the role of ``real'' observers in de Sitter) and of the authors of the papers cited in \cref{ch:clocks_qrf} bear on this; we do not attempt to summarize them, and the reader is referred to the original sources.
+
+\begin{keyidea}
+The results hold for an idealized observer. Which features of the observer are essential (positivity of energy, a clock, large fluctuations) and which are artifacts of the model is partly understood: positivity of $q$ is what makes the algebra II$_1$, large energy fluctuations make the entropy match $\Sgen$, and the clock type changes the answer.
+\end{keyidea}
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:what_observer:1}
+Prove Pauli's obstruction: if $[T,q]=\ii$ with $T$ self-adjoint, then $\ee^{\ii aT}$ shifts $q\mapsto q+a$, so spec $q$ is translation invariant. Conclude spec $q=\R$.
+\end{exercise}
+\begin{exercise}\label{ex:what_observer:2}
+Model a bounded clock by a spin $j$ with $q=J_z+j\ge0$ and a time variable that is a phase operator of $J_z$; examine the limit $j\to\infty$ in which it approximates an ideal clock and the algebra tends to the II$_1$ construction.
+\end{exercise}
+\begin{exercise}\label{ex:what_observer:3}
+Argue that for two observers with energies $q_1,q_2\ge0$ in the same patch, there is a natural candidate for the joint algebra (invariants under $H+q_1+q_2$) but that it differs from the tensor product of the single-observer algebras.
+\end{exercise}
+
+\section{Generalized entropy and the second law}\label{ch:gen_entropy}
+
+\begin{physmotiv}
+The generalized entropy $\Sgen=A/4G_N+S_{\rm out}$ has been a guide in black hole physics for fifty years, but its second term was always a cutoff-dependent entanglement entropy. The crossed-product constructions give $\Sgen$ a precise meaning as a von Neumann entropy of a type II algebra, UV finite, for general subregions and not only for the de Sitter static patch. And they give the generalized second law (GSL) an algebraic proof: monotonicity of relative entropy.
+\end{physmotiv}
+
+\begin{unsettled}
+Results in this section are from \cite{JSS2023,FaulknerSperanza2024,Kirklin2024GSL} and the observer-dependence papers \cite{DEHK2024a,DEHK2024b}; the summaries follow their abstracts. Technical conditions should be checked in the original papers.
+\end{unsettled}
+
+\subsection{General subregions: Jensen--Sorce--Speranza}
+
+Jensen, Sorce and Speranza \cite{JSS2023} consider algebras of observables for subregions in Einstein gravity coupled to matter in the $G_N\to0$ limit. When the subregion is spatially compact or encompasses an asymptotic boundary, they argue the algebra is a type II von Neumann factor, the entropy of states is UV finite and agrees, up to a state-independent constant, with the generalized entropy. For spatially compact regions the algebra is type II$_1$, so an entropy-maximizing state exists, realizing a version of Jacobson's entanglement equilibrium hypothesis; the construction generalizes CLPW. In the language of this book: the subregion algebra is the crossed product of the QFT algebra of the region by the modular flow (more precisely, by the flow generated by the constraint associated with the boundary of the region), with the observer's degree of freedom anchoring the region.
+
+\subsection{The generalized second law from crossed products}
+
+Faulkner and Speranza \cite{FaulknerSperanza2024} derive the GSL for arbitrary cuts of Killing horizons from the perspective of crossed-product gravitational algebras. As stated in their abstract: they show that the crossed-product entropy agrees with the generalized entropy of the horizon cut in a semiclassical limit and reproduce Wall's result relating the GSL to monotonicity of relative entropy of the quantum field algebras; going beyond the semiclassical limit they compute subleading corrections to the crossed-product entropy but are unable to determine whether the GSL continues to hold after accounting for these. Kirklin \cite{Kirklin2024GSL} addresses the GSL beyond the semiclassical regime.
+
+\subsubsection*{The structure of the argument}
+\begin{enumerate}
+\item For a horizon cut at affine parameter $\lambda$, the algebra $\M_\lambda$ of the exterior of the cut is type III$_1$ and increasing cuts give decreasing algebras: $\M_{\lambda_2}\subset\M_{\lambda_1}$ for $\lambda_2>\lambda_1$ (the exterior shrinks).
+\item The crossed-product entropy of a semiclassical state at cut $\lambda$ is $S_\lambda=\Sgen(\lambda)+\text{const}$ (the const independent of $\lambda$ and of the state).
+\item By \cref{ch:modham}, relative entropy is monotone under restriction to a subalgebra: $S_{\rm rel}(\psi\|\varphi)_{\M_{\lambda_2}}\le S_{\rm rel}(\psi\|\varphi)_{\M_{\lambda_1}}$.
+\item For $\varphi$ the vacuum-like state with respect to which the horizon is Killing and $\psi$ the state of interest, $S_{\rm rel}$ equals (first law) $\beta\Delta\langle H\rangle-\Delta S$ up to boundary terms, and one finds $\Sgen(\lambda_2)\ge\Sgen(\lambda_1)$: the horizon generalized entropy of the exterior \emph{increases} as the exterior shrinks, i.e.\ the GSL, equivalent to monotonicity of relative entropy (Wall's argument).
+\end{enumerate}
+
+\begin{keyidea}
+$\Sgen$ is the von Neumann entropy of a type II algebra up to a constant; the GSL is monotonicity of relative entropy under shrinking the algebra, the crossed-product dressing converting the divergent entropy statement into a finite one.
+\end{keyidea}
+
+\subsection{Where the story stops}
+
+\begin{itemize}
+\item Beyond the semiclassical expansion, corrections to the entropy exist but whether the GSL survives is not settled \cite{FaulknerSperanza2024}.
+\item For regions without Killing symmetry, additional structure (half-sided translations, extremal surfaces) is needed; the Chen--Penington discussion of compact wedges bounded by extremal surfaces is a first step.
+\item The additive constant is not determined by the algebra.
+\end{itemize}
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:gen_entropy:1}
+Show that if $\M_2\subset\M_1$ and $\psi,\varphi$ are faithful normal states, $S_{\rm rel}(\psi|_{\M_2}\|\varphi|_{\M_2})\le S_{\rm rel}(\psi|_{\M_1}\|\varphi|_{\M_1})$ in finite dimensions (data processing under partial trace).
+\end{exercise}
+\begin{exercise}\label{ex:gen_entropy:2}
+For a free-field Rindler horizon and null cuts $\lambda_1<\lambda_2$, express $S_{\rm rel}$ as $2\pi\int(\lambda-\lambda_i)T_{\lambda\lambda}\,\dd\lambda\,\dd^{d-2}x_\perp-\Delta S$ and show that the monotonicity in $\lambda_i$ implies the QNEC-type inequality (as in the literature on null-cut modular Hamiltonians).
+\end{exercise}
+\begin{exercise}\label{ex:gen_entropy:3}
+Why must the additive constant in $S=\Sgen+\text{const}$ be independent of $\lambda$ for the GSL derivation to go through?
+\end{exercise}
+
+\section{Open questions in de Sitter}\label{ch:open_ds}
+
+\begin{physmotiv}
+Parts V--VII gave a clean semiclassical result. This section says what has \emph{not} been shown.
+\end{physmotiv}
+
+\begin{unsettled}
+Everything here is open or contested; the list is the author's reading and not a consensus statement.
+\end{unsettled}
+
+\begin{enumerate}
+\item \textbf{Beyond the semiclassical limit.} The algebras are defined at leading order in $G_N$. A non-perturbative definition of the algebra of a static patch, and whether it remains type II$_1$ (or becomes type I$_N$ with $N=\ee^{A/4G_N}$), is unknown. If type I$_N$, the maximally mixed state with entropy $\log N$ would explain $S_{\rm dS}$ as a count of states; the type II$_1$ result is compatible with this picture (CLPW \cite{CLPW2023}) but does not prove it.
+\item \textbf{The additive constant.} The algebra does not fix the zero of entropy. Relating it to $A/4G_N$ requires input beyond the algebra.
+\item \textbf{dS/CFT and static-patch holography.} Is there a dual quantum system whose algebra is $\A_{\rm dS}$? Proposals exist (stretched horizon, dS/CFT at future infinity, a ``static patch holography''), but none is established.
+\item \textbf{The role of observers.} Does physics require an observer (an operational reading), or is the observer a regulator for defining invariants (a minimal reading)? The dependence on the choice of clock (\cref{ch:clocks_qrf}) suggests that any answer must specify the reference frame.
+\item \textbf{Cosmological observers.} In inflationary or evaporating backgrounds the algebra depends on the clock supplied by the dynamics \cite{ChenPenington2024}; a general framework is missing.
+\item \textbf{Multiple observers and a global algebra.} A canonical algebra for the whole closed universe, if any, is unknown (\cref{ch:what_observer}).
+\item \textbf{Higher-derivative and non-semiclassical corrections} to the entropy formula and the GSL \cite{FaulknerSperanza2024}.
+\item \textbf{Dynamics.} The type II$_1$ algebra has no Hamiltonian in it (the constraint is solved); how time evolution and the arrow of time are encoded in such algebras is not clear.
+\end{enumerate}
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:open_ds:1}
+Compare the maximally mixed states of a I$_N$ factor and of II$_1$, emphasizing that the former has $S=\log N$ and the latter has $S=0$ in the normalization $\tau(\id)=1$. What information is lost in passing from I$_N$ to II$_1$?
+\end{exercise}
+\begin{exercise}\label{ex:open_ds:2}
+Write a one-paragraph critique of the claim ``the observer is merely a technical device''.
+\end{exercise}
+

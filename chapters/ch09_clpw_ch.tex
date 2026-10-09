@@ -1,0 +1,324 @@
+\chapter{The CLPW algebra}\label{ch:clpw_ch}
+
+The algebra of observables of a static patch of de Sitter space of Chandrasekaran, Longo, Penington and Witten, its maximum-entropy state, and the dissection of its entropy into generalized entropy.
+
+\section{The CLPW algebra}\label{ch:clpw}
+
+\begin{physmotiv}
+This is the chapter the book has been building towards. A static patch of de Sitter space has a temperature and, by Gibbons--Hawking, an entropy $A/4G_N$; the conjecture is that this entropy is the \emph{maximum} over all states of the patch, with empty de Sitter space the maximally mixed state. Chandrasekaran, Longo, Penington and Witten (CLPW) \cite{CLPW2023} gave this a precise algebraic form. Once an observer is included (\cref{ch:add_observer}), the gauge-invariant observables of the patch form the crossed product $\A_R\rtimes_\sigma\R$, a type II$_\infty$ algebra with a trace (\cref{ch:takesaki}). Demanding that the observer's energy be non-negative cuts it down to a type II$_1$ algebra whose maximum-entropy state is empty de Sitter space with the observer in a Boltzmann distribution at the horizon temperature. This section follows CLPW Sections 1, 2 and 4 closely; the entropy formula (their Section 3) is the subject of \cref{ch:anatomy}.
+\end{physmotiv}
+
+\subsection{The conjecture, and an entropic way to see it}
+
+Let $\ell=r_{\rm dS}$, $\beta_{\rm dS}=2\pi\ell=1/T_{\rm dS}$. For a patch containing matter, define $\Sgen=A/4G_N+S_{\rm out}$. The claim to be explained is that $\Sgen$ is maximal for empty de Sitter space: adding matter raises $S_{\rm out}$ but lowers the horizon area by more. The simplest instance (derived in \cref{ch:anatomy}): a particle of energy $E$ at rest at the centre of the patch lowers the horizon area,
+\begin{equation}
+\frac{A_{\rm hor}}{4G_N}=\frac{A_{\rm dS}}{4G_N}-\beta_{\rm dS}E.\label{eq:areashift}
+\end{equation}
+Suppose there are $\ee^{A_{\rm dS}/4G_N}$ microstates in all, equiprobable, and $\ee^{A_{\rm hor}/4G_N}$ of them contain the particle. Then
+\begin{equation}
+p(E)=\ee^{-\beta_{\rm dS}E}:\label{eq:entropicp}
+\end{equation}
+\emph{the thermal factor is entropic, not energetic}. A flat entanglement spectrum (Dong--Silverstein--Torroba \cite{DST2018} argued this for the de Sitter state by a replica trick) would make this exact. The CLPW algebra turns the heuristic into a statement about a trace.
+
+\subsection{The algebra of invariants}
+
+\subsubsection{Why an observer}
+Let $\A=\A_R$ be the algebra of the static patch $P$ (type III, in fact III$_1$ for QFT in de Sitter; CLPW write ``Type III'' in their Section~2 and ``III$_1$'' in Section~3), acting on the QFT Hilbert space $\HH$, with Bunch--Davies state $\Psi_{\rm dS}$ and modular Hamiltonian $K=\beta_{\rm dS}H$ (\cref{ch:static_patch}). The isometry group of the patch is $G_P=\R_t\times SO(d)$ for $\mathrm{dS}_{d+1}$ (CLPW write $SO(D-1)$ with $D=d+1$). Since the spatial sections are compact, $G_P$ must be imposed as a gauge constraint; but \emph{imposing it on observables leaves nothing}: the elements of $\A$ commuting with $H$ are the c-numbers, because the modular flow acts ergodically on a factor of type III$_1$. The would-be average $\int\dd t\,\ee^{\ii Ht}\mathcal O\ee^{-\ii Ht}$ has matrix elements that are infinite or zero. Hence an observer is needed (\cref{ch:add_observer}).
+
+\subsubsection{The model}
+CLPW's minimal observer has $H_{\rm obs}=q\ge0$ and $\HH_{\rm obs}=L^2(\R_+)$; the observer is assumed to access every operator on it. The constraint is
+\begin{equation}
+\hat H=H+q,
+\end{equation}
+a model that is reasonable as $G_N\to0$ (CLPW expect corrections in positive powers of $G_N$).
+First ignore $q\ge0$, so $\HH_{\rm obs}=L^2(\R)$ and $p=-\ii\partial_q$. Obvious invariants are $q$ and $\ee^{\ii pH}a\,\ee^{-\ii pH}$ ($a\in\A$); $\hat H$ itself is excluded since it annihilates physical states. Takesaki duality says there are no others:
+\begin{equation}
+(\A\otimes\Bnd{L^2(\R)})^{\hat H}=\{\ee^{\ii pH}a\,\ee^{-\ii pH},\,q\}''=\A_{\rm cr}\cong\A\rtimes_\sigma\R,
+\end{equation}
+a type II$_\infty$ algebra.
+
+\begin{table}[h]
+\centering
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{%
+\begin{tabular}{@{}lll@{}}
+\toprule
+ & CLPW & this book\\
+\midrule
+patch Hamiltonian, modular Hamiltonian & $H$,\ $\ h_\Psi=\beta H$ & $K=\beta_{\rm dS}H$\\
+observer energy & $q$ (with $x_{\rm C}=-q$) & $q$, with $x=-\beta_{\rm dS}q=\beta_{\rm dS}x_{\rm C}$\\
+conjugate variable & $p_{\rm C}=-\ii\partial_q$ & $p=-\ii\partial_x=-p_{\rm C}/\beta_{\rm dS}$\\
+dressed operator & $\ee^{\ii p_{\rm C}H}a\,\ee^{-\ii p_{\rm C}H}$ & $\sigma_p(a)=\ee^{-\ii pK}a\,\ee^{\ii pK}$ (identical)\\
+conjugated description & $\{a,\ H+x_{\rm C}\}$ & frame 1: $\{a,\ X=K+x\}$\\
+$q\ge0$ & $H+x_{\rm C}\le0$ & $X\le0$, $P=\chi(X\le0)$\\
+\bottomrule
+\end{tabular}}
+\end{table}
+So CLPW's description (before conjugating) is the book's frame~2, and after conjugating by $\ee^{-\ii p_{\rm C}H}$ it is frame~1; $\Psi_{\rm dS}\otimes f(x)$ is invariant under the conjugation because $H\Psi_{\rm dS}=0$. (We checked $p_{\rm C}H=-pK$ from $x=\beta x_{\rm C}$.)
+
+\subsubsection{The trace}
+In frame~1 an element of $\A_{\rm cr}$ is an $\A$-valued function of $X$. Since $K\Psi_{\rm dS}=0$ we may set $K=0$ inside $\langle\Psi_{\rm dS}|\cdots|\Psi_{\rm dS}\rangle$ and view $\hat a$ as an $\A$-valued function $a(x)$:
+\begin{equation}
+\tau(\hat a)=\int_{-\infty}^{\infty}\dd x\,\ee^{x}\,\langle\Psi_{\rm dS}|a(x)|\Psi_{\rm dS}\rangle,\label{eq:trace}
+\end{equation}
+which is CLPW (2.8) with $\beta_{\rm dS}\dd x_{\rm C}\,\ee^{\beta_{\rm dS}x_{\rm C}}=\dd x\,\ee^{x}$. It is tracial and positive but infinite on $\id$: it is a \emph{weight}\index{weight}, because the constant function $\Psi_{\rm dS}\otimes1$ is not in $\HH\otimes L^2(\R)$. (This is the trace of \cref{ch:takesaki}; note it is expressed in frame~1, where the algebra is generated by $\A$ and $X$.)
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.0]
+\fill[physcol!20] (-4,0) -- plot[domain=-4:0,smooth,variable=\z] ({\z},{2.2*exp(\z)}) -- (0,0) -- cycle;
+\draw[thick,domain=-4:0,smooth,variable=\z] plot ({\z},{2.2*exp(\z)});
+\draw[thick,dashed,domain=0:0.75,smooth,variable=\z] plot ({\z},{2.2*exp(\z)});
+\draw[->] (-4.3,0)--(2.6,0) node[right,font=\small] {$X$};
+\draw[->] (0,-0.2)--(0,4.9);
+\draw[dotted] (0,0)--(0,4.6);
+\node[font=\small,align=center] at (-2.3,3.0) {$\tau(P)=\displaystyle\int_{-\infty}^0\!\ee^{X}\dd X=1$};
+\node[font=\small] at (0.75,-0.35) {$q=0$};
+\node[font=\small,align=left] at (-3.1,-0.55) {$q\ge0$\ \ ($P$)};
+\node[font=\small,align=left] at (1.9,2.6) {$X>0$ ($q<0$):\\ removed by $P$};
+\node[font=\small] at (-4,0.35) {weight $\ee^{X}$};
+\end{tikzpicture}
+\sidecaption{The trace weight $\ee^{X}\dd X$ on the spectrum of $X=K+x=-\beta_{\rm dS}q$. On the full line the total weight diverges ($\mathrm{II}_\infty$); the projection $P=\chi(X\le0)$, i.e.\ $q\ge0$, cuts it to total weight $1$ (type II$_1$), and the maximum-entropy state is the density $\ee^{X}\theta(-X)$.}
+\end{figure}
+
+\subsection{Imposing $q\ge0$: the type II$_1$ algebra}
+
+The observer's energy is a (dressed) element of the algebra: in frame~1, $q=-X/\beta_{\rm dS}$. The condition $q\ge0$ is therefore the spectral projection
+\begin{equation}
+P=\chi(X\le0)\in\A_{\rm cr},\qquad\A_{\rm dS}=P\,\A_{\rm cr}P,\qquad\tau(P)=\int_{-\infty}^0\ee^{x}\,\dd x=1.\label{eq:trP}
+\end{equation}
+\begin{theorem}[CLPW]
+$\A_{\rm dS}$ is a von Neumann factor of type II$_1$ with $\tau(\id)=1$, acting on $\HH\otimes L^2(\R_-)$.
+\end{theorem}
+\emph{Status.} Given that $\A$ is a type III$_1$ factor, $\A_{\rm cr}$ is a II$_\infty$ factor (Connes--Takesaki, \cref{ch:takesaki}); a corner $\Pi\mathcal B\Pi$ of a factor by a projection $\Pi\in\mathcal B$ is a factor (its commutant is $\Pi\mathcal B'$); and a factor with a trace finite on the identity is II$_1$. What is \emph{physics}, not theorem, is the model: $\A$ type III$_1$, $\hat H=H+q$, an observer with only an energy, and $G_N\to0$. CLPW also expect $\A_{\rm dS}$ to be \emph{hyperfinite}\index{hyperfinite factor} (local QFT algebras and their crossed products by finite-dimensional groups are believed to be), hence isomorphic to the Murray--von Neumann factor: the algebra of an infinite set of qubits in the almost-maximally mixed state $\Psi_{\rm TFD}$ with $H=0$. That is the sense in which ``$\A_{\rm dS}$ looks like $\ee^{S_{\rm dS}}$ qubits''.
+
+\subsubsection*{The maximum-entropy state}
+Let
+\begin{equation}
+\Psi_{\max}=\Psi_{\rm dS}\otimes g_{\max}^{1/2}(x),\qquad g_{\max}(x)=\ee^{x}\theta(-x)\quad(=\beta_{\rm dS}\ee^{-\beta_{\rm dS}q}\ \text{in }q).
+\end{equation}
+Using \eqref{eq:trace} one finds, for $a\in\A$ and for a bounded function $G$ of the observer energy,
+\begin{align}
+\tau(a)&=\langle\Psi_{\rm dS}|a|\Psi_{\rm dS}\rangle,\qquad
+\tau\big(G(q)\big)=\int_0^\infty\beta_{\rm dS}\,\dd q\,\ee^{-\beta_{\rm dS}q}G(q).
+\end{align}
+So $\langle\Psi_{\max}|\,\cdot\,|\Psi_{\max}\rangle=\tau(\,\cdot\,)$ on $\A_{\rm dS}$: its density matrix is the identity, $S=0$, all R\'enyi entropies vanish, and by the Jensen argument every other state has $S<0$ (\cref{ch:entropy_II}). Moreover, for a dressed operator, $\langle\Psi_{\max}|\Pi\,\ee^{\ii p_{\rm C}H}a\,\ee^{-\ii p_{\rm C}H}\Pi|\Psi_{\max}\rangle=\langle\Psi_{\rm dS}|a|\Psi_{\rm dS}\rangle$ for \emph{any} $a\in\A$, including products of local operators at different times (CLPW 2.16): to the observer, $\Psi_{\max}$ looks exactly like empty de Sitter.
+
+\begin{keyidea}
+\textbf{Empty de Sitter space, with the observer's energy Boltzmann-distributed at $T_{\rm dS}$, is the maximally mixed state ($\hat\rho=\id$) of the type II$_1$ algebra of the static patch.} It has a flat entanglement spectrum, and every other state has strictly smaller (renormalized) entropy.
+\end{keyidea}
+
+\subsubsection*{The thermal law as an entropy deficit}
+Let $\Lambda\in\A_{\rm dS}$ be a projection. In the state $\hat\rho=\id$ the outcome $\Lambda$ occurs with probability $p_\Lambda=\tau(\Lambda)$; afterwards the state is $\rho_\Lambda=\Lambda/\tau(\Lambda)$, with $S(\rho_\Lambda)=\log\tau(\Lambda)$. As $S(\id)=0$, the entropy deficit is $\Delta S_\Lambda=\log\tau(\Lambda)$ and
+\begin{equation}
+p_\Lambda=\ee^{\Delta S_\Lambda},\label{eq:pLambda}
+\end{equation}
+the abstract version of \eqref{eq:entropicp} (CLPW 2.15). Example: $\Lambda=\chi(q\ge q_0)=\chi(x\le-\beta_{\rm dS}q_0)$ has $\tau(\Lambda)=\ee^{-\beta_{\rm dS}q_0}$, a deficit $\beta_{\rm dS}q_0$ equal to the area shift \eqref{eq:areashift}.
+
+\subsection{Refinements}
+
+\textbf{What is an observer?} CLPW's requirement is only that it can tell time. Operationally one restricts to a \emph{code subspace}\index{code subspace} of the gravitationally constrained Hilbert space in which the patch contains an observer with the assumed properties: operators in the patch are defined on that subspace only. Their non-minimal example is the Local Group.
+
+\textbf{Mass.} For an observer of mass $m\gg T_{\rm dS}$, replace $q\ge0$ by $q\ge m$ (this also localizes it near the geodesic $r=0$). The algebra is still II$_1$, but $\tau(\id)=\int_{-\infty}^{-\beta_{\rm dS}m}\ee^x\dd x=\ee^{-\beta_{\rm dS}m}$; the normalized maximum-entropy state has $q-m$ thermally distributed. With the trace \eqref{eq:trace} unnormalized the maximum entropy is $-\beta_{\rm dS}m$: the area deficit caused by the observer's rest energy, cf.\ \eqref{eq:areashift}. (That last interpretation is our consistency check, not a statement in CLPW.)
+
+\textbf{Rotations.} $SO(d)$ is compact, so imposing it just means keeping invariant operators; but this loses all operators with angular momentum. Giving the observer an orthonormal frame (phase space $T^*\R_+\times T^*SO(d)$) lets \emph{all} of $\A$ be dressed, and the algebra is still II$_1$. This matters in \cref{ch:anatomy}: without it the relative entropy appearing there would be that of the rotation-invariant subalgebra, not the standard one.
+
+\textbf{Pauli.} With $q\ge0$ no self-adjoint $p$ with $[p,q]=\ii$ exists; the clock keeps time well only on states supported away from $q=0$ (\cref{ch:what_observer}).
+
+\subsection{Hilbert spaces and the second patch}
+
+The algebra $\A_{\rm dS}$ is all the observer in $P$ can use, but one can ask what Hilbert space it acts on. CLPW's Section~4 shows: (i) A type II$_1$ algebra has representations labelled by a \emph{continuous dimension}\index{continuous dimension} $d\in(0,\infty]$ (Murray--von Neumann), additive under direct sums; the commutant is II$_1$ unless $d=\infty$. If $d<1$ the maximum possible entropy of a pure state of the commutant-partner is $-\log(1/d)$: an entropy deficit, as for $n>m$ in $\HH_A\otimes\HH_B$. (ii) Put an identical observer ($q'\ge0$) in the complementary patch. The constraint is $\hat H=H+q-q'$; imposing it on states means taking \emph{coinvariants}\index{coinvariants} (BRST cohomology at ghost number one), not invariants---there are no normalizable invariants. The map $T\Psi=\int\dd p'\,\ee^{\ii p'(H+q)}\Psi(p')$ identifies them with $\HH\otimes\HH_{\rm obs}$, and the result is $d=1$ with $\Psi_{\max}$ the purification of $\hat\rho=\id$. (iii) If instead $a\le q'\le b$, then
+\begin{equation}
+d=\tau(\Pi'_{[a,b]})=\ee^{-\beta_{\rm dS}a}-\ee^{-\beta_{\rm dS}b},
+\end{equation}
+so the observer in $P$ can at best reach entropy $\log d<0$. (iv) With \emph{no} observer in $P'$ the construction fails, and this is the subject of the next subsection.
+
+\subsubsection*{No observer in the second patch, and the Euclidean check}
+Without an observer in $P'$ one cannot simply omit $\HH'_{\rm obs}$ from the constrained Hilbert space: on $\HH$ there are no operators other than c-numbers commuting with both $\A$ and $H$, which is exactly why an observer was introduced in $P$. CLPW state that they have no definitive resolution of this puzzle and offer a conjecture, motivated by corrections to $S_{\rm dS}$. The Euclidean path integral on the sphere $S^D$ ($D=d+1$) has the symmetry group $G_{\rm dS}=SO(D+1)$ and so, by the standard counting of zero modes, behaves as $\ee^{-I}G_N^{\dim G_{\rm dS}/2}$, which gives a logarithmic correction to $S_{\rm dS}$. With a completely entangled pair of observers on a great circle the symmetry is broken to the stabilizer of the worldline, and the correction becomes $-\tfrac12(1+\dim SO(D-1))\log(1/G_N)$. Because in the maximum-entropy state all modes in $P'$ are fully entangled with $P$, adding an observer in $P$ alone should not change this correction. CLPW's \S4.4 makes the Euclidean version of the argument precise by including the entangled pair of observers in the sphere path integral; formally this produces an infinite factor $\delta(0)$ that shifts the entropy by an infinite additive constant, in line with the need to renormalize the entropy of a type II algebra. Having no observer in $P'$ is then like the limit $d\to0$ for the continuous dimension of $\hat\HH$, which is impossible for a type II$_1$ algebra; CLPW suggest that a strict limit $G_N\to0$ cannot be taken in this problem and that the continuous dimension of $\hat\HH$ is $d\sim G_N^{1/2}$ when $P'$ has no observer. This is a conjecture, not a derived result.
+
+\begin{whatwrong}
+\begin{itemize}
+\item The algebra lives in the semiclassical limit $G_N\to0$ around a fixed background; type II$_1$ is a statement about this effective description, not about the full non-perturbative algebra (\cref{ch:open_ds}).
+\item Everything depends on the observer model ($H_{\rm obs}=q$, constraint $H+q$). A different clock gives a different algebra, possibly a different entropy (\cref{ch:clocks_qrf}).
+\item The additive constant in the entropy is not fixed by the algebra: rescaling $\tau$ shifts $S$ for all states. With $\tau$ as in \eqref{eq:trace} and a massless observer, \cref{ch:anatomy} shows $S=\Sgen-A_{\rm dS}/4G_N$; one may instead normalize $\tau(\id)=\ee^{S_{\rm dS}}$.
+\item $\Psi_{\max}$ is \emph{not} a semiclassical state in the sense of \cref{ch:anatomy}: the clock's time resolution is $\sim\beta_{\rm dS}$. CLPW call this ``slightly perplexing''.
+\item Type II$_1$ plus a maximum does not by itself prove that $\ee^{S_{\rm dS}}$ counts states; that would need a type I$_N$ algebra (\cref{ch:open_ds}).
+\end{itemize}
+\end{whatwrong}
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:clpw:1}
+Verify $\tau(P)=1$ and $\tau(\chi(x\le c))=\ee^{c}$. Interpret $\ee^c$ as the ``dimension'' of the corner $q\ge-c/\beta_{\rm dS}$.
+\end{exercise}
+\begin{exercise}\label{ex:clpw:2}
+Show that every normal state of $P\A_{\rm cr}P$ has $S\le0$ (Jensen with $\tau(P)=1$), with equality only for the state with density matrix $P$.
+\end{exercise}
+\begin{exercise}\label{ex:clpw:3}
+In a type I$_N$ factor with $\tau=\Tr/N$ show $S_\tau=S_{\rm vN}-\log N\le0$. With $N=\ee^{S_{\rm dS}}$ interpret the CLPW entropy as $S_{\rm vN}-S_{\rm dS}$.
+\end{exercise}
+\begin{exercise}\label{ex:clpw:4}
+Derive \eqref{eq:pLambda} and check it for $\Lambda=\chi(q\ge q_0)$. Compute $\tau(\chi(q_1\le q\le q_2))$ and compare with the formula for $d$ above.
+\end{exercise}
+\begin{exercise}\label{ex:clpw:5}
+Show $\tau(\id)=\ee^{-\beta_{\rm dS}m}$ for $q\ge m$. By what factor must $\tau$ be rescaled to normalize it, and by how much does $S$ shift?
+\end{exercise}
+\begin{exercise}\label{ex:clpw:6}
+For $g_{\max}$ the variance of $x$ is $1$. Use $\Delta x\,\Delta p\ge\frac12$ (extending $g_{\max}^{1/2}$ by zero to $L^2(\R)$) to show the clock time $\beta_{\rm dS}p$ has resolution $\gtrsim\beta_{\rm dS}/2$ and conclude $\Psi_{\max}$ is not semiclassical.
+\end{exercise}
+
+\section{Anatomy of the result}\label{ch:anatomy}
+
+\begin{physmotiv}
+How does the abstract entropy $-\tau(\hat\rho\log\hat\rho)$ of the type II$_1$ algebra turn into the geometric $A/4G_N+S_{\rm out}$? CLPW \cite{CLPW2023} do it in three steps. (1) For states in which the observer's clock is sharp compared with $\beta_{\rm dS}$, the density matrix can be written down approximately, and its entropy is a relative entropy plus clock terms. (2) Wall's formula expresses the generalized entropy of the patch as that of the far future minus the same relative entropy. (3) In the far future the patch is empty de Sitter plus the observer, whose energy lowers the horizon area by a first-law amount. The three pieces match term by term, up to a state-independent constant.
+\end{physmotiv}
+
+\subsection{Semiclassical states}
+
+Work in frame~1 (\cref{ch:clpw}). Take
+\begin{equation}
+\hat\Phi=\Phi\otimes f(x),\qquad f(x)=\epsilon^{1/2}\gamma(\epsilon x),\qquad\epsilon\ll1,\label{eq:semiclass}
+\end{equation}
+with $\Phi\in\HH$ a fixed unit vector (finite energy relative to $\Psi_{\rm dS}$, $\epsilon$-independent) and $\gamma$ smooth, bounded, supported on $x<0$. (In CLPW's variables $f=\epsilon_{\rm C}^{1/2}g(\epsilon_{\rm C}x_{\rm C})$ with $\epsilon_{\rm C}\ll\beta_{\rm dS}$; $\epsilon=\epsilon_{\rm C}/\beta_{\rm dS}$.) The density $g=|f|^2$ is spread over $x\sim-1/\epsilon$, so:
+\begin{itemize}
+\item the observer energy is large, $q\sim T_{\rm dS}/\epsilon\gg T_{\rm dS}$, and $\hat\Phi$ is essentially untouched by the projection $P$;
+\item the clock reads time with uncertainty $\sim\epsilon\beta_{\rm dS}\ll\beta_{\rm dS}$ ($-p_{\rm C}$ is the time told by the clock; after evolving for time $t$ with $H_{\rm obs}=q$ one has $p_{\rm C}\approx-t$).
+\end{itemize}
+The maximum-entropy state $\Psi_{\max}$ is \emph{not} of this form ($\Delta x\sim1$, hence clock resolution $\gtrsim\beta_{\rm dS}$), so nothing below applies to it.
+
+\subsection{The density matrix and its entropy}
+
+Let $\Delta_{\Phi,\Psi}$ be the relative modular operator of \cref{ch:modham} for $\A$ and the states $\Phi,\Psi=\Psi_{\rm dS}$, $S_{\Phi,\Psi}a\Psi=a^*\Phi$ (CLPW write $\Delta_{\Phi|\Psi}$), $h_{\Phi,\Psi}=-\log\Delta_{\Phi,\Psi}$, $K=h_\Psi=-\log\Delta_\Psi$. One checks $\langle\Psi|\Delta_{\Phi,\Psi}a|\Psi\rangle=\langle\Phi|a|\Phi\rangle$ for $a\in\A$. The operator $\ee^{-x}\Delta_{\Phi,\Psi}=\ee^{-X}\ee^{-(h_{\Phi,\Psi}-K)}$ is affiliated with $\A_{\rm cr}$, since $h_{\Phi,\Psi}-K$ is affiliated with $\A$ (it is the generator of the Connes cocycle $u_s=\Delta_{\Phi,\Psi}^{\ii s}\Delta_\Psi^{-\ii s}\in\A$). Matching $\langle\hat\Phi|\hat a|\hat\Phi\rangle=\tau(\hat\rho\hat a)$ using \eqref{eq:trace}, for $\hat a=a\,\ee^{\ii u X}$, gives (CLPW 3.7--3.15, translated to book variables)
+\begin{equation}
+\hat\rho_{\hat\Phi}=g(X)\,\ee^{-x}\,\Delta_{\Phi,\Psi}+\mathcal O(\epsilon).\label{eq:rhohat}
+\end{equation}
+The mechanism: $f$ is slowly varying, so $g(X)$ commutes with $\Delta_{\Phi,\Psi}$ up to $\mathcal O(\epsilon)$, and multiplication by $\ee^{\ii uX}$ shifts $p$ by $-u$, forcing $|u|\lesssim\epsilon$ so that $\ee^{\ii uK}$ can be dropped for fixed $\Phi$. Then
+\begin{equation}
+-\log\hat\rho=h_{\Phi,\Psi}+x-\log g(x)+\mathcal O(\epsilon),\qquad
+S=\langle\Phi|h_{\Phi,\Psi}|\Phi\rangle+\langle x\rangle_g+h(g),
+\end{equation}
+with $h(g)=-\int g\log g$. Now use the cocycle identity $h_{\Phi,\Psi}-h_\Psi=h_\Phi-h_{\Psi,\Phi}$ (equality of the two expressions for $u_s$), $\langle\Phi|h_\Phi|\Phi\rangle=0$, and Araki's $S_{\rm rel}(\Phi\|\Psi)=\langle\Phi|h_{\Psi,\Phi}|\Phi\rangle$:
+\begin{equation}
+\boxed{\,S(\hat\rho_{\hat\Phi})=h(g)+\langle\hat\Phi|X|\hat\Phi\rangle-S_{\rm rel}(\Phi\|\Psi_{\rm dS})+\mathcal O(\epsilon),\qquad X=K+x.\,}\label{eq:Sformula}
+\end{equation}
+This is \cref{ch:entropy_II} Eq.~\eqref{eq:Srel}, now for general $\Phi$ and type III$_1$ $\A$.
+
+\subsubsection*{Checking \eqref{eq:Sformula}}
+In the finite-dimensional model of \cref{ch:entropy_II} ($\A=M_n$, $\Omega=\sum\sqrt{p_i}\ket{ii}$) the exact density matrix of $\Phi\otimes g^{1/2}$, for arbitrary $\Phi=\sum c_{aj}\ket{aj}$, is $\hat\rho(y)=\ee^{-y}\sum_jg(y-\log p_j)\,|c_j\rangle\langle c_j|$ with $\tau=\int\dd y\,\ee^{y}\Tr_A$. \texttt{scripts/check\_clpw\_general.py} computes $S$ exactly and compares. For $\Phi=u\Omega$ they agree to $10^{-9}$ (exact, as in \cref{ch:entropy_II}); for a generic $\Phi$ with Gaussian $g$ of width $s=\epsilon^{-1}$ the discrepancy is
+\begin{center}
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{%
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+$s$ & 1 & 2 & 4 & 8 & 16\\
+$S_{\rm exact}-S_{\eqref{eq:Sformula}}$ & $1.2\!\times\!10^{-1}$ & $4.0\!\times\!10^{-2}$ & $1.1\!\times\!10^{-2}$ & $2.8\!\times\!10^{-3}$ & $7.0\!\times\!10^{-4}$\\
+\bottomrule
+\end{tabular}}
+\end{center}
+falling like $s^{-2}$ in this type I model. (CLPW only claim $\mathcal O(\epsilon)$; the faster decay is a feature of this model, and we do not claim it for QFT.)
+
+\subsection{From the formula to generalized entropy}
+
+Compare \eqref{eq:Sformula} with the expected $\Sgen=A/4G_N+S_{\rm out}$ in three steps.
+
+\textbf{(i) The relative entropy is Wall's.} Wall \cite{Wall2012} compares the generalized entropy at different horizon cuts. In de Sitter, let $B$ be the bifurcation surface (exterior: the whole patch) and $\infty$ the cut at future infinity. Then
+\begin{equation}
+\Sgen(B)=\Sgen(\infty)-S_{\rm rel}(\Phi\|\Psi_{\rm dS}).\label{eq:wall}
+\end{equation}
+$\Psi_{\rm dS}$ enters because its modular Hamiltonian generates the boosts fixing $B$. (CLPW cite Wall for this and elaborate in a companion paper; we have not re-derived it, and I did not check which of Wall's papers they cite.)
+
+\textbf{(ii) The far-future cut sees only the observer.} Perturbations leave the patch in a time of order $\beta_{\rm dS}$, so $\Sgen(\infty)=A(\infty)/4G_N+S_{\rm out}(\infty)$ with $S_{\rm out}(\infty)$ the entropy of the observer. In the model the observer has only an energy, which is conserved, so its entropy is that of its energy distribution: $S_{\rm out}(\infty)=h(g)$ (with $\log\beta_{\rm dS}$ absorbed in the change of variable $x=\beta_{\rm dS}x_{\rm C}$).
+
+\textbf{(iii) The area term.} In frame~1 the observer's energy is the algebra element $q=-X/\beta_{\rm dS}$ (conjugation by $\ee^{-\ii p_{\rm C}H}$ maps $q\mapsto q-H$). Hence $\langle X\rangle=-\beta_{\rm dS}\langle H_{\rm obs}\rangle$. For a small energy $E$ at the centre of the patch the Schwarzschild--de Sitter metric in four dimensions has $f(r)=1-2G_NE/r-r^2/\ell^2$, with horizon at $r_{\rm hor}=\ell-G_NE+\mathcal O(E^2)$, so
+\begin{equation}
+\frac{A_{\rm hor}}{4G_N}=\frac{\pi\ell^2}{G_N}-2\pi\ell E+\mathcal O(E^2)=\frac{A_{\rm dS}}{4G_N}-\beta_{\rm dS}E+\cdots,
+\end{equation}
+which is \eqref{eq:areashift}. Therefore $A(\infty)/4G_N=A_{\rm dS}/4G_N+\langle X\rangle$.
+
+\textbf{Assembling.} $\Sgen(B)=A_{\rm dS}/4G_N+\langle X\rangle+h(g)-S_{\rm rel}$, which is $A_{\rm dS}/4G_N+S(\hat\rho)$ by \eqref{eq:Sformula}:
+\begin{equation}
+S(\hat\rho_{\hat\Phi})=\Sgen(B)-\frac{A_{\rm dS}}{4G_N}+\mathcal O(\epsilon).\label{eq:main}
+\end{equation}
+CLPW's statement is ``up to a state-independent constant''; with $\tau$ as in \eqref{eq:trace} the constant is $-A_{\rm dS}/4G_N$ in this model, and rescaling $\tau\to\ee^{A_{\rm dS}/4G_N}\tau$ gives $S=\Sgen$.
+
+\begin{keyidea}
+The entropy of a semiclassical state is \emph{clock entropy}\index{clock} ($h(g)$) $+$ \emph{observer area shift}\index{observer} ($\langle X\rangle=-\beta_{\rm dS}\langle q\rangle$) $-$ \emph{relative entropy of the bulk state}\index{relative entropy} (Wall's $\Sgen(\infty)-\Sgen(B)$). The matter inside the patch enters only through $S_{\rm rel}$; the area term is the observer's, evaluated at late times.
+\end{keyidea}
+
+\subsection{Properties and regime of validity}
+
+\begin{itemize}
+\item \textbf{Upper bound.} $S\le0$ for every state of $\A_{\rm dS}$, so by \eqref{eq:main} $\Sgen(B)\le A_{\rm dS}/4G_N$ for semiclassical states. But these have $\langle X\rangle\sim-1/\epsilon$: they sit \emph{far below} the maximum, at $\Sgen\approx S_{\rm dS}-\beta_{\rm dS}\langle q\rangle$. The maximizing state $\Psi_{\max}$ has $q\sim T_{\rm dS}$ and lies outside the regime of \eqref{eq:Sformula}.
+\item \textbf{Mass.} With $q\ge m$ one has $\langle q\rangle\ge m$ and $S\le\log\tau(\id)=-\beta_{\rm dS}m$ (\cref{ch:clpw}): the observer's rest energy lowers the maximal $\Sgen$ by $\beta_{\rm dS}m$.
+\item \textbf{Window.} Need $T_{\rm dS}\ll q\ll\ell/G_N$ (4D): the lower bound from $\epsilon\ll1$, the upper from dropping $\mathcal O(E^2)$ in the area shift. Also $G_N\to0$, and $\Phi$ fixed as $\epsilon\to0$.
+\item \textbf{Rotations.} \eqref{eq:Sformula} assumes all of $\A$ can be dressed; CLPW require an orthonormal frame on the observer for this (\cref{ch:clpw}), else $S_{\rm rel}$ is not the standard relative entropy.
+\item \textbf{Normal states.} Sharp $q=q_0$ is not a normalizable $L^2$ state, so not normal.
+\end{itemize}
+
+\begin{whatwrong}
+\begin{itemize}
+\item A tempting shortcut is to say that the constraint ties $q$ to the energy of matter \emph{inside} the patch, so that the clock variable $\langle x\rangle$ alone is the area change. It is not: the area term is $\langle X\rangle=\langle K\rangle+\langle x\rangle$, and the matter's effect enters through $S_{\rm rel}$ and Wall's formula. The formula $S_{\rm rel}=\beta\Delta\langle H_R\rangle-\Delta S_{\rm out}$ for a one-sided $H_R$ is also formal: CLPW stress that $H_R$ is not defined on $\HH$.
+\item $S_{\rm out}(\infty)=h(g)$ assumes the observer has no property but its energy; any internal entropy would add to it.
+\item Only the leading semiclassical order is claimed: errors $\mathcal O(\epsilon)$, $\mathcal O(E^2)$, $\mathcal O(G_N)$ in the constraint.
+\item The constant in $S=\Sgen+\text{const}$ is conventional; differences between states are meaningful.
+\end{itemize}
+\end{whatwrong}
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:anatomy:1}
+For $g(x)=\lambda\ee^{\lambda x}\theta(-x)$ show $S=1-1/\lambda-\log\lambda$ (\cref{ch:entropy_II}) and interpret $\lambda\ne1$ as the observer being at temperature $T_{\rm dS}/\lambda$.
+\end{exercise}
+\begin{exercise}\label{ex:anatomy:2}
+From $f(r)=1-2G_NE/r-r^2/\ell^2$ derive $r_{\rm hor}=\ell-G_NE+\mathcal O(E^2)$ and $\delta(A/4G_N)=-\beta_{\rm dS}E$.
+\end{exercise}
+\begin{exercise}\label{ex:anatomy:3}
+Show $\langle\Phi|h_{\Phi,\Psi}|\Phi\rangle=\langle K\rangle_\Phi-S_{\rm rel}(\Phi\|\Psi)$ from the cocycle identity. In a type I factor, verify it directly with $\Delta_{\Phi,\Psi}=\rho_\Phi\otimes\sigma_\Psi'^{-1}$.
+\end{exercise}
+\begin{exercise}\label{ex:anatomy:4}
+Run \texttt{scripts/check\_clpw\_general.py}. Fit the decay of $S_{\rm exact}-S_{\eqref{eq:Sformula}}$ with $s$. Why is it zero for $\Phi=u\Omega$?
+\end{exercise}
+\begin{exercise}\label{ex:anatomy:5}
+Using \eqref{eq:wall} and \eqref{eq:areashift} at linear order, show $\Sgen(B)-\Sgen(\text{empty dS+observer})=-S_{\rm rel}\le0$.
+\end{exercise}
+\begin{exercise}\label{ex:anatomy:6}
+Why is $\Psi_{\max}$, though it maximizes $S$ on $\A_{\rm dS}$, not a semiclassical state, and why does the semiclassical formula therefore not contradict $S(\Psi_{\max})=0$?
+\end{exercise}
+
+
+\section{A worked example: a qubit system with a clock}\label{ch:qubit}
+\begin{physmotiv}
+The entropy formula of \cref{ch:anatomy} is exact in a family of finite-dimensional models, and for the simplest ones everything can be done by hand. The result is a miniature of the whole construction: exciting the system costs entropy $\beta\Delta E$ because the probability of the excited state is a Boltzmann weight.
+\end{physmotiv}
+
+Take $\M=M_2(\C)\otimes\id$ on $\C^2\otimes\C^2$ with $\Omega=\sqrt{p_0}\ket{00}+\sqrt{p_1}\ket{11}$, so that $K\ket{ab}=(-\log p_a+\log p_b)\ket{ab}$. The crossed product is generated by $\M$ and $X=K+x$; with $y=x+\log p_b$ on the sector $\ket{ab}$ it is $M_2\otimes L^\infty(\R_y)$, with trace $\tau(F)=\int\dd y\,\ee^{y}\Tr F(y)$ (\cref{ch:entropy_II}). For the state $\Phi\otimes g^{1/2}(x)$ with $\Phi=\sum c_{ab}\ket{ab}$ the density matrix is
+\begin{equation}
+\hat\rho(y)=\ee^{-y}\sum_bg(y-\log p_b)\,\ket{c_b}\!\bra{c_b},\qquad\ket{c_b}=\sum_ac_{ab}\ket a.\label{eq:rhoqubit}
+\end{equation}
+
+\begin{proposition}
+If the vectors $\ket{c_b}$ are mutually orthogonal (the Schmidt basis of $\Phi$ is the modular basis) with weights $q_b=\|c_b\|^2$, then for \emph{every} $g$, with no semiclassical approximation,
+\begin{equation}
+S(\hat\rho)=h(g)+\langle x\rangle_g-\sum_bq_b\log\frac{q_b}{p_b}.
+\end{equation}
+\end{proposition}
+\emph{Proof.} The $\ket{c_b}\bra{c_b}$ are orthogonal, so $\hat\rho(y)$ has eigenvalues $\ee^{-y}q_bg(y-\log p_b)$. Then $S=-\int\dd y\,\ee^y\sum_b\lambda_b\log\lambda_b$; substituting $y=x+\log p_b$ in the $b$-th term, $\ee^{-y}\ee^{y}$ cancels, $\lambda_b=q_bg(x)/(p_b\ee^{x})$, and
+\begin{equation}
+S=-\sum_bq_b\int\dd x\,g(x)\big[\log q_b+\log g(x)-x-\log p_b\big]=h(g)+\langle x\rangle+\sum_bq_b\log\frac{p_b}{q_b}.\qquad\square
+\end{equation}
+The last sum is $-S_{\rm rel}(q\|p)$, the relative entropy of the \emph{commutant} marginal of $\Phi$ with respect to that of $\Omega$, which is what \eqref{eq:Sformula} reduces to for pure states. For $\Phi=\ket{bb}$ one finds $S=h(g)+\langle x\rangle+\log p_b$.
+
+If $p_b=\ee^{-\beta E_b}/Z$ is a Boltzmann distribution, the difference between the entropies of $\ket{jj}$ and $\ket{kk}$ is $\log(p_j/p_k)=-\beta(E_j-E_k)$: raising the energy of the system by $\Delta E$ lowers the entropy of the algebra by $\beta\Delta E$, the finite-dimensional version of \eqref{eq:areashift}.
+
+\subsection*{Exercises}
+\begin{exercise}\label{ex:qubit:1}
+Derive \eqref{eq:rhoqubit} from $\hat\Phi(F)=\tau(\hat\rho F)$.
+\end{exercise}
+\begin{exercise}\label{ex:qubit:2}
+For $\Phi=\ket{00}$ and $\Phi=\ket{11}$ compute $S$ and show $S_{11}-S_{00}=\log(p_1/p_0)$.
+\end{exercise}
+\begin{exercise}\label{ex:qubit:3}
+For $\Phi=\cos\theta\ket{00}+\sin\theta\ket{11}$ compute $S$, and find the $\theta$ that maximizes it for fixed $g$.
+\end{exercise}
+\begin{exercise}\label{ex:qubit:4}
+Run \texttt{scripts/check\_clpw\_general.py} with $n=2$ and a state of the form in the proposition. Confirm that the discrepancy vanishes for every width, not just in the limit.
+\end{exercise}
+\begin{exercise}\label{ex:qubit:5}
+Add the projection $P=\chi(X\le0)$. Show that on the sector $\ket{ab}$ it is $\chi(x\le\log p_a-\log p_b)$, so that $\langle\hat\Phi|P|\hat\Phi\rangle=\int_{-\infty}^0g$ for $\Phi=\ket{00}$ but $\int_{-\infty}^{\log(p_0/p_1)}g$ for $\Phi=\ket{01}$.
+\end{exercise}
