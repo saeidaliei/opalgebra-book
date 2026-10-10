@@ -1,6 +1,6 @@
 # Operator Algebras, Modular Theory, and Quantum Gravity: A Physicist's Guide
 
-A graduate-level book (about 200 pages, 13 chapters, 205 exercises with complete solutions) that teaches the operator-algebraic
+A graduate-level LaTeX book (about 200 pages, 13 chapters, 205 exercises with complete solutions) that teaches the operator-algebraic
 tools behind recent work on quantum gravity: von Neumann algebras, Tomita-Takesaki
 modular theory, crossed products, and their use in the de Sitter "algebra of observables"
 of Chandrasekaran, Longo, Penington and Witten (CLPW). It is written for physicists.
@@ -122,3 +122,7 @@ Two scripts (NumPy only) test claims of the text:
   generated semi-automatically and is not exhaustive.
 * The text has not been through independent peer review; errors are possible.
   Corrections are welcome.
+
+## License / citation
+No license has been specified. If you cite the book, cite the version of `main.pdf` you
+used together with the commit or archive you obtained it from.

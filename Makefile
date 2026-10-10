@@ -33,4 +33,4 @@ ch:
 
 clean:
 	if [ -f main.tex ]; then latexmk -C -jobname=$(JOBNAME) main.tex; fi
-	rm -f main.tex
+
