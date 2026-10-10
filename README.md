@@ -1,128 +1,117 @@
 # Operator Algebras, Modular Theory, and Quantum Gravity: A Physicist's Guide
 
-A graduate-level LaTeX book (about 200 pages, 13 chapters, 205 exercises with complete solutions) that teaches the operator-algebraic
-tools behind recent work on quantum gravity: von Neumann algebras, Tomita-Takesaki
-modular theory, crossed products, and their use in the de Sitter "algebra of observables"
-of Chandrasekaran, Longo, Penington and Witten (CLPW). It is written for physicists.
+This book introduces the operator-algebraic methods used in mathematical physics and in recent work on quantum gravity. Topics include $C^*$-algebras, von Neumann algebras, Tomita–Takesaki modular theory, crossed products, algebraic quantum field theory, and the de Sitter algebra of observables developed by Chandrasekaran, Longo, Penington, and Witten (CLPW).
 
-## Who it is for
-Readers with graduate quantum mechanics, quantum field theory, and some statistical
-mechanics and general relativity, but **no** formal training in functional analysis or
-topology. The goal is that such a reader can follow Witten's crossed-product paper
-("Gravity and the crossed product") and the CLPW paper on de Sitter space.
+It is intended for readers with a graduate-level background in quantum mechanics and quantum field theory, together with some statistical mechanics and general relativity. No prior formal training in functional analysis or topology is assumed.
 
-## What it covers
-Thirteen chapters, grouped into eleven Parts (numbered 0 to X). Each chapter is made of
-short sections (the units of the original outline), each opening with a margin note
-"Physics motivation", containing a "What could go wrong" box where useful, and ending
-with exercises.
+## Contents
 
-| Part | Chapter | Content |
-|---|---|---|
-| 0 Prelude | 1 Why algebras, and how to read this book | motivation, the story in one page, reading paths, conventions |
-| I Toolkit | 2 The mathematical toolkit | Hilbert space, operator topologies, spectral theorem, Weyl relations, groups and positive energy |
-| II C*-algebras | 3 C*-algebras, states, and representations | states, GNS, inequivalent representations, thermodynamic limit |
-| III von Neumann | 4 von Neumann algebras | double commutant, factors, traces, types I/II/III, entanglement |
-| IV Modular theory | 5 Equilibrium and modular theory | KMS, Tomita-Takesaki, modular Hamiltonian, relative entropy, Connes classification |
-| V Crossed products | 6 Crossed products | crossed product, Takesaki duality, entropy in type II, clock toy models |
-| VI AQFT | 7 Algebraic quantum field theory | Haag-Kastler, Reeh-Schlieder, Bisognano-Wichmann, type III_1, DHR |
-| VII Gravity | 8 Gravity, constraints, and de Sitter space | constraints, edge modes, static patch, the observer |
-| | 9 The CLPW algebra | the type II_1 algebra, maximum-entropy state, entropy formula |
-| | 10 Observers, entropy, and open questions | clocks, what is an observer, generalized entropy, open problems |
-| VIII Black holes | 11 Black holes and holography | large N, black-hole crossed product, entanglement wedges, Hawking radiation |
-| IX NCG | 12 Intermezzo: noncommutative geometry | spectral triples, Dixmier trace, spectral action, Standard Model, thermal time |
-| X Frontiers | 13 Frontiers | open problems; guide to the recent literature |
+The book has 13 chapters arranged into eleven parts, with exercises throughout. It also includes appendices on mathematical background, groups, heat kernels, Clifford algebras, exercise solutions, notation, and a mathematical-physics glossary.
 
-Appendices: topology and measure-theory crash courses, groups, heat kernels, Clifford
-algebras, solutions to every exercise, a notation table, a math-physics glossary, and an annotated
-bibliography. There is an index and a bibliography (`refs.bib`).
+| Part | Chapters | Main topics |
+|---|---:|---|
+| Prelude | 1 | Motivation and how to use the book |
+| Mathematical toolkit | 2 | Hilbert spaces, operator topologies, spectral theorem, Weyl relations, groups, and positive energy |
+| $C^*$-algebras | 3 | States, GNS representations, inequivalent representations, and thermodynamic limits |
+| von Neumann algebras | 4 | Double commutant theorem, factors, traces, types I/II/III, and entanglement |
+| Modular theory | 5 | KMS states, Tomita–Takesaki theory, modular Hamiltonians, relative entropy, and Connes classification |
+| Crossed products | 6 | Crossed products, Takesaki duality, type-II entropy, and clock models |
+| Algebraic quantum field theory | 7 | Haag–Kastler framework, Reeh–Schlieder theorem, Bisognano–Wichmann theorem, type III$_1$, and DHR theory |
+| Gravity and de Sitter space | 8–10 | Constraints, edge modes, the CLPW algebra, observers, entropy, and open questions |
+| Black holes and holography | 11 | Large-$N$ methods, black-hole crossed products, entanglement wedges, and Hawking radiation |
+| Noncommutative geometry | 12 | Spectral triples, Dixmier trace, spectral action, the Standard Model, and thermal time |
+| Frontiers | 13 | Open problems and a guide to recent literature |
 
-**Reading paths.** Section 1.2 gives four reading paths. Material tagged `core` in
-`scripts/chapters.tsv` is the fast track to CLPW; sections marked "can be skipped on a
-first reading" (Weyl relations, superselection, black holes, noncommutative geometry)
-can be left out. Each Part ends with a physics-math dictionary.
+Section 1.2 outlines several reading paths. Readers primarily interested in the CLPW construction can focus on material marked `core`; selected sections are identified as optional on a first reading.
 
-Sections added beyond the original outline: self-adjoint extensions and the half-line
-clock (2.6), dimension and the hyperfinite II_1 factor (4.6), monotonicity of relative
-entropy (5.5), a worked qubit-plus-clock example (9.3), black-hole versus de Sitter
-thermodynamics (11.5), and two spectral-action computations (12.9).
+## PDF and releases
 
-## Typography and layout
-The page design follows J. Schwichtenberg, *Physics from Symmetry*: Palatino text with
-Pazo math, a text block pushed toward the inner edge, a wide outer margin holding
-sidenotes, "Physics motivation" notes and figure captions, small-caps running heads,
-and bold old-style chapter and section numerals (see `preamble.tex`). The page is
-215 x 285 mm.
+Versioned PDFs are intended to be published on the repository's [Releases page](https://github.com/saeidaliei/opalgebra-book/releases). Each release should identify the corresponding version tag.
 
-## Conventions
-Locked in `macros.tex` and summarized in Appendix "Notation". The key ones for the
-gravity chapters: modular Hamiltonian `K = -log Delta` (`K = beta_dS H` in de Sitter);
-crossed-product variables `x = -beta_dS q`, `X = K + x`, `p = -i d/dx`; trace weight
-`tau(a) = int dx e^x <a(x)>`; the maximal-entropy state has density matrix equal to the
-identity of the type II_1 algebra. Section 9.1 contains a dictionary to the CLPW paper's
-own notation.
+## Building from source
 
-## How to compile
-Requirements: a TeX Live installation with `pdflatex`, `latexmk` and `bibtex`
-(plus `makeindex`, which latexmk calls), and Python 3.
+### Requirements
 
-```
-make            # builds main.pdf (runs scripts/gen.py, then latexmk)
-make ch N=9     # build a single chapter quickly (scripts/chapter_only.py)
-make clean      # remove build products
+- Python 3
+- A TeX Live installation with `pdflatex`, `latexmk`, `bibtex`, and `makeindex`
+- The LaTeX packages and fonts used by the project, including `microtype` and the RSFS fonts
+- `make` (for the Makefile commands)
+
+A full TeX Live installation is the simplest way to ensure the required packages and fonts are available.
+
+### Build the complete book
+
+From the repository root, run:
+
+```sh
+python3 scripts/gen.py
+make
 ```
 
-`main.tex` is **generated** by `scripts/gen.py` from `scripts/chapters.tsv` and
-`scripts/parts.tsv`; edit those (or the files under `chapters/`, `parts/`,
-`appendices/`, `frontmatter/`), not `main.tex`. A full build takes a minute or two and
-needs several LaTeX passes, which latexmk handles.
+The generated PDF is:
+
+```text
+operator-algebra-modular-theory-and-quantum-gravity.pdf
+```
+
+To build a single chapter for a faster iteration, use:
+
+```sh
+make ch N=9
+```
+
+To remove the PDF and LaTeX auxiliary files:
+
+```sh
+make clean
+```
+
+The top-level `main.tex` file is generated by `scripts/gen.py` using the chapter and part metadata in `scripts/chapters.tsv` and `scripts/parts.tsv`. The source material is maintained in `chapters/`, `parts/`, `appendices/`, and `frontmatter/`, along with `preamble.tex`, `macros.tex`, and `refs.bib`.
 
 ## Repository layout
-```
-main.tex            generated top-level file
-preamble.tex        packages and boxes (physmotiv, whatwrong, keyidea, exercise, ...)
-macros.tex          notation macros (do not redefine ad hoc)
-refs.bib            bibliography (see "Verification" below)
-chapters/           ch01_intro .. ch13_frontiers, one file per chapter
-parts/              part dictionaries
-appendices/         appendices A-I
-frontmatter/        title, preface
-figures/            (figures are drawn inline with TikZ)
-scripts/            gen.py, chapter_only.py, chapters.tsv (13 chapters and the old
-                    topics merged into each), parts.tsv,
-                    check_toy.py, check_clpw_general.py
+
+```text
+.
+├── appendices/          Mathematical appendices and exercise solutions
+├── chapters/            Main chapters
+├── frontmatter/         Title pages and preface
+├── parts/               Part introductions and topic dictionaries
+├── scripts/
+│   ├── gen.py           Generates main.tex
+│   ├── chapter_only.py  Builds an individual chapter
+│   ├── chapters.tsv     Chapter metadata and reading-path labels
+│   ├── parts.tsv        Part metadata
+│   ├── check_toy.py     Numerical checks for the crossed-product toy model
+│   └── check_clpw_general.py
+├── macros.tex           Notation and LaTeX macros
+├── preamble.tex         Packages and document setup
+├── refs.bib             Bibliography database
+├── main.tex             Generated top-level LaTeX file
+└── Makefile             Build and cleanup targets
 ```
 
 ## Numerical checks
-Two scripts (NumPy only) test claims of the text:
-* `python3 scripts/check_toy.py` -- the finite-dimensional crossed product of Sec. 6.3-6.4:
-  entropy formula, trace weight, and flow conventions.
-* `python3 scripts/check_clpw_general.py` -- the CLPW entropy formula
-  `S = h(g) + <X> - S_rel(Phi||Psi)` (Sec. 9.2) for a *general* state in a type I model:
-  exact for `Phi = u Omega`, with error shrinking like 1/width^2 otherwise.
+
+Two scripts use NumPy to test selected calculations discussed in the text:
+
+```sh
+python3 scripts/check_toy.py
+python3 scripts/check_clpw_general.py
+```
+
+The first checks the finite-dimensional crossed-product example, including its entropy formula, trace weight, and flow conventions. The second tests the CLPW entropy formula in a type-I model for selected states.
 
 ## Verification and scope notes
-* Chapter 9 (including the worked qubit example in Sec. 9.3) was checked against the CLPW paper (arXiv:2206.10780); the
-  conventions dictionary in Sec. 9.1 was verified, and the entropy formula in Sec. 9.2 was tested
-  numerically. For the paper's Sec. 4.3-4.4 and 5 only the content reported in the
-  paper's text and excerpts was available, so those parts (the no-observer conjecture,
-  the Euclidean argument, the black-hole comparison) are summarized at that level of
-  detail and attributed as conjectures where the paper does so.
-* `refs.bib`: entries whose `note` field says "verified" were checked against journal
-  records (Springer/INSPIRE reference lists). The remaining entries are standard
-  citations (Bisognano-Wichmann, DHR, Haagerup, Pusz-Woronowicz, Kay-Wald, JLMS,
-  Engelhardt-Wall, Connes, ...) whose details were not re-checked; confirm them before
-  citing in a publication.
-* Sections on very recent research (Chapters 8-11 and Sec. 12.8) are flagged with
-  "unsettled" boxes where the literature is still moving.
-* Every exercise has a written solution (Appendix F); solutions are condensed (the key
-  computation or argument) and were re-derived, several numerically. While writing them
-  two exercise statements were found wrong and corrected (a sign convention in the
-  clock section 8.3 and an energy-spectrum condition in Sec. 4.3). The index is
-  generated semi-automatically and is not exhaustive.
-* The text has not been through independent peer review; errors are possible.
-  Corrections are welcome.
 
-## License / citation
-No license has been specified. If you cite the book, cite the version of `main.pdf` you
-used together with the commit or archive you obtained it from.
+- Chapter 9, including the worked example in Section 9.3, has been checked against the CLPW paper ([arXiv:2206.10780](https://arxiv.org/abs/2206.10780)). The notation guide in Section 9.1 and the entropy formula in Section 9.2 were checked; the latter also has a numerical test in `scripts/check_clpw_general.py`.
+- The discussion of Sections 4.3–4.4 and 5 of that paper is limited to the material available in the published text and excerpts consulted during preparation. Conjectural claims are presented as conjectures where appropriate.
+- Bibliography entries in `refs.bib` marked `verified` in their `note` field were checked against journal records or reference lists. The remaining entries have not been systematically rechecked.
+- Recent research topics, particularly in Chapters 8–11 and Section 12.8, include notices where results or interpretations remain unsettled.
+- Appendix F contains solutions to all exercises. The solutions emphasize the main argument or computation and may omit routine intermediate steps.
+- The manuscript has not undergone independent peer review, and errors may remain. Corrections and suggestions are welcome.
+
+## Citation and license
+
+When citing the book, identify the specific release or commit used, along with this repository URL.
+
+No license file is currently provided in the repository.
