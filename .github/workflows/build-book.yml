@@ -1,4 +1,4 @@
-name: Build LaTeX book
+name: Build book
 
 on:
   push:
@@ -53,6 +53,13 @@ jobs:
       contents: write
 
     steps:
+      # gh release create --verify-tag uses Git to verify the local tag.
+      # Check out the tagged commit so the release job has a .git directory.
+      - name: Check out tagged repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
       - name: Download compiled PDF
         uses: actions/download-artifact@v8
         with:
