@@ -115,3 +115,5 @@ The first checks the finite-dimensional crossed-product example, including its e
 When citing the book, identify the specific release or commit used, along with this repository URL.
 
 No license file is currently provided in the repository.
+
+**Authors:** Claude with supervision of Saeid Aliei.
