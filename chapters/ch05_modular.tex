@@ -9,6 +9,7 @@ The Gibbs state $\rho=\ee^{-\beta H}/Z$ is the foundation of statistical mechani
 \end{physmotiv}
 
 \subsection{The finite-dimensional origin}
+\mnote[KMS history]{Kubo (1957) and Martin--Schwinger (1959) found the analyticity property of thermal correlators; Haag--Hugenholtz--Winnink (1967) promoted it to the definition of equilibrium in infinite systems.}
 
 Let $\A=\BH$ with $\dim\HH<\infty$, $\alpha_t(a)=\ee^{\ii tH}a\,\ee^{-\ii tH}$ and $\omega(a)=\Tr(\ee^{-\beta H}a)/Z$. Extend $\alpha_t$ to complex time: $\alpha_{z}(a)=\ee^{\ii zH}a\,\ee^{-\ii zH}$, entire in $z$ for a finite matrix. Then, using only cyclicity of the trace,
 \begin{equation}
@@ -34,6 +35,17 @@ The proposal (Haag--Hugenholtz--Winnink): \emph{an infinite system in thermal eq
 \end{itemize}
 The limit $\beta\to\infty$ gives ground states; $\beta=0$ gives tracial states.
 
+\mfig{\begin{tikzpicture}[font=\scriptsize]
+\fill[blue!8] (0,0) rectangle (4,1.5);
+\draw[-{Stealth}] (-0.2,0)--(4.3,0) node[right]{$\mathrm{Re}\,t$};
+\draw[-{Stealth}] (0,-0.2)--(0,2.0) node[above]{$\mathrm{Im}\,t$};
+\draw[thick] (0,0)--(4,0); \draw[thick] (0,1.5)--(4,1.5);
+\node[right] at (4.0,0) {};
+\node at (2,-0.35) {$F(t)=\langle a\,\sigma_t(b)\rangle$};
+\node at (2,1.85) {$F(t+\mathrm i\beta)=\langle\sigma_t(b)\,a\rangle$};
+\node at (2,0.75) {$F$ analytic};
+\draw[dashed] (-0.1,1.5)--(0,1.5); \node[left] at (-0.1,1.5) {$\beta$};
+\end{tikzpicture}}{The KMS condition: the correlation function extends analytically to the strip $0<\mathrm{Im}\,t<\beta$, with the two orderings on the two edges.}
 \begin{whatwrong}
 Sign conventions for $\beta$ differ in the literature (the sign of $t$ in $\alpha_t$, and whether the condition is written $\omega(a\alpha_{\ii\beta}(b))=\omega(ba)$ or $\omega(\alpha_{-\ii\beta}(a)b)=\omega(ba)$). We use $\alpha_t(a)=\ee^{\ii tH}a\,\ee^{-\ii tH}$ and the condition $\omega(a\alpha_{\ii\beta}(b))=\omega(ba)$, which gives Gibbs states $\ee^{-\beta H}$ with $\beta>0$ for $H$ bounded below. Every statement of the form ``the Rindler vacuum is KMS at $\beta=2\pi$'' needs this fixed before it means anything.
 \end{whatwrong}
@@ -72,6 +84,7 @@ For any von Neumann algebra $\M$ and faithful normal state $\omega$ there is a \
 \end{theorem}
 Think of it as: \emph{every faithful state is a thermal state with respect to some canonical Hamiltonian, at unit negative temperature $\beta=-1$}, the minus sign being a convention of the time direction. For a Gibbs state with Hamiltonian $H$ the modular Hamiltonian is $\beta H$, up to a constant. The modular flow is thus ``physical time'' multiplied by $-\beta$, and the information about temperature has been absorbed into the time unit. We prove it in \cref{ch:tomita}.
 
+\mnote[Takesaki 1970]{A faithful normal state is KMS at $\beta=-1$ for its own modular flow, and that flow is the unique one with this property. Equilibrium determines dynamics, which is the central slogan of Part IV.}
 \begin{keyidea}
 KMS replaces ``$\ee^{-\beta H}$'' by a condition on correlation functions: analytic continuation in time by $\ii\beta$ turns $\omega(a\,\alpha_t(b))$ into $\omega(\alpha_t(b)\,a)$. It defines equilibrium in infinite volume, is equivalent to passivity, and applied to an arbitrary faithful state it \emph{defines} the modular flow.
 \end{keyidea}
@@ -106,6 +119,7 @@ S_0\,a\Omega=a\ad\Omega,\qquad a\in\M.
 \end{equation}
 It is well defined because $\Omega$ is separating ($a\Omega=b\Omega\Rightarrow a=b$) and densely defined because $\Omega$ is cyclic. It is \emph{closable} (its adjoint contains $F_0:b'\Omega\mapsto b'^*\Omega$ for $b'\in\M'$, which is also densely defined). Let $S$ be its closure.
 
+\mnote[Who]{Tomita circulated the theory in 1967; Takesaki's 1970 Springer Lecture Notes in Mathematics 128 gave the complete proofs. Hence ``Tomita--Takesaki''.}
 \begin{definition}
 The polar decomposition $S=J\Delta^{1/2}$ defines the \emph{modular operator}\index{modular operator} $\Delta=S\ad S$ (a positive, self-adjoint, in general unbounded, operator, linear) and the \emph{modular conjugation} $J$ (an antiunitary involution).
 \end{definition}
@@ -138,10 +152,11 @@ For $\M=M_n$ acting on $\HH=\C^n\otimes\overline{\C^n}\cong\mathrm{HS}$ with $\O
 \end{align}
 Define the \emph{modular Hamiltonian}\index{modular Hamiltonian} $K$ by $\Delta=\ee^{-K}$. Then
 \begin{equation}
-K=-\log\Delta=K_{\M}-K_{\M'},\qquad K_\M=-\log\rho\otimes\id,\quad K_{\M'}=\id\otimes(-\log\rho)^{\rm T},
+\begin{gathered}K=-\log\Delta=K_{\M}-K_{\M'},\\ K_\M=-\log\rho\otimes\id,\quad K_{\M'}=\id\otimes(-\log\rho)^{\rm T},\end{gathered}
 \end{equation}
 the difference of the two \emph{one-sided} modular Hamiltonians (entanglement Hamiltonians of the two sides). The sign makes sense: $\Delta\ge0$ is the ratio of the Boltzmann weight of $\M$ to that of $\M'$, and $K$ annihilates $\Omega$ ($K\Omega=0$, the thermofield double is invariant under the \emph{difference} of left and right Hamiltonians). For $\rho=\ee^{-\beta H}/Z$: $K=\beta(H_R-H_L)$.
 
+\mnote[At a glance]{For $\mathcal M=M_n$ and $\Omega=\rho^{1/2}$: $\Delta X=\rho X\rho^{-1}$, $JX=X^*$, $\sigma_t(a)=\rho^{it}a\rho^{-it}$. The modular flow is imaginary-time Hamiltonian flow in the state $\rho$.}
 In QFT, neither $K_\M$ nor $K_{\M'}$ separately exists: each has a divergent additive constant (corresponding to the divergent entropy), but their difference $K$, which is the generator of $\Delta^{it}$, is a perfectly good self-adjoint operator on $\HH$. This is the content of the sentence ``the modular Hamiltonian exists even though the density matrix does not.''
 
 \begin{whatwrong}
@@ -166,6 +181,7 @@ In QFT, neither $K_\M$ nor $K_{\M'}$ separately exists: each has a divergent add
 
 If $\M$ acts on a separable $\HH$ without a cyclic separating vector one passes to the \emph{standard form} $(\M,\HH,J,\HH_+)$: a faithful representation containing a self-dual cone $\HH_+$ in which every normal state has a unique vector representative. Every von Neumann algebra has a standard form, unique up to isomorphism; and for a faithful normal semifinite weight $\varphi$ there is a modular operator $\Delta_\varphi$ and flow $\sigma^\varphi_t$ defined by the same procedure (Tomita--Takesaki theory for weights, Haagerup). The weight is KMS at $\beta=-1$ and $\sigma^\varphi$ is trivial iff $\varphi$ is a trace (\cref{ch:traces}). This is the version needed for the crossed products with II$_\infty$ results (\cref{ch:crossed}).
 
+\mnote[Pedersen--Takesaki 1973]{Modular theory and the Connes cocycle extend to faithful normal semifinite weights (Haagerup; Pedersen--Takesaki). The cocycle $(D\varphi:D\psi)_t$ then exists for weights as well as states.}
 \begin{keyidea}
 Modular theory: from a cyclic separating $\Omega$ for $\M$, build the antilinear $S\,a\Omega=a\ad\Omega$, write $S=J\Delta^{1/2}$. Then $\sigma_t=\Ad\Delta^{it}$ is a one-parameter automorphism group of $\M$ (so $\M$ has an intrinsic dynamics in the state), $J$ swaps $\M$ and $\M'$, and $\omega$ is KMS for $\sigma$ at $\beta=-1$. In type I, $\Delta=\rho\otimes\rho^{-1}$ and $K=-\log\Delta=K_\M-K_{\M'}$.
 \end{keyidea}
@@ -203,6 +219,7 @@ For a cyclic separating $\Omega$, the \emph{modular Hamiltonian}\index{modular H
 \item \textbf{Thermofield double:} $K=\beta(H_R-H_L)$ (\cref{ch:tomita}).
 \end{itemize}
 
+\mshift{8mm}\mnote[Balls in a CFT]{Hislop--Longo (1982): for the vacuum of a CFT and a ball of radius $R$, $K=2\pi\!\int_{|x|<R}\!\frac{R^2-|x|^2}{2R}\,T_{00}\,\mathrm d^{d-1}x$. For $R\to\infty$ this becomes the Rindler boost.}
 \subsubsection*{First law of entanglement}
 Let $\omega_\lambda$ be a smooth family of normal states with $\omega_0$ having modular Hamiltonian $K_0$ (one-sided $K_\M$ in the type I case). Because the von Neumann entropy $S(\omega)=-\tau(\rho\log\rho)$ is stationary at first order with respect to variations that preserve normalization,
 \begin{equation}
@@ -218,6 +235,7 @@ S_{\varphi,\psi}\,a\,\xi_\psi=a\ad\xi_\varphi,\qquad a\in\M,
 \end{equation}
 polar decomposition $S_{\varphi,\psi}=J_{\varphi,\psi}\Delta_{\varphi,\psi}^{1/2}$. This is the \emph{relative modular operator}\index{modular operator}. In the finite-dimensional case with $\xi_\psi=\rho_\psi^{1/2}$ one checks (as in \cref{ch:gns}) that $\Delta_{\varphi,\psi}X=\rho_\varphi X\rho_\psi^{-1}$, i.e.\ $\Delta_{\varphi,\psi}=\rho_\varphi\otimes\rho_\psi^{-1}$ with the first factor in $\M$ and the second in $\M'$. This yields the definition.
 
+\mnote[History]{Umegaki (1962) defined $S(\rho\|\sigma)=\mathrm{Tr}\,\rho(\log\rho-\log\sigma)$ in type I; Araki (1976--77) extended it to arbitrary von Neumann algebras. Lindblad and Uhlmann proved monotonicity.}
 \begin{definition}[Araki]
 The relative entropy of $\psi$ with respect to $\varphi$ is
 \begin{equation}
@@ -247,14 +265,15 @@ S(\psi\|\Omega)=-\inner{u\Omega}{\log\Delta_\Omega\,u\Omega}=\inner{u\Omega}{K_\
 \end{equation}
 The relative entropy of a state obtained by acting with a unitary of $\M$ on the reference vector is the expectation value of the full modular Hamiltonian. (Check in type I: $\inner{u\Omega}{K u\Omega}=\langle K_\M\rangle_\psi-\langle K_{\M'}\rangle_\psi$; the second term is unchanged since $\psi|_{\M'}=\omega|_{\M'}$, and equals $\langle K_\M\rangle_\Omega$ by equality of the Schmidt spectra, giving $\Tr\rho_\psi(-\log\rho)-S_{\rm vN}$-differences $=\Tr\rho_\psi(\log\rho_\psi-\log\rho)$.) For the Rindler wedge, $K=2\pi B$, so
 \begin{equation}
-S(\psi\|\Omega)=2\pi\,\inner{\psi}{B\,\psi}:\ \text{the boost energy of the excitation, finite and positive.}
+S(\psi\|\Omega)=2\pi\,\inner{\psi}{B\,\psi},
 \end{equation}
-This is the finite substitute for the first law: the divergent entropy differences cancel exactly for such states.
+the boost energy of the excitation, finite and positive. This is the finite substitute for the first law: the divergent entropy differences cancel exactly for such states.
 
 \subsection{The Connes cocycle}
 
 Let $\psi,\varphi$ be faithful normal states (or weights) of $\M$ with relative modular operator $\Delta_{\varphi,\psi}$ and modular operators $\Delta_\varphi,\Delta_\psi$.
 
+\mnote[Connes 1973]{$(D\psi:D\varphi)_t$ is a noncommutative Radon--Nikodym derivative. It shows that modular flows of different faithful states differ by inner automorphisms: the outer class of the flow is canonical.}
 \begin{definition}
 The \emph{Connes cocycle}\index{Connes cocycle} is $u_t=(D\varphi:D\psi)_t=\Delta_{\varphi,\psi}^{it}\Delta_\psi^{-it}$.
 \end{definition}
@@ -326,6 +345,7 @@ two incommensurate ratios, $\lambda_1^m\lambda_2^n$, $\log\lambda_1/\log\lambda_
 
 Let $\M$ be a type III factor. By \cref{ch:modham} the modular flows of any two faithful normal states are inner-equivalent, so the following invariants are independent of the state.
 
+\mnote[Connes 1973]{For III$_\lambda$ with $0<\lambda<1$ the Connes invariant is $S(\mathcal M)=\{0\}\cup\lambda^{\mathbb Z}$; for III$_1$ it is $[0,\infty)$; for III$_0$ it is $\{0,1\}$. Fields Medal 1982.}
 \begin{definition}
 The \emph{Connes invariant} $S(\M)\subset[0,\infty)$ is the intersection over all faithful normal states (weights) $\varphi$ of the spectrum $\spec(\Delta_\varphi)$. The \emph{$T$-invariant} $T(\M)\subset\R$ is the set of $t$ for which $\sigma^\varphi_t$ is inner.
 \end{definition}
@@ -355,12 +375,13 @@ Do not read ``III$_1$'' as ``rank one'': the subscript is the ratio $\lambda$. I
 
 \subsection{The thermodynamic origin: why III appears with finite temperature}
 
-Physically, the type III$_\lambda$ ITPFI factor arises from a non-interacting spin chain at \emph{finite} temperature with level spacing $h$: $\rho_j=\mathrm{diag}(\ee^{-\beta h/2},\ee^{\beta h/2})/(2\cosh\tfrac{\beta h}2)$, so $\lambda=\ee^{-\beta h}$ and the modular period is $2\pi/(\beta h)$. In finite volume $N$ the Gibbs state is $\Tr(\rho_N\,\cdot)$ with $\rho_N=\ee^{-\beta H_N}/Z_N$; its modular flow $\rho_N^{it}\,\cdot\,\rho_N^{-it}$ is \emph{inner}, generated by $\rho_N\in M_{2^N}$, i.e.\ by the Hamiltonian. As $N\to\infty$ the eigenvalue ratios $\ee^{-\beta hn}$ ($n\in\Z$ counting spin flips) survive and fill the group $\lambda^\Z$, but the would-be generator, the infinite-volume Hamiltonian, is no longer an element of the algebra (\cref{ch:quasilocal}); the flow becomes outer and the trace is lost. A QFT wedge is the same phenomenon with a continuum of degrees of freedom: the modular Hamiltonian $2\pi B$ has spectrum all of $\R$, so $\Delta$ has spectrum $[0,\infty)$: type III$_1$ (\cref{ch:typeIII_local}).
+Physically, the type III$_\lambda$ ITPFI factor arises from a non-interacting spin chain at \emph{finite} temperature with level spacing $h$: $\rho_j=\mathrm{diag}(\ee^{-\beta h/2},\allowbreak\ee^{\beta h/2})/(2\cosh\tfrac{\beta h}2)$, so $\lambda=\ee^{-\beta h}$ and the modular period is $2\pi/(\beta h)$. In finite volume $N$ the Gibbs state is $\Tr(\rho_N\,\cdot)$ with $\rho_N=\ee^{-\beta H_N}/Z_N$; its modular flow $\rho_N^{it}\,\cdot\,\rho_N^{-it}$ is \emph{inner}, generated by $\rho_N\in M_{2^N}$, i.e.\ by the Hamiltonian. As $N\to\infty$ the eigenvalue ratios $\ee^{-\beta hn}$ ($n\in\Z$ counting spin flips) survive and fill the group $\lambda^\Z$, but the would-be generator, the infinite-volume Hamiltonian, is no longer an element of the algebra (\cref{ch:quasilocal}); the flow becomes outer and the trace is lost. A QFT wedge is the same phenomenon with a continuum of degrees of freedom: the modular Hamiltonian $2\pi B$ has spectrum all of $\R$, so $\Delta$ has spectrum $[0,\infty)$: type III$_1$ (\cref{ch:typeIII_local}).
 
 \subsection{Connes--Takesaki: III$_1$ from II$_\infty$}
 
 The key structural result for our purposes was obtained by Connes and Takesaki.
 
+\mnote[Structure]{Connes (1973): $\mathrm{III}_\lambda$ is a crossed product of a II$_\infty$ factor by $\mathbb Z$, with the generator scaling the trace by $\lambda$. Connes--Takesaki (1977): the same with $\mathbb R$ for III$_1$.}
 \begin{theorem}[Connes--Takesaki]
 Let $\M$ be a $\sigma$-finite von Neumann algebra of type III and $\sigma^\varphi$ the modular flow of a faithful normal state $\varphi$. Then the crossed product $\N=\M\rtimes_{\sigma^\varphi}\R$ (\cref{ch:crossed}) is a von Neumann algebra of type II$_\infty$. It carries a canonical trace $\tau$ and a \emph{dual action}\index{dual action} $\theta_s$ of $\R$ which rescales the trace, $\tau\circ\theta_s=\ee^{-s}\tau$. The original algebra is recovered as the fixed points of the dual action, $\M=\N^{\theta}$, and (Takesaki duality, \cref{ch:takesaki}) $\N\rtimes_\theta\R\cong\M\bar\otimes\Bnd{L^2(\R)}$. Moreover, $\M$ is a factor of type III$_1$ iff $\N$ is a type II$_\infty$ \emph{factor}.
 \end{theorem}
@@ -386,11 +407,12 @@ Using only the existence of the trace $\tau$ on $\N$ with $\tau\circ\theta_s=\ee
 
 
 \section{Monotonicity of relative entropy}\label{ch:monotonic}
-\begin{physmotiv}
+\mshift{13mm}\begin{physmotiv}
 Every ``second law'' in the later chapters is a statement that relative entropy decreases when information is discarded: the generalized second law, the positivity of energy fluxes, and the bound $\Sgen\le S_{\rm dS}$ all follow. The statement is easy to prove for a partial trace and hard to prove for general von Neumann algebras, but its content is the same.
 \end{physmotiv}
 
 \subsection{The statement}
+\mnote[Strong subadditivity]{Monotonicity of relative entropy is equivalent to the strong subadditivity of von Neumann entropy (Lieb--Ruskai 1973) and underlies nearly every ``entropy inequality'' in holography.}
 Let $\mathcal N\subset\M$ be von Neumann algebras and $\varphi,\psi$ normal states of $\M$. Then
 \begin{equation}
 S(\varphi|_{\mathcal N}\,\|\,\psi|_{\mathcal N})\le S(\varphi\,\|\,\psi)\label{eq:monot}
@@ -398,6 +420,7 @@ S(\varphi|_{\mathcal N}\,\|\,\psi|_{\mathcal N})\le S(\varphi\,\|\,\psi)\label{e
 (Uhlmann; for general algebras with Araki's definition, \cref{ch:modham}). Restricting to a smaller algebra means coarse-graining, and coarse-grained states are harder to tell apart. Two corollaries are used constantly: if $\mathcal N_1\subset\mathcal N_2$ then $S(\varphi\|\psi;\mathcal N_1)\le S(\varphi\|\psi;\mathcal N_2)$ (relative entropy grows with the region), and $S\ge0$ with equality iff $\varphi=\psi$ (Klein's inequality).
 
 \subsection{Proof for a partial trace}
+\mnote[Petz 1986]{Equality in monotonicity holds iff a recovery map exists, $\mathcal R(\sigma)=\rho^{1/2}\,\mathcal N^*\!\big(\mathcal N(\rho)^{-1/2}\sigma\,\mathcal N(\rho)^{-1/2}\big)\rho^{1/2}$. This ties entropy inequalities to quantum error correction.}
 Take $\M=M_a\otimes M_b$ and $\mathcal N=M_a\otimes\id$. The key input is the joint convexity of $(\rho,\sigma)\mapsto S(\rho\|\sigma)=\Tr\rho(\log\rho-\log\sigma)$ (Lieb's concavity theorem). Let $\{U_k\}_{k=1}^{b^2}$ be the Weyl--Heisenberg unitaries on $\C^b$, which satisfy $\frac1{b^2}\sum_kU_kXU_k^*=\Tr(X)\,\id/b$. Then, writing $\rho_a=\Tr_b\rho$,
 \begin{equation}
 \rho_a\otimes\frac{\id}b=\frac1{b^2}\sum_k(\id\otimes U_k)\rho(\id\otimes U_k)^*,

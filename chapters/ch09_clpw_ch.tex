@@ -4,11 +4,12 @@ The algebra of observables of a static patch of de Sitter space of Chandrasekara
 
 \section{The CLPW algebra}\label{ch:clpw}
 
-\begin{physmotiv}
+\mshift{4mm}\begin{physmotiv}
 This is the chapter the book has been building towards. A static patch of de Sitter space has a temperature and, by Gibbons--Hawking, an entropy $A/4G_N$; the conjecture is that this entropy is the \emph{maximum} over all states of the patch, with empty de Sitter space the maximally mixed state. Chandrasekaran, Longo, Penington and Witten (CLPW) \cite{CLPW2023} gave this a precise algebraic form. Once an observer is included (\cref{ch:add_observer}), the gauge-invariant observables of the patch form the crossed product $\A_R\rtimes_\sigma\R$, a type II$_\infty$ algebra with a trace (\cref{ch:takesaki}). Demanding that the observer's energy be non-negative cuts it down to a type II$_1$ algebra whose maximum-entropy state is empty de Sitter space with the observer in a Boltzmann distribution at the horizon temperature. This section follows CLPW Sections 1, 2 and 4 closely; the entropy formula (their Section 3) is the subject of \cref{ch:anatomy}.
 \end{physmotiv}
 
 \subsection{The conjecture, and an entropic way to see it}
+\mnote[At a glance]{(i) Adding an observer with $q\ge0$ turns the static-patch algebra into type II$_1$. (ii) The trace gives density matrices and entropies. (iii) $\hat\rho=1$ is the unique maximum-entropy state: empty de Sitter. (iv) Every other state has $S\le0$ in this normalization.}
 
 Let $\ell=r_{\rm dS}$, $\beta_{\rm dS}=2\pi\ell=1/T_{\rm dS}$. For a patch containing matter, define $\Sgen=A/4G_N+S_{\rm out}$. The claim to be explained is that $\Sgen$ is maximal for empty de Sitter space: adding matter raises $S_{\rm out}$ but lowers the horizon area by more. The simplest instance (derived in \cref{ch:anatomy}): a particle of energy $E$ at rest at the centre of the patch lowers the horizon area,
 \begin{equation}
@@ -91,6 +92,7 @@ $\A_{\rm dS}$ is a von Neumann factor of type II$_1$ with $\tau(\id)=1$, acting 
 \end{theorem}
 \emph{Status.} Given that $\A$ is a type III$_1$ factor, $\A_{\rm cr}$ is a II$_\infty$ factor (Connes--Takesaki, \cref{ch:takesaki}); a corner $\Pi\mathcal B\Pi$ of a factor by a projection $\Pi\in\mathcal B$ is a factor (its commutant is $\Pi\mathcal B'$); and a factor with a trace finite on the identity is II$_1$. What is \emph{physics}, not theorem, is the model: $\A$ type III$_1$, $\hat H=H+q$, an observer with only an energy, and $G_N\to0$. CLPW also expect $\A_{\rm dS}$ to be \emph{hyperfinite}\index{hyperfinite factor} (local QFT algebras and their crossed products by finite-dimensional groups are believed to be), hence isomorphic to the Murray--von Neumann factor: the algebra of an infinite set of qubits in the almost-maximally mixed state $\Psi_{\rm TFD}$ with $H=0$. That is the sense in which ``$\A_{\rm dS}$ looks like $\ee^{S_{\rm dS}}$ qubits''.
 
+\mnote[Why $q\ge0$ helps]{Projecting onto $q\ge0$, equivalently $x\le0$, makes the trace finite: $\tau(P)=\int_{-\infty}^{0}\mathrm e^{x}\,\mathrm dx=1$. A finite trace is what allows a maximum-entropy state.}
 \subsubsection*{The maximum-entropy state}
 Let
 \begin{equation}
@@ -201,6 +203,7 @@ with $h(g)=-\int g\log g$. Now use the cocycle identity $h_{\Phi,\Psi}-h_\Psi=h_
 \end{equation}
 This is \cref{ch:entropy_II} Eq.~\eqref{eq:Srel}, now for general $\Phi$ and type III$_1$ $\A$.
 
+\mnote[Bekenstein--Hawking]{Bekenstein (1973) and Hawking (1975) fixed the black-hole entropy $A/4G$; Bekenstein's generalized entropy $S_{\rm gen}=A/4G+S_{\rm out}$ is what the CLPW formula reproduces.}
 \subsubsection*{Checking \eqref{eq:Sformula}}
 In the finite-dimensional model of \cref{ch:entropy_II} ($\A=M_n$, $\Omega=\sum\sqrt{p_i}\ket{ii}$) the exact density matrix of $\Phi\otimes g^{1/2}$, for arbitrary $\Phi=\sum c_{aj}\ket{aj}$, is $\hat\rho(y)=\ee^{-y}\sum_jg(y-\log p_j)\,|c_j\rangle\langle c_j|$ with $\tau=\int\dd y\,\ee^{y}\Tr_A$. \texttt{scripts/check\_clpw\_general.py} computes $S$ exactly and compares. For $\Phi=u\Omega$ they agree to $10^{-9}$ (exact, as in \cref{ch:entropy_II}); for a generic $\Phi$ with Gaussian $g$ of width $s=\epsilon^{-1}$ the discrepancy is
 \begin{center}
@@ -283,10 +286,11 @@ Why is $\Psi_{\max}$, though it maximizes $S$ on $\A_{\rm dS}$, not a semiclassi
 
 
 \section{A worked example: a qubit system with a clock}\label{ch:qubit}
-\begin{physmotiv}
+\mshift{17mm}\begin{physmotiv}
 The entropy formula of \cref{ch:anatomy} is exact in a family of finite-dimensional models, and for the simplest ones everything can be done by hand. The result is a miniature of the whole construction: exciting the system costs entropy $\beta\Delta E$ because the probability of the excited state is a Boltzmann weight.
 \end{physmotiv}
 
+\mnote[Try it]{The script \texttt{check\_clpw\_\allowbreak general.py} in \texttt{scripts/} evaluates the entropy formula for a general state numerically and compares it with the semiclassical expression.}
 Take $\M=M_2(\C)\otimes\id$ on $\C^2\otimes\C^2$ with $\Omega=\sqrt{p_0}\ket{00}+\sqrt{p_1}\ket{11}$, so that $K\ket{ab}=(-\log p_a+\log p_b)\ket{ab}$. The crossed product is generated by $\M$ and $X=K+x$; with $y=x+\log p_b$ on the sector $\ket{ab}$ it is $M_2\otimes L^\infty(\R_y)$, with trace $\tau(F)=\int\dd y\,\ee^{y}\Tr F(y)$ (\cref{ch:entropy_II}). For the state $\Phi\otimes g^{1/2}(x)$ with $\Phi=\sum c_{ab}\ket{ab}$ the density matrix is
 \begin{equation}
 \hat\rho(y)=\ee^{-y}\sum_bg(y-\log p_b)\,\ket{c_b}\!\bra{c_b},\qquad\ket{c_b}=\sum_ac_{ab}\ket a.\label{eq:rhoqubit}
@@ -300,7 +304,7 @@ S(\hat\rho)=h(g)+\langle x\rangle_g-\sum_bq_b\log\frac{q_b}{p_b}.
 \end{proposition}
 \emph{Proof.} The $\ket{c_b}\bra{c_b}$ are orthogonal, so $\hat\rho(y)$ has eigenvalues $\ee^{-y}q_bg(y-\log p_b)$. Then $S=-\int\dd y\,\ee^y\sum_b\lambda_b\log\lambda_b$; substituting $y=x+\log p_b$ in the $b$-th term, $\ee^{-y}\ee^{y}$ cancels, $\lambda_b=q_bg(x)/(p_b\ee^{x})$, and
 \begin{equation}
-S=-\sum_bq_b\int\dd x\,g(x)\big[\log q_b+\log g(x)-x-\log p_b\big]=h(g)+\langle x\rangle+\sum_bq_b\log\frac{p_b}{q_b}.\qquad\square
+\begin{split}S&=-\sum_bq_b\int\dd x\,g(x)\big[\log q_b+\log g(x)-x-\log p_b\big]\\&=h(g)+\langle x\rangle+\sum_bq_b\log\frac{p_b}{q_b}.\qquad\square\end{split}
 \end{equation}
 The last sum is $-S_{\rm rel}(q\|p)$, the relative entropy of the \emph{commutant} marginal of $\Phi$ with respect to that of $\Omega$, which is what \eqref{eq:Sformula} reduces to for pure states. For $\Phi=\ket{bb}$ one finds $S=h(g)+\langle x\rangle+\log p_b$.
 

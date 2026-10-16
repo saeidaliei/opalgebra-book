@@ -20,6 +20,7 @@ We take $\A$ unital (with unit $\id$) unless stated otherwise.
 
 The \cstar-identity ties the norm to the algebra. It implies that the norm is determined by the algebraic structure: $\norm a^2$ is the spectral radius of $a\ad a$. Hence an algebra has \emph{at most one} \cstar-norm, and every $^*$-homomorphism between \cstar-algebras is automatically norm-decreasing.
 
+\mnote[Who]{Gelfand--Naimark (1943): every C$^*$-algebra is a norm-closed $*$-algebra of operators on some Hilbert space. The name ``C$^*$'' goes back to Segal (1947).}
 \begin{theorem}[Gelfand--Naimark]
 Every \cstar-algebra is isometrically $^*$-isomorphic to a norm-closed $^*$-subalgebra of $\Bnd{\HH}$ for some Hilbert space $\HH$.
 \end{theorem}
@@ -43,6 +44,7 @@ Only \emph{continuous} functions of $a$ lie in the \cstar-algebra. Spectral proj
 \item \textbf{The infinite spin chain (UHF algebra).} Let $\A_N=\bigotimes_{j=1}^NM_2(\C)=M_{2^N}(\C)$, embedded as $\A_N\hookrightarrow\A_{N+1}$ via $a\mapsto a\otimes\id$. The norm-closure of $\bigcup_N\A_N$ is the \cstar-algebra $\A=M_{2^\infty}$ of the infinite chain. It is \emph{simple} (no non-trivial closed two-sided ideals) and unique: one algebra, an infinite family of different representations (\cref{ch:inequiv}), as in \cref{ch:why_algebras}. It carries a unique \emph{tracial} state $\tau(ab)=\tau(ba)$, the infinite-temperature state, which we will meet again as the origin of the hyperfinite type II$_1$ factor (\cref{ch:classification}).
 \end{enumerate}
 
+\mshift{17mm}\mnote[Commutative case]{A commutative unital C$^*$-algebra is $C(X)$ for a compact Hausdorff space $X$ (Gelfand). Noncommutative C$^*$-algebras are thus ``noncommutative spaces'', the point of view taken in Chapter~12.}
 \begin{keyidea}
 A \cstar-algebra is the representation-independent algebra of observables. Matrices, classical phase spaces (commutative case), CCR/CAR algebras, and spin-chain algebras are all \cstar-algebras. Continuity of the norm means only \emph{continuous} functions of observables are in it.
 \end{keyidea}
@@ -84,6 +86,7 @@ Basic consequences (all easy):
 \item The set $\mathcal S(\A)$ of states is convex and compact in the weak-$^*$ topology (convergence of $\omega_\alpha(a)\to\omega(a)$ for each $a$). The latter follows from Banach--Alaoglu.
 \end{itemize}
 
+\mnote[Recall]{A state is a positive linear functional with $\omega(1)=1$. Pure states are the extreme points of the convex set of states; normal states are those of the form $\omega(a)=\mathrm{Tr}(\rho a)$.}
 \subsection{Pure vs.\ mixed}
 
 A state is \emph{mixed} if it is a non-trivial convex combination, $\omega=\lambda\omega_1+(1-\lambda)\omega_2$ with $0<\lambda<1$ and $\omega_1\ne\omega_2$, and \emph{pure} otherwise (an extreme point of $\mathcal S(\A)$).
@@ -144,7 +147,7 @@ For $\A=\BH$ with $\HH$ infinite dimensional, show the set of normal states is a
 
 \section{The GNS construction}\label{ch:gns}
 
-\begin{physmotiv}
+\mshift{36mm}\begin{physmotiv}
 If observables and states are the primary objects, where do Hilbert spaces and state vectors come from? The answer is a beautiful and completely explicit construction, due to Gelfand, Naimark and Segal. Given an algebra $\A$ and a state $\omega$, one builds a Hilbert space $\HH_\omega$, a representation $\pi_\omega$ of $\A$ on it, and a vector $\Omega_\omega$ such that $\omega(a)=\inner{\Omega_\omega}{\pi_\omega(a)\Omega_\omega}$. It is the rigorous version of ``act on the vacuum with operators to produce all states'', and it shows \emph{how} different states give different Hilbert spaces. The cyclic vector $\Omega$ is exactly the object that will give us the modular operator (\cref{ch:tomita}).
 \end{physmotiv}
 
@@ -174,6 +177,7 @@ Let $\A$ be a unital \cstar-algebra and $\omega$ a state.
 \item Set $\Omega_\omega=[\id]$.
 \end{enumerate}
 
+\mnote[GNS in one line]{$\mathcal H_\omega$ is the completion of $\mathcal A/\mathcal N_\omega$ with $\langle[a],[b]\rangle=\omega(a^*b)$, $\pi_\omega(a)[b]=[ab]$, and cyclic vector $\Omega_\omega=[1]$. (Gelfand--Naimark--Segal.)}
 \begin{theorem}[GNS]\label{thm:GNS}
 $(\HH_\omega,\pi_\omega,\Omega_\omega)$ is a representation of $\A$ with a \emph{cyclic} unit vector $\Omega_\omega$ (i.e.\ $\pi_\omega(\A)\Omega_\omega$ is dense in $\HH_\omega$) satisfying $\omega(a)=\inner{\Omega_\omega}{\pi_\omega(a)\Omega_\omega}$. It is unique up to unitary equivalence: any cyclic representation $(\HH,\pi,\Omega)$ with $\omega=\inner\Omega{\pi(\cdot)\Omega}$ is unitarily equivalent to it by a unitary mapping $\Omega\mapsto\Omega_\omega$.
 \end{theorem}
@@ -249,6 +253,7 @@ Recall from \cref{ch:topologies} that in the product representation $\pi_\theta$
 
 Let $\omega=\bigotimes_j\omega_j$ and $\omega'=\bigotimes_j\omega'_j$ be infinite product \emph{vector} states of the spin chain, with local vectors $\psi_j,\psi_j'\in\C^2$.
 
+\mnote[Kakutani 1948]{For product vector states $\bigotimes_j\psi_j$ and $\bigotimes_j\psi'_j$ the two are equivalent if $\sum_j(1-|\langle\psi_j,\psi'_j\rangle|)<\infty$ and disjoint otherwise. There is no middle ground.}
 \begin{theorem}[Kakutani]
 $\pi_\omega$ and $\pi_{\omega'}$ are unitarily equivalent if $\sum_j\big(1-|\braket{\psi_j}{\psi_j'}|\big)<\infty$ (equivalently $\prod_j|\braket{\psi_j}{\psi'_j}|>0$), and disjoint otherwise.
 \end{theorem}
@@ -276,6 +281,7 @@ Inequivalent representations are not pathologies; they are phases. Superselectio
 
 For the Weyl algebra of a free field, the thermal representation at $T>0$ is inequivalent to the vacuum representation (\cref{ch:weyl}): the thermal state has a non-zero density of particles, so $\sum_k\abs{\beta_k}^2=\infty$ in infinite volume, and by Kakutani-type reasoning the two folia are disjoint. This is the algebraic fact behind ``the Unruh/thermal state is not a state in the vacuum Fock space'', and it will return as the statement that the modular flow of the Rindler wedge is not implemented by an element of the algebra (\cref{ch:rs_bw}). In algebraic QFT, superselection sectors for charges, for example localized charged states, are the content of the DHR analysis (\cref{ch:dhr}).
 
+\mnote[Araki--Woods 1963]{The free Bose gas has a thermal representation for each density; different densities give disjoint representations. This is the first example of the pattern ``temperature $\Rightarrow$ type III''.}
 \subsection*{Exercises}
 \begin{exercise}\label{ex:inequiv:1}
 Prove Kakutani's criterion in the easy direction: if $\sum_j(1-|\braket{\psi_j}{\psi_j'}|)<\infty$ show that $\ket{\Psi'}$ can be approximated by vectors obtained from $\ket{\Psi}$ by acting with local operators.
@@ -333,6 +339,7 @@ Given a finite-volume Gibbs state $\omega_\Lambda=\Tr(\ee^{-\beta H_\Lambda}\,\c
 
 The infinite spin chain at infinite or finite temperature is the first example of a type II$_1$ or type III algebra arising from physics: $\pi_\tau(\A)''$ is the hyperfinite II$_1$ factor, while GNS representations of product states $\omega_p$ ($p\neq1/2$) give the Araki--Woods/Powers factors of type III$_\lambda$ (\cref{ch:connes_class}). The same structure appears for a local region of a QFT: replace $\Lambda$ by a spacetime region, the lattice by a net of algebras, and the $\Z^d$ translations by Poincar\'e transformations (\cref{ch:haagkastler}).
 
+\mnote[Reference]{Bratteli--Robinson, \emph{Operator Algebras and Quantum Statistical Mechanics} (vol.~1, 1979; vol.~2, 1981) is the standard source for the C$^*$ and KMS material of this chapter.}
 \begin{keyidea}
 The quasi-local algebra encodes kinematics (locality), dynamics is an automorphism group (not inner), equilibrium states are limits of Gibbs states characterized by the KMS condition, and phases correspond to extremal states and to the centre of the GNS von Neumann algebra.
 \end{keyidea}

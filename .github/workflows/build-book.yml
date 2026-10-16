@@ -10,12 +10,20 @@ on:
   workflow_dispatch:
 
 env:
+  JOBNAME: operator-algebra-modular-theory-and-quantum-gravity
   PDF_NAME: operator-algebra-modular-theory-and-quantum-gravity.pdf
+
+# One build per ref; a newer push cancels an older branch/PR build, but never a tag build.
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref_type != 'tag' }}
 
 jobs:
   build:
     name: Compile book
-    runs-on: ubuntu-latest
+    # Pinned so that the TeX Live version (2023) matches the one the book is developed with.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
     permissions:
       contents: read
 
@@ -23,32 +31,74 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v7
 
-      - name: Generate main.tex
-        run: python3 scripts/gen.py
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            latexmk make python3 poppler-utils \
+            texlive-base texlive-latex-base texlive-latex-recommended \
+            texlive-latex-extra texlive-fonts-recommended texlive-pictures
 
-      - name: Compile LaTeX
-        uses: xu-cheng/latex-action@v2
-        with:
-          root_file: main.tex
-          args: >-
-            -pdf
-            -jobname=operator-algebra-modular-theory-and-quantum-gravity
-            -file-line-error
-            -halt-on-error
-            -interaction=nonstopmode
+      - name: Build PDF
+        run: make
+
+      - name: Check build log
+        run: scripts/check_log.sh "${JOBNAME}.log" "${PDF_NAME}"
 
       - name: Upload PDF artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v7  # keep in step with download-artifact@v8 below
         with:
           name: book-pdf
           path: ${{ env.PDF_NAME }}
           if-no-files-found: error
 
+      - name: Upload build log
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: build-log
+          path: ${{ env.JOBNAME }}.log
+          if-no-files-found: ignore
+
+  # Every push to main refreshes a rolling pre-release called "latest",
+  # so the current PDF is always on the Releases page.
+  latest:
+    name: Update "latest" release
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    concurrency:
+      group: rolling-release
+      cancel-in-progress: false
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+
+    steps:
+      - name: Download compiled PDF
+        uses: actions/download-artifact@v8
+        with:
+          name: book-pdf
+          path: .
+
+      - name: Replace the "latest" release
+        run: |
+          SHORT="${GITHUB_SHA::7}"
+          gh release delete latest --cleanup-tag --yes || true
+          gh release create latest "${PDF_NAME}" \
+            --target "${GITHUB_SHA}" \
+            --prerelease \
+            --title "Latest build (${SHORT})" \
+            --notes "Automatic build of commit ${GITHUB_SHA} from \`main\`. For a stable, versioned PDF use a numbered release."
+
+  # Pushing a tag such as v1.0.0 publishes a permanent, versioned release.
   release:
     name: Publish GitHub Release
     if: startsWith(github.ref, 'refs/tags/v')
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
 
@@ -61,7 +111,7 @@ jobs:
           fetch-depth: 0
 
       - name: Download compiled PDF
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@v8  # must match the upload-artifact major used in the build job
         with:
           name: book-pdf
           path: .

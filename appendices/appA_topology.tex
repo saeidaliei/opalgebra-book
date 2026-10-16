@@ -1,2 +1,56 @@
 \chapter{Topology crash course}\label{app:topology}
-\textbf{Open and closed sets.} A topology is a collection of ``open'' sets closed under arbitrary unions and finite intersections; closed sets are complements. A set is \emph{closed} iff it contains the limits of all convergent nets of its elements. \textbf{Nets.} In non-metrizable spaces (weak topologies on $\BH$) sequences are replaced by nets $(a_\alpha)$ indexed by a directed set. \textbf{Compactness.} $K$ is compact if every open cover has a finite subcover; equivalently every net has a convergent subnet. Compact subsets of Hausdorff spaces are closed. \textbf{Continuity.} $f$ is continuous iff preimages of open sets are open. \textbf{Weak topologies.} The weak topology induced by a family of functionals is the coarsest making them continuous; it is used for operators (\cref{ch:topologies}) and for states (weak-$^*$, \cref{ch:states}). \textbf{Banach--Alaoglu.} The closed unit ball of the dual of a Banach space is weak-$^*$ compact. \textbf{Baire/Hahn--Banach} are used implicitly: Hahn--Banach produces states and the singular states of \cref{ch:states}.
+This appendix collects the topological language used in \cref{ch:topologies,ch:states}. Nothing beyond the definitions and the three theorems highlighted below is needed.
+
+\section{Open sets, nets, compactness}
+A \emph{topology} on a set $X$ is a collection of subsets, called \emph{open}, that contains $\emptyset$ and $X$ and is closed under arbitrary unions and finite intersections. Closed sets are complements of open sets. A space is \emph{Hausdorff} if distinct points have disjoint open neighbourhoods; limits are then unique. A map $f$ is \emph{continuous} iff preimages of open sets are open.
+
+In a metric space, closedness can be tested with sequences. The weak topologies on $\BH$ are not metrizable on the whole algebra, so sequences must be replaced by \emph{nets}: families $(a_\alpha)$ indexed by a directed set. A set is closed iff it contains the limits of all convergent nets of its elements. A \emph{subnet} is the net analogue of a subsequence.
+
+A set $K$ is \emph{compact} if every open cover has a finite subcover; equivalently, every net in $K$ has a subnet converging in $K$. Compact subsets of Hausdorff spaces are closed, and a continuous image of a compact set is compact.
+
+\section{Weak topologies}
+Given a family $\mathcal F$ of functions on $X$, the \emph{weak} (or initial) topology induced by $\mathcal F$ is the coarsest topology making every member continuous. A net converges in it iff it converges against each $f\in\mathcal F$. Two instances matter here.
+
+\begin{itemize}
+\item On the dual $V^*$ of a Banach space, the \emph{weak-$^*$ topology} is induced by the evaluations $\varphi\mapsto\varphi(v)$, $v\in V$. States on a C$^*$-algebra are compared in it (\cref{ch:states}).
+\item On $\BH$, the topologies of \cref{ch:topologies} are induced by the seminorms in the table below.
+\end{itemize}
+\begin{center}\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+Topology & Seminorms & $a_\alpha\to a$ means\\
+\midrule
+norm & $\|a\|$ & $\|a_\alpha-a\|\to0$\\
+strong & $\|a\psi\|$ & $a_\alpha\psi\to a\psi$ for all $\psi$\\
+weak & $|\langle\varphi,a\psi\rangle|$ & $\langle\varphi,a_\alpha\psi\rangle\to\langle\varphi,a\psi\rangle$\\
+$\sigma$-strong & $(\sum_n\|a\psi_n\|^2)^{1/2}$ & as strong, uniformly over $\ell^2$-sequences\\
+$\sigma$-weak & $|\sum_n\langle\varphi_n,a\psi_n\rangle|$ & as weak, over $\ell^2$-sequences\\
+\bottomrule
+\end{tabular}
+\end{center}
+Here $\sum\|\psi_n\|^2,\sum\|\varphi_n\|^2<\infty$. Norm convergence implies strong, which implies weak; on bounded sets the $\sigma$-versions coincide with the plain ones.
+
+\paragraph{Facts used in the text.}
+\begin{itemize}
+\item The unit ball of $\BH$ is compact in the weak (equivalently $\sigma$-weak) topology.
+\item Multiplication $(a,b)\mapsto ab$ is jointly strongly continuous on bounded sets, but not on all of $\BH$. The adjoint is weakly continuous but \emph{not} strongly continuous.
+\item A convex set has the same strong and weak closure. This is why the double commutant theorem lets one speak of ``the'' closure of a $*$-algebra.
+\end{itemize}
+
+\begin{example}[strong, not norm]
+Let $P_n$ project onto $\mathbb C e_n$ in $\ell^2$. Then $\|P_n\psi\|=|\psi_n|\to0$, so $P_n\to0$ strongly, yet $\|P_n\|=1$. For the unilateral shift $S$, $(S^*)^n\to0$ strongly while $S^n=((S^*)^n)^*$ does not (it is isometric): the adjoint is not strongly continuous.
+\end{example}
+
+\section{Three theorems}
+\begin{theorem}[Tychonoff]
+A product of compact spaces is compact in the product topology.
+\end{theorem}
+\begin{theorem}[Banach--Alaoglu]
+The closed unit ball of $V^*$ is weak-$^*$ compact. (Embed it in $\prod_{v}\{|z|\le\|v\|\}$ and use Tychonoff.)
+\end{theorem}
+\begin{theorem}[Uniform boundedness]
+A family of bounded operators on a Banach space with $\sup_\alpha\|a_\alpha\psi\|<\infty$ for each $\psi$ is bounded in norm. In particular a weakly convergent sequence is norm bounded.
+\end{theorem}
+Banach--Alaoglu gives compactness of the state space, hence existence of limit states and thermodynamic limits (\cref{ch:states}). The Hahn--Banach theorem is used implicitly: it produces states with prescribed values and the singular states met in \cref{ch:states}.
+
+\mnote[Why nets]{The weak operator topology on $B(\mathcal H)$ is not metrizable, so sequences do not suffice; on bounded sets of a separable Hilbert space it is metrizable.}

@@ -13,6 +13,7 @@ This section is based on 2022--2025 papers: CLPW \cite{CLPW2023}, Chen--Peningto
 \end{unsettled}
 
 \subsection{The crossed product as a change of frame}
+\mnote[QRFs]{Quantum reference frames: Aharonov--Kaufherr (1984); Giacomini--Castro-Ruiz--Brukner (2019) on covariance under changes of quantum frame.}
 
 In the constraint formulation (\cref{ch:gravity_constraints}), the kinematical algebra $\A_R\otimes\Bnd{L^2(\R)}$ contains non-invariant operators. A \emph{gauge-fixing} to the clock frame (``set the clock to read $p$'') converts each kinematical operator $a$ into the dressed operator $\hat a=\sigma_p(a)$, which is invariant. In the language of perspective-neutral QRF constructions, the invariant algebra is the same object seen from \emph{any} frame, and the passage between the ``external'' description (fields in static time, kinematical) and the ``observer's'' description (fields relative to the clock) is a QRF change. The crossed product is thus \emph{the algebra of the world as described relative to the observer's clock}.
 
@@ -30,7 +31,7 @@ Clock type & Effect on the algebra and entropy\\
 Ideal, $q\in\R$ & crossed product by $\R$; II$_\infty$\\
 Ideal with $q\ge0$ & II$_1$ corner; maximum-entropy state exists (\cref{ch:clpw})\\
 Periodic clock & crossed product by a compact group, different type/entropy\\
-Degenerate/superselected clock & centre appears; entropy picks up Shannon terms\\
+Degenerate (superselected) clock & centre appears; entropy picks up Shannon terms\\
 Large fluctuations (semiclassical) & $S\simeq\Sgen$ as in \cref{ch:anatomy}\\
 Suppressed fluctuations & clock can be partially traced out\\
 \bottomrule
@@ -77,6 +78,7 @@ The status of the issues below is unsettled in the literature; this is a stateme
 
 \textbf{Finite size and internal structure.} A realistic observer has size and internal degrees of freedom; its energy is a sum over many constituents; and it may be entangled with the fields. Whether the algebra remains type II$_1$ with the same maximum-entropy state is not established in generality; the proposals of \cref{ch:clocks_qrf} suggest the answer depends on which clock is used.
 
+\mshift{21mm}\mnote[Pauli 1933]{There is no self-adjoint time operator canonically conjugate to a Hamiltonian bounded below. An ideal clock needs $q\in\mathbb R$; the physical clock has $q\ge0$. Salecker--Wigner (1958) studied the resulting limits on timekeeping.}
 \textbf{Back-reaction.} The observer's mass changes the geometry (a Schwarzschild--de Sitter-like patch); to leading order in $G_N$ this is accounted for by the area change, but the exact statement of how the algebra depends on the observer's mass is subtle.
 
 \subsection{Multiple observers and consistency}
@@ -133,6 +135,7 @@ Faulkner and Speranza \cite{FaulknerSperanza2024} derive the GSL for arbitrary c
 \item For $\varphi$ the vacuum-like state with respect to which the horizon is Killing and $\psi$ the state of interest, $S_{\rm rel}$ equals (first law) $\beta\Delta\langle H\rangle-\Delta S$ up to boundary terms, and one finds $\Sgen(\lambda_2)\ge\Sgen(\lambda_1)$: the horizon generalized entropy of the exterior \emph{increases} as the exterior shrinks, i.e.\ the GSL, equivalent to monotonicity of relative entropy (Wall's argument).
 \end{enumerate}
 
+\mnote[GSL]{Hawking (1971) proved the area theorem; Bekenstein (1972--73) conjectured that $\delta(A/4G+S_{\rm out})\ge0$. The crossed-product proof ties it to monotonicity of relative entropy.}
 \begin{keyidea}
 $\Sgen$ is the von Neumann entropy of a type II algebra up to a constant; the GSL is monotonicity of relative entropy under shrinking the algebra, the crossed-product dressing converting the divergent entropy statement into a finite one.
 \end{keyidea}
@@ -162,6 +165,7 @@ Why must the additive constant in $S=\Sgen+\text{const}$ be independent of $\lam
 Parts V--VII gave a clean semiclassical result. This section says what has \emph{not} been shown.
 \end{physmotiv}
 
+\mnote[Elsewhere]{Open problems for the whole book are collected in \cref{ch:open_all}, and the literature guide in \cref{ch:literature}. Treat Chapters~8--11 as a snapshot of a field in motion.}
 \begin{unsettled}
 Everything here is open or contested; the list is the author's reading and not a consensus statement.
 \end{unsettled}

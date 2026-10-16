@@ -1,2 +1,41 @@
 \chapter{Heat kernels and spectral asymptotics}\label{app:heat}
-For a Laplace-type operator $P=-(g^{\mu\nu}\nabla_\mu\nabla_\nu+E)$ on a compact manifold of dimension $n$, the heat kernel trace has the asymptotic expansion $\Tr\ee^{-tP}\sim(4\pi t)^{-n/2}\sum_{k\ge0}t^{k}a_{2k}(P)$ with local invariants $a_0=\int\sqrt g\,\mathrm{tr}\,\id$, $a_2=\int\sqrt g\,\mathrm{tr}(\tfrac R6+E)$, and $a_4$ quadratic in curvature (the Seeley--DeWitt coefficients). The spectral action \cref{ch:spectral_action} follows by writing $f(D^2/\Lambda^2)$ via Laplace transform: the moments of $f$ multiply the $a_{2k}$. For the Dirac operator $D^2=\nabla^*\nabla+R/4$ (Lichnerowicz), so $E=-R/4$ and $\tfrac R6+E=-\tfrac R{12}$ per spinor component. The coefficients are standard (Vassilevich's heat-kernel review); we do not reproduce $a_4$.
+The spectral action of \cref{ch:spectral_action} is computed from the short-time expansion of the heat kernel. This appendix gives the expansion, a complete worked check on $S^2$, and the step from heat kernel to spectral action.
+
+\section{The heat kernel}
+On $\mathbb R^n$ the heat kernel of $-\Delta$ is
+\begin{equation}
+\begin{gathered}K_t(x,y)=(4\pi t)^{-n/2}\,\ee^{-|x-y|^2/4t},\\ \Tr\,\ee^{-tP}=\int\dd^nx\,K_t(x,x)=(4\pi t)^{-n/2}\mathrm{Vol}.\end{gathered}
+\end{equation}
+On a compact manifold the volume is the first term of an asymptotic series; Weyl's law (the volume and dimension can be ``heard'' from the spectrum) is its leading term.
+
+\section{The Seeley--DeWitt expansion}
+Let $P=-(g^{\mu\nu}\nabla_\mu\nabla_\nu+E)$ be a Laplace-type operator on a vector bundle over a closed Riemannian manifold of dimension $n$, with bundle curvature $\Omega_{\mu\nu}$. Then, as $t\to0^+$,
+\begin{equation}
+\Tr\,\ee^{-tP}\sim(4\pi t)^{-n/2}\sum_{k\ge0}t^{k}\,a_{2k}(P),
+\end{equation}
+where the odd coefficients vanish on a closed manifold, and, writing $\mathrm{tr}$ for the trace over the bundle fibre,
+\begin{align}
+a_0&=\int\sqrt g\,\mathrm{tr}\,\id,\\
+a_2&=\int\sqrt g\,\mathrm{tr}\Big(E+\tfrac R6\Big),\\
+a_4&=\frac1{360}\int\sqrt g\,\mathrm{tr}\Big(60RE+180E^2+30\,\Omega_{\mu\nu}\Omega^{\mu\nu}+5R^2-2\,\mathrm{Ric}^2+2\,\mathrm{Riem}^2\Big).
+\end{align}
+(Vassilevich's review gives the general case with boundary and the higher coefficients.) For the squared Dirac operator, the Lichnerowicz formula $D^2=\nabla^*\nabla+\tfrac R4$ gives $E=-\tfrac R4$, so $E+\tfrac R6=-\tfrac R{12}$ per spinor component.
+
+\section{A complete check: the Dirac operator on $S^2$}
+On the unit sphere, $R=2$, the spinor bundle has rank $2$, and the area is $4\pi$. Then $a_0=8\pi$ and $a_2=-\tfrac R{12}\cdot2\cdot4\pi=-\tfrac{4\pi}3$, so
+\begin{equation}
+\Tr\,\ee^{-tD^2}=\frac1{4\pi t}\Big(8\pi-\tfrac{4\pi}{3}t+\dots\Big)=\frac2t-\frac13+\dots
+\end{equation}
+The exact spectrum (\cref{ch:spectral_action}) is $\pm n$ with multiplicity $2n$, $n\ge1$, so $\Tr\,\ee^{-tD^2}=4\sum_{n\ge1}n\,\ee^{-tn^2}$. Euler--Maclaurin gives $\sum_{n\ge1}n\,\ee^{-tn^2}=\tfrac1{2t}-\tfrac1{12}+O(t)$, hence $\tfrac2t-\tfrac13+O(t)$, in agreement. The next term, from $a_4$ with $\Omega_{\mu\nu}\Omega^{\mu\nu}$ and the curvature invariants of the unit sphere, is $-\tfrac{t}{30}$, which also matches a direct numerical summation of the spectrum:
+\begin{equation}
+\Tr\,\ee^{-tD^2}=\frac2t-\frac13-\frac t{30}+O(t^2).
+\end{equation}
+
+\section{From heat kernel to spectral action}
+Write $f(u)=\int_0^\infty\dd s\,\hat f(s)\,\ee^{-su}$ (Laplace transform). Then $\Tr f(D^2/\Lambda^2)=\int\dd s\,\hat f(s)\Tr\,\ee^{-sD^2/\Lambda^2}$, and inserting the expansion term by term shows that only moments of $f$ survive. In four dimensions,
+\begin{equation}
+\Tr\,f(D^2/\Lambda^2)\simeq\frac1{(4\pi)^2}\Big(\Lambda^4f_4\,a_0+\Lambda^2f_2\,a_2+f_0\,a_4+\dots\Big),
+\end{equation}
+with $f_4=\int_0^\infty u\,f(u)\,\dd u$, $f_2=\int_0^\infty f(u)\,\dd u$ and $f_0=f(0)$. Choosing $f(u)=\ee^{-u}$ gives $f_4=f_2=f_0=1$ and recovers the heat expansion itself. The coefficients $a_0,a_2,a_4$ are the cosmological term, the Einstein--Hilbert term, and the curvature-squared and gauge terms of \cref{ch:spectral_action}.
+
+\mnote[Weyl law]{The leading term $\mathrm{Tr}\,\mathrm e^{-tP}\sim(4\pi t)^{-n/2}\mathrm{Vol}$ is Weyl's law: one can ``hear'' the dimension and volume of a manifold.}

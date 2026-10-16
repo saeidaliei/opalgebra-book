@@ -27,13 +27,20 @@ Statement (iv) is the Stone--von Neumann theorem (\cref{ch:weyl}) and is true fo
 
 Take an infinite chain of spin-$\tfrac12$ particles, one at each site $j\in\Z$. The \emph{local observables} are those that act non-trivially on finitely many sites, e.g.\ $\sigma^z_j$, $\sigma^x_j\sigma^x_{j+1}$. These obviously form an algebra (sums and products of local observables are local). What is the Hilbert space?
 
+\mfig{\begin{tikzpicture}[font=\scriptsize]
+\draw[rounded corners,fill=black!6] (0,1.5) rectangle (4.2,2.2) node[midway]{one algebra $\mathcal A$ of local observables};
+\foreach \x/\l in {0.1/\theta,1.55/\theta',3.0/\theta''}{
+ \draw[fill=blue!8] (\x+0.55,0.45) ellipse (0.6 and 0.4);
+ \node at (\x+0.55,0.45) {$\mathcal H_{\l}$};
+ \draw[-{Stealth}] (\x+0.55,1.5)--(\x+0.55,0.88) node[midway,right]{$\pi_{\l}$};}
+\end{tikzpicture}}{One algebra, many mutually disjoint Hilbert-space ``worlds''; no vector in one can be reached from another by local operations.}
 A natural guess is $\HH=\bigotimes_{j}\C^2$. But an infinite tensor product of Hilbert spaces is not well defined until one specifies a reference vector. Consider the following product states, with $\theta\in[0,\pi/2]$:
 \begin{equation}
 \ket{\Psi_\theta}=\bigotimes_{j\in\Z}\bigl(\cos\theta\ket{\uparrow}+\sin\theta\ket{\downarrow}\bigr).
 \end{equation}
 Truncate to $N$ sites. The overlap of two such states is
 \begin{equation}
-\braket{\Psi_\theta}{\Psi_{\theta'}}_N=\bigl(\cos\theta\cos\theta'+\sin\theta\sin\theta'\bigr)^N=\cos(\theta-\theta')^N\xrightarrow{N\to\infty}0\qquad(\theta\ne\theta').
+\begin{split}\braket{\Psi_\theta}{\Psi_{\theta'}}_N&=\bigl(\cos\theta\cos\theta'+\sin\theta\sin\theta'\bigr)^N=\cos^N(\theta-\theta')\\&\xrightarrow{N\to\infty}0\qquad(\theta\ne\theta').\end{split}
 \end{equation}
 So these states are exactly orthogonal in the limit, and no vector in a ``universal'' Hilbert space can interpolate between them using local operations: any \emph{local} operator changes only finitely many factors and so cannot map $\ket{\Psi_\theta}$ to $\ket{\Psi_{\theta'}}$. Each $\Psi_\theta$ generates its own Hilbert space $\HH_\theta$ by acting with local operators, and these spaces carry different, \emph{unitarily inequivalent}, representations of the same algebra of local observables. Physically, $\Psi_\theta$ has magnetization $\langle\sigma^z_j\rangle=\cos 2\theta$, a macroscopic quantity that cannot be changed by any finite number of local operations. These are different phases, or superselection sectors.
 
@@ -47,6 +54,7 @@ The same phenomenon appears for free bosons in infinite volume: the Fock represe
 
 \subsubsection{Haag's theorem}\label{sec:haagthm}
 
+\mnote[History]{Haag's theorem (Haag 1955; Hall--Wightman 1957) says that the interaction picture cannot exist in an interacting QFT: the free and interacting Hilbert spaces are unitarily inequivalent.}
 In the textbook treatment of an interacting QFT one writes the interacting field as a unitary rotation of the free field, $\phi_{\rm int}(x)=U^{-1}\phi_{\rm free}(x)U$, and uses the interaction picture. \emph{Haag's theorem}\index{Haag's theorem} (1955) \cite{Haag1955} states, roughly, that if the free and interacting fields, both Poincar\'e covariant with a unique translation-invariant vacuum, are related by such a unitary, then the interacting field is itself free (its vacuum correlation functions coincide with the free ones). In other words, the interacting vacuum lives in a Hilbert space that is \emph{unitarily inequivalent} to the Fock space of the free theory. This is the same phenomenon as in the spin chain, now in a relativistic setting: the Fock space of Weyl operators is not the unique representation of the canonical commutation relations once there are infinitely many degrees of freedom. Perturbative QFT works in spite of this because it only ever computes finite-order matrix elements, never the unitary $U$ itself.
 
 \subsubsection{Entanglement in a region has no density matrix}
@@ -68,6 +76,7 @@ So the question ``what is the entropy of a region in QFT?'' has no canonical ans
 
 In a diffeomorphism-invariant theory, gauge invariance is the statement that physical observables commute with the constraints that generate diffeomorphisms. A local field $\phi(x)$ at a coordinate point $x$ is not gauge invariant: moving the point is a gauge transformation. Only \emph{relational} observables (``the value of $\phi$ where the curvature scalar $=1$'', ``the value of $\phi$ one proper time $\tau$ along the worldline of the observer'') are meaningful.
 
+\mnote[Scale]{In de Sitter space with Hubble rate $H$, the horizon temperature is $T_{\rm dS}=H/2\pi$. In four dimensions the horizon entropy is $A/4G=\pi/(GH^2)$, enormous but finite.}
 Two consequences matter for us.
 
 \begin{enumerate}
@@ -81,6 +90,7 @@ A precursor of this phenomenon is already present in ordinary gauge theory, wher
 
 The common remedy is to take the following dictionary seriously.
 
+\mnote[Origins]{Murray and von Neumann introduced ``rings of operators'' and the types I, II, III in 1936--43. Haag and Kastler brought the idea into quantum field theory in 1964.}
 \begin{center}
 \renewcommand{\arraystretch}{1.3}
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{%
@@ -204,6 +214,7 @@ This table is the mnemonic for the first half of the book: Part III builds the v
 
 Sections follow a fixed template: a physics-motivation note, definitions and examples, a ``what could go wrong'' box, a key-idea summary, and exercises. Each Part ends with a dictionary translating the mathematical vocabulary back into physics. We use $\hbar=c=k_B=1$. Our conventions for modular theory are fixed once and for all in \cref{ch:tomita} and summarized in the Notation appendix.
 
+\mnote[Units]{Throughout, $\hbar=c=k_B=1$, but Newton's constant $G$ is kept explicit so that $A/4G$ can be read as a number of degrees of freedom.}
 \begin{unsettled}
 \Cref{ch:clocks_qrf,ch:what_observer,ch:gen_entropy,ch:open_ds} and \cref{ch:bridge} describe results from 2022 onward that are still evolving; the status of these sections is flagged in the text, and citations to the recent literature should be checked against current versions of the papers.
 \end{unsettled}

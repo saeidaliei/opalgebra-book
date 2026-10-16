@@ -1,2 +1,29 @@
 \chapter{Measure theory and distributions}\label{app:measure}
-\textbf{Measures.} A $\sigma$-algebra of subsets, a countably additive $\mu\ge0$. $\Linf(X,\mu)$ is the commutative von Neumann algebra of essentially bounded functions on $L^2(X,\mu)$. \textbf{Radon--Nikodym.} If $\nu\ll\mu$ there is $f=\dd\nu/\dd\mu$ with $\nu(E)=\int_Ef\dd\mu$; the algebraic analogue is $\rho_\omega=\dd\omega/\dd\tau$ (\cref{ch:traces}). \textbf{Projection-valued measures} (\cref{ch:spectral}) generalize measures to operator values. \textbf{Distributions.} A distribution is a continuous linear functional on test functions; quantum fields are operator-valued distributions $\phi(f)$ (\cref{ch:haagkastler}); the product of distributions at a point is ill-defined, which is one reason for algebras of bounded smeared operators. The Fourier transform diagonalizes translations: $\delta(x)=\int\frac{\dd k}{2\pi}\ee^{\ii kx}$ is used in group averaging (\cref{ch:groups}).
+This appendix recalls the measure theory behind the spectral theorem (\cref{ch:spectral}) and the distributional language of quantum fields (\cref{ch:haagkastler}).
+
+\section{Measures and $L^p$ spaces}
+A \emph{measure space} $(X,\Sigma,\mu)$ consists of a $\sigma$-algebra $\Sigma$ of subsets of $X$ and a countably additive $\mu:\Sigma\to[0,\infty]$. Functions that agree outside a set of measure zero are identified. $L^2(X,\mu)$ is a Hilbert space with $\langle f,g\rangle=\int\bar fg\,\dd\mu$. The algebra $\Linf(X,\mu)$ of essentially bounded functions acts on $L^2(X,\mu)$ by multiplication; it is a commutative von Neumann algebra, and every commutative von Neumann algebra on a separable space has this form. This is the picture that the noncommutative theory generalizes.
+
+\section{Radon--Nikodym and Lebesgue decomposition}
+A measure $\nu$ is \emph{absolutely continuous} with respect to $\mu$, written $\nu\ll\mu$, if $\mu(E)=0$ implies $\nu(E)=0$. Measures $\mu,\nu$ are \emph{singular} if they are supported on disjoint sets.
+\begin{theorem}[Radon--Nikodym, Lebesgue]
+If $\mu,\nu$ are $\sigma$-finite and $\nu\ll\mu$, there is a measurable $f=\dd\nu/\dd\mu\ge0$ with $\nu(E)=\int_Ef\,\dd\mu$. In general $\nu=\nu_{\rm ac}+\nu_{\rm s}$ with $\nu_{\rm ac}\ll\mu$ and $\nu_{\rm s}\perp\mu$.
+\end{theorem}
+The algebraic analogue is the density matrix $\rho_\omega=\dd\omega/\dd\tau$ of a state with respect to a trace (\cref{ch:traces}); the Connes cocycle (\cref{ch:modham}) is a noncommutative Radon--Nikodym derivative between two states with no trace available.
+
+\section{Spectral measures and spectral types}
+A \emph{projection-valued measure} $E$ assigns to each Borel set a projection, with $E(\mathbb R)=1$ and $E(\bigcup_i\Omega_i)=\sum_iE(\Omega_i)$ for disjoint sets (strongly convergent sum) (\cref{ch:spectral}). For a self-adjoint $A$ and a vector $\psi$, $\mu_\psi(\Omega)=\langle\psi,E_A(\Omega)\psi\rangle$ is a probability measure (the Born rule). Splitting $\mu_\psi$ by Lebesgue decomposition into point, absolutely continuous and singular continuous parts gives the \emph{spectral types} of $A$: bound states, scattering states, and the rarely met singular continuous part. A modular operator can have any of these types; for the vacuum and a Rindler wedge, $\Delta^{it}$ is a boost (\cref{ch:rs_bw}) and its spectrum is purely absolutely continuous.
+
+\section{Distributions and the Fourier transform}
+Let $\mathcal S(\mathbb R^d)$ be the Schwartz space of rapidly decaying smooth functions. A \emph{tempered distribution} is a continuous linear functional on $\mathcal S$. Examples: functions of polynomial growth, the delta function $\langle\delta,f\rangle=f(0)$, and the principal value $\mathrm{P}\tfrac1x$. With
+\begin{equation}
+\hat f(k)=\int\dd x\,\ee^{-\ii kx}f(x),\qquad \delta(x)=\int\frac{\dd k}{2\pi}\,\ee^{\ii kx},
+\end{equation}
+translations become multiplications by phases, and $x\mapsto\ii\,\partial_k$. Two formulas recur:
+\begin{gather}
+\frac1{x\pm\ii\epsilon}=\mathrm{P}\frac1x\mp\ii\pi\,\delta(x)\quad(\epsilon\to0^+),\\
+\int\dd x\,\ee^{-ax^2+\ii kx}=\sqrt{\frac\pi a}\,\ee^{-k^2/4a}\quad(a>0).
+\end{gather}
+The first (Sokhotski--Plemelj) turns positive-energy conditions into analyticity in a half-plane; the second underlies heat kernels (\cref{app:heat}). A quantum field is an \emph{operator-valued distribution} $\phi(f)$: the product of two such distributions at one point is not defined, which is one reason the algebraic approach uses algebras of bounded smeared operators instead. The delta function also appears in group averaging, $\int\dd t\,\ee^{\ii tC}=2\pi\delta(C)$ (\cref{ch:groups}).
+
+\mnote[Radon--Nikodym]{$\nu\ll\mu$ means $\mu(E)=0\Rightarrow\nu(E)=0$. The density $f=\mathrm d\nu/\mathrm d\mu$ is the commutative shadow of the Connes cocycle $(D\psi:D\varphi)_t$.}

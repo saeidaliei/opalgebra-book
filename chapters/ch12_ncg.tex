@@ -17,6 +17,7 @@ Every commutative unital \cstar-algebra $\A$ is isomorphic to $C(X)$ for a compa
 
 So compact spaces and commutative \cstar-algebras are the same thing, with points $=$ pure states (\cref{ch:states}: pure states of $C(X)$ are Dirac measures). Similarly, measure spaces correspond to commutative von Neumann algebras $\Linf(X,\mu)$, and the dictionary extends: \emph{noncommutative \cstar-algebras are noncommutative topological spaces; noncommutative von Neumann algebras are noncommutative measure spaces}.
 
+\mnote[Dictionary]{space $X$ $\leftrightarrow$ algebra $C(X)$; vector bundle $\leftrightarrow$ finitely generated projective module (Serre--Swan); measure $\leftrightarrow$ state; Riemannian metric $\leftrightarrow$ Dirac operator.}
 \subsection{What is gained}
 \begin{itemize}
 \item \textbf{Singular quotients become algebras.} The quotient of a space by a group action that is not free (e.g.\ irrational rotation of the circle) is topologically pathological, but the crossed product $C(S^1)\rtimes\Z$ is a perfectly good \cstar-algebra, the ``noncommutative torus''.
@@ -51,6 +52,7 @@ A (unital, even/odd) \emph{spectral triple}\index{spectral triple} $(\A,\HH,D)$ 
 
 \textbf{Canonical example.} $\A=C^\infty(M)$, $\HH=L^2(M,S)$ spinors on a compact Riemannian spin manifold $M$, $D=\ii\gamma^\mu\nabla_\mu$ the Dirac operator. Then $[D,f]=\ii\gamma^\mu\partial_\mu f$ and $\norm{[D,f]}=\norm{\nabla f}_\infty$ (Lipschitz seminorm).
 
+\mnote[Recall]{A spectral triple $(\mathcal A,\mathcal H,D)$: $\mathcal A$ a $*$-algebra acting on $\mathcal H$, $D$ self-adjoint with compact resolvent, and $[D,a]$ bounded for all $a\in\mathcal A$.}
 \subsection{Distance formula and reconstruction}
 
 The geodesic distance on $M$ is recovered from the triple:
@@ -59,6 +61,7 @@ d(p,q)=\sup\big\{|f(p)-f(q)|:f\in\A,\ \norm{[D,f]}\le1\big\}.
 \end{equation}
 This makes sense for any triple, and defines a distance on the \emph{state space} of $\A$ (Connes' metric), the noncommutative substitute for points.
 
+\mnote[Connes]{$d(p,q)=\sup\{|a(p)-a(q)|:\ \|[D,a]\|\le1\}$ recovers the geodesic distance on a spin manifold. It also defines distances between states, so ``points'' of a noncommutative space are states.}
 \begin{theorem}[Connes' reconstruction theorem \cite{Connes2013}]
 A commutative spectral triple satisfying Connes' axioms comes from a compact Riemannian spin$^c$ manifold. (Connes 2008, 2013.)
 \end{theorem}
@@ -100,6 +103,7 @@ where $\mathrm{Lim}_\omega$ is a generalized limit (Hahn--Banach). $\Tr_\omega$ 
 On a compact $d$-manifold, for a pseudodifferential operator $P$ of order $-d$, $\Tr_\omega(P)=\frac1d\,\mathrm{Res}_W(P)$ (the Wodzicki residue). For $P=f|D|^{-d}$: $\Tr_\omega\big(f|D|^{-d}\big)=c_d\int_Mf\,\dd\mathrm{vol}$ with $c_d$ a universal constant.
 \end{theorem}
 
+\mnote[Dixmier 1966]{A trace on the ideal $\mathcal L^{1,\infty}$ that vanishes on trace-class operators. Connes' trace theorem (1988) identifies it, for $|D|^{-n}$ on an $n$-manifold, with the Wodzicki residue, an integral over the manifold.}
 Thus \emph{the Riemannian volume integral is a Dixmier trace}: $\int f=\Tr_\omega(f|D|^{-d})$ up to a constant. This is the noncommutative integral.
 
 \subsection{Relation to traces on type II factors}
@@ -142,6 +146,7 @@ a_4&\propto\int\dd^4x\sqrt g\big(c_1C^2_{\mu\nu\rho\sigma}+c_2\,\chi\big)\quad\t
 This is a Euclidean action on a compact manifold; its relation to the Lorentzian physical action requires Wick rotation, problematic in a general background (\cref{ch:lorentzian_nc}). The values of the couplings are those at the cutoff scale $\Lambda$, and need RG running to the physical scales; this is the source of the Standard Model predictions and their problems (\cref{ch:almost_comm}).
 \end{whatwrong}
 
+\mnote[Chamseddine--Connes 1997]{The spectral action $S=\mathrm{Tr}\,f(D/\Lambda)$ expands as $\Lambda^4f_4a_0+\Lambda^2f_2a_2+f_0a_4+\dots$: a cosmological term, the Einstein--Hilbert term, and curvature-squared and gauge terms.}
 \subsection*{Exercises}
 \begin{exercise}\label{ex:spectral_action:1}
 For the flat torus $T^4$ compute $\Tr\ee^{-tD^2}$ for the Dirac operator and show $a_0\propto\mathrm{vol}$ and all higher $a_k$ vanish.
@@ -166,6 +171,7 @@ The Standard Model reconstruction is a research program with contested status. S
 An \emph{almost-commutative} geometry is the product of a manifold triple $(C^\infty(M),L^2(M,S),D_M)$ and a finite triple $(\A_F,\HH_F,D_F)$: algebra $C^\infty(M)\otimes\A_F$, Hilbert space $L^2(M,S)\otimes\HH_F$, $D=D_M\otimes\id+\gamma_5\otimes D_F$. The finite algebra $\A_F$ is a sum of matrix algebras. \emph{Inner fluctuations} $D\mapsto D+A+JAJ^{-1}$ with $A=\sum a_i[D,b_i]$ produce: gauge bosons from the $M$-components of $A$, and scalar fields (Higgs) from the $F$-components, of the unitary group of the algebra; $D_F$ encodes Yukawa couplings and masses.
 
 \subsection{The finite algebra of the Standard Model}
+\mshift{5mm}\mnote[Who]{$\mathcal A_F=\mathbb C\oplus\mathbb H\oplus M_3(\mathbb C)$ was singled out by Chamseddine--Connes--Marcolli (2007), building on Connes (2006). The unimodularity condition then fixes the hypercharges.}
 
 The choice $\A_F=\C\oplus\mathbb H\oplus M_3(\C)$ (with $\mathbb H$ the quaternions) acting on a space whose basis are the fundamental fermions and their antiparticles reproduces the $SU(3)\times SU(2)\times U(1)$ structure and the hypercharges after imposing the first-order condition and a KO-dimension $6\bmod8$ finite geometry (Chamseddine--Connes). The spectral action then yields the bosonic Lagrangian: Yang--Mills terms, Higgs potential, and gravity, with relations among the couplings at the cutoff scale.
 
@@ -192,7 +198,7 @@ Explain how the Lie algebra of the unitary group of $\C\oplus\mathbb H\oplus M_3
 \section{Lorentzian signature and open problems}\label{ch:lorentzian_nc}
 \skippable
 
-\begin{physmotiv}
+\mshift{5mm}\begin{physmotiv}
 Physics is Lorentzian; spectral triples are Euclidean. This section lists what is known and not about moving to Lorentzian signature, and other open issues of the program.
 \end{physmotiv}
 
@@ -213,11 +219,12 @@ Why does the heat kernel $\Tr\ee^{-tD^2}$ fail to exist for a Lorentzian Dirac o
 \section{Thermal time (Connes--Rovelli)}\label{ch:thermal_time}
 \skippable
 
-\begin{physmotiv}
+\mshift{23mm}\begin{physmotiv}
 In a generally covariant theory there is no preferred time. Connes and Rovelli proposed that time is \emph{emergent from the state}: for a state $\omega$ of the observable algebra, the \emph{thermal time} is the modular flow $\sigma^\omega_t$. The Connes cocycle theorem makes this canonical up to inner automorphisms, so the \emph{outer} class of the flow is a state-independent notion of ``time'', a hidden time inherent to the algebra. Here we contrast it with the observer's clock of \cref{ch:clocks_qrf}.
 \end{physmotiv}
 
 \subsection{The hypothesis}
+\mnote[Connes--Rovelli 1994]{Thermal time hypothesis: in a generally covariant theory the physical time flow is the modular flow of the state, $\sigma_t=\mathrm{Ad}\,\Delta^{it}$, up to inner automorphisms. Compare the observer's clock of Chapter~9.}
 
 \textbf{Thermal time hypothesis} (Connes--Rovelli 1994 \cite{ConnesRovelli1994}): the physical time flow is the modular flow $\sigma^\omega_t$ of the state $\omega$ in which the system is found. By \cref{ch:modham} different faithful states give flows differing by inner automorphisms, so a canonical outer flow $\delta:\R\to\mathrm{Out}(\M)$ exists. For a Gibbs state with Hamiltonian $H$: $\sigma_t=\Ad\ee^{-\ii\beta Ht}$: thermal time is $-\beta\times$ ordinary time (temperature as the ratio of time units). For the Rindler vacuum: the boost with the Unruh temperature: Unruh temperature as the ratio of proper time to modular time.
 
@@ -284,6 +291,13 @@ Two checks make the spectral-action machinery concrete. A spectrum that can be s
 \end{physmotiv}
 
 \subsection{The Dirac operator on $S^2$}
+\mfig{\begin{tikzpicture}[font=\scriptsize,x=0.42cm,y=0.2cm]
+\draw[-{Stealth}] (-5.5,0)--(5.8,0) node[right]{$\lambda$};
+\foreach \n in {1,2,3,4}{
+ \draw[very thick] (\n,0)--(\n,2*\n); \draw[very thick] (-\n,0)--(-\n,2*\n);
+ \node[below] at (\n,0) {$\n$}; \node[below] at (-\n,0) {$-\n$};}
+\node[right] at (4.1,8) {mult.\ $2n$};
+\end{tikzpicture}}{Spectrum of the Dirac operator on the unit $S^2$: eigenvalues $\pm n$ ($n=1,2,\dots$), each with multiplicity $2n$.}
 On the unit two-sphere the Dirac operator has eigenvalues $\pm m$, $m=1,2,3,\dots$, each with multiplicity $2m$. So
 \begin{equation}
 \Tr e^{-tD^2}=\sum_{m\ge1}4m\,\ee^{-tm^2}.
@@ -300,6 +314,7 @@ In one generation of the Standard Model with a right-handed neutrino the Weyl fe
 \dim\HH_F=3\times2\times16=96.
 \end{equation}
 
+\mnote[Standard Model]{One generation has 16 Weyl fermions with a right-handed neutrino, so three generations give $48$, and $96$ with antiparticles: $\dim\mathcal H_F=96$. Compare the exercise below.}
 \subsection*{Exercises}
 \begin{exercise}\label{ex:ncgcomp:1}
 Check the multiplicities $2m$ for the lowest level $m=1$ by counting the Killing spinors on $S^2$, or derive the whole spectrum from $D^2=-\Delta_{S^2}+\ldots$ on the spinor bundle.

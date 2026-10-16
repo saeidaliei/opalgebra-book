@@ -8,7 +8,7 @@
 \usepackage{mathrsfs}
 \usepackage[sc]{mathpazo}
 \usepackage{courier}
-\usepackage[paperwidth=215mm,paperheight=285mm,inner=21.8mm,textwidth=111.4mm,marginparsep=8.2mm,marginparwidth=50.5mm,top=30mm,textheight=208mm,headheight=12pt,headsep=14mm]{geometry}
+\usepackage[paperwidth=215mm,paperheight=285mm,inner=21.8mm,textwidth=118mm,marginparsep=7mm,marginparwidth=46mm,top=30mm,textheight=208mm,headheight=12pt,headsep=14mm]{geometry}
 \usepackage{sidenotes}
 \usepackage[font=small,labelfont=bf,labelsep=period]{caption}
 \usepackage{enumitem}
@@ -69,9 +69,20 @@
   colbacktitle=white,before upper={\parindent=0pt\parskip=3pt\relax}}}
 \usepackage{environ}
 % the physics motivation lives in the outer margin, like a sidenote
+\newcommand{\mshift}[1]{\gdef\mnoteshiftamt{#1}}
+\gdef\mnoteshiftamt{0pt}
+\newcommand{\mnoteapplyshift}{\vspace*{-\mnoteshiftamt}\global\def\mnoteshiftamt{0pt}}
 \NewEnviron{physmotiv}[1][Physics motivation]{%
-  \marginpar{\footnotesize\raggedright\setlength{\parindent}{0pt}\setlength{\parskip}{3pt}\linespread{1.0}\selectfont
+  \marginpar{\footnotesize\raggedright\setlength{\parindent}{0pt}\setlength{\parskip}{3pt}\linespread{1.0}\selectfont\mnoteapplyshift
   \textsc{#1.}\ \BODY}}
+
+% ---- extra margin material (added) ----
+\newcommand{\mnoteformat}{\footnotesize\raggedright\setlength{\parindent}{0pt}\setlength{\parskip}{3pt}\linespread{1.0}\selectfont}
+% \mnote[Title]{text}: a labelled note in the outer margin
+\newcommand{\mnote}[2][Note]{\marginpar{\mnoteformat\mnoteapplyshift\textsc{#1.}\ #2}}
+% \mfig[width]{tikz code}{caption}: a small figure in the outer margin
+\newcommand{\mfig}[3][\linewidth]{\marginpar{\mnoteformat\mnoteapplyshift\centering
+  \resizebox{#1}{!}{#2}\par\vspace{2pt}\raggedright\textsc{Figure.}\ #3}}
 \newtcolorbox{whatwrong}[1][What could go wrong]{notebox,colback=warncol!6,
   borderline west={1.6pt}{0pt}{warncol},title={#1.}}
 \newtcolorbox{dictbox}[1][Physics $\leftrightarrow$ Math dictionary]{notebox,colback=dictcol!6,
@@ -96,14 +107,14 @@
 \fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}}
 
 \renewcommand{\thepart}{\ifnum\value{part}=0 0\else\Roman{part}\fi}
-\titleformat{\part}[display]{\normalfont\bfseries}{\fontsize{22}{26}\selectfont\partname\ \oldnum{\thepart}}{14pt}{\fontsize{30}{34}\selectfont}
-\titleformat{\chapter}[display]{\normalfont\bfseries}{\fontsize{24}{28}\selectfont\oldnum{\thechapter}}{12pt}{\fontsize{27}{31}\selectfont}
-\titleformat{name=\chapter,numberless}[display]{\normalfont\bfseries}{}{0pt}{\fontsize{27}{31}\selectfont}
+\titleformat{\part}[display]{\normalfont\bfseries\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000\relax}{\fontsize{22}{26}\selectfont\partname\ \oldnum{\thepart}}{14pt}{\fontsize{30}{34}\selectfont}
+\titleformat{\chapter}[display]{\normalfont\bfseries\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000\relax}{\fontsize{24}{28}\selectfont\oldnum{\thechapter}}{12pt}{\fontsize{27}{31}\selectfont}
+\titleformat{name=\chapter,numberless}[display]{\normalfont\bfseries\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000\relax}{}{0pt}{\fontsize{27}{31}\selectfont}
 \titlespacing*{\chapter}{0pt}{55pt}{34pt}
-\titleformat{\section}{\normalfont\fontsize{14}{17}\selectfont\bfseries}{\oldnum{\thesection}}{0.9em}{}
+\titleformat{\section}{\normalfont\fontsize{14}{17}\selectfont\bfseries\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000\relax}{\oldnum{\thesection}}{0.9em}{}
 \titlespacing*{\section}{0pt}{22pt plus 4pt minus 2pt}{8pt plus 2pt}
-\titleformat{\subsection}{\normalfont\fontsize{11.5}{14}\selectfont\bfseries}{\oldnum{\thesubsection}}{0.8em}{}
+\titleformat{\subsection}{\normalfont\fontsize{11.5}{14}\selectfont\bfseries\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000\relax}{\oldnum{\thesubsection}}{0.8em}{}
 \titlespacing*{\subsection}{0pt}{15pt plus 3pt minus 2pt}{5pt plus 1pt}
-\titleformat{\subsubsection}[runin]{\normalfont\bfseries}{}{0pt}{}[.\ ]
-\titlespacing*{\subsubsection}{0pt}{9pt plus 2pt}{0pt}
+\titleformat{\subsubsection}[runin]{\normalfont\bfseries}{}{0pt}{}[.]
+\titlespacing*{\subsubsection}{0pt}{9pt plus 2pt}{0.55em}
 \captionsetup{figurewithin=chapter}
