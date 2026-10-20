@@ -61,7 +61,7 @@ d(p,q)=\sup\big\{|f(p)-f(q)|:f\in\A,\ \norm{[D,f]}\le1\big\}.
 \end{equation}
 This makes sense for any triple, and defines a distance on the \emph{state space} of $\A$ (Connes' metric), the noncommutative substitute for points.
 
-\mnote[Connes]{$d(p,q)=\sup\{|a(p)-a(q)|:\ \|[D,a]\|\le1\}$ recovers the geodesic distance on a spin manifold. It also defines distances between states, so ``points'' of a noncommutative space are states.}
+\mshift{6mm}\mnote[Connes]{$d(p,q)=\sup\{|a(p)-a(q)|:\ \|[D,a]\|\le1\}$ recovers the geodesic distance on a spin manifold. It also defines distances between states, so ``points'' of a noncommutative space are states.}
 \begin{theorem}[Connes' reconstruction theorem \cite{Connes2013}]
 A commutative spectral triple satisfying Connes' axioms comes from a compact Riemannian spin$^c$ manifold. (Connes 2008, 2013.)
 \end{theorem}
@@ -163,7 +163,7 @@ Take spacetime times a tiny \emph{finite} noncommutative space. The Dirac operat
 \end{physmotiv}
 
 \begin{unsettled}
-The Standard Model reconstruction is a research program with contested status. Statements about predictions and their fate below are summarized from memory of the literature and must be verified (see \texttt{refs.bib}).
+The Standard Model reconstruction is a research program with contested status; the statements below follow the cited papers.
 \end{unsettled}
 
 \subsection{Product geometries}
@@ -171,14 +171,14 @@ The Standard Model reconstruction is a research program with contested status. S
 An \emph{almost-commutative} geometry is the product of a manifold triple $(C^\infty(M),L^2(M,S),D_M)$ and a finite triple $(\A_F,\HH_F,D_F)$: algebra $C^\infty(M)\otimes\A_F$, Hilbert space $L^2(M,S)\otimes\HH_F$, $D=D_M\otimes\id+\gamma_5\otimes D_F$. The finite algebra $\A_F$ is a sum of matrix algebras. \emph{Inner fluctuations} $D\mapsto D+A+JAJ^{-1}$ with $A=\sum a_i[D,b_i]$ produce: gauge bosons from the $M$-components of $A$, and scalar fields (Higgs) from the $F$-components, of the unitary group of the algebra; $D_F$ encodes Yukawa couplings and masses.
 
 \subsection{The finite algebra of the Standard Model}
-\mshift{5mm}\mnote[Who]{$\mathcal A_F=\mathbb C\oplus\mathbb H\oplus M_3(\mathbb C)$ was singled out by Chamseddine--Connes--Marcolli (2007), building on Connes (2006). The unimodularity condition then fixes the hypercharges.}
+\mnote[Who]{$\mathcal A_F=\mathbb C\oplus\mathbb H\oplus M_3(\mathbb C)$ was singled out by Chamseddine--Connes--Marcolli (2007), building on Connes (2006). The unimodularity condition then fixes the hypercharges.}
 
 The choice $\A_F=\C\oplus\mathbb H\oplus M_3(\C)$ (with $\mathbb H$ the quaternions) acting on a space whose basis are the fundamental fermions and their antiparticles reproduces the $SU(3)\times SU(2)\times U(1)$ structure and the hypercharges after imposing the first-order condition and a KO-dimension $6\bmod8$ finite geometry (Chamseddine--Connes). The spectral action then yields the bosonic Lagrangian: Yang--Mills terms, Higgs potential, and gravity, with relations among the couplings at the cutoff scale.
 
 \subsection{What is predicted, and what is not}
 
 \begin{itemize}
-\item \textbf{Relations at the unification scale:} gauge coupling unification relations (like $g_2^2=g_3^2=\tfrac53g_1^2$) and a relation between the Higgs quartic, top Yukawa and gauge couplings. Running these down to low energies predicted a Higgs mass of order 170 GeV (Chamseddine--Connes--Marcolli). The measured 125 GeV is in tension with this prediction; proposed repairs include an additional real scalar field coupled to the Higgs and neutrino sector (Chamseddine--Connes--van Suijlekom \cite{CCvS2013} and others) and other modifications (e.g.\ departures from the original assumptions about the Dirac operator). \textbf{Status: contested.}
+\item \textbf{Relations at the unification scale:} gauge coupling unification relations (like $g_2^2=g_3^2=\tfrac53g_1^2$) and a relation between the Higgs quartic, top Yukawa and gauge couplings. Running these down to low energies originally gave a Higgs mass of about 160--180 GeV \cite{CCM2007}, in conflict with the measured 125 GeV. Chamseddine and Connes showed in 2012 that a real scalar field $\sigma$, strongly coupled to the Higgs and associated with the Majorana mass of the right-handed neutrino, was already present in the model but had been neglected in the first computation; including it removes the conflict \cite{ChamseddineConnes2012}. Dropping the first-order condition leads instead to Pati--Salam unification \cite{CCvS2013}. \textbf{Status: contested.}
 \item \textbf{Number of generations and gravity:} the finite space accommodates three generations as input, not a derivation.
 \item \textbf{Neutrinos:} Majorana-type terms and the see-saw can be incorporated.
 \end{itemize}
@@ -198,18 +198,17 @@ Explain how the Lie algebra of the unitary group of $\C\oplus\mathbb H\oplus M_3
 \section{Lorentzian signature and open problems}\label{ch:lorentzian_nc}
 \skippable
 
-\mshift{5mm}\begin{physmotiv}
+\begin{physmotiv}
 Physics is Lorentzian; spectral triples are Euclidean. This section lists what is known and not about moving to Lorentzian signature, and other open issues of the program.
 \end{physmotiv}
 
 \begin{itemize}
-\item \textbf{Krein spaces.} A Lorentzian Dirac operator is not self-adjoint on a Hilbert space but is self-adjoint with respect to an indefinite inner product on a Krein space; several Lorentzian spectral triple proposals exist, with axioms differing from the Euclidean ones.
+\item \textbf{Krein spaces.} A Lorentzian Dirac operator is not self-adjoint on a Hilbert space but is self-adjoint with respect to an indefinite inner product on a Krein space; Strohmaier \cite{Strohmaier2006} introduced semi-Riemannian spectral triples on Krein spaces, and several other proposals exist, with axioms differing from the Euclidean ones.
 \item \textbf{Wick rotation.} In general no analytic continuation exists on a time-dependent background; the spectral action in its heat-kernel form is Euclidean. A spectral \emph{Lorentzian} action and its asymptotic expansion are not established in generality.
-\item \textbf{Causal structure.} Distance formulas have Lorentzian analogues (Moretti, Franco--Eckstein, and others) involving a causal cone of states; no consensus.
+\item \textbf{Causal structure.} Distance formulas have Lorentzian analogues involving an algebraic causal cone (Franco--Eckstein \cite{FrancoEckstein2013} and others); there is no consensus on the right axioms.
 \item \textbf{Quantization.} The spectral action is classical; coupling to quantum matter fields and gravitational quantization remains unclear.
 \item \textbf{Unitarity and positivity} of the resulting field theory with higher-derivative terms from $a_4$.
 \end{itemize}
-(These remarks summarize the field's open directions and should be checked against surveys.)
 
 \subsection*{Exercises}
 \begin{exercise}\label{ex:lorentzian_nc:1}
@@ -219,12 +218,12 @@ Why does the heat kernel $\Tr\ee^{-tD^2}$ fail to exist for a Lorentzian Dirac o
 \section{Thermal time (Connes--Rovelli)}\label{ch:thermal_time}
 \skippable
 
-\mshift{23mm}\begin{physmotiv}
+\begin{physmotiv}
 In a generally covariant theory there is no preferred time. Connes and Rovelli proposed that time is \emph{emergent from the state}: for a state $\omega$ of the observable algebra, the \emph{thermal time} is the modular flow $\sigma^\omega_t$. The Connes cocycle theorem makes this canonical up to inner automorphisms, so the \emph{outer} class of the flow is a state-independent notion of ``time'', a hidden time inherent to the algebra. Here we contrast it with the observer's clock of \cref{ch:clocks_qrf}.
 \end{physmotiv}
 
 \subsection{The hypothesis}
-\mnote[Connes--Rovelli 1994]{Thermal time hypothesis: in a generally covariant theory the physical time flow is the modular flow of the state, $\sigma_t=\mathrm{Ad}\,\Delta^{it}$, up to inner automorphisms. Compare the observer's clock of Chapter~9.}
+\mnote[Connes--Rovelli 1994]{Thermal time hypothesis: in a generally covariant theory the physical time flow is the modular flow of the state, $\sigma_t=\mathrm{Ad}\,\Delta^{it}$, up to inner automorphisms. Compare the observer's clock of \cref{ch:clpw_ch}.}
 
 \textbf{Thermal time hypothesis} (Connes--Rovelli 1994 \cite{ConnesRovelli1994}): the physical time flow is the modular flow $\sigma^\omega_t$ of the state $\omega$ in which the system is found. By \cref{ch:modham} different faithful states give flows differing by inner automorphisms, so a canonical outer flow $\delta:\R\to\mathrm{Out}(\M)$ exists. For a Gibbs state with Hamiltonian $H$: $\sigma_t=\Ad\ee^{-\ii\beta Ht}$: thermal time is $-\beta\times$ ordinary time (temperature as the ratio of time units). For the Rindler vacuum: the boost with the Unruh temperature: Unruh temperature as the ratio of proper time to modular time.
 

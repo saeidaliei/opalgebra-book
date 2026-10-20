@@ -32,7 +32,7 @@ A linear operator $A:\HH\to\HH$ is \emph{bounded} if $\norm A:=\sup_{\norm\xi=1}
 \end{align}
 The adjoint $A\ad$ is defined by $\inner{A\ad\xi}{\eta}=\inner{\xi}{A\eta}$. This is the prototype of a \cstar-algebra (\cref{ch:cstar}).
 
-\mnote[Recall]{The operator norm is $\|a\|=\sup_{\|\psi\|=1}\|a\psi\|$, and it satisfies the C$^*$-identity $\|a^*a\|=\|a\|^2$. Every bounded $a$ has an adjoint $a^*$ defined on all of $\mathcal H$.}
+\mshift{26mm}\mnote[Recall]{The operator norm is $\|a\|=\sup_{\|\psi\|=1}\|a\psi\|$, and it satisfies the C$^*$-identity $\|a^*a\|=\|a\|^2$. Every bounded $a$ has an adjoint $a^*$ defined on all of $\mathcal H$.}
 Some distinguished classes of bounded operators (all with obvious finite-dimensional analogues):
 \begin{center}
 \renewcommand{\arraystretch}{1.25}
@@ -68,7 +68,6 @@ This is the operator version of $z=e^{i\arg z}|z|$ and will appear in Tomita--Ta
 Let $\{e_n\}$ be an orthonormal basis. For a positive operator $A$ define $\Tr A=\sum_n\inner{e_n}{Ae_n}\in[0,\infty]$; this is independent of the basis. $A\in\BH$ is \emph{trace class}\index{trace} if $\Tr|A|<\infty$, and \emph{Hilbert--Schmidt} if $\Tr A\ad A<\infty$. Write $\mathcal T(\HH)$ for trace-class operators and $\mathcal K(\HH)$ for the \emph{compact operators}, the norm closure of the finite-rank operators.
 \end{definition}
 
-\mnote[Hierarchy]{finite rank $\subset$ trace class $\subset$ Hilbert--Schmidt $\subset$ compact $\subset$ bounded. The Schatten norms are $\|a\|_p=(\mathrm{Tr}\,|a|^p)^{1/p}$, with $p=1$ trace class and $p=2$ Hilbert--Schmidt.}
 Then $\mathcal T\subset\mathrm{HS}\subset\mathcal K\subset\BH$, each an \emph{ideal} (closed under multiplication by bounded operators, on either side). Key facts:
 \begin{itemize}
 \item For trace-class $A$ and bounded $B$: $\Tr(AB)=\Tr(BA)$, $|\Tr(AB)|\le\norm B\,\Tr|A|$.
@@ -77,6 +76,7 @@ Then $\mathcal T\subset\mathrm{HS}\subset\mathcal K\subset\BH$, each an \emph{id
 \item \textbf{Duality:} $\mathcal T(\HH)\cong\mathcal K(\HH)^*$ and $\BH\cong\mathcal T(\HH)^*$ via $(A,B)\mapsto\Tr(AB)$.
 \end{itemize}
 
+\mnote[Hierarchy]{finite rank $\subset$ trace class $\subset$ Hilbert--Schmidt $\subset$ compact $\subset$ bounded. The Schatten norms are $\|a\|_p=(\mathrm{Tr}\,|a|^p)^{1/p}$, with $p=1$ trace class and $p=2$ Hilbert--Schmidt.}
 \begin{whatwrong}
 The duality $\BH\cong\mathcal T(\HH)^*$ says that the functionals on $\BH$ that come from density matrices (the so-called \emph{normal} states) are a proper subset of all states on $\BH$. There are states of $\BH$, for $\dim\HH=\infty$, that are not given by any density matrix (e.g.\ states supported ``at infinity'' which assign zero to all compact operators). These singular states are the algebraic seed of inequivalent representations (\cref{ch:states,ch:inequiv}).
 \end{whatwrong}
@@ -214,7 +214,7 @@ Explain why the product of weakly convergent sequences need not converge to the 
 
 \section{Spectral theorem and unbounded operators}\label{ch:spectral}
 
-\mshift{15mm}\begin{physmotiv}
+\mshift{164mm}\begin{physmotiv}
 Every physicist writes $H=\sum_nE_n\ket n\!\bra n$ or $x=\int x\,\ket x\!\bra x\,\dd x$ and moves on. The spectral theorem is the statement that this is legitimate in general, with the sum and the integral unified into a single object, a \emph{projection-valued measure}. It also tells us what ``$f(H)$'' means for any function $f$, which we will use constantly (modular operators are $\Delta^{it}=\ee^{-\ii tK}$ and $\rho^{it}$). The second half of this section explains why $x$, $p$, $H$ are only defined on a \emph{domain}, and why ``Hermitian'' is not the same as ``self-adjoint''.
 \end{physmotiv}
 
@@ -226,7 +226,6 @@ For a self-adjoint matrix $A$ with eigenprojections $P_\lambda$ we have $A=\sum_
 A \emph{projection-valued measure} (PVM) on $\R$ assigns to each Borel set $\Omega\subset\R$ a projection $E(\Omega)$ with $E(\R)=\id$, $E(\Omega_1\cap\Omega_2)=E(\Omega_1)E(\Omega_2)$, and $E(\bigcup_k\Omega_k)=\sum_kE(\Omega_k)$ (strongly) for disjoint $\Omega_k$.
 \end{definition}
 
-\mnote[Recall]{A spectral measure $E$ assigns a projection to each Borel set with $E(\mathbb R)=1$ and $E(\Omega_1\cap\Omega_2)=E(\Omega_1)E(\Omega_2)$. The number $\langle\psi,E(\Omega)\psi\rangle$ is the Born probability of an outcome in $\Omega$.}
 Physically, $E(\Omega)$ is the yes/no question ``is the value of the observable in $\Omega$?'', and $\inner\psi{E(\Omega)\psi}$ is the Born probability.
 
 \begin{theorem}[spectral theorem]\label{thm:spectral}
@@ -236,6 +235,7 @@ A=\int_{\spec A}\lambda\,\dd E_A(\lambda).
 \end{equation}
 \end{theorem}
 
+\mnote[Recall]{A spectral measure $E$ assigns a projection to each Borel set with $E(\mathbb R)=1$ and $E(\Omega_1\cap\Omega_2)=E(\Omega_1)E(\Omega_2)$. The number $\langle\psi,E(\Omega)\psi\rangle$ is the Born probability of an outcome in $\Omega$.}
 Examples: for $x$ on $L^2(\R)$, $E_x(\Omega)$ is multiplication by the indicator function $\chi_\Omega(x)$; for a matrix, $E(\Omega)=\sum_{\lambda\in\Omega}P_\lambda$. For the free-particle Hamiltonian the spectrum is $[0,\infty)$ and is purely continuous: there are no eigenvectors in $L^2$. ``Generalized eigenvectors'' $\ket p$ are not normalizable; the PVM is the rigorous replacement.
 
 \subsubsection*{Functional calculus}
@@ -287,7 +287,7 @@ There is a one-to-one correspondence between strongly continuous one-parameter u
 \end{theorem}
 Thus time evolution, translations, rotations, \dots\ determine self-adjoint generators, and a one-parameter group of unitaries is the same data as a self-adjoint generator. The modular flow $\Delta^{it}$ of \cref{ch:tomita} is the one-parameter group generated by $-\log\Delta$.
 
-\mnote[Who]{Stone (1930--32): strongly continuous one-parameter unitary groups are exactly $U(t)=\mathrm e^{-\mathrm itH}$ with $H$ self-adjoint. This is why time evolution needs a Hamiltonian, and why Chapter~5 asks where one comes from.}
+\mnote[Who]{Stone (1930--32): strongly continuous one-parameter unitary groups are exactly $U(t)=\mathrm e^{-\mathrm itH}$ with $H$ self-adjoint. This is why time evolution needs a Hamiltonian, and why \cref{ch:modular} asks where one comes from.}
 \subsection{Affiliated operators}
 
 An unbounded operator cannot belong to a von Neumann algebra $\M\subset\BH$ (whose elements are bounded), but it can be \emph{affiliated} with it: $A$ is affiliated with $\M$ if $UAU\ad=A$ for every unitary $U\in\M'$. Equivalently, all spectral projections $\chi_\Omega(A)$ lie in $\M$. This is the right way to speak of ``the unbounded observable $x$'' inside a von Neumann algebra. Two examples to keep in mind: the observer's energy $q\ge0$ of \cref{ch:add_observer} will be an unbounded operator affiliated with the algebra of the observer; and the modular operator $\Delta$ of \cref{ch:tomita} is in general affiliated with neither $\M$ nor $\M'$, although conjugation by $\Delta^{it}$ maps $\M$ to itself.
@@ -317,7 +317,7 @@ The canonical commutation relations $[x,p]=\ii$ cannot hold for bounded operator
 
 Define $U(a)=\ee^{\ii ap}$ and $V(b)=\ee^{\ii bx}$ for $a,b\in\R$. Using $\ee^{\ii ap}x\ee^{-\ii ap}=x+a$ one finds
 \begin{equation}
-\begin{gathered}U(a)V(b)=\ee^{\ii ab}\,V(b)U(a),\\ U(a)U(a')=U(a+a'),\quad V(b)V(b')=V(b+b').\end{gathered}\label{eq:weyl}
+\begin{gathered}[b]U(a)V(b)=\ee^{\ii ab}\,V(b)U(a),\\ U(a)U(a')=U(a+a'),\quad V(b)V(b')=V(b+b').\end{gathered}\label{eq:weyl}
 \end{equation}
 Combining, $W(a,b)=\ee^{-\ii ab/2}U(a)V(b)$ satisfies $W(z)W(z')=\ee^{\ii\sigma(z,z')/2}W(z+z')$ with symplectic form $\sigma(z,z')=ab'-ba'$ for $z=(a,b)$, $z'=(a',b')$. More generally for $n$ degrees of freedom, or a field, $W(f)$ labelled by a vector $f$ in a real symplectic space $(\mathcal S,\sigma)$:
 \begin{equation}
@@ -329,11 +329,11 @@ For the free scalar field, $\mathcal S$ is a space of test-function data, $W(f)=
 
 A representation of \eqref{eq:weyl} on $\HH$ is \emph{regular} if $U(a)$, $V(b)$ are strongly continuous in $a,b$ (so that $x,p$ exist as self-adjoint generators by Stone's theorem).
 
-\mnote[History]{Weyl formulated the exponentiated CCR in 1927--28, and von Neumann proved the uniqueness theorem in 1931. Mackey (1949) extended it to locally compact abelian groups.}
 \begin{theorem}[Stone--von Neumann]
 For $n<\infty$ degrees of freedom, every regular irreducible representation of the Weyl relations is unitarily equivalent to the Schr\"odinger representation on $L^2(\R^n)$. Every regular representation is a direct sum of copies of it.
 \end{theorem}
 
+\mnote[History]{Weyl formulated the exponentiated CCR in 1927--28, and von Neumann proved the uniqueness theorem in 1931. Mackey (1949) extended it to locally compact abelian groups.}
 This is why finite-dimensional QM has no representation ambiguity: ``the'' Hilbert space is $L^2(\R^n)$, Fock-space and Schr\"odinger descriptions of the harmonic oscillator are unitarily equivalent, and so are different choices of $\omega$ in the Fock vacuum.
 
 \begin{whatwrong}
@@ -393,7 +393,7 @@ modular flow & $K=-\log\Delta$ & ``hidden'' dynamics (\cref{ch:tomita})\\
 \end{tabular}}
 \end{center}
 
-\mshift{17mm}\mnote[Wigner 1939]{Positive-energy irreducible unitary representations of the Poincar\'e group are labelled by a mass $m\ge0$ and a spin (or helicity). This is what ``a particle'' means in QFT.}
+\mnote[Wigner 1939]{Positive-energy irreducible unitary representations of the Poincar\'e group are labelled by a mass $m\ge0$ and a spin (or helicity). This is what ``a particle'' means in QFT.}
 \subsubsection*{Haar measure}
 To average over a group one needs an invariant measure. On $\R$, Lebesgue measure $\dd t$; on a compact group such as $U(1)$ or $SO(3)$, the normalized invariant measure; on a general locally compact group, the \emph{Haar measure}, unique up to a constant, which is left-invariant: $\int f(hg)\dd g=\int f(g)\dd g$ for all $h$. Groups for which left and right Haar measures agree are \emph{unimodular}; all groups in this book (abelian, compact, Poincar\'e) are unimodular except possibly the affine group $ax+b$, which appears in conformal/Möbius settings and as the group generated by modular flow and dilations. Group averaging is the physicist's ``sum over images'' and ``projection onto gauge-invariant states'': for a compact group,
 \begin{equation}

@@ -45,6 +45,9 @@ jobs:
       - name: Check build log
         run: scripts/check_log.sh "${JOBNAME}.log" "${PDF_NAME}"
 
+      - name: Check margin notes
+        run: python3 scripts/check_margins.py "${PDF_NAME}"
+
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v7  # keep in step with download-artifact@v8 below
         with:

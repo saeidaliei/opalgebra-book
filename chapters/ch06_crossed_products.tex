@@ -183,7 +183,7 @@ For $\M=M_n$ (\cref{ch:crossed}), $N=M_n\otimes\Linf(\R_y)$ with centre variable
 \end{equation}
 and for $F=f(X)$, whose eigenvalues are $f(y-\log p_i)$ (since $X=y-\log\rho$),
 \begin{equation}
-\begin{split}\tau\big(f(X)\big)&=\sum_i\int\dd y\,\ee^{y}f(y-\log p_i)\\&=\sum_ip_i\int\dd X\,\ee^{X}f(X)=\int\dd X\,\ee^Xf(X),\end{split}
+\begin{aligned}[b]\tau\big(f(X)\big)&=\sum_i\int\dd y\,\ee^{y}f(y-\log p_i)\\&=\sum_ip_i\int\dd X\,\ee^{X}f(X)=\int\dd X\,\ee^Xf(X),\end{aligned}
 \end{equation}
 using $y=X+\log p_i$ and $\sum_ip_i=1$. This agrees with \cref{thm:trace}, and $\tau\circ\theta_s=\ee^{-s}\tau$ follows from $\theta_s:y\mapsto y+s$. Of course type I algebras already have traces; the point is that the formula $\tau(f(X))=\int\ee^Xf(X)\dd X$ is the one that survives when $\rho$ ceases to exist.
 
@@ -232,7 +232,7 @@ regarded as a state of $N$. The function $g$ is the probability distribution of 
 \subsubsection{Exact finite-dimensional computation}
 Let $\M=M_n$ with $\Omega=\rho^{1/2}=\sum_i\sqrt{p_i}\ket i\ket{\bar i}$, so $K=K_\M-K_{\M'}$ and $N=M_n\otimes\Linf(\R_y)$ with centre variable $y=X-K_\M=x-K_{\M'}$ (\cref{ch:crossed}). On the basis vector $\ket i\ket{\bar i}\otimes\ket x$ the operator $y$ acts as multiplication by $x+\log p_i$. Take $\Phi=u\Omega$ with $u\in\M$ a unitary (a ``locally excited'' state; $u=\id$ gives $\Omega$). Then $\Phi=\sum_i\sqrt{p_i}\ket{ui}\ket{\bar i}$ and an element $F=\sum_if_i(y)\ket{ui}\bra{ui}$ of $N$ has
 \begin{equation}
-\begin{split}\hat\Phi(F)&=\sum_ip_i\int\dd x\,g(x)f_i(x+\log p_i)=\int\dd y\,\ee^{y}\sum_i\hat\rho_i(y)f_i(y),\\ \hat\rho_i(y)&=\ee^{-y}p_i\,g(y-\log p_i),\end{split}
+\begin{aligned}[b]\hat\Phi(F)&=\sum_ip_i\int\dd x\,g(x)f_i(x+\log p_i)=\int\dd y\,\ee^{y}\sum_i\hat\rho_i(y)f_i(y),\\ \hat\rho_i(y)&=\ee^{-y}p_i\,g(y-\log p_i),\end{aligned}
 \end{equation}
 so the density matrix has eigenvalues $\hat\rho_i(y)$ on the eigenvectors $\ket{ui}$ (check $\tau(\hat\rho)=\sum_ip_i\int g=1$). Therefore
 \begin{align}
@@ -271,7 +271,7 @@ For a type III$_1$ algebra $\M$ no density matrix $\rho$ exists, so the derivati
 \begin{equation}
 S(\hat\Phi)=h(g)+\langle X\rangle_{\hat\Phi}-S_{\rm rel}(\Phi\|\Omega)+(\text{corrections vanishing in this limit}),
 \end{equation}
-that is, \eqref{eq:Srel} survives, with $S_{\rm rel}$ now Araki's relative entropy of \cref{ch:modham}. (The explicit density matrix in the type III setting is constructed in the original papers; we only need its entropy.) We shall see in \cref{ch:anatomy} how this reproduces the generalized entropy $\Sgen=A/4G+S_{\rm bulk}$ when the clock is an observer in de Sitter space. The precise statement (a theorem of Chandrasekaran--Longo--Penington--Witten in this setting) requires the regime of validity to be spelled out; we do so there and flag the source-checking in the bibliography.
+that is, \eqref{eq:Srel} survives, with $S_{\rm rel}$ now Araki's relative entropy of \cref{ch:modham}. (The explicit density matrix in the type III setting is constructed in the original papers; we only need its entropy.) We shall see in \cref{ch:anatomy} how this reproduces the generalized entropy $\Sgen=A/4G+S_{\rm bulk}$ when the clock is an observer in de Sitter space. The precise statement (a theorem of Chandrasekaran--Longo--Penington--Witten in this setting) requires the regime of validity to be spelled out; we do so there.
 
 \begin{whatwrong}
 \begin{itemize}

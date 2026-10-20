@@ -38,9 +38,9 @@ A natural guess is $\HH=\bigotimes_{j}\C^2$. But an infinite tensor product of H
 \begin{equation}
 \ket{\Psi_\theta}=\bigotimes_{j\in\Z}\bigl(\cos\theta\ket{\uparrow}+\sin\theta\ket{\downarrow}\bigr).
 \end{equation}
-Truncate to $N$ sites. The overlap of two such states is
+Truncate to $N$ sites. Per site the two vectors have overlap $\cos\theta\cos\theta'+\sin\theta\sin\theta'=\cos(\theta-\theta')$, so the overlap of the two states is
 \begin{equation}
-\begin{split}\braket{\Psi_\theta}{\Psi_{\theta'}}_N&=\bigl(\cos\theta\cos\theta'+\sin\theta\sin\theta'\bigr)^N=\cos^N(\theta-\theta')\\&\xrightarrow{N\to\infty}0\qquad(\theta\ne\theta').\end{split}
+\braket{\Psi_\theta}{\Psi_{\theta'}}_N=\cos^N(\theta-\theta')\xrightarrow{N\to\infty}0\quad(\theta\ne\theta').
 \end{equation}
 So these states are exactly orthogonal in the limit, and no vector in a ``universal'' Hilbert space can interpolate between them using local operations: any \emph{local} operator changes only finitely many factors and so cannot map $\ket{\Psi_\theta}$ to $\ket{\Psi_{\theta'}}$. Each $\Psi_\theta$ generates its own Hilbert space $\HH_\theta$ by acting with local operators, and these spaces carry different, \emph{unitarily inequivalent}, representations of the same algebra of local observables. Physically, $\Psi_\theta$ has magnetization $\langle\sigma^z_j\rangle=\cos 2\theta$, a macroscopic quantity that cannot be changed by any finite number of local operations. These are different phases, or superselection sectors.
 
@@ -216,7 +216,7 @@ Sections follow a fixed template: a physics-motivation note, definitions and exa
 
 \mnote[Units]{Throughout, $\hbar=c=k_B=1$, but Newton's constant $G$ is kept explicit so that $A/4G$ can be read as a number of degrees of freedom.}
 \begin{unsettled}
-\Cref{ch:clocks_qrf,ch:what_observer,ch:gen_entropy,ch:open_ds} and \cref{ch:bridge} describe results from 2022 onward that are still evolving; the status of these sections is flagged in the text, and citations to the recent literature should be checked against current versions of the papers.
+\Cref{ch:clocks_qrf,ch:what_observer,ch:gen_entropy,ch:open_ds} and \cref{ch:bridge} describe results from 2022 onward, in a literature that is still evolving; the status of each result is stated in the text.
 \end{unsettled}
 
 \subsection*{Exercises}

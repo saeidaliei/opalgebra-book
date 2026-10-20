@@ -97,7 +97,7 @@ Two ways to cope with the failure of factorization (the literature on this inclu
 \end{enumerate}
 In the continuum these edge modes have a gravitational counterpart: boundary degrees of freedom associated with the diffeomorphisms that move a cut surface. The quantity $A/4G$ in generalized entropy can be partially understood as such an edge contribution, but this identification is subtle and is not needed for the crossed-product treatment, where the ``edge'' is replaced by the observer's clock.
 
-\mshift{50mm}\mfig{\begin{tikzpicture}[font=\scriptsize]
+\mfig{\begin{tikzpicture}[font=\scriptsize]
 \fill[blue!8] (0,0) rectangle (1.5,2.0);
 \foreach \y in {0,0.5,...,2.0}{\draw (-0.5,\y)--(3.5,\y);}
 \foreach \x in {0,1,...,3}{\draw (\x+0.5,-0.0)--(\x+0.5,2.0);}
@@ -141,7 +141,7 @@ In what sense is $\Linf(\{e_\ell\})$, the centre, the algebraic counterpart of a
 
 \section{Why de Sitter is special}\label{ch:ds_special}
 
-\mshift{36mm}\begin{physmotiv}
+\begin{physmotiv}
 De Sitter space is the simplest positively curved universe with a horizon. Every inertial observer has a static patch bounded by a cosmological horizon, with a temperature and an entropy, and the spatial sections are compact. That last fact is crucial for us: there is no asymptotic boundary at which to define a Hamiltonian, so the isometries are \emph{gauge} (\cref{ch:gravity_constraints}). The static patch is the place where the type III$\to$II mechanism is cleanest, and where it produces a type II$_1$ algebra with a maximum-entropy state, the first algebraic realization of the idea that de Sitter entropy counts states.
 \end{physmotiv}
 
@@ -186,7 +186,7 @@ S_{\rm dS}=\frac{A}{4G_N}.
 \end{equation}
 The Euclidean section is the sphere $S^{d+1}$ and the Euclidean path integral gives $Z=\ee^{S_{\rm dS}}$ to leading order. Notice $\beta_{\rm dS}$ is the same for every observer: de Sitter symmetry makes all horizons identical.
 
-\mnote[Gibbons--Hawking 1977]{They showed that de Sitter has a cosmological horizon with temperature and entropy, in analogy with a black hole. The Euclidean section is the sphere $S^{d+1}$, whose regularity fixes $\beta=2\pi\ell$.}
+\mshift{9mm}\mnote[Gibbons--Hawking 1977]{They showed that de Sitter has a cosmological horizon with temperature and entropy, in analogy with a black hole. The Euclidean section is the sphere $S^{d+1}$, whose regularity fixes $\beta=2\pi\ell$.}
 \subsection{Constraints and the missing Hamiltonian}
 
 Because the spatial sections are compact, every generator of the isometry group $SO(1,d+1)$, including $H$, is a constraint of the quantum gravity: gauge-invariant states and observables are invariant under it (\cref{ch:gravity_constraints}). There is no asymptotic region where a non-trivial charge could live. Consequences:
@@ -249,7 +249,7 @@ Do not confuse the entropy of the cosmological horizon, $A/4G_N$, with the entan
 
 Mathematically, $\A_R\rtimes_\sigma\R$ exists and is type II$_\infty$ (\cref{ch:takesaki}). Physically, there is no reason yet to cross by $\R$: the QFT on a fixed background has $H$ as a symmetry generator but no clock. Gravity changes this: since $H$ is a constraint, observables must be invariant under it, which forces us to include a physical clock, and the invariants form the crossed product (\cref{ch:add_observer,ch:clpw}). Equivalently, one is asking the answer to a physical question: \emph{what does the static patch observer measure, given that the static-time coordinate has no operational meaning?}
 
-\mnote[Preview]{The crossed product of a III$_1$ factor by its modular flow is type II$_\infty$ (Chapter~6). What is missing is a physical interpretation of the extra generator, which is exactly what the observer supplies.}
+\mnote[Preview]{The crossed product of a III$_1$ factor by its modular flow is type II$_\infty$ (\cref{ch:crossed_products}). What is missing is a physical interpretation of the extra generator, which is exactly what the observer supplies.}
 \begin{keyidea}
 In the static patch, $K=\beta_{\rm dS}H$, the algebra is type III$_1$ with no entropy, and $H\notin\A_R$. The missing ingredient is a clock, to be supplied by an observer.
 \end{keyidea}
@@ -267,7 +267,7 @@ Compare with the Rindler case: identify the dS analogues of $B$, $2\pi$, the acc
 
 \section{Adding an observer}\label{ch:add_observer}
 
-\begin{physmotiv}
+\mshift{23mm}\begin{physmotiv}
 In \cref{ch:static_patch} the static patch algebra is type III$_1$ and $H$ is outside it. In \cref{ch:ds_special} we saw $H$ is a constraint. These two facts are reconciled by including an \emph{observer}\index{observer}: a physical system on the worldline $r=0$ with its own Hamiltonian $q$, whose energy provides a clock. The constraint becomes $H+q=0$; solving it ties the clock reading to the field's modular time and produces, as the algebra of invariants, exactly the crossed product of \cref{ch:crossed}. The sign of $q$, bounded below, is what will later make the trace finite.
 \end{physmotiv}
 

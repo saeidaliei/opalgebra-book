@@ -104,7 +104,7 @@ $\pi_{\omega_+\oplus\omega_-}(\A)''$, $\omega_\pm$ different magnetizations & $\
 \end{center}
 Central projections $z\in\cZ(\M)$ are the sector projections: $z\M$ and $(\id-z)\M$ are independent algebras, with no operator of $\M$ connecting the two sectors.
 
-\mshift{14mm}\mnote[Factors]{A factor has trivial centre, $\mathcal M\cap\mathcal M'=\mathbb C1$. Every von Neumann algebra is a direct integral of factors, so factors are the irreducible building blocks.}
+\mnote[Factors]{A factor has trivial centre, $\mathcal M\cap\mathcal M'=\mathbb C1$. Every von Neumann algebra is a direct integral of factors, so factors are the irreducible building blocks.}
 \begin{theorem}[central decomposition]
 Every von Neumann algebra on a separable Hilbert space is a direct integral of factors:
 \begin{equation}
@@ -212,7 +212,7 @@ The entropy depends on the normalization of $\tau$: rescaling $\tau\to c\tau$ sh
 
 When no trace exists, one needs a weaker structure.
 
-\mshift{17mm}\mnote[Haagerup 1975]{Every normal weight is a sum of positive normal functionals (Haagerup). Weights are thus the natural home for ``$\mathrm{Tr}$'' on $\mathcal M$, even though they take the value $+\infty$.}
+\mnote[Haagerup 1975]{Every normal weight is a sum of positive normal functionals (Haagerup). Weights are thus the natural home for ``$\mathrm{Tr}$'' on $\mathcal M$, even though they take the value $+\infty$.}
 \begin{definition}
 A \emph{weight} on $\M$ is an additive, positively homogeneous map $\varphi:\M_+\to[0,\infty]$. Weights are normal, faithful, semifinite under the same conditions as above; a trace is a weight with $\varphi(x\ad x)=\varphi(xx\ad)$.
 \end{definition}
@@ -247,7 +247,7 @@ Show that if $\tau_1,\tau_2$ are two f.n.s.\ traces on a factor then $\tau_2=c\t
 
 \section{Classification: types I, II, III}\label{ch:classification}
 
-\begin{physmotiv}
+\mshift{34mm}\begin{physmotiv}
 The question is: \emph{how many fundamentally different kinds of quantum systems are there?} Answer (Murray and von Neumann, 1936--43): factors fall into three types, distinguished by which \emph{dimensions} projections can have. Type I is textbook QM. Type II has a continuous dimension and a trace but no minimal observables. Type III has neither trace nor dimension: every non-trivial question has ``infinite dimension'', and entropy is meaningless. Local algebras in QFT are type III, and the program of this book is to understand how gravity turns III into II.
 \end{physmotiv}
 
@@ -279,7 +279,7 @@ III & every non-zero projection is infinite (and all are equivalent to $\id$) & 
 \end{tabular}}
 \end{center}
 
-\mshift{21mm}\mfig{\begin{tikzpicture}[font=\scriptsize,level distance=0.9cm,
+\mfig{\begin{tikzpicture}[font=\scriptsize,level distance=0.9cm,
  level 1/.style={sibling distance=1.45cm},level 2/.style={sibling distance=0.8cm}]
 \node[draw,rounded corners]{factor}
  child{node{I}child{node{$\mathrm I_n$}}child{node{$\mathrm I_\infty$}}}
@@ -351,7 +351,7 @@ Why can the algebra of a bounded region of QFT not be type I? (Argue using the e
 
 \section{Subsystems and entanglement}\label{ch:subsystems}
 
-\begin{physmotiv}
+\mshift{7mm}\begin{physmotiv}
 In ordinary quantum mechanics a subsystem is a tensor factor, entanglement is a property of a pure state on $\HH_A\otimes\HH_B$, and the entropy of $\rho_A=\Tr_B\ket\psi\!\bra\psi$ measures it. In QFT none of this survives literally: the algebras of adjacent regions are not tensor factors. The algebraic replacement of ``subsystem'' is \emph{subalgebra}, and the replacements of ``trace over $B$'' are \emph{restriction of states} and \emph{conditional expectations}\index{conditional expectation}. This section develops those and states what remains true: the vacuum is entangled, in a precise and maximal sense, even though no entropy is defined.
 \end{physmotiv}
 

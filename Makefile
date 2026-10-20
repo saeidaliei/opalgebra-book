@@ -34,9 +34,10 @@ ch:
 	@test -n "$(N)" || { echo "usage: make ch N=<chapter number>"; exit 1; }
 	python3 scripts/chapter_only.py $(N)
 
-# Build, then fail on unresolved references/citations (the same check CI runs).
+# Build, then fail on unresolved references/citations and on margin-note faults (the same checks CI runs).
 check: $(PDF)
 	scripts/check_log.sh $(JOBNAME).log $(PDF)
+	python3 scripts/check_margins.py $(PDF)
 
 clean:
 	if [ -f main.tex ]; then latexmk -C -jobname=$(JOBNAME) main.tex; fi

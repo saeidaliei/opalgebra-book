@@ -44,7 +44,7 @@ Only \emph{continuous} functions of $a$ lie in the \cstar-algebra. Spectral proj
 \item \textbf{The infinite spin chain (UHF algebra).} Let $\A_N=\bigotimes_{j=1}^NM_2(\C)=M_{2^N}(\C)$, embedded as $\A_N\hookrightarrow\A_{N+1}$ via $a\mapsto a\otimes\id$. The norm-closure of $\bigcup_N\A_N$ is the \cstar-algebra $\A=M_{2^\infty}$ of the infinite chain. It is \emph{simple} (no non-trivial closed two-sided ideals) and unique: one algebra, an infinite family of different representations (\cref{ch:inequiv}), as in \cref{ch:why_algebras}. It carries a unique \emph{tracial} state $\tau(ab)=\tau(ba)$, the infinite-temperature state, which we will meet again as the origin of the hyperfinite type II$_1$ factor (\cref{ch:classification}).
 \end{enumerate}
 
-\mshift{17mm}\mnote[Commutative case]{A commutative unital C$^*$-algebra is $C(X)$ for a compact Hausdorff space $X$ (Gelfand). Noncommutative C$^*$-algebras are thus ``noncommutative spaces'', the point of view taken in Chapter~12.}
+\mnote[Commutative case]{A commutative unital C$^*$-algebra is $C(X)$ for a compact Hausdorff space $X$ (Gelfand). Noncommutative C$^*$-algebras are thus ``noncommutative spaces'', the point of view taken in \cref{ch:ncg}.}
 \begin{keyidea}
 A \cstar-algebra is the representation-independent algebra of observables. Matrices, classical phase spaces (commutative case), CCR/CAR algebras, and spin-chain algebras are all \cstar-algebras. Continuity of the norm means only \emph{continuous} functions of observables are in it.
 \end{keyidea}
@@ -147,7 +147,7 @@ For $\A=\BH$ with $\HH$ infinite dimensional, show the set of normal states is a
 
 \section{The GNS construction}\label{ch:gns}
 
-\mshift{36mm}\begin{physmotiv}
+\mshift{12mm}\begin{physmotiv}
 If observables and states are the primary objects, where do Hilbert spaces and state vectors come from? The answer is a beautiful and completely explicit construction, due to Gelfand, Naimark and Segal. Given an algebra $\A$ and a state $\omega$, one builds a Hilbert space $\HH_\omega$, a representation $\pi_\omega$ of $\A$ on it, and a vector $\Omega_\omega$ such that $\omega(a)=\inner{\Omega_\omega}{\pi_\omega(a)\Omega_\omega}$. It is the rigorous version of ``act on the vacuum with operators to produce all states'', and it shows \emph{how} different states give different Hilbert spaces. The cyclic vector $\Omega$ is exactly the object that will give us the modular operator (\cref{ch:tomita}).
 \end{physmotiv}
 
@@ -265,7 +265,7 @@ A state which differs from another by a small amount at every site, however smal
 
 \subsection{Spontaneous symmetry breaking}
 
-Let $G$ act on $\A$ by automorphisms $\alpha_g$ (for example the spin flip $\sigma^z_j\mapsto-\sigma^z_j$, $\sigma^{x,y}_j\mapsto\sigma^{x,y}_j$ combined with a rotation, which maps $\psi_\theta\mapsto\psi_{\pi/2-\theta}$ and $m\to-m$). A state $\omega$ is \emph{invariant} if $\omega\circ\alpha_g=\omega$. If $\omega$ is invariant then $U(g)\pi_\omega(a)\Omega=\pi_\omega(\alpha_g(a))\Omega$ defines a unitary representation implementing $\alpha_g$ on $\HH_\omega$, leaving $\Omega$ fixed.
+Let $G$ act on $\A$ by automorphisms $\alpha_g$ (for example the spin flip, the rotation by $\pi$ about the $x$-axis, $\sigma^z_j\mapsto-\sigma^z_j$, $\sigma^y_j\mapsto-\sigma^y_j$, $\sigma^x_j\mapsto\sigma^x_j$, which maps $\psi_\theta\mapsto\psi_{\pi/2-\theta}$ and $m\to-m$). A state $\omega$ is \emph{invariant} if $\omega\circ\alpha_g=\omega$. If $\omega$ is invariant then $U(g)\pi_\omega(a)\Omega=\pi_\omega(\alpha_g(a))\Omega$ defines a unitary representation implementing $\alpha_g$ on $\HH_\omega$, leaving $\Omega$ fixed.
 
 \begin{definition}
 The symmetry $\alpha_g$ is \emph{spontaneously broken} in the representation $\pi_\omega$ if it is \emph{not} unitarily implemented there, i.e.\ if $\omega\circ\alpha_g$ is not in the folium of $\omega$.
@@ -298,7 +298,7 @@ Why can a finite system never exhibit spontaneous symmetry breaking in the sense
 
 \section{Quasi-local algebras and the thermodynamic limit}\label{ch:quasilocal}
 
-\begin{physmotiv}
+\mshift{17mm}\begin{physmotiv}
 Statistical mechanics lives in the thermodynamic limit: phase transitions, equilibrium states with infinite entropy, and the very notion of a ``phase'' exist only for infinitely many particles. In this limit $\ee^{-\beta H}$ and $\Tr$ cease to make sense, as does the Hamiltonian $H$ itself as an operator. The quasi-local algebra is the framework that survives: observables are local, states are limits of finite-volume states, and dynamics acts by automorphisms. This is also the template for AQFT, where ``finite volume'' becomes ``bounded spacetime region''.
 \end{physmotiv}
 
